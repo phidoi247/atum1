@@ -1,0 +1,36 @@
+#container{
+	width: 1000px;
+	height: auto;
+	margin: 0 auto		
+};
+
+#header{
+	width: 1000px;
+	height:200px;
+	float:left;
+	background-color:#00C;
+	margin: 0 auto	
+};
+
+#headerright{
+	width: 650px;
+	height:200px;
+	float:right
+};
+
+#headerleft{
+	width: 350px;
+	height:200px;
+	float:left
+};
+
+#title{
+	width: 1000px;
+	height:100px;
+	float:left;	
+	margin: 0 auto
+};
+
+#title p{
+	text-align:center;
+};

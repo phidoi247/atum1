@@ -1,6 +1,5 @@
 <?php 	
-	$dbc = mysqli_connect('localhost', 'root', '', 'atum1_db_6') or die ("Die connect:" .mysqli_error($dbc));	
-	mysqli_query($dbc,"SET NAMES 'utf8'");
+	include '../connect.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,6 +28,14 @@
         		<tr>
         			<td><label>Value Suffix: </label></td>
         			<td><input type="text" name="suffix"></td>
+        		</tr>
+        		<tr>
+        			<td><label>yAxis title: </label></td>
+        			<td><input type="text" name="yaxis"></td>
+        		</tr>
+        		<tr>
+        			<td><label>xAxis title: </label></td>
+        			<td><input type="text" name="xaxis"></td>
         		</tr>
         		<tr>
         			<td><label>Mã sản phẩm: </label></td>
