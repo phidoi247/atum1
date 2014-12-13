@@ -1,23 +1,25 @@
 <?php 	
-	$dbc = mysqli_connect('localhost', 'root', '', 'atum1_db_6') or die ("Die connect:" .mysqli_error($dbc));	
-	mysqli_query($dbc,"SET NAMES 'utf8'");
+	include '../connect.php';
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="Text/html; charset=utf-8">
-		<title>Báo cáo</title>
+		<title>Báo cáo</title>
 		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/highcharts.js"></script>
 		<script type="text/javascript" src="js/themes/dark-unica.js"></script>
 		<script type="text/javascript" src="js/modules/exporting.js"></script>
+		<link rel="stylesheet" type="text/css" href="../CSS/report.css">
 	</head>
 	<body>
 		<?php 
 			//khai báo biến
 			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
 			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));
+			$yaxis = $_POST['yaxis'];
+			$xaxis = $_POST['xaxis'];
 			$tenbieudo = $_POST['tenBieuDo'];
 			$subtitle = $_POST['subtitle'];
 			$suffix = $_POST['suffix'];
@@ -46,9 +48,9 @@
 				$name[] = $tensp['ten_sanpham'];
 			};//kết thúc
 			
-			echo "<pre>";
+			/*echo "<pre>";
 			print_r($name);
-			echo "</pre>";
+			echo "</pre>";*/
 			
 			//hàm date range				
 			function dateRange( $first, $last, $step = '+1 day', $format = 'd-m-Y' ) {//ham tạo range ngày có định dạng đầu ra		
@@ -96,7 +98,7 @@
 			};
 		}; 
 		
-		echo "<pre>";
+		/*echo "<pre>";
 		print_r($dates);
 		echo "</pre>";
 		
@@ -107,7 +109,7 @@
 		
 		echo "<pre>";
 		print_r($data);
-		echo "</pre>";
+		echo "</pre>";*/
 		
 		?>
 		<script type="text/javascript">//biểu đồ
@@ -122,13 +124,17 @@
 		            x: -20
 		        },
 		        xAxis: {
+			        title: {
+						text: <?php echo "'"."$xaxis"."'"; ?>,
+						x: -20
+				        },
 		            categories: [<?php $dates = dateRange($tungay, $denngay);
 		        			foreach ($dates as $date){
 		        				echo "'"."$date"."'".","; }; ?>]
 		        },
 		        yAxis: {
 		            title: {
-		                text: <?php echo "'"."$suffix"."'"; ?>,
+		                text: <?php echo "'"."$yaxis"."'"; ?>,
 		            },
 		            plotLines: [{
 		                value: 0,
@@ -137,7 +143,7 @@
 		            }]
 		        },
 		        tooltip: {
-		            valueSuffix: ''
+		            valueSuffix: <?php echo "'"."$suffix"."'"; ?>
 		        },
 		        legend: {
 		            layout: 'vertical',
@@ -154,6 +160,15 @@
 		    });
 		});
 		</script>
-		<div id="container" style="width: 100%; height: 500px; margin: 0 auto"></div>
+		<div id="header">
+       	  <div id="headerleft"><p>Nhà sách Trí Tuệ<br>
+       	  Địa chỉ: 76 Ngọc Lâm - Long Biên - Hà Nội<br>
+       	  Tel: 043 877 8357</p>
+       	  </div>
+          <div id="headerright"><img src="../images/Logo.jpg" width="350px" height="200px"></div>
+        </div>
+		<div id="title"><h3><p><?php echo "$tenbieudo";?></p></h3><p><?php echo "Từ ngày: "."$tungay"." đến ngày: "."$denngay";?></p></div>
+		<div id="container"></div>
+		<div id="footer"></div>
 	</body>
 </html>
