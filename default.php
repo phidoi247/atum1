@@ -56,8 +56,8 @@
 			$user=mysql_escape_string(strip_tags($_POST['username']));
 			$pass=mysql_escape_string(strip_tags($_POST['password']));
 			$q="SELECT * FROM tblnhanvien WHERE `nhanvien_id`='$user' AND `password`=SHA1('$pass')";
-			$r=mysql_query($q) or die("Oopt! ".mysql_error());
-			if($f=mysql_fetch_row($r)){
+			$r=mysqli_query($dbc,$q) or die("Oopt! ".mysql_error());
+			if($f=mysqli_fetch_row($r)){
 				if(strpos($f[0],"QL")!==false){
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","Mannger",time()+3600);

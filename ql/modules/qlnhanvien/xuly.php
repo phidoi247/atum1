@@ -31,7 +31,7 @@
 				copy($_FILES['avatar']['tmp_name'],$link);
 				$src_avatar=substr($link,6);
 			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ORDER BY `nhanvien_id` DESC LIMIT 1";
-			$q=mysql_query($r);
+			$q=mysqli_query($dbc,$r);
 			$layid=mysql_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
 			if(strpos($nhanvien_id_trc, "00")!==false){
@@ -43,7 +43,7 @@
 			}
 			echo "Ok";
 			$r="INSERT INTO `tblnhanvien` VALUES('$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'NULL')";
-			$q=mysql_query($r) or die("Oopt! ".mysql_error());
+			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysql_error());
 			}else {
 				echo "Fill full all Fields,Please!";
 			}
