@@ -1,0 +1,243 @@
+@CHARSET "UTF-8";
+*{padding:0;margin:0;text-align:center}
+	.swapper{
+		width:1000px;
+		height:600px;
+		background:#EFF1EF;
+		margin:auto;	
+	}
+/************************************/
+	header{
+		width:100%;
+		height:18%;
+		background:#8B94BA;
+		float:left;
+		position:relative;
+	}
+	.logo{
+		height:100%;
+		width:30%;
+		background:radial-gradient(#FFF,#FCF);
+		float:left;	
+	}
+	.banner{
+		height:100%;
+		width:70%;
+		background:linear-gradient(to left,#FFF,#0F5);
+		float:left;	
+	}
+	.banner img{
+		width: 700px;
+		height: 108px;
+	}
+	
+	.nav{
+		position:absolute;
+		background:#F4D89D;
+		float:right;
+		width:200px;
+		height:35px;
+		border-top-left-radius:60px;
+		right:0;
+		bottom:0;
+		
+	}
+	input.login-but[type="button"]{
+		width:200px;
+		float:left;
+		height:35px;
+		border-top-left-radius:60px;
+		border:none;	
+		background-color:transparent;
+	}
+	
+/************************************/
+	section{
+		width:100%;
+		height:75%;
+		background:#F4D89D;
+		float:left;
+	}
+	nav.menu{
+		width: 80%;
+		height: 37px;
+		float: left;
+		background:gray ;
+		
+	}
+	nav.menu ul{
+		width:auto;
+		height:35px;
+		margin-left:100px;
+	}
+	nav.menu ul li{
+		width: 120px;
+		height:37px;
+		border-right:thin solid black;
+		line-height: 35px;
+		list-style: none;
+		float: left;
+	}
+	nav.menu ul li:FIRST-CHILD{
+		border-left: thin solid black;
+	}
+	nav.menu ul li:HOVER{
+		background-color: white;
+	}
+	nav.menu ul li a{
+		width: 100%;
+		height: 100%;
+		display: block;
+		text-decoration: none;
+		color: black;	
+	}
+	
+	.active-tab{
+		background:#F4D89D ;
+		border-top: solid thin gray; 
+	}
+	/*--------------------------------------------*/
+	article.fillter{
+		width: 77.8%;
+		padding:10px 10px 0 10px;
+		height: 43px;
+		float: left;
+		border: thin solid gray; 
+		border-top: none;
+	}
+	article.fillter input#add-emp-but{
+		
+		height: 30px;
+		float:left;
+		border:solid thin gray;
+		background-image: url("../sourse/users_add.png");
+		background-position: left;
+		background-repeat: no-repeat;
+	}
+	/*--------------------------------------------*/
+	aside.aside{
+		width: 20%;
+		height:90px;
+		float: right;
+		border-bottom:solid thin gray;
+	}
+	/*------------------------------------------*/
+	.add-emp-box{
+		display: none;
+		background:white;
+		width: 300px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	
+	.add-emp-box img{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.add-emp-box table{
+		margin: 5px auto;
+		
+	}
+	.add-emp-box table thead{background: #B6D8A0;height: 30px}
+	
+	
+	.delete-emp-box{
+		display: none;
+		background:white;
+		width: 300px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	.delete-emp-box table{
+		margin: 5px auto;
+		
+	}
+	.delete-emp-box table input{width:40px;height: 20px}
+	
+	
+	
+	/*------------------------------------------*/
+	
+	.Bar{
+		width: 99.8%;
+		border:thin solid gray;
+		border-top:none;
+		height: 358px;
+		background:white;
+		float: left;
+	}
+	span.notify{
+		float:left;
+		font-size: 12px;
+		width:100%;
+		height:15px;
+		color: red;
+	}
+	
+	input.cancellog[type="button"]{
+		float:right;
+		width:20px;
+		height:20px;
+		border:thin solid #2A3F55;
+		border-radius:10px;
+		position:absolute;
+		top:-5px;
+		right:-5px;
+	}
+	
+	div#logbox{
+	position:absolute;
+	padding-bottom:5px;
+	width:300px;
+	height:110px;
+	top:100px;
+	right:500px;
+	border:#808080 thin solid;
+	border-radius:10px;
+	background:#FFF;	
+	}
+	
+	div#logbox table{
+	float:left;
+	width:100%;
+	margin-left: 0px;	
+	}
+	
+	div#logbox table thead{
+	background:#F4F2CC;	
+	}
+	
+	div.Bar table{
+		width: 100%;
+		height:30px;
+		border-spacing: 1px;
+		border-bottom: thin gray solid;
+	}
+	
+	div.Bar table thead{
+		background-color: #B6D8A0;
+		
+	}
+	
+	div.Bar table tbody input[type='text']{
+		width: 40px;
+	}
+/************************************/
+	footer{
+		width:100%;
+		height:8%;
+		background:#B6D8A0;
+		float:left;
+	}
+	
