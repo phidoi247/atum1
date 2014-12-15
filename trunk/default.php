@@ -20,7 +20,7 @@
 <head>
 <meta charset="utf-8">
 <title>Demo.Project.One</title>
-<link rel="stylesheet" type="text/css" href="css/StyleMain.css">
+<link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
 <link rel="icon" href="sourse/icon.ico">
 <script type="text/javascript" src="js/jquery-2-1-1.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
@@ -43,7 +43,7 @@
 <span class="notify">
 <?php
 
- require('Connections/config.php');
+ require('Connections/connect.php');
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$error=array();
 		if(empty($_POST['username'])){

@@ -1,0 +1,1 @@
+<input type="button" id='add-emp-but' value="      Thêm nhân viên">
