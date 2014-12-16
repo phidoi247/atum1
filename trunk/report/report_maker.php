@@ -13,9 +13,50 @@
 		</style>		
 	</head>
 	<body>
-	<form action="report.php" method="post">
+	<form action="doanh_so.php" method="post" target="_blank">
    	 	<fieldset style="width: 500px">
-        <legend>Tạo báo cáo</legend>
+        <legend>Tạo báo cáo thống kê sản phẩm</legend>
+        	<table>
+        		<tr>
+        			<td><label>Tên báo cáo: </label></td>
+        			<td><input type="text" name="tenBaoCao" required="required"></td>
+        		</tr>
+        		<tr>
+        			<td><label>Tên biểu đồ: </label></td>
+        			<td><input type="text" name="tenBieuDo" required="required"></td>
+        		</tr>
+        		<tr>
+        			<td><label>Subtitle: </label></td>
+        			<td><input type="text" name="subtitle" required="required"></td>
+        		</tr>        		
+        		<tr>
+        			<td><label>yAxis title: </label></td>
+        			<td><input type="text" name="yaxis"></td>
+        		</tr>
+        		<tr>
+        			<td><label>xAxis title: </label></td>
+        			<td><input type="text" name="xaxis"></td>
+        		</tr>
+        		<tr>
+        			<td><label>Mã sản phẩm: </label></td>
+        			<td><input type="text" name="maSanPham" required="required" placeholder="Mã sản phẩm ngăn cách bằng dấu ",""></td>
+        		</tr>
+        		<tr>
+        			<td><label>Từ ngày: </label></td>
+        			<td><input type="text" name="tuNgay" required="required"></td>
+        		</tr>
+        		<tr>
+        			<td><label>Đến ngày: </label></td>
+        			<td><input type="text" name="denNgay" required="required"></td>
+        		</tr>
+        		<tr><td><input type="submit" name="submit" value="Tạo"></td></tr>
+        	</table>
+        </fieldset>
+    </form>
+    
+    <form action="doanh_thu.php" method="post" target="_blank">
+   	 	<fieldset style="width: 500px">
+        <legend>Tạo báo cáo thống kê sản phẩm</legend>
         	<table>
         		<tr>
         			<td><label>Tên biểu đồ: </label></td>
