@@ -1,5 +1,5 @@
 <?php 	
-	include '../connect.php';
+	include '../Connections/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,52 +7,59 @@
 	<head>
 		<meta http-equiv="Content-Type" content="Text/html; charset=utf-8">
 		<title>Báo cáo</title>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/highcharts.js"></script>
-		<script type="text/javascript" src="js/highcharts-3d.js"></script>
-		<script type="text/javascript" src="js/themes/dark-unica.js"></script>
-		<script type="text/javascript" src="js/modules/exporting.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>
+		<script type="text/javascript" src="../js/highcharts-3d.js"></script>
+		<script type="text/javascript" src="../js/themes/dark-unica.js"></script>
+		<script type="text/javascript" src="../js/modules/exporting.js"></script>
 		<link rel="stylesheet" type="text/css" href="../CSS/report.css">
 	</head>
 	<body>
 		<?php 
 			//khai báo biến
 			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
-			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));
-			$yaxis = $_POST['yaxis'];
+			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));			
 			$xaxis = $_POST['xaxis'];
 			$tenbieudo = $_POST['tenBieuDo'];
 			$tenbaocao = $_POST['tenBaoCao'];
-			$subtitle = $_POST['subtitle'];			
-			$masp = explode(',',$_POST['maSanPham']);
-			$dates = dateRange($tungay, $denngay);
-											
-			//lấy phần name trong series
-			$qname = " SELECT tblsanpham.ten_sanpham,tblbanhang.soluong,tbldonvi.ten_donvi ";
-			$qname .= " FROM tblhoadon JOIN tblbanhang ";
-			$qname .= " ON tblhoadon.ten_hoadon = tblbanhang.ten_hoadon	JOIN tblsanpham ";
-			$qname .= " ON tblsanpham.sanpham_id = tblbanhang.sanpham_id JOIN tbldonvi ";
-			$qname .= " ON tbldonvi.donvi_id = tblsanpham.donvi_id ";
-			$qname .= "	WHERE tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN ( ";
-			for($i=0;$i<count($masp);$i++){//bo dau phay o cuoi cung
-				if($i<count($masp)-1){
-					$qname .= "'"."$masp[$i]"."'".",";
-				}else {
-					$qname .= "'"."$masp[$i]"."'";
-				};
-			};
-			$qname .= " ) ";
-			$qname .= " GROUP BY tblsanpham.ten_sanpham ";
-			$qname .= " ORDER BY tblsanpham.sanpham_id ASC; ";
-			$r = mysqli_query($dbc, $qname) or die ("Query $qname <br /> mysql error: ".mysqli_errno($dbc));
-				
-			while($tensp = mysqli_fetch_array($r, MYSQLI_ASSOC)){
-				$name[] = $tensp['ten_sanpham'];
-				$donvi[] = $tensp['ten_donvi'];
-			};//kết thúc
+			$subtitle = $_POST['subtitle'];
+			$dates = dateRange($tungay, $denngay);												
 			
+			for($i=0;$i<count($dates);$i++){				
+				$qban[$i] = " SELECT SUM(tblbanhang.soluong * tblsanpham.gia_ban) AS ban FROM tblbanhang JOIN tblhoadon ON tblbanhang.ten_hoadon = tblhoadon.ten_hoadon 
+					JOIN tblsanpham ON tblbanhang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
+				$qnhap[$i] = " SELECT SUM(tblnhaphang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblnhaphang JOIN tblhoadon 
+						ON tblnhaphang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblnhaphang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' "; 
+				$rban = mysqli_query($dbc, $qban[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$rnhap = mysqli_query($dbc, $qnhap[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
+					$databan[$i] = $dulieu['ban'];
+					};
+				while($dulieu = mysqli_fetch_array($rnhap, MYSQLI_ASSOC)){
+						$datanhap[$i] = $dulieu['nhap'];
+					};
+				if($databan[$i]==NULL){
+					$databan[$i] = 0;
+					}else if($datanhap[$i]==NULL){
+						$datanhap[$i] = 0;
+					};
+				$loinhuan[$i] = $databan[$i]-$datanhap[$i];
+				};				
+				
 			//hàm date range
-			function dateRange( $first, $last, $step = '+1 day', $format = 'd-m-Y' ) {//ham tạo range ngày có định dạng đầu ra
+			function dateRange( $first, $last, $step = '+1 day', $format = 'Y-m-d' ) {//ham tạo range ngày có định dạng đầu ra là năm tháng ngày
+				$dates = array();
+				$current = strtotime( $first );
+				$last = strtotime( $last );
+				while( $current <= $last ) {
+					$dates[] = date( $format, $current );
+					$current = strtotime( $step, $current );
+				}
+				return $dates;
+			}//kết thúc
+			
+			//hàm date range2
+			function dateRange2( $first, $last, $step = '+1 day', $format = 'd-m-Y' ) {//ham tạo range ngày có định dạng đầu ra là ngày tháng năm
 				$dates = array();
 				$current = strtotime( $first );
 				$last = strtotime( $last );
@@ -91,21 +98,18 @@
 		                depth: 25
 		            }
 		        },
-		        xAxis: {
-			        title :{
-						text: <?php echo "'"."$xaxis"."'"; ?>,
-						x: -20
-				        },
-		            categories: [<?php $dates = dateRange($tungay, $denngay);
-        			foreach ($dates as $date){
+		        xAxis: {			        
+		        	categories: [<?php $ngayhienthi = dateRange2($tungay, $denngay);
+        			foreach ($ngayhienthi as $date){
         				echo "'"."$date"."'".","; }; ?>]
 		        },
 		        yAxis: {		        	
 		            opposite: true
 		        },
 		        series: [{
-		            name: <?php echo "'"."$yaxis"."'"; ?>,
-		            data: [2, 3, null, 4, 0, 5, 1, 4, 6, 3]
+		            name: <?php echo "'"."$xaxis"."'"; ?>,
+		            data: [<?php for($i=0;$i<count($dates);$i++){
+							echo $loinhuan[$i].","; }; ?>]
 		        }]
 		    });
 		});
