@@ -1,4 +1,4 @@
-<?php 	
+﻿<?php 	
 	include '../Connections/connect.php';
 ?>
 
@@ -14,6 +14,8 @@
 	</head>
 	<body>
 		<?php 
+
+			//vlvlvl
 			//khai báo biến
 			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
 			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));
