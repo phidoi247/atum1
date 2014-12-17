@@ -7,10 +7,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="Text/html; charset=utf-8">
 		<title>Báo cáo</title>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/highcharts.js"></script>
-		<script type="text/javascript" src="js/themes/dark-unica.js"></script>
-		<script type="text/javascript" src="js/modules/exporting.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>
+		<script type="text/javascript" src="../js/themes/dark-unica.js"></script>
+		<script type="text/javascript" src="../js/modules/exporting.js"></script>
 		<link rel="stylesheet" type="text/css" href="../CSS/report.css">
 	</head>
 	<body>

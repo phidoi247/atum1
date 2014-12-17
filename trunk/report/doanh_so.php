@@ -1,5 +1,5 @@
 <?php 	
-	include '../connect.php';
+	include '../Connections/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,11 +7,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="Text/html; charset=utf-8">
 		<title>Báo cáo</title>
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/highcharts.js"></script>
-		<script type="text/javascript" src="js/themes/dark-unica.js"></script>
-		<script type="text/javascript" src="js/modules/exporting.js"></script>
-		<link rel="stylesheet" type="text/css" href="../CSS/report.css">
+		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>
+		<script type="text/javascript" src="../js/themes/dark-unica.js"></script>
+		<script type="text/javascript" src="../js/modules/exporting.js"></script>
 	</head>
 	<body>
 		<?php 
@@ -216,7 +215,7 @@
 			</tr>
 			<tr>
 				<td colspan= "3">					
-					<div id="container"></div>
+					<div id="container" style="width: 1000px; height: 400px; margin: 0 auto"></div>
 				</td>
 			</tr>			
 		</table>
