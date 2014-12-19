@@ -155,7 +155,7 @@ else{
 		</tbody>
 	</table></form>
 </div>
-<div class="delete-emp-box"><form id='delete-emp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn Sa thải NV <input id="id_emp_del" readonly="readonly">?</tr><tr><th></th><th><input class="delete-emp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-emp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form></div>
+<div class="delete-emp-box"><form id='delete-emp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn Sa thải NV <input id="id_emp_del" readonly>?</tr><tr><th></th><th><input class="delete-emp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-emp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form></div>
 </section>
 <footer>
 Copyright &copy; by Atumt Team.

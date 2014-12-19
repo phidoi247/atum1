@@ -32,7 +32,7 @@
 				$src_avatar=substr($link,6);
 			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ORDER BY `nhanvien_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
-			$layid=mysql_fetch_row($q);
+			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
 			if(strpos($nhanvien_id_trc, "00")!==false){
 				$nhanvien_id=$position."00".(string)(int)((substr($nhanvien_id_trc, 4))+1);
@@ -53,7 +53,7 @@
 		if(isset($_POST['id_emp_del'])){
 			$id_emp_del=$_POST['id_emp_del'];
 			$r="DELETE FROM `tblnhanvien` WHERE `nhanvien_id`='$id_emp_del'";
-			$q=mysql_query($r) or die ("Oopt! ".mysql_error());
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysql_error());
 		}
 		
 	}

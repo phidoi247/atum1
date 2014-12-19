@@ -163,7 +163,7 @@
 		margin: 5px auto;
 		
 	}
-	.delete-emp-box table input{width:40px;height: 20px}
+	.delete-emp-box table input{width:45px;height: 20px}
 	
 	
 	
@@ -231,7 +231,7 @@
 	}
 	
 	div.Bar table tbody input[type='text']{
-		width: 40px;
+		width: 45px;
 	}
 /************************************/
 	footer{
