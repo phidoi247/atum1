@@ -34,13 +34,100 @@
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
-			if(strpos($nhanvien_id_trc, "00")!==false){
-				$nhanvien_id=$position."00".(string)(int)((substr($nhanvien_id_trc, 4))+1);
-			}else if(strpos($nhanvien_id_trc, "0")!==false){
-				$nhanvien_id=$position."0".(string)(int)((substr($nhanvien_id_trc, 3))+1);
-			}else {
-				$nhanvien_id=$position.(string)(int)((substr($nhanvien_id_trc, 2))+1);
+			if(strpos($nhanvien_id_trc,"000")==2){
+		if(strpos($nhanvien_id_trc,"9")==5){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+			$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+			$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+		}
+		else{
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,5);
+			$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+			$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+		}
+	}
+	elseif(strpos($nhanvien_id_trc,"000")==3){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,5);
+			$nhanvien_id=$nhanvien_idstr."1";
+	}
+	elseif(strpos($nhanvien_id_trc,"00")==2){
+		if(strpos($nhanvien_id_trc,"9")==4){
+			if(strpos($nhanvien_id_trc,"99")==4){
+				$nhanvien_idstr=substr($nhanvien_id_trc,0,3);
+				$nhanvien_idstr1=(substr($nhanvien_id_trc,4,6)+1);
+				$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
 			}
+			else{
+				$nhanvien_idstr=substr($nhanvien_id_trc,0,5);
+				$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+				$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+				}
+		}
+	}
+	elseif(strpos($nhanvien_id_trc,"00")==3){
+			if(substr_count($nhanvien_id_trc,"9")==2){
+				$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+				$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+				$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+			}
+			else{
+				if(strpos($nhanvien_id_trc,"9")==5){
+					$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+					$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+					$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;	
+				}
+			}
+	}
+	elseif(strpos($nhanvien_id_trc,"00")==4){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,5);
+			$nhanvien_id=$nhanvien_idstr."1";
+	}
+	elseif(substr_count($nhanvien_id_trc,"0")==2){
+		if(strpos($nhanvien_id_trc,"0")==2){
+				if(substr_count($nhanvien_id_trc,"9")==2){
+					if(strpos($nhanvien_id_trc,"9")==3){
+					$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+					$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+					$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;	
+				}
+			}
+			else{
+					$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+					$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+					$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+				}
+		}
+		else{
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,5);
+			$nhanvien_id=$nhanvien_idstr."1";
+		}
+	}
+	elseif(strpos($nhanvien_id_trc,"0")==4){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,4);
+			$nhanvien_idstr1=(substr($nhanvien_id_trc,5,6)+1);
+			$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+	}
+	elseif(strpos($nhanvien_id_trc,"0")==3){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,3);
+			$nhanvien_idstr1=(substr($nhanvien_id_trc,4,6)+1);
+			$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+	}
+	elseif(strpos($nhanvien_id_trc,"0")==2){
+			$nhanvien_idstr=substr($nhanvien_id_trc,0,2);
+			$nhanvien_idstr1=(substr($nhanvien_id_trc,3,6)+1);
+			$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+	}
+	else{
+			if(strpos($nhanvien_id_trc,"9999")==2){
+				$nhanvien_id="NULL";
+			}elseif($nhanvien_id_trc==""){
+				$nhanvien_id=$position."0001";
+			}else{
+				$nhanvien_idstr=substr($nhanvien_id_trc,0,2);
+				$nhanvien_idstr1=(substr($nhanvien_id_trc,2,6)+1);
+				$nhanvien_id=$nhanvien_idstr.$nhanvien_idstr1;
+				}
+	}
 			echo "Ok";
 			$r="INSERT INTO `tblnhanvien` VALUES('$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'NULL')";
 			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysql_error());
