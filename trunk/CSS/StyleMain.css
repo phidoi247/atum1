@@ -96,7 +96,7 @@
 		background:#F4D89D ;
 		border-top: solid thin gray; 
 	}
-	/*--------------------------------------------*/
+	/*--------------------Fillter------------------------*/
 	article.fillter{
 		width: 77.8%;
 		padding:10px 10px 0 10px;
@@ -114,18 +114,18 @@
 		background-position: left;
 		background-repeat: no-repeat;
 	}
-	/*--------------------------------------------*/
+	/*-------------------Aside-------------------------*/
 	aside.aside{
 		width: 20%;
 		height:90px;
 		float: right;
 		border-bottom:solid thin gray;
 	}
-	/*------------------------------------------*/
+	/*---------------------Add Employee---------------------*/
 	.add-emp-box{
 		display: none;
 		background:white;
-		width: 300px;
+		width: 350px;
 		position: absolute;
 		top:150px;
 		left: 500px;
@@ -148,7 +148,34 @@
 	}
 	.add-emp-box table thead{background: #B6D8A0;height: 30px}
 	
+	/*---------------------Edit Employee---------------------*/
+	.edit-emp-box{
+		display: none;
+		background:white;
+		width: 350px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
 	
+	.edit-emp-box img.edit-emp-close{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.edit-emp-box table{
+		margin: 5px auto;
+		
+	}
+	.edit-emp-box table thead{background: #B6D8A0;height: 30px}
+	
+	/*----------------Delete Emp----------------*/
 	.delete-emp-box{
 		display: none;
 		background:white;

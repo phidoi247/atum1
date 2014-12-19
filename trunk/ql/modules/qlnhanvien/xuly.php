@@ -142,6 +142,13 @@
 			$r="DELETE FROM `tblnhanvien` WHERE `nhanvien_id`='$id_emp_del'";
 			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysql_error());
 		}
-		
+		if(isset($_POST['edit_emp_id'])){
+			$edit_emp_id=$_POST['edit_emp_id'];
+			$r="SELECT * FROM `tblnhanvien` WHERE `nhanvien_id`='$edit_emp_id'";
+			$q=mysqli_query($dbc,$r);
+			$edit_array=array();
+			$fet=mysqli_fetch_row($q);	
+			echo json_encode($fet);
+		}
 	}
 ?>

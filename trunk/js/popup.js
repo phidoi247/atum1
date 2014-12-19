@@ -11,6 +11,9 @@ $(document).ready(function(e) {
 			$('.add-emp-close').click(function(){
 				$('.add-emp-box').hide();
 			});
+			$('.edit-emp-close').click(function(){
+				$('.edit-emp-box').hide();
+			});
 			$('.delete-emp-close').click(function(){
 				$('.delete-emp-box').hide();
 			});
