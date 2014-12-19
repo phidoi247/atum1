@@ -8,8 +8,7 @@
 		<meta http-equiv="Content-Type" content="Text/html; charset=utf-8">
 		<title>Báo cáo</title>
 		<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="../js/highcharts.js"></script>
-		<script type="text/javascript" src="../js/highcharts-3d.js"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>	
 		<script type="text/javascript" src="../js/themes/dark-unica.js"></script>
 		<script type="text/javascript" src="../js/modules/exporting.js"></script>		
 	</head>
@@ -18,33 +17,32 @@
 			//khai báo biến
 			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
 			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));			
-			$xaxis = $_POST['xaxis'];
+			$yaxis = $_POST['yaxis'];
 			$tenbieudo = $_POST['tenBieuDo'];
 			$tenbaocao = $_POST['tenBaoCao'];
 			$subtitle = $_POST['subtitle'];
-			$dates = dateRange($tungay, $denngay);												
-			
-			for($i=0;$i<count($dates);$i++){				
-				$qban[$i] = " SELECT SUM(tblbanhang.soluong * tblsanpham.gia_ban) AS ban FROM tblbanhang JOIN tblhoadon ON tblbanhang.ten_hoadon = tblhoadon.ten_hoadon 
+			$dates = dateRange($tungay, $denngay);	
+
+			for($i=0;$i<count($dates);$i++){
+				$qthu[$i] = " SELECT SUM(tblbanhang.soluong * tblsanpham.gia_ban) AS ban FROM tblbanhang JOIN tblhoadon ON tblbanhang.ten_hoadon = tblhoadon.ten_hoadon
 					JOIN tblsanpham ON tblbanhang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
-				$qnhap[$i] = " SELECT SUM(tblnhaphang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblnhaphang JOIN tblhoadon 
-						ON tblnhaphang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblnhaphang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' "; 
-				$rban = mysqli_query($dbc, $qban[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
-				$rnhap = mysqli_query($dbc, $qnhap[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$qchi[$i] = " SELECT SUM(tblnhaphang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblnhaphang JOIN tblhoadon
+						ON tblnhaphang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblnhaphang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
+				$rban = mysqli_query($dbc, $qthu[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$rnhap = mysqli_query($dbc, $qchi[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
 				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
-					$databan[$i] = $dulieu['ban'];
-					};
+					$datathu[$i] = $dulieu['ban'];
+				};
 				while($dulieu = mysqli_fetch_array($rnhap, MYSQLI_ASSOC)){
-						$datanhap[$i] = $dulieu['nhap'];
-					};
-				if($databan[$i]==NULL){
-					$databan[$i] = 0;
-					}else if($datanhap[$i]==NULL){
-						$datanhap[$i] = 0;
-					};
-				$loinhuan[$i] = $databan[$i]-$datanhap[$i];
+					$datachi[$i] = $dulieu['nhap'];
+				};
+				if($datathu[$i]==NULL){
+					$datathu[$i] = 0;
+				}else if($datachi[$i]==NULL){
+					$datachi[$i] = 0;
 				};				
-				
+			};			
+			
 			//hàm date range
 			function dateRange( $first, $last, $step = '+1 day', $format = 'Y-m-d' ) {//ham tạo range ngày có định dạng đầu ra là năm tháng ngày
 				$dates = array();
@@ -68,49 +66,62 @@
 				}
 				return $dates;
 			}//kết thúc
-			
+					
 		
 		?>
 		<script type="text/javascript">//biểu đồ
 		$(function () {
 		    $('#container').highcharts({
 		        chart: {
-		            type: 'column',
-		            margin: 75,
-		            options3d: {
-		                enabled: true,
-		                alpha: 10,
-		                beta: 25,
-		                depth: 70
-		            }
+		            type: 'column'
 		        },
 		        title: {
 		            text: <?php echo "'"."$tenbieudo"."'"; ?>,
 				    x: -20
 		        },
 		        subtitle: {
-		        	text: <?php echo "'"."$subtitle"."'"; ?>,
+		            text: <?php echo "'"."$subtitle"."'"; ?>,
 				    x: -20
+		        },
+		        xAxis: {
+		            categories: [<?php $ngayhienthi = dateRange2($tungay, $denngay);
+		                 			foreach ($ngayhienthi as $date){
+        								echo "'"."$date"."'".","; 
+		                 			}; 
+        						?>]	
+		        },
+		        yAxis: {
+		            min: 0,
+		            title: {
+		                text: 'VNĐ'
+		            }
+		        },
+		        tooltip: {		            
+		            shared: true,
+		            useHTML: true
 		        },
 		        plotOptions: {
 		            column: {
-		                depth: 25
+		                pointPadding: 0.2,
+		                borderWidth: 0
 		            }
 		        },
-		        xAxis: {			        
-		        	categories: [<?php $ngayhienthi = dateRange2($tungay, $denngay);
-        								foreach ($ngayhienthi as $date){
-        									echo "'"."$date"."'".","; 
-        								}; 
-        				?>]
-		        },
-		        yAxis: {		        	
-		            opposite: true
-		        },
 		        series: [{
-		            name: <?php echo "'"."$xaxis"."'"; ?>,
-		            data: [<?php for($i=0;$i<count($dates);$i++){
-							echo $loinhuan[$i].","; }; ?>]
+		            name: 'Thu',
+		            data: [<?php 
+		            			for($i=0;$i<count($dates);$i++){
+		            				echo $datathu[$i].",";
+		            			};		            			
+		            		?>]
+
+		        }, {
+		            name: 'Chi',
+		            data: [<?php 
+	            			for($i=0;$i<count($dates);$i++){
+	            				echo $datachi[$i].",";
+	            			};		            			
+	            		?>]
+
 		        }]
 		    });
 		});
@@ -139,12 +150,7 @@
 					<p>
 						<?php 
 							for($i=0;$i<count($ngayhienthi);$i++){
-								echo "<strong>Ngày ".$ngayhienthi[$i]."</strong>,";
-								if($loinhuan[$i]<0){
-									echo " cửa hàng lỗ ".abs($loinhuan[$i])." VNĐ <br /> ";
-								}else{
-									echo " cửa hàng lãi ".$loinhuan[$i]." VNĐ <br /> ";
-								};
+								echo "Ngày <strong>".$ngayhienthi[$i]."</strong> cửa hàng thu vào <strong>".$datathu[$i]."</strong> VNĐ và chi ra <strong>".$datachi[$i]."</strong> VNĐ <br />";
 							};
 						?>
 					</p>
