@@ -5,11 +5,11 @@
 		}
 	if(isset($_COOKIE['ps'])){
 		if($_COOKIE['ps']=="Mannger"){
-			header("location:modules/ql/default.php");
+			header("location:ql/default.php");
 		}else if($_COOKIE['ps']=="TK"){
-			header("location:modules/nvk/default.php");
+			header("location:nvk/default.php");
 		}else{
-			header("location:modules/nvbh/default.php");
+			header("location:nvbh/default.php");
 		}
 	}else{
 		
@@ -19,13 +19,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Demo.Project.One</title>
-<link rel="stylesheet" type="text/css" href="css/StyleMain.css">
+<link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
 <link rel="icon" href="sourse/icon.ico">
 <script type="text/javascript" src="js/jquery-2-1-1.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
-<script type="text/javascript" src="js/script1.js"></script>
 </head>
 
 <body>
@@ -34,6 +32,9 @@
 <header>
 <div class="logo">Logo</div>
 <div class="banner"><img alt="Banner" src="sourse/banner.jpg"></div>
+<div class="nav">
+<input type="button" class="login-but" value="Đăng nhập"/>
+</div>
 </header>
 <!--End Header-->
 <section>
@@ -60,15 +61,15 @@
 				if(strpos($f[0],"QL")!==false){
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","Mannger",time()+3600);
-					header("location:modules/ql/default.php");
+					header("location:ql/default.php");
 				}else if(strpos($f[0],"TK")!==false){
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","TK",time()+3600);
-					header("location:modules/nvk/default.php");
+					header("location:nvk/default.php");
 				}else{
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","BH",time()+3600);
-					header("location:modules/nvbh/default.php");
+					header("location:nvbh/default.php");
 				}
 			}else{
 				echo "User Name or PassWords Wrong!";	
