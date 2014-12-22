@@ -30,10 +30,10 @@ USE `atum1_db_6`;
 
 DROP TABLE IF EXISTS `tblbanhang`;
 CREATE TABLE IF NOT EXISTS `tblbanhang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL ,
-  `soluong` int(10) unsigned NOT NULL,  
+  `soluong` int unsigned NOT NULL,  
   PRIMARY KEY (`id`),
   FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon),
   FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id)
@@ -107,7 +107,7 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `tbldanhmuc`;
 CREATE TABLE IF NOT EXISTS `tbldanhmuc` (
-  `danhmuc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `danhmuc_id` int unsigned NOT NULL AUTO_INCREMENT,
   `ten_danhmuc` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`danhmuc_id`)
 ) ENGINE=MyISAM  CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -127,7 +127,7 @@ INSERT INTO `tbldanhmuc` (`danhmuc_id`, `ten_danhmuc`) VALUES
 
 DROP TABLE IF EXISTS `tbldonvi`;
 CREATE TABLE IF NOT EXISTS `tbldonvi` (
-  `donvi_id` int(10) NOT NULL AUTO_INCREMENT,
+  `donvi_id` int NOT NULL AUTO_INCREMENT,
   `ten_donvi` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`donvi_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -148,7 +148,7 @@ INSERT INTO `tbldonvi` (`donvi_id`, `ten_donvi`) VALUES
 DROP TABLE IF EXISTS `tblhoadon`;
 CREATE TABLE IF NOT EXISTS `tblhoadon` (
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `loaigiaodich_id` int(11) NOT NULL,
+  `loaigiaodich_id` int NOT NULL,
   `ngay` date NOT NULL,
   `gio` time NOT NULL,
   `nhanvien_id` varchar(5) CHARACTER SET utf8 NOT NULL,
@@ -206,7 +206,7 @@ INSERT INTO `tblhoadon` (`ten_hoadon`, `loaigiaodich_id`, `ngay`, `gio` , `nhanv
 
 DROP TABLE IF EXISTS `tbllevel`;
 CREATE TABLE IF NOT EXISTS `tbllevel` (
-  `level_id` int(10) NOT NULL AUTO_INCREMENT,
+  `level_id` int NOT NULL AUTO_INCREMENT,
   `ten_level` varchar(64) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`level_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=4 ;
@@ -228,7 +228,7 @@ INSERT INTO `tbllevel` (`level_id`, `ten_level`) VALUES
 
 DROP TABLE IF EXISTS `tblloaigiaodich`;
 CREATE TABLE IF NOT EXISTS `tblloaigiaodich` (
-  `loaigiaodich_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `loaigiaodich_id` int unsigned NOT NULL AUTO_INCREMENT,
   `ten_loaigiaodich` varchar(64) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`loaigiaodich_id`)
 ) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=3 ;
@@ -249,7 +249,7 @@ INSERT INTO `tblloaigiaodich` (`loaigiaodich_id`, `ten_loaigiaodich`) VALUES
 
 DROP TABLE IF EXISTS `tblnhacungcap`;
 CREATE TABLE IF NOT EXISTS `tblnhacungcap` (
-  `nhacungcap_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `nhacungcap_id` int unsigned NOT NULL AUTO_INCREMENT,
   `ten_nhacungcap` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`nhacungcap_id`)
 ) ENGINE=MyISAM  CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
@@ -269,10 +269,10 @@ INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES
 
 DROP TABLE IF EXISTS `tblnhanvien`;
 CREATE TABLE IF NOT EXISTS `tblnhanvien` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`id` int NOT NULL AUTO_INCREMENT,
   `nhanvien_id` varchar(5) NOT NULL UNIQUE,
   `ten_nhanvien` varchar(64) NOT NULL,
-  `level_id` int(11) NOT NULL,
+  `level_id` int NOT NULL,
   `ngay_sinh` date NOT NULL,
   `dia_chi` varchar(256) NOT NULL,
   `ngay_vao_lam` date NOT NULL,
@@ -298,10 +298,10 @@ INSERT INTO `tblnhanvien` (`nhanvien_id`, `ten_nhanvien`, `level_id`, `ngay_sinh
 
 DROP TABLE IF EXISTS `tblnhaphang`;
 CREATE TABLE IF NOT EXISTS `tblnhaphang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `soluong` int(10) unsigned NOT NULL,  
+  `soluong` int unsigned NOT NULL,  
   PRIMARY KEY (`id`),
   FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id),
   FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon)
@@ -355,13 +355,13 @@ DROP TABLE IF EXISTS `tblsanpham`;
 CREATE TABLE IF NOT EXISTS `tblsanpham` (
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
   `ten_sanpham` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `danhmuc_id` int(11) NOT NULL,
-  `nhacungcap_id` int(11) NOT NULL,
-  `donvi_id` int(11) NOT NULL,
-  `gia_nhap` int(10) unsigned NOT NULL,
-  `gia_ban` int(10) unsigned NOT NULL,
-  `soluong` int(10) unsigned NOT NULL,
-  `giam_gia` int(10) unsigned NOT NULL,
+  `danhmuc_id` int NOT NULL,
+  `nhacungcap_id` int NOT NULL,
+  `donvi_id` int NOT NULL,
+  `gia_nhap` float unsigned NOT NULL,
+  `gia_ban` float unsigned NOT NULL,
+  `soluong` int unsigned NOT NULL,
+  `giam_gia` int unsigned NOT NULL,
   `image_link` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`sanpham_id`),
   FOREIGN KEY(danhmuc_id) REFERENCES tbldanhmuc(danhmuc_id),
