@@ -1,23 +1,13 @@
 <?php
 	if($_COOKIE['ps']!="Mannger"){
-		header("location:../");
+		header("location:../../");
 		
 	}else{
 		
 	}
 ?>
-
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Demo.Project.One</title>
-<link rel="stylesheet" type="text/css" href="../css/StyleMain.css">
-<link rel="icon" href="../sourse/icon.ico">
-<script type="text/javascript" src="../js/jquery-2-1-1.js"></script>
-<script type="text/javascript" src="../js/popup.js"></script>
-<script type="text/javascript" src="../js/script1.js"></script>
+<?php include("../header.php") ?>
+<section>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var tab='#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>';
@@ -60,20 +50,6 @@
 		})
 	});
 </script>
-</head>
-
-<body>
-<div class="swapper">
-<!--Begin Header-->
-<header>
-<div class="logo">Logo</div>
-<div class="banner"><img alt="Banner" src="../sourse/banner.jpg"></div>
-<div class="nav">
-	<?php echo "Xin chào ".ucfirst($_COOKIE['user']) ?>
-</div>
-</header>
-<!--End Header-->
-<section>
 <nav class="menu">
 <ul>
 	<li class='tab active-tab' id='nv'><a href="?nav=nv" >Nhân Viên</a></li>
@@ -84,7 +60,7 @@
 </ul>
 </nav>
 <aside class="aside">
-	<a href="../default.php?logout">Thoát</a>
+	<a href="../../default.php?logout">Thoát</a>
 </aside>
 <article class="fillter">
 <?php
@@ -94,7 +70,7 @@
 			if($nav=='k'){
 				
 			}elseif($nav=='bc'){
-			
+				include 'modules/baocao/fillter.php';
 			}elseif ($nav=='ls'){
 				
 			}elseif ($nav=='tl'){
@@ -118,13 +94,13 @@ if($_SERVER['REQUEST_METHOD']='GET'){
 		if(isset($_GET['nav'])){
 		$nav=$_GET['nav'];
 			if($nav=='k'){
-				
+				include 'modules/qlkho/default.php';
 			}elseif($nav=='bc'){
-			
+				include 'modules/baocao/report_maker.php';
 			}elseif ($nav=='ls'){
-				
+				include 'modules/lichsu/default.php';
 			}elseif ($nav=='tl'){
-				
+				include 'modules/thietlap/default.php';
 			}else {
 				include 'modules/qlnhanvien/dsnv.php';
 			}
@@ -141,7 +117,7 @@ else{
 </div>
 <!--Begin Addition Employees Box--->
 <div class="add-emp-box" >
-	<img alt="" class="add-emp-close" src="../sourse/close.png">
+	<img alt="" class="add-emp-close" src="../../sourse/close.png">
 	<form action="" id="add-emp-form" method="post" name="add-emp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Thêm nhân viên</th></tr></thead>
 		<tbody>
@@ -159,11 +135,11 @@ else{
 <!--End Addition Employees Box--->
 <!--Begin Edit Employees Box--->
 <div class="edit-emp-box" >
-	<img alt="" class="edit-emp-close" src="../sourse/close.png">
+	<img alt="" class="edit-emp-close" src="../../sourse/close.png">
 	<form action="" id="edit-emp-form" method="post" name="edit-emp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Sửa thông tin nhân viên<input style="width:45px" id="eid" name="eid" type="text"></th></tr></thead>
 		<tbody>
-        <tr><th><img id="old_avt" ></th></tr>
+        <tr><th><img width="100px" height="50px" id="old_avt" ></th></tr>
 		<tr><td>Tên Nhân viên:</td><td><input id="ename" name="ename" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="eavatar" id="eavatar" type="file"></td></tr>
 		<tr><td>Loại:</td><td><select name="eposition" id="eposition"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option><option value="QL">Quản Lý</option></select></td></tr>

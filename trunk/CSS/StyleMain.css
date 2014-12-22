@@ -191,6 +191,84 @@
 		
 	}
 	.delete-emp-box table input{width:45px;height: 20px}
+	/*---------------------doanh_so_box---------------------*/
+	.doanh_so_box{
+		display: none;
+		background:white;
+		width: 350px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	
+	.doanh_so_box img.doanh_so_close{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.doanh_so_box table{
+		margin: 5px auto;
+		
+	}
+	.doanh_so_box table thead{background: #B6D8A0;height: 30px}
+	/*---------------------doanh_thu_box---------------------*/
+	.doanh_thu_box{
+		display: none;
+		background:white;
+		width: 350px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	
+	.doanh_thu_box img.doanh_thu_close{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.doanh_thu_box table{
+		margin: 5px auto;
+		
+	}
+	.doanh_thu_box table thead{background: #B6D8A0;height: 30px}
+	/*---------------------tong_chi_box---------------------*/
+	.thu_chi_box{
+		display: none;
+		background:white;
+		width: 350px;
+		position: absolute;
+		top:150px;
+		left: 500px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	
+	.thu_chi_box img.thu_chi_close{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.thu_chi_box table{
+		margin: 5px auto;
+		
+	}
+	.thu_chi_box table thead{background: #B6D8A0;height: 30px}
 	
 	
 	
@@ -249,7 +327,6 @@
 		width: 100%;
 		height:30px;
 		border-spacing: 1px;
-		border-bottom: thin gray solid;
 	}
 	
 	div.Bar table thead{
@@ -257,7 +334,7 @@
 		
 	}
 	
-	div.Bar table tbody input[type='text']{
+	div.Bar table tbody input.ma_nv[type='text']{
 		width: 45px;
 	}
 	div.Bar table tbody input.ma_sp[type='text']{
