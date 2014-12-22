@@ -269,7 +269,8 @@ INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES
 
 DROP TABLE IF EXISTS `tblnhanvien`;
 CREATE TABLE IF NOT EXISTS `tblnhanvien` (
-  `nhanvien_id` varchar(5) NOT NULL,
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+  `nhanvien_id` varchar(5) NOT NULL UNIQUE,
   `ten_nhanvien` varchar(64) NOT NULL,
   `level_id` int(11) NOT NULL,
   `ngay_sinh` date NOT NULL,
@@ -278,9 +279,9 @@ CREATE TABLE IF NOT EXISTS `tblnhanvien` (
   `avatar` varchar(128) NOT NULL,
   `password` varchar(26) NOT NULL,
   `SDT` varchar(11) NOT NULL,
-  PRIMARY KEY (`nhanvien_id`),
+  PRIMARY KEY (`id`),
   FOREIGN KEY (level_id) REFERENCES tbllevel(level_id)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `tblnhanvien`
