@@ -1,0 +1,107 @@
+#container{
+    margin: 0px auto;
+    width: 1000px;
+    height: auto;
+
+}
+
+#header{
+    float: left;
+    width: 1000px;
+    height: 150px;
+}
+
+#content{
+    float: left;
+    width: 1000px;
+    height: auto;
+    border: 1px solid;
+}
+#form{
+    float: left;
+    width: 350px;
+    height: auto;
+}
+fieldset{
+    height: 300px;
+    border:1px solid; 
+    margin: 5px 0px 10px 10px;
+    padding: 10px; 
+    border-radius: 5px;
+}
+legend{
+    color: #804000;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px 0px 10px 100px;
+}
+#legHD{
+    color: #804000;
+    font-weight: bold;
+    font-size: 18px;
+    margin:0px 0px 0px 200px;
+}
+
+form div{
+    margin: 5px 0px 40px 0px;
+}
+label{
+    color: maroon;
+    display: block;
+    float: left;
+    clear: left;
+    width: 150px;
+}
+.success {
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    }
+.warning {
+    font-size: 13px; 
+    color: #c00; 
+    text-align: center;
+    }
+#nhap{
+    width: 100px;
+    margin-left: 40px;
+}
+
+#hoadon{
+    float: right;
+    width: 620px;
+    height: auto;
+    margin: 0px 10px 0px 0px;
+}
+#formHD{
+    font-size: 11px;
+}
+h3{
+    margin-top: 10px;
+    text-align: center;
+    color: #804000;
+}
+table{
+    width: 620px;
+    border: 2px solid;
+    margin: 0px auto;
+}
+.th{
+    font-size: 12px;
+    text-align: center;
+    color: #804000;
+}
+#td{
+    text-align: center;
+    color: #0000A0;
+}
+
+#footer{
+    float: left;
+    width: 1000px;
+    line-height:inherit;
+    text-align: center;
+    height: 50px;
+    background-color: #80FFFF;
+    border: 1px solid;
+}
