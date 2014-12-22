@@ -269,7 +269,7 @@ INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES
 
 DROP TABLE IF EXISTS `tblnhanvien`;
 CREATE TABLE IF NOT EXISTS `tblnhanvien` (
-  `nhanvien_id` varchar(5) NOT NULL,
+  `nhanvien_id` varchar(6) NOT NULL,
   `ten_nhanvien` varchar(64) NOT NULL,
   `level_id` int(11) NOT NULL,
   `ngay_sinh` date NOT NULL,
