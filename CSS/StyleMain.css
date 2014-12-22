@@ -260,6 +260,12 @@
 	div.Bar table tbody input[type='text']{
 		width: 45px;
 	}
+	div.Bar table tbody input.ma_sp[type='text']{
+		width: 55px;
+	}
+	div.Bar table tbody input.ma_ls[type='text']{
+		width: 90px;
+	}
 /************************************/
 	footer{
 		width:100%;
