@@ -33,8 +33,7 @@ CREATE TABLE IF NOT EXISTS `tblbanhang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL ,
-  `soluong` int(10) unsigned NOT NULL,
-  `thanh_tien` int(10) unsigned NOT NULL,
+  `soluong` int(10) unsigned NOT NULL,  `
   PRIMARY KEY (`id`),
   FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon),
   FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id)
@@ -301,8 +300,7 @@ CREATE TABLE IF NOT EXISTS `tblnhaphang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `soluong` int(10) unsigned NOT NULL,
-  `thanh_tien` int(10) unsigned NOT NULL,
+  `soluong` int(10) unsigned NOT NULL,  
   PRIMARY KEY (`id`),
   FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id),
   FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon)
