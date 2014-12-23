@@ -5,11 +5,11 @@
 		}
 	if(isset($_COOKIE['ps'])){
 		if($_COOKIE['ps']=="Mannger"){
-			header("location:ql/default.php");
+			header("location:modules/ql/default.php");
 		}else if($_COOKIE['ps']=="TK"){
-			header("location:nvk/default.php");
+			header("location:modules/nvk/default.php");
 		}else{
-			header("location:nvbh/default.php");
+			header("location:modules/nvbh/default.php");
 		}
 	}else{
 		
@@ -61,15 +61,15 @@
 				if(strpos($f[0],"QL")!==false){
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","Mannger",time()+3600);
-					header("location:ql/default.php");
+					header("location:modules/ql/default.php");
 				}else if(strpos($f[0],"TK")!==false){
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","TK",time()+3600);
-					header("location:nvk/default.php");
+					header("location:modules/nvk/default.php");
 				}else{
 					setcookie("user","$user",time()+3600);
 					setcookie("ps","BH",time()+3600);
-					header("location:nvbh/default.php");
+					header("location:modules/nvbh/default.php");
 				}
 			}else{
 				echo "User Name or PassWords Wrong!";	
