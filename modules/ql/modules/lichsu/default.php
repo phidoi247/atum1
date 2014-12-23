@@ -1,7 +1,7 @@
 <?php 
 include '../../Connections/connect.php';
 $cnt=1;
-$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblnhaphang.ten_hoadon,sum(tblnhaphang.soluong) as soluong from tblnhaphang group by tblnhaphang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblnhaphang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon  limit 13 ";
+$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblnhaphang.ten_hoadon,sum(tblnhaphang.soluong) as soluong from tblnhaphang group by tblnhaphang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblnhaphang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon  limit 1,10 ";
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>

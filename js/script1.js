@@ -12,7 +12,7 @@ function edit_emp(cnt){
 		$.ajax({
 			type:"POST",
 			url:"modules/qlnhanvien/xuly.php",
-			data:"edit_emp_id="+edit_emp_id,
+			data:"get_emp_info="+edit_emp_id,
 			dataType:"json",
 			success: function(arr){
 				$('#ename').val(arr[1]);
@@ -20,7 +20,7 @@ function edit_emp(cnt){
 				$('#eposition').val(edit_emp_id.substr(0,2));
 				$('#eaddress').val(arr[4]);
 				$('#edateofbirth').val(arr[3]);
-				$('#epassword').val(arr[7]);
+				$('#ephone').val(arr[8]);
 				$('#old_avt').attr("src",arr[6]);
 			}
 		});
