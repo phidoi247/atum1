@@ -11,7 +11,7 @@
 <script type="text/javascript" src="../../js/popup.js"></script>
 <script type="text/javascript" src="../../js/script1.js"></script>
 <script src="../../js/highcharts-3d.js"></script>		
-<script src="../../js/highcharts.js"></script>
+<script src="../../js/ajax1.js"></script>
 </head>
 
 <body>

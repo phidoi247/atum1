@@ -343,6 +343,9 @@
 	div.Bar table tbody input.ma_ls[type='text']{
 		width: 90px;
 	}
+	div.Bar table tbody input[type='file']{
+		width:150px;	
+	}
 /************************************/
 	footer{
 		width:100%;
