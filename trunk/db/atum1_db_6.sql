@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2014 at 08:20 AM
+-- Generation Time: Dec 23, 2014 at 02:56 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,14 +30,14 @@ USE `atum1_db_6`;
 
 DROP TABLE IF EXISTS `tblbanhang`;
 CREATE TABLE IF NOT EXISTS `tblbanhang` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL ,
-  `soluong` int unsigned NOT NULL,  
+  `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
+  `soluong` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon),
-  FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=34 ;
+  FOREIGN KEY (`ten_hoadon`) REFERENCES tblhoadon(`ten_hoadon`),
+  FOREIGN KEY (`sanpham_id`) REFERENCES tblsanpham(`sanpham_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `tblbanhang`
@@ -107,10 +107,10 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `tbldanhmuc`;
 CREATE TABLE IF NOT EXISTS `tbldanhmuc` (
-  `danhmuc_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `danhmuc_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ten_danhmuc` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`danhmuc_id`)
-) ENGINE=MyISAM  CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tbldanhmuc`
@@ -127,10 +127,10 @@ INSERT INTO `tbldanhmuc` (`danhmuc_id`, `ten_danhmuc`) VALUES
 
 DROP TABLE IF EXISTS `tbldonvi`;
 CREATE TABLE IF NOT EXISTS `tbldonvi` (
-  `donvi_id` int NOT NULL AUTO_INCREMENT,
+  `donvi_id` int(11) NOT NULL AUTO_INCREMENT,
   `ten_donvi` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`donvi_id`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tbldonvi`
@@ -148,20 +148,20 @@ INSERT INTO `tbldonvi` (`donvi_id`, `ten_donvi`) VALUES
 DROP TABLE IF EXISTS `tblhoadon`;
 CREATE TABLE IF NOT EXISTS `tblhoadon` (
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `loaigiaodich_id` int NOT NULL,
+  `loaigiaodich_id` int(11) NOT NULL,
   `ngay` date NOT NULL,
   `gio` time NOT NULL,
   `nhanvien_id` varchar(5) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`ten_hoadon`),
-  FOREIGN KEY(nhanvien_id) REFERENCES tblnhanvien(nhanvien_id),
-  FOREIGN KEY (loaigiaodich_id) REFERENCES tblloaigiaodich(loaigiaodich_id)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+  FOREIGN KEY (`nhanvien_id`) REFERENCES tblnhanvien(`nhanvien_id`),
+  FOREIGN KEY (`loaigiaodich_id`) REFERENCES tblloaigiaodich(`loaigiaodich_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tblhoadon`
 --
 
-INSERT INTO `tblhoadon` (`ten_hoadon`, `loaigiaodich_id`, `ngay`, `gio` , `nhanvien_id`) VALUES
+INSERT INTO `tblhoadon` (`ten_hoadon`, `loaigiaodich_id`, `ngay`, `gio`, `nhanvien_id`) VALUES
 ('TTBH0000001', 2, '2014-12-08', '15:16:50', '1'),
 ('TTBH0000002', 2, '2014-12-08', '15:16:50', '1'),
 ('TTBH0000003', 2, '2014-12-08', '15:16:50', '1'),
@@ -206,10 +206,10 @@ INSERT INTO `tblhoadon` (`ten_hoadon`, `loaigiaodich_id`, `ngay`, `gio` , `nhanv
 
 DROP TABLE IF EXISTS `tbllevel`;
 CREATE TABLE IF NOT EXISTS `tbllevel` (
-  `level_id` int NOT NULL AUTO_INCREMENT,
+  `level_id` int(11) NOT NULL AUTO_INCREMENT,
   `ten_level` varchar(64) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`level_id`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tbllevel`
@@ -228,10 +228,10 @@ INSERT INTO `tbllevel` (`level_id`, `ten_level`) VALUES
 
 DROP TABLE IF EXISTS `tblloaigiaodich`;
 CREATE TABLE IF NOT EXISTS `tblloaigiaodich` (
-  `loaigiaodich_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `loaigiaodich_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ten_loaigiaodich` varchar(64) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`loaigiaodich_id`)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tblloaigiaodich`
@@ -249,10 +249,10 @@ INSERT INTO `tblloaigiaodich` (`loaigiaodich_id`, `ten_loaigiaodich`) VALUES
 
 DROP TABLE IF EXISTS `tblnhacungcap`;
 CREATE TABLE IF NOT EXISTS `tblnhacungcap` (
-  `nhacungcap_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `nhacungcap_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ten_nhacungcap` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`nhacungcap_id`)
-) ENGINE=MyISAM  CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tblnhacungcap`
@@ -269,26 +269,27 @@ INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES
 
 DROP TABLE IF EXISTS `tblnhanvien`;
 CREATE TABLE IF NOT EXISTS `tblnhanvien` (
-	`id` int NOT NULL AUTO_INCREMENT,
-  `nhanvien_id` varchar(5) NOT NULL UNIQUE,
-  `ten_nhanvien` varchar(64) NOT NULL,
-  `level_id` int NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nhanvien_id` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_nhanvien` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `level_id` int(11) NOT NULL,
   `ngay_sinh` date NOT NULL,
-  `dia_chi` varchar(256) NOT NULL,
+  `dia_chi` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `ngay_vao_lam` date NOT NULL,
-  `avatar` varchar(128) NOT NULL,
-  `password` varchar(26) NOT NULL,
-  `SDT` varchar(11) NOT NULL,
+  `avatar` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(26) COLLATE utf8_unicode_ci NOT NULL,
+  `SDT` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (level_id) REFERENCES tbllevel(level_id)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
+  UNIQUE KEY `nhanvien_id` (`nhanvien_id`),
+  FOREIGN KEY (`level_id`) REFERENCES tbllevel(`level_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `tblnhanvien`
 --
 
-INSERT INTO `tblnhanvien` (`nhanvien_id`, `ten_nhanvien`, `level_id`, `ngay_sinh`, `dia_chi`, `ngay_vao_lam`, `avatar`, `password`, `SDT`) VALUES
-('BH001', 'Trương Bá Nam', 1, '1996-02-08', 'Hà Nội', '2014-07-07', '', '123456', '0962723029');
+INSERT INTO `tblnhanvien` (`id`, `nhanvien_id`, `ten_nhanvien`, `level_id`, `ngay_sinh`, `dia_chi`, `ngay_vao_lam`, `avatar`, `password`, `SDT`) VALUES
+(1, 'BH001', 'Trương Bá Nam', 1, '1996-02-08', 'Hà Nội', '2014-07-07', '', '123456', '0962723029');
 
 -- --------------------------------------------------------
 
@@ -298,14 +299,14 @@ INSERT INTO `tblnhanvien` (`nhanvien_id`, `ten_nhanvien`, `level_id`, `ngay_sinh
 
 DROP TABLE IF EXISTS `tblnhaphang`;
 CREATE TABLE IF NOT EXISTS `tblnhaphang` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
   `ten_hoadon` varchar(256) CHARACTER SET utf8 NOT NULL,
-  `soluong` int unsigned NOT NULL,  
+  `soluong` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (sanpham_id) REFERENCES tblsanpham(sanpham_id),
-  FOREIGN KEY (ten_hoadon) REFERENCES tblhoadon(ten_hoadon)
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=12 ;
+  FOREIGN KEY (`sanpham_id`) REFERENCES tblsanpham(`sanpham_id`),
+  FOREIGN KEY (`ten_hoadon`) REFERENCES tblhoadon(`ten_hoadon`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `tblnhaphang`
@@ -355,19 +356,19 @@ DROP TABLE IF EXISTS `tblsanpham`;
 CREATE TABLE IF NOT EXISTS `tblsanpham` (
   `sanpham_id` varchar(7) CHARACTER SET utf8 NOT NULL,
   `ten_sanpham` varchar(128) CHARACTER SET utf8 NOT NULL,
-  `danhmuc_id` int NOT NULL,
-  `nhacungcap_id` int NOT NULL,
-  `donvi_id` int NOT NULL,
+  `danhmuc_id` int(11) NOT NULL,
+  `nhacungcap_id` int(11) NOT NULL,
+  `donvi_id` int(11) NOT NULL,
   `gia_nhap` float unsigned NOT NULL,
   `gia_ban` float unsigned NOT NULL,
-  `soluong` int unsigned NOT NULL,
-  `giam_gia` int unsigned NOT NULL,
+  `soluong` int(10) unsigned NOT NULL,
+  `giam_gia` int(10) unsigned NOT NULL,
   `image_link` varchar(128) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`sanpham_id`),
-  FOREIGN KEY(danhmuc_id) REFERENCES tbldanhmuc(danhmuc_id),
-  FOREIGN KEY (nhacungcap_id) REFERENCES tblnhacungcap(nhacungcap_id),
-  FOREIGN KEY (donvi_id) REFERENCES tbldonvi(donvi_id) 
-) ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+  FOREIGN KEY (`danhmuc_id`) REFERENCES tbldanhmuc(`danhmuc_id`),
+  FOREIGN KEY (`nhacungcap_id`) REFERENCES tblnhacungcap(`nhacungcap_id`),
+  FOREIGN KEY (`donvi_id`) REFERENCES tbldonvi(`donvi_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tblsanpham`
