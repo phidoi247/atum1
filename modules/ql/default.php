@@ -34,7 +34,7 @@ $(function(){
 	if(isset($_GET['nav'])){
 		$nav=$_GET['nav'];
 			if($nav=='k'){
-				
+				include 'modules/qlkho/fillter.php';
 			}elseif($nav=='bc'){
 				include 'modules/baocao/fillter.php';
 			}elseif ($nav=='ls'){
