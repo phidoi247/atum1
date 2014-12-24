@@ -57,4 +57,63 @@ $(document).ready(function(){
 				}
 			});
 		})
-	});
+		/*******************Sản phẩm**************************/
+	// Thêm
+		$('#add-sp-form').submit(function(event){
+			event.preventDefault();
+			var form_add_sp=new FormData($(this)[0]);
+			$.ajax({
+				url:"modules/qlkho/xuly.php",
+				type:"POST",
+				data:form_add_sp,
+				async:false,
+				cache:false,
+				processData:false,
+				contentType:false,
+				success: function(notify){
+					if(notify=='Ok'){
+						window.location.reload();
+					}else{
+						alert(notify);	
+					}
+				}
+			});
+		});
+		//Sửa thông tin SP
+		$('#edit-sp-form').submit(function(event){
+			event.preventDefault();
+			var form_edit_sp=new FormData($(this)[0]);
+			$.ajax({
+				url:"modules/qlkho/xuly.php",
+				type:"POST",
+				data:form_edit_sp,
+				async:false,
+				cache:false,
+				processData:false,
+				contentType:false,
+				success: function(notify){
+					if(notify=='Ok'){
+						window.location.reload();
+					}else{
+						alert(notify);	
+					}
+				}
+			});
+		});
+		
+		/***********Xóa SP**************/
+		$('.delete-sp-submit').click(function(){
+			var id_del=$('#id_sp_del').val();
+			$.ajax({
+				url:"modules/qlkho/xuly.php",
+				type:"POST",
+				data:"id_sp_del="+id_del,
+				success: function(){
+					window.location.reload();
+				}
+			});
+		})
+	
+});
+	
+	
