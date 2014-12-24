@@ -79,7 +79,6 @@ INSERT INTO `tblchitietdonhang` (`id`, `ten_hoadon`, `loaigiaodich_id`, `sanpham
 (31, 'TTBH0000034', 1, 'SA00003', 2),
 (32, 'TTBH0000034', 1, 'SA00005', 2),
 (33, 'TTBH0000035', 1, 'SA00004', 3),
-(34, 'TTBH0000001', 1, 'SA00001', 10),
 (35, 'TTBH0000001', 2, 'SA00001', 10),
 (36, 'TTBH0000002', 2, 'SA00002', 10),
 (37, 'TTBH0000003', 2, 'SA00003', 10),

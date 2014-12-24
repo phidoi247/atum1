@@ -24,12 +24,12 @@
 			$dates = dateRange($tungay, $denngay);	
 
 			for($i=0;$i<count($dates);$i++){
-				$qthu[$i] = " SELECT SUM(tblbanhang.soluong * tblsanpham.gia_ban) AS ban FROM tblbanhang JOIN tblhoadon ON tblbanhang.ten_hoadon = tblhoadon.ten_hoadon
-					JOIN tblsanpham ON tblbanhang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
-				$qchi[$i] = " SELECT SUM(tblnhaphang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblnhaphang JOIN tblhoadon
-						ON tblnhaphang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblnhaphang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
-				$rban = mysqli_query($dbc, $qthu[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
-				$rnhap = mysqli_query($dbc, $qchi[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$qthu[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_ban) AS ban FROM tblchitietdonhang JOIN tblhoadon ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon
+					JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay = '".$dates[$i]."' ";
+				$qchi[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblchitietdonhang JOIN tblhoadon
+						ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND tblhoadon.ngay = '".$dates[$i]."' ";
+				$rban = mysqli_query($dbc, $qthu[$i]) or die ("Query $qthu[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$rnhap = mysqli_query($dbc, $qchi[$i]) or die ("Query $qchi[$i] <br /> mysql error: ".mysqli_errno($dbc));
 				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
 					$datathu[$i] = $dulieu['ban'];
 				};
