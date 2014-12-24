@@ -53,8 +53,8 @@
 			$error[]="Password";
 		}
 		if(empty($error)){
-			$user=mysql_escape_string(strip_tags($_POST['username']));
-			$pass=mysql_escape_string(strip_tags($_POST['password']));
+			$user=strip_tags($_POST['username']);
+			$pass=strip_tags($_POST['password']);
 			$q="SELECT * FROM tblnhanvien WHERE `nhanvien_id`='$user' AND `password`=SHA1('$pass')";
 			$r=mysqli_query($dbc,$q) or die("Oopt! ".mysql_error());
 			if($f=mysqli_fetch_row($r)){

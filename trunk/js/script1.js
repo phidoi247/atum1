@@ -25,3 +25,10 @@ function edit_emp(cnt){
 			}
 		});
 	}
+//////////////////////////////SP
+function delete_sp(cnt){
+		var get_delete_sp_id="#ma_sp"+cnt;
+		var delete_sp_id=$(get_delete_sp_id).val();
+		document.getElementById('id_sp_del').value=delete_sp_id;
+		$('.delete-sp-box').show();
+	}

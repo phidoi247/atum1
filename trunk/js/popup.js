@@ -5,6 +5,7 @@ $(document).ready(function(e) {
 		$('.cancellog').click(function(){
 			$('#logbox').hide();
 		});
+	///////////////////////////Employees
 			$('#add-emp-but').click(function(){
 				$('.add-emp-box').show();
 			});
@@ -18,7 +19,22 @@ $(document).ready(function(e) {
 			$('.delete-emp-close').click(function(){
 				$('.delete-emp-box').hide();
 			});
+	/////////////////////////SP
 			
+			$('#add-sp-but').click(function(){
+				$('.add-sp-box').show();
+			});
+			$('.add-sp-close').click(function(){
+				$('.add-sp-box').hide();
+			});
+			
+			$('.edit-sp-close').click(function(){
+				$('.edit-sp-box').hide();
+			});
+			$('.delete-sp-close').click(function(){
+				$('.delete-sp-box').hide();
+			});
+
 			$('#doanh_so_but').click(function(){
 				$('.doanh_so_box').show();
 			});

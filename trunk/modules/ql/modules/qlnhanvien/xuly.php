@@ -13,11 +13,11 @@
 				$error[]=" Level";
 			}if(empty($_POST['address'])){
 				$error[]=" Địa chỉ";
-			}
-			if(empty($_POST['dateofbirth'])){
+			}if(empty($_POST['dateofbirth'])){
 				$error[]=" Ngày Sinh";
-			}
-			if(empty($_POST['phone'])){
+			}if(empty($_FILES['avatar']['tmp_name'])){
+				$error[]=" Ảnh";
+			}if(empty($_POST['phone'])){
 				$error[]=" SDT";
 			}	
 			if(empty($error)){
