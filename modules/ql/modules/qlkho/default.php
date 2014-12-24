@@ -9,7 +9,7 @@ $q=mysqli_query($dbc,$r);?>
     </thead>
 <?php while ($row=mysqli_fetch_array($q)){?>
 	<tbody>
-    	<tr><td><input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly></td><td><img width='30px' height='30px' src='<?php echo $row['avatar']; ?>'></td><td><?php echo $row['ten_sanpham']; ?></td><td><?php echo $row['ten_danhmuc']; ?></td><td><?php echo $row['ten_nhacungcap']; ?></td><td><?php echo $row['soluong']; ?></td><td><?php echo $row['ten_donvi']; ?></td><td><?php echo $row['gia_nhap']; ?><td><?php echo $row['gia_ban']; ?></td><td><?php echo $row['giam_gia']; ?></td></td><td><input id='edit-sp-but<?php echo $cnt; ?>' onclick='edit_sp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' ><input class='delete-sp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_sp(cnt=<?php echo $cnt; ?>);' value='Xóa' type='button' ></td></tr>
+    	<tr><td><input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly></td><td><img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'></td><td><?php echo $row['ten_sanpham']; ?></td><td><?php echo $row['ten_danhmuc']; ?></td><td><?php echo $row['ten_nhacungcap']; ?></td><td><?php echo $row['soluong']; ?></td><td><?php echo $row['ten_donvi']; ?></td><td><?php echo $row['gia_nhap']; ?><td><?php echo $row['gia_ban']; ?></td><td><?php echo $row['giam_gia']; ?></td></td><td><input id='edit-sp-but<?php echo $cnt; ?>' onclick='edit_sp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' ><input class='delete-sp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_sp(cnt=<?php echo $cnt; ?>);' value='Xóa' type='button' ></td></tr>
        </tbody>	
 <?php	$cnt++;
 }?>
@@ -22,9 +22,9 @@ $q=mysqli_query($dbc,$r);?>
 		<tbody>
 		<tr><td>Tên Sản phẩm:</td><td><input name="name" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="avatar" type="file"></td></tr>
-        <tr><td>Danh mục:</td><td><input name="danhmuc" id="danhmuc" type="text"></td></tr>
-		<tr><td>Đơn vị:</td><td><select name="donvi" id="donvi"><option value="Quyển">Quyển</option><option value="Cái">Cái</option><option value="Bộ">Bộ</option></select></td></tr>
-		<tr><td>Nhà cung cấp:</td><td><input name="ncc" id="ncc" type="text"></td></tr>
+        <tr><td>Danh mục:</td><td><select name="danhmuc" id="danhmuc" ></select></td></tr>
+		<tr><td>Đơn vị:</td><td><select name="donvi" id="donvi"></select></td></tr>
+		<tr><td>Nhà cung cấp:</td><td><select name="ncc" id="ncc"></select></td></tr>
 		<tr><td>Giá nhập:</td><td><input name="gianhap" type="text"></td></tr>
 		<tr><td>Giá bán:</td><td><input name="giaban" type="text"></td></tr>
         <tr><td>Khuyến mại:</td><td><input name="km" type="text"></td></tr>
@@ -38,17 +38,17 @@ $q=mysqli_query($dbc,$r);?>
 <div class="edit-sp-box" >
 	<img alt="" class="edit-sp-close" src="../../sourse/close.png">
 	<form action="" id="edit-sp-form" method="post" name="edit-sp-form" enctype="multipart/form-data"><table>
-		<thead><tr><th colspan="2">Sửa thông tin nhân viên<input style="width:45px" id="eid" name="eid" type="text"></th></tr></thead>
+		<thead><tr><th colspan="2">Sửa thông tin Sản phẩm<input style="width:65px" id="eid" name="eid" type="text"></th></tr></thead>
 		<tbody>
         <tr><th><img width="100px" height="50px" id="old_avt" ></th></tr>
-		<tr><td>Tên Nhân viên:</td><td><input id="ename" name="ename" type="text"></td></tr>
+		<tr><td>Tên Sản phẩm:</td><td><input name="ename" id="ename" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="eavatar" id="eavatar" type="file"></td></tr>
-		<tr><td>Loại:</td><td><select name="eposition" id="eposition"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option><option value="QL">Quản Lý</option></select></td></tr>
-		<tr><td>Level:</td><td><input name="elevel" id="elevel" min="0" type="number"></td></tr>
-		<tr><td>Mật khẩu:</td><td><input name="epassword" id="epassword" placeholder="Nhập mật khẩu mới" type="text"></td></tr>
-		<tr><td>Địa chỉ:</td><td><input name="eaddress" id="eaddress" type="text"></td></tr>
-		<tr><td>Phone:</td><td><input name="ephone" id="ephone" type="text"></td></tr>
-        <tr><td>Ngày sinh:</td><td><input name="edateofbirth" id="edateofbirth" type="date" placeholder="mm/dd/yyyy"></td></tr>
+        <tr><td>Danh mục:</td><td><select name="edanhmuc" id="edanhmuc" ></select></td></tr>
+		<tr><td>Đơn vị:</td><td><select name="edonvi" id="edonvi"></select></td></tr>
+		<tr><td>Nhà cung cấp:</td><td><select name="encc" id="encc"></select></td></tr>
+		<tr><td>Giá nhập:</td><td><input name="egianhap" id="egianhap" type="text"></td></tr>
+		<tr><td>Giá bán:</td><td><input name="egiaban" id="egiaban" type="text"></td></tr>
+        <tr><td>Khuyến mại:</td><td><input name="ekm" id="ekm" type="text"></td></tr>
 		<tr><td></td><th><input type="reset"><input name="edit" id='edit-sp-submit' type="submit" value="Sửa"></th></tr>
 		</tbody>
 	</table></form>

@@ -248,6 +248,7 @@
 		
 	}
 	.edit-sp-box table thead{background: #B6D8A0;height: 30px}
+	 
 	
 	/*----------------Delete sp----------------*/
 	.delete-sp-box{
@@ -256,7 +257,7 @@
 		width: 300px;
 		position: absolute;
 		top:150px;
-		left: 500px;
+		left: 500px;11
 		border: solid thin gray;
 		border-radius:15px;
 	}
