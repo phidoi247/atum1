@@ -2,14 +2,14 @@
 *{padding:0;margin:0;text-align:center}
 	.swapper{
 		width:1000px;
-		height:600px;
+		height:auto;
 		background:#EFF1EF;
 		margin:auto;	
 	}
 /************************************/
 	header{
 		width:100%;
-		height:18%;
+		height:108px;
 		background:#8B94BA;
 		float:left;
 		position:relative;
@@ -59,7 +59,7 @@
 		float:left;
 	}
 	nav.menu{
-		width: 80%;
+		width: 100%;
 		height: 37px;
 		float: left;
 		background:gray ;
@@ -91,6 +91,10 @@
 		text-decoration: none;
 		color: black;	
 	}
+	nav.menu ul li input{
+		border:none;
+		background-color:transparent;	
+	}
 	
 	.active-tab{
 		background:#F4D89D ;
@@ -98,7 +102,7 @@
 	}
 	/*--------------------Fillter------------------------*/
 	article.fillter{
-		width: 77.8%;
+		width: 97.8%;
 		padding:10px 10px 0 10px;
 		height: 43px;
 		float: left;
@@ -266,6 +270,34 @@
 		
 	}
 	.delete-sp-box table input{width:55px;height: 20px}
+	/*---------------------Chi tiet hoa don---------------------*/
+	.chitiet-box{
+		display: none;
+		background:white;
+		width: 500px;
+		position: absolute;
+		top:150px;
+		left: 400px;
+		border: solid thin gray;
+		border-radius:15px;
+	}
+	
+	.chitiet-box img.chitiet-close{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.chitiet-box table{
+		margin: 5px auto;
+		
+	}
+	.chitiet-box table thead{background: #B6D8A0;height: 30px}
+	 
+	
 	/*---------------------doanh_so_box---------------------*/
 	.doanh_so_box{
 		display: none;
@@ -353,7 +385,7 @@
 		width: 99.8%;
 		border:thin solid gray;
 		border-top:none;
-		height: 358px;
+		height: auto;
 		background:white;
 		float: left;
 	}
@@ -424,7 +456,7 @@
 /************************************/
 	footer{
 		width:100%;
-		height:8%;
+		height:40px;
 		background:#B6D8A0;
 		float:left;
 	}

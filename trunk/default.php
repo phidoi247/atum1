@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require('Connections/connect.php');
-	if(isset($_GET['logout'])){
+	if(isset($_POST['logout'])){
 			$_SESSION=array();
 			session_destroy();
 			setcookie("PHPSESSID"," ",time()-3600);
@@ -87,9 +87,9 @@
 		if($_SESSION['lvu']==1){
 			include("modules/ql/default.php");
 		}else if($_SESSION['lvu']==2){
-			include("modules/nvk/default.php");
-		}else if($_SESSION['lvu']==3){
 			include("modules/nvbh/default.php");
+		}else if($_SESSION['lvu']==3){
+			include("modules/nvk/default.php");
 		}else{
 					}
 	}else{

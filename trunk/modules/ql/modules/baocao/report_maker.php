@@ -2,7 +2,7 @@
 	include 'Connections/connect.php';
 ?>
 <div class="doanh_so_box">
-	<img alt="" class="doanh_so_close" src="../../sourse/close.png">
+	<img alt="" class="doanh_so_close" src="sourse/close.png">
 	<form action="modules/ql/modules/baocao/doanh_so.php" method="post" target="_blank">
    	 	<table>
             	<thead><tr>
@@ -45,7 +45,7 @@
     </form>
 </div>
 <div class="doanh_thu_box">
-<img alt="" class="doanh_thu_close" src="../../sourse/close.png">
+<img alt="" class="doanh_thu_close" src="sourse/close.png">
     <form action="modules/ql/modules/baocao/doanh_thu.php" method="post" target="_blank">
         	<table>
             	<thead><tr>
@@ -82,7 +82,7 @@
     </form>
 </div>
 <div class="thu_chi_box">
-<img alt="" class="thu_chi_close" src="../../sourse/close.png">
+<img alt="" class="thu_chi_close" src="sourse/close.png">
     <form action="modules/ql/modules/baocao/thu_chi.php" method="post" target="_blank">
         	<table>
             	<thead><tr>
