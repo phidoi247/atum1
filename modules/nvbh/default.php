@@ -9,7 +9,7 @@ $(function(){
 </script>
 <nav class="menu">
 <ul>
-	<li class='tab active-tab' id='nv'><a href="?nav=bh" >Bán hàng</a></li>
+	<li class='tab active-tab' id='bh'><a href="?nav=bh" >Bán hàng</a></li>
 	<li class='tab' id='k'><a href="?nav=k">Kho</a></li>
 	<li class='tab' id='ls'><a href="?nav=ls">Lịch sử GD</a></li>
 	<li class='tab' id='tl'><a href="?nav=tl">Thiết lập</a></li>
