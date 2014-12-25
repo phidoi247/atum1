@@ -50,7 +50,7 @@
 				$fmten=date('Ymdhis');
 				$link='../../../../upload/'.$fmten;
 				copy($_FILES['avatar']['tmp_name'],$link);
-				$src_avatar=substr($link,6);
+				$src_avatar=substr($link,12);
 			$r="SELECT `sanpham_id` FROM `tblsanpham`,`tbldanhmuc` WHERE `tblsanpham`.`danhmuc_id`= `tbldanhmuc`.`danhmuc_id` AND`tbldanhmuc`.`danhmuc_id` ='$danhmuc' ORDER BY `sanpham_id` DESC LIMIT 1 ";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
@@ -103,12 +103,70 @@
 			$q=mysqli_query($dbc,$r);
 			$fet_avt=mysqli_fetch_row($q);
 			$avatar=$fet_avt[0];
-			$linkdel="../../".$avatar;
+			$linkdel="../../../../".$avatar;
 						unlink($linkdel);
 			$r="DELETE FROM `tblsanpham` WHERE `sanpham_id`='$id_sp_del'";
 			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
 		}
 			
-								
+			//Get thông tin
+		if(isset($_POST['get_sp_info'])){
+			$edit_sp_id=$_POST['get_sp_info'];
+			$r="SELECT * FROM `tblsanpham` WHERE `sanpham_id`='$edit_sp_id'";
+			$q=mysqli_query($dbc,$r);
+			$edit_array=array();
+			$fet=mysqli_fetch_row($q);	
+			echo json_encode($fet);
+		}						
+		//Sửa thông tin
+		if (isset($_POST['eid'])){
+			$error=array();
+			if(empty($_POST['ename'])){
+				$error[]=" Tên Sản Phẩm";
+			}if(empty($_POST['egianhap'])){
+				$error[]=" Giá nhập";
+			}if(empty($_POST['egiaban'])){
+				$error[]=" Giá bán";
+			}	
+		if(empty($error)){
+				$eid=$_POST['eid'];
+				$name=mysql_escape_string($_POST['ename']);
+				$donvi=$_POST['edonvi'];
+				$ncc=$_POST['encc'];
+				$danhmuc=$_POST['edanhmuc'];
+				$km=mysql_escape_string($_POST['ekm']);
+				$gianhap=mysql_escape_string($_POST['egianhap']);
+				$giaban=mysql_escape_string($_POST['egiaban']);
+				$avatar=$_FILES['eavatar']['name'];
+	
+				
+			//Lấy sourse ảnh
+				$r="select image_link from tblsanpham where sanpham_id='$eid'";
+				$q=mysqli_query($dbc,$r);
+				$sourse=mysqli_fetch_row($q);
+				$pre_avatar=$sourse[0];
+					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
+						$linkdel="../../../../".$avatar;
+						unlink($linkdel);
+						//Update
+						$fmten=date('Ymdhis');
+						$link='../../../../upload/'.$fmten;
+						copy($_FILES['eavatar']['tmp_name'],$link);
+						$src_avatar=substr($link,12);
+							$r="update tblsanpham 		set ten_sanpham='$name',danhmuc_id='$danhmuc',nhacungcap_id='$ncc',donvi_id='$donvi',gia_nhap='$gianhap',image_link='$src_avatar',gia_ban='$giaban',giam_gia='$km' where sanpham_id='$eid'";
+						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
+							echo "Ok";
+						}else{
+							$r="update tblsanpham 		set ten_sanpham='$name',danhmuc_id='$danhmuc',nhacungcap_id='$ncc',donvi_id='$donvi',gia_nhap='$gianhap',gia_ban='$giaban',giam_gia='$km' where sanpham_id='$eid'";
+						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
+							echo "Ok";
+						}
+					
+			}else {
+				echo "Fill full all Fields,Please!";
+			}
+			
+								}
+
 	}
 ?>

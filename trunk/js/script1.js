@@ -11,17 +11,17 @@ function edit_emp(cnt){
 		$('#eid').val(edit_emp_id);
 		$.ajax({
 			type:"POST",
-			url:"modules/qlnhanvien/xuly.php",
+			url:"modules/ql/modules/qlnhanvien/xuly.php",
 			data:"get_emp_info="+edit_emp_id,
 			dataType:"json",
 			success: function(arr){
-				$('#ename').val(arr[1]);
-				$('#elevel').val(arr[2]);
+				$('#ename').val(arr[2]);
+				$('#elevel').val(arr[3]);
 				$('#eposition').val(edit_emp_id.substr(0,2));
-				$('#eaddress').val(arr[4]);
-				$('#edateofbirth').val(arr[3]);
-				$('#ephone').val(arr[8]);
-				$('#old_avt').attr("src",arr[6]);
+				$('#eaddress').val(arr[5]);
+				$('#edateofbirth').val(arr[4]);
+				$('#ephone').val(arr[9]);
+				$('#old_avt').attr("src",arr[7]);
 			}
 		});
 	}
@@ -39,7 +39,7 @@ function edit_sp(cnt){
 		$('#eid').val(edit_sp_id);
 		$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_danhmuc=true",
 					dataType:"json",
 					success: function(danhmuc){
@@ -53,7 +53,7 @@ function edit_sp(cnt){
 				});
 				$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_donvi=true",
 					dataType:"json",
 					success: function(donvi){
@@ -67,7 +67,7 @@ function edit_sp(cnt){
 				});
 				$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_ncc=true",
 					dataType:"json",
 					success: function(ncc){
@@ -81,18 +81,18 @@ function edit_sp(cnt){
 				});
 		$.ajax({
 			type:"POST",
-			url:"modules/qlkho/xuly.php",
+			url:"modules/ql/modules/qlkho/xuly.php",
 			data:"get_sp_info="+edit_sp_id,
 			dataType:"json",
 			success: function(arr){
-				$('#ename').val(arr[1]);
-				$('#edanhmuc').val(arr[2]);
-				$('#edonvi').val(arr[2]);
-				$('#encc').val(edit_emp_id.substr(0,2));
-				$('#egianhap').val(arr[4]);
-				$('#egiaban').val(arr[3]);
-				$('#ekm').val(arr[8]);
-				$('#old_avt').attr("src",arr[6]);
+				$('#ename').val(arr[2]);
+				$('#edanhmuc').val(arr[3]);
+				$('#edonvi').val(arr[5]);
+				$('#encc').val(arr[4]);
+				$('#egianhap').val(arr[6]);
+				$('#egiaban').val(arr[7]);
+				$('#ekm').val(arr[9]);
+				$('#old_avt').attr("src",arr[10]);
 			}
 		});
 }

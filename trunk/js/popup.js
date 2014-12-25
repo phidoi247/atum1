@@ -53,7 +53,7 @@ $(document).ready(function(e) {
 				});
 				$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_ncc=true",
 					dataType:"json",
 					success: function(ncc){

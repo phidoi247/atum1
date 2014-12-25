@@ -1,5 +1,5 @@
 <?php 
-include '../../Connections/connect.php';
+include 'Connections/connect.php';
 $cnt=1;
 $r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";
 $q=mysqli_query($dbc,$r);?>
