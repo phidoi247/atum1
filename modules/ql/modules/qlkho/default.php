@@ -16,7 +16,7 @@ $q=mysqli_query($dbc,$r);?>
 </table>
 <!--Begin Addition sp Box--->
 <div class="add-sp-box" >
-	<img alt="" class="add-sp-close" src="../../sourse/close.png">
+	<img alt="" class="add-sp-close" src="sourse/close.png">
 	<form action="" id="add-sp-form" method="post" name="add-sp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Thêm Sản Phẩm</th></tr></thead>
 		<tbody>
@@ -36,7 +36,7 @@ $q=mysqli_query($dbc,$r);?>
 <!--Begin Edit sp Box--->
 
 <div class="edit-sp-box" >
-	<img alt="" class="edit-sp-close" src="../../sourse/close.png">
+	<img alt="" class="edit-sp-close" src="sourse/close.png">
 	<form action="" id="edit-sp-form" method="post" name="edit-sp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Sửa thông tin Sản phẩm<input style="width:65px" id="eid" name="eid" type="text"></th></tr></thead>
 		<tbody>

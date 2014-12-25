@@ -25,7 +25,7 @@ $(document).ready(function(e) {
 				$('.add-sp-box').show();
 				$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_danhmuc=true",
 					dataType:"json",
 					success: function(danhmuc){
@@ -39,7 +39,7 @@ $(document).ready(function(e) {
 				});
 				$.ajax({
 					type:"POST",
-					url:"modules/qlkho/xuly.php",
+					url:"modules/ql/modules/qlkho/xuly.php",
 					data:"get_donvi=true",
 					dataType:"json",
 					success: function(donvi){
@@ -82,6 +82,8 @@ $(document).ready(function(e) {
 
 			$('#doanh_so_but').click(function(){
 				$('.doanh_so_box').show();
+				$('.thu_chi_box').hide();
+				$('.doanh_thu_box').hide();
 			});
 			$('.doanh_so_close').click(function(){
 				$('.doanh_so_box').hide();
@@ -89,6 +91,8 @@ $(document).ready(function(e) {
 			
 			$('#doanh_thu_but').click(function(){
 				$('.doanh_thu_box').show();
+				$('.doanh_so_box').hide();
+				$('.thu_chi_box').hide();
 			});
 			$('.doanh_thu_close').click(function(){
 				$('.doanh_thu_box').hide();
@@ -96,8 +100,17 @@ $(document).ready(function(e) {
 			
 			$('#thu_chi_but').click(function(){
 				$('.thu_chi_box').show();
+				$('.doanh_so_box').hide();
+				$('.doanh_thu_box').hide();
 			});
 			$('.thu_chi_close').click(function(){
 				$('.thu_chi_box').hide();
 			});
+			
+			///////////////////////Chi tiet hoa don//////////////
+			
+			$('.chitiet-close').click(function(){
+				$('.chitiet-box').hide();
+			});
     });
+	

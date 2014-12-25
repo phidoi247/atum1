@@ -57,6 +57,7 @@ function edit_sp(cnt){
 					data:"get_donvi=true",
 					dataType:"json",
 					success: function(donvi){
+						
 						var cnt=(Object.keys(donvi).length);
 							var i=0;
 							while(i<=cnt){
@@ -93,6 +94,75 @@ function edit_sp(cnt){
 				$('#egiaban').val(arr[7]);
 				$('#ekm').val(arr[9]);
 				$('#old_avt').attr("src",arr[10]);
+			}
+		});
+}
+//////////////////////////////////////Chi tiet don hang
+function chitiet(cnt){
+		$('.chitiet-box').show();
+		var get_chitiet_id="#ma_hd"+cnt;
+		var chitiet_id=$(get_chitiet_id).val();
+		$('#ma_hd').val(chitiet_id);
+	
+		$.ajax({
+			type:"POST",
+			url:"modules/ql/modules/lichsu/xuly.php",
+			data:"chitiet="+chitiet_id,
+			dataType:"json",
+			success: function(obb){
+		      var cntt=(Object.keys(obb).length);
+				var i=0;
+				$('#tbody_chitiet').empty();
+				while(i<=cntt){
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_nhap+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					i++;
+				}
+			}
+		});
+}
+
+////////////////////////////////
+function bh_chitiet(cnt){
+		$('.chitiet-box').show();
+		var get_chitiet_id="#ma_hd"+cnt;
+		var chitiet_id=$(get_chitiet_id).val();
+		$('#ma_hd').val(chitiet_id);
+		$.ajax({
+			type:"POST",
+			url:"modules/nvbh/modules/lichsu/xuly.php",
+			data:"chitiet="+chitiet_id,
+			dataType:"json",
+			success: function(obb){
+		      var cntt=(Object.keys(obb).length);
+				var i=0;
+				$('#tbody_chitiet').empty();
+				while(i<=cntt){
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_nhap+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					i++;
+				}
+			}
+		});
+}
+
+////////////////////////////////
+function nh_chitiet(cnt){
+		$('.chitiet-box').show();
+		var get_chitiet_id="#ma_hd"+cnt;
+		var chitiet_id=$(get_chitiet_id).val();
+		$('#ma_hd').val(chitiet_id);
+		$.ajax({
+			type:"POST",
+			url:"modules/nvk/modules/lichsu/xuly.php",
+			data:"chitiet="+chitiet_id,
+			dataType:"json",
+			success: function(obb){
+		      var cntt=(Object.keys(obb).length);
+				var i=0;
+				$('#tbody_chitiet').empty();
+				while(i<=cntt){
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_nhap+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					i++;
+				}
 			}
 		});
 }
