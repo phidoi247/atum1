@@ -25,12 +25,12 @@
 			$dates = dateRange($tungay, $denngay);												
 			
 			for($i=0;$i<count($dates);$i++){				
-				$qban[$i] = " SELECT SUM(tblbanhang.soluong * tblsanpham.gia_ban) AS ban FROM tblbanhang JOIN tblhoadon ON tblbanhang.ten_hoadon = tblhoadon.ten_hoadon 
-					JOIN tblsanpham ON tblbanhang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' ";
-				$qnhap[$i] = " SELECT SUM(tblnhaphang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblnhaphang JOIN tblhoadon 
-						ON tblnhaphang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblnhaphang.sanpham_id = tblsanpham.sanpham_id WHERE tblhoadon.ngay = '".$dates[$i]."' "; 
-				$rban = mysqli_query($dbc, $qban[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
-				$rnhap = mysqli_query($dbc, $qnhap[$i]) or die ("Query $qdata[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$qban[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_ban) AS ban FROM tblchitietdonhang JOIN tblhoadon ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon 
+					JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay = '".$dates[$i]."' ";
+				$qnhap[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblchitietdonhang JOIN tblhoadon 
+						ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND tblhoadon.ngay = '".$dates[$i]."' "; 
+				$rban = mysqli_query($dbc, $qban[$i]) or die ("Query $qban[$i] <br /> mysql error: ".mysqli_errno($dbc));
+				$rnhap = mysqli_query($dbc, $qnhap[$i]) or die ("Query $qnhap[$i] <br /> mysql error: ".mysqli_errno($dbc));
 				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
 					$databan[$i] = $dulieu['ban'];
 					};
@@ -139,11 +139,11 @@
 					<p>
 						<?php 
 							for($i=0;$i<count($ngayhienthi);$i++){
-								echo "<strong>Ngày ".$ngayhienthi[$i]."</strong>,";
+								echo "Ngày <strong>".$ngayhienthi[$i]."</strong>,";
 								if($loinhuan[$i]<0){
-									echo " cửa hàng lỗ ".abs($loinhuan[$i])." VNĐ <br /> ";
+									echo " cửa hàng lỗ <strong>".abs($loinhuan[$i])."</strong> VNĐ <br /> ";
 								}else{
-									echo " cửa hàng lãi ".$loinhuan[$i]." VNĐ <br /> ";
+									echo " cửa hàng lãi <strong>".$loinhuan[$i]."</strong> VNĐ <br /> ";
 								};
 							};
 						?>

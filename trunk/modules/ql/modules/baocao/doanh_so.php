@@ -28,12 +28,12 @@
 			$dates = dateRange($tungay, $denngay);
 											
 			//lấy phần name trong series
-			$qname = " SELECT tblsanpham.ten_sanpham,tblbanhang.soluong,tbldonvi.ten_donvi ";
-			$qname .= " FROM tblhoadon JOIN tblbanhang ";
-			$qname .= " ON tblhoadon.ten_hoadon = tblbanhang.ten_hoadon	JOIN tblsanpham ";
-			$qname .= " ON tblsanpham.sanpham_id = tblbanhang.sanpham_id JOIN tbldonvi ";
+			$qname = " SELECT tblsanpham.ten_sanpham,tblchitietdonhang.soluong,tbldonvi.ten_donvi ";
+			$qname .= " FROM tblhoadon JOIN tblchitietdonhang ";
+			$qname .= " ON tblhoadon.ten_hoadon = tblchitietdonhang.ten_hoadon	JOIN tblsanpham ";
+			$qname .= " ON tblsanpham.sanpham_id = tblchitietdonhang.sanpham_id JOIN tbldonvi ";
 			$qname .= " ON tbldonvi.donvi_id = tblsanpham.donvi_id ";
-			$qname .= "	WHERE tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN ( ";
+			$qname .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN ( ";
 			for($i=0;$i<count($masp);$i++){//bo dau phay o cuoi cung
 				if($i<count($masp)-1){
 					$qname .= "'"."$masp[$i]"."'".",";
@@ -69,11 +69,11 @@
 		
 		//lấy data
 		for($i=0;$i<count($masp);$i++){
-			$qdata[$i] = " SELECT tblhoadon.ngay,sum(tblbanhang.soluong)as soluong ";
-			$qdata[$i] .= " FROM tblhoadon JOIN tblbanhang ";
-			$qdata[$i] .= " ON tblhoadon.ten_hoadon = tblbanhang.ten_hoadon ";
-			$qdata[$i] .= " JOIN tblsanpham ON tblsanpham.sanpham_id = tblbanhang.sanpham_id ";
-			$qdata[$i] .= "	WHERE tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN (" ."'".$masp[$i]."'".")";
+			$qdata[$i] = " SELECT tblhoadon.ngay,sum(tblchitietdonhang.soluong)as soluong ";
+			$qdata[$i] .= " FROM tblhoadon JOIN tblchitietdonhang ";
+			$qdata[$i] .= " ON tblhoadon.ten_hoadon = tblchitietdonhang.ten_hoadon ";
+			$qdata[$i] .= " JOIN tblsanpham ON tblsanpham.sanpham_id = tblchitietdonhang.sanpham_id ";
+			$qdata[$i] .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN (" ."'".$masp[$i]."'".")";
 			$qdata[$i] .= " GROUP BY tblhoadon.ngay ";
 			$qdata[$i] .= " ORDER BY tblsanpham.sanpham_id ASC; ";
 			$r = mysqli_query($dbc, $qdata[$i]);
@@ -163,18 +163,7 @@
 		    });
 		});
 		</script>
-		<!--  <div id="header">
-       	  <div id="headerleft"><p>Nhà sách Trí Tuệ<br>
-       	  Địa chỉ: 76 Ngọc Lâm - Long Biên - Hà Nội<br>
-       	  Tel: 043 877 8357</p>
-       	  </div>
-          <div id="headerright"><img src="../images/Logo.jpg" width="350px" height="200px"></div>
-        </div>
-		<div id="title"><h3><p><?php //echo "$tenbaocao";?></p></h3><p><?php //echo "Từ ngày: "."$tungay"." đến ngày: "."$denngay";?></p></div>		
-		<div id="container"></div>
-		<div id="footer">
-			
-		</div>-->
+				
 		<table style="width: 1000px; height: auto; margin: 0 auto">
 			<tr>
 				<td style="width: 300px">
@@ -202,9 +191,9 @@
 							echo "<strong>Sản phẩm ".$name[$i]."</strong>".", <br />";
 							for($j=0;$j<count($dates);$j++){
 								if($j<(count($dates)-1)){								
-									echo " trong ngày ".$dates[$j]." bán được ".$data[$i][$j]." $donvi[$i]".", ";
+									echo " trong ngày <strong>".$dates[$j]."</strong> bán được <strong>".$data[$i][$j]." $donvi[$i]"."</strong>, ";
 								}else{
-									echo " trong ngày ".$dates[$j]." bán được ".$data[$i][$j]." $donvi[$i]"."<br /> ";									
+									echo " trong ngày <strong>".$dates[$j]."</strong> bán được <strong>".$data[$i][$j]." $donvi[$i]"."</strong><br /> ";									
 								};
 							};
 						};
