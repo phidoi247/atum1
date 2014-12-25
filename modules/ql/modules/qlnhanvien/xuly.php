@@ -33,7 +33,7 @@
 				$fmten=date('Ymdhis');
 				$link='../../../../upload/'.$fmten;
 				copy($_FILES['avatar']['tmp_name'],$link);
-				$src_avatar=substr($link,6);
+				$src_avatar=substr($link,12);
 			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ORDER BY `nhanvien_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
@@ -133,8 +133,8 @@
 				}
 	}
 			echo "Ok";
-			$r="INSERT INTO `tblnhanvien` VALUES('$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
-			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysql_error());
+			$r="INSERT INTO `tblnhanvien` VALUES(null,'$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
+			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 			}else {
 				echo "Fill full all Fields,Please!";
 			}
@@ -148,10 +148,10 @@
 			$q=mysqli_query($dbc,$r);
 			$fet_avt=mysqli_fetch_row($q);
 			$avatar=$fet_avt[0];
-			$linkdel="../../".$avatar;
+			$linkdel="../../../../".$avatar;
 						unlink($linkdel);
 			$r="DELETE FROM `tblnhanvien` WHERE `nhanvien_id`='$id_emp_del'";
-			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysql_error());
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
 		}
 		//Sửa thông tin Nhân viên
 		
@@ -210,7 +210,7 @@
 						$fmten=date('Ymdhis');
 						$link='../../../../upload/'.$fmten;
 						copy($_FILES['eavatar']['tmp_name'],$link);
-						$src_avatar=substr($link,6);
+						$src_avatar=substr($link,12);
 						if($password!=''){
 							$r="update tblnhanvien 		set ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',password=SHA1('$password'),avatar='$src_avatar',SDT='$phone' where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	

@@ -1,7 +1,7 @@
 <?php 
-include '../../Connections/connect.php';
+include 'Connections/connect.php';
 $cnt=1;
-$r="SELECT * FROM `tblnhanvien`";
+$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'BH%' or nhanvien_id LIKE 'TK%' ";
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
@@ -16,7 +16,7 @@ $q=mysqli_query($dbc,$r);?>
 </table>
 <!--Begin Addition Employees Box--->
 <div class="add-emp-box" >
-	<img alt="" class="add-emp-close" src="../../sourse/close.png">
+	<img alt="" class="add-emp-close" src="sourse/close.png">
 	<form action="" id="add-emp-form" method="post" name="add-emp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Thêm nhân viên</th></tr></thead>
 		<tbody>
@@ -35,7 +35,7 @@ $q=mysqli_query($dbc,$r);?>
 <!--End Addition Employees Box--->
 <!--Begin Edit Employees Box--->
 <div class="edit-emp-box" >
-	<img alt="" class="edit-emp-close" src="../../sourse/close.png">
+	<img alt="" class="edit-emp-close" src="sourse/close.png">
 	<form action="" id="edit-emp-form" method="post" name="edit-emp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Sửa thông tin nhân viên<input style="width:45px" id="eid" name="eid" type="text"></th></tr></thead>
 		<tbody>

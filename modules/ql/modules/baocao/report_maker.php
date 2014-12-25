@@ -1,5 +1,5 @@
 <?php 	
-	include '../../Connections/connect.php';
+	include 'Connections/connect.php';
 ?>
 <div class="doanh_so_box">
 	<img alt="" class="doanh_so_close" src="../../sourse/close.png">

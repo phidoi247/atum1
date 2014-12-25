@@ -1,13 +1,11 @@
 <?php
-	if($_COOKIE['ps']!="Mannger"){
+	if($_SESSION['lvu']!=1){
 		header("location:../../");
 		
 	}else{
 		
 	}
 ?>
-<?php include("../header.php") ?>
-<section>
 <script type="text/javascript">
 $(function(){
 	var tab="#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>";
@@ -26,7 +24,7 @@ $(function(){
 </ul>
 </nav>
 <aside class="aside">
-	<a href="../../default.php?logout">Thoát</a>
+	<a href="default.php?logout">Thoát</a>
 </aside>
 <article class="fillter">
 <?php
@@ -81,11 +79,3 @@ else{
 }
 ?>
 </div>
-
-</section>
-<footer>
-Copyright &copy; by Atumt Team.
-</footer>
-</div>
-</body>
-</html>
