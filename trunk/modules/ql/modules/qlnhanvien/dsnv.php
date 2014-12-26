@@ -1,7 +1,11 @@
 <?php 
-include 'Connections/connect.php';
 $cnt=1;
-$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'BH%' or nhanvien_id LIKE 'TK%' ";
+if(isset($_GET['nvbh'])){
+	$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'BH%' order by ngay_vao_lam ";
+}elseif(isset($_GET['nvk'])){
+	$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'TK%' order by ngay_vao_lam ";
+}else{
+$r="SELECT * FROM `tblnhanvien`";}
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
@@ -22,8 +26,7 @@ $q=mysqli_query($dbc,$r);?>
 		<tbody>
 		<tr><td>Tên Nhân viên:</td><td><input name="name" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="avatar" type="file"></td></tr>
-		<tr><td>Loại:</td><td><select name="position"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option><option value="QL">Quản Lý</option></select></td></tr>
-		<tr><td>Level:</td><td><input name="level" min="0" type="number"></td></tr>
+		<tr><td>Loại:</td><td><select name="position"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option></select></td></tr>
 		<tr><td>Mật khẩu:</td><td><input name="password" type="text"></td></tr>
 		<tr><td>Địa chỉ:</td><td><input name="address" type="text"></td></tr>
         <tr><td>Phone:</td><td><input name="phone" type="text"></td></tr>
@@ -42,8 +45,7 @@ $q=mysqli_query($dbc,$r);?>
         <tr><th><img width="100px" height="50px" id="old_avt" ></th></tr>
 		<tr><td>Tên Nhân viên:</td><td><input id="ename" name="ename" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="eavatar" id="eavatar" type="file"></td></tr>
-		<tr><td>Loại:</td><td><select name="eposition" id="eposition"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option><option value="QL">Quản Lý</option></select></td></tr>
-		<tr><td>Level:</td><td><input name="elevel" id="elevel" min="0" type="number"></td></tr>
+		<tr><td>Loại:</td><td><select name="eposition" id="eposition"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option></select></td></tr>
 		<tr><td>Mật khẩu:</td><td><input name="epassword" id="epassword" placeholder="Nhập mật khẩu mới" type="text"></td></tr>
 		<tr><td>Địa chỉ:</td><td><input name="eaddress" id="eaddress" type="text"></td></tr>
 		<tr><td>Phone:</td><td><input name="ephone" id="ephone" type="text"></td></tr>
@@ -54,6 +56,6 @@ $q=mysqli_query($dbc,$r);?>
 </div>
 <!--End Edit Employees Box--->
 <!--Begin Delete Employees Box--->
-<div class="delete-emp-box"><form id='delete-emp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn Sa thải NV <input id="id_emp_del" readonly>?</tr><tr><th></th><th><input class="delete-emp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-emp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
+<div class="delete-emp-box"><form id='delete-emp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn Sa thải NV <input id="id_emp_del" readonly><input type="hidden" id="id_emp_row" readonly>?</tr><tr><th></th><th><input class="delete-emp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-emp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
 </div>
 <!--End Delete Employees Box--->

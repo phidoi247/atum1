@@ -57,15 +57,15 @@
 			$sanpham_id_trc=$layid[0];
 			$danhmuc=substr($sanpham_id_trc,0,2);
 				$tmp1=$danhmuc."00009";$tmp2=$danhmuc."00099";$tmp3=$danhmuc."00999";$tmp4=$danhmuc."09999";$tmp5=$danhmuc."99999";
-			if(strcmp($sanpham_id_trc,$tmp1)==1){
+			if(strcmp($sanpham_id_trc,$tmp1)==0){
 				$sanpham_id=$danhmuc."00010";
-			}elseif(strcmp($sanpham_id_trc,$tmp2)==1){
+			}elseif(strcmp($sanpham_id_trc,$tmp2)==0){
 				$sanpham_id=$danhmuc."00100";
-			}elseif(strcmp($sanpham_id_trc,$tmp3)==1){
+			}elseif(strcmp($sanpham_id_trc,$tmp3)==0){
 				$sanpham_id=$danhmuc."01000";
-			}elseif(strcmp($sanpham_id_trc,$tmp4)==1){
+			}elseif(strcmp($sanpham_id_trc,$tmp4)==0){
 				$sanpham_id=$danhmuc."10000";
-			}elseif(strcmp($sanpham_id_trc,$tmp5)==1){
+			}elseif(strcmp($sanpham_id_trc,$tmp5)==0){
 				$sanpham_id="NULL";
 			}else{
 				$ma_id_tr=substr($sanpham_id_trc,2,7);

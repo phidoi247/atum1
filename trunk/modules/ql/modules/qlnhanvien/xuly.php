@@ -9,8 +9,6 @@
 				$error[]=" Password";
 			}if(empty($_POST['position'])){
 				$error[]=" Vị trí ";
-			}if(empty($_POST['level'])){
-				$error[]=" Level";
 			}if(empty($_POST['address'])){
 				$error[]=" Địa chỉ";
 			}if(empty($_POST['dateofbirth'])){
@@ -23,7 +21,11 @@
 			if(empty($error)){
 				$name=mysql_escape_string($_POST['name']);
 				$position=$_POST['position'];
-				$level=mysql_escape_string($_POST['level']);
+				if(strcmp($position,"BH")==0){
+					$level=2;
+				}else{
+					$level=3;
+				}
 				$address=mysql_escape_string($_POST['address']);
 				$phone=mysql_escape_string($_POST['phone']);
 				$password=mysql_escape_string($_POST['password']);
@@ -39,9 +41,9 @@
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
 			$tmp1=$position."009";$tmp2=$position."099";$tmp3=$position."999";
-			if(strcmp($nhanvien_id_trc,$tmp1)==1){
+			if(strcmp($nhanvien_id_trc,$tmp1)==0){
 				$nhanvien_id=$position."010";	
-			}elseif(strcmp($nhanvien_id_trc,$tmp2)==1){
+			}elseif(strcmp($nhanvien_id_trc,$tmp2)==0){
 				$nhanvien_id=$position."100";
 			}else{
 				$ma_id_tr=substr($nhanvien_id_trc,2,5);
@@ -97,8 +99,6 @@
 				$error[]=" Tên Nhân Viên";
 			}if(empty($_POST['eposition'])){
 				$error[]=" Vị trí ";
-			}if(empty($_POST['elevel'])){
-				$error[]=" Level";
 			}if(empty($_POST['eaddress'])){
 				$error[]=" Địa chỉ";
 			}
@@ -112,8 +112,11 @@
 				$eid=$_POST['eid'];
 				$name=mysql_escape_string($_POST['ename']);
 				$position=$_POST['eposition'];
-				$level=mysql_escape_string($_POST['elevel']);
-				$address=mysql_escape_string($_POST['eaddress']);
+				if(strcmp($position,"BH")==0){
+					$level=2;
+				}else{
+					$level=3;
+				}$address=mysql_escape_string($_POST['eaddress']);
 				$phone=mysql_escape_string($_POST['ephone']);
 				$password=mysql_escape_string($_POST['epassword']);
 				$dateofbirth=mysql_escape_string($_POST['edateofbirth']);
@@ -126,7 +129,7 @@
 				$pre_avatar=$sourse[0];
 			//Kiểm tra xem có thay đổi vị trí k
 				$re_id=substr($eid,0,2);
-				if(strcmp($eid,$position)){
+				if(strcmp($eid,$position)==0){
 				//Nếu == thì thực hiện update
 					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
 						$linkdel="../../".$avatar;
@@ -165,9 +168,9 @@
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
 			$tmp1=$position."009";$tmp2=$position."099";$tmp3=$position."999";
-			if(strcmp($nhanvien_id_trc,$tmp1)==1){
+			if(strcmp($nhanvien_id_trc,$tmp1)==0){
 				$nhanvien_id=$position."010";	
-			}elseif(strcmp($nhanvien_id_trc,$tmp2)==1){
+			}elseif(strcmp($nhanvien_id_trc,$tmp2)==0){
 				$nhanvien_id=$position."100";
 			}else{
 				$ma_id_tr=substr($nhanvien_id_trc,2,5);
