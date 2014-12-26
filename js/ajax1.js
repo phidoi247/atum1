@@ -48,12 +48,15 @@ $(document).ready(function(){
 		/***********Xóa nhân viên**************/
 		$('.delete-emp-submit').click(function(){
 			var id_del=$('#id_emp_del').val();
+			var get_id_row=$('#id_emp_row').val();
+			var id_row="#"+get_id_row;
 			$.ajax({
 				url:"modules/ql/modules/qlnhanvien/xuly.php",
 				type:"POST",
 				data:"id_emp_del="+id_del,
 				success: function(){
-					window.location.reload();
+					$(id_row).parent().parent().remove();
+					$('.delete-emp-box').hide()
 				}
 			});
 		})
@@ -104,12 +107,15 @@ $(document).ready(function(){
 		/***********Xóa SP**************/
 		$('.delete-sp-submit').click(function(){
 			var id_del=$('#id_sp_del').val();
+			var get_id_row=$('#id_sp_row').val();
+			var id_row="#"+get_id_row;
 			$.ajax({
-				url:"modules/qlkho/xuly.php",
+				url:"modules/ql/modules/qlkho/xuly.php",
 				type:"POST",
 				data:"id_sp_del="+id_del,
 				success: function(){
-					window.location.reload();
+					$(id_row).parent().parent().remove();
+					$('.delete-sp-box').hide();
 				}
 			});
 		})

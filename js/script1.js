@@ -2,6 +2,7 @@ function delete_emp(cnt){
 		var get_delete_emp_id="#ma_nv"+cnt;
 		var delete_emp_id=$(get_delete_emp_id).val();
 		document.getElementById('id_emp_del').value=delete_emp_id;
+		$('#id_emp_row').val("ma_nv"+cnt);
 		$('.delete-emp-box').show();
 	}
 function edit_emp(cnt){
@@ -30,6 +31,7 @@ function delete_sp(cnt){
 		var get_delete_sp_id="#ma_sp"+cnt;
 		var delete_sp_id=$(get_delete_sp_id).val();
 		document.getElementById('id_sp_del').value=delete_sp_id;
+		$('#id_sp_row').val("ma_sp"+cnt);
 		$('.delete-sp-box').show();
 	}
 function edit_sp(cnt){

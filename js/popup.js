@@ -106,7 +106,13 @@ $(document).ready(function(e) {
 			$('.thu_chi_close').click(function(){
 				$('.thu_chi_box').hide();
 			});
-			
+////////////////NCC
+			$('#ncc-but').click(function(){
+				$('.ncc-box').show();
+			});
+			$('.ncc-close').click(function(){
+				$('.ncc-box').hide();
+			});			
 			///////////////////////Chi tiet hoa don//////////////
 			
 			$('.chitiet-close').click(function(){
