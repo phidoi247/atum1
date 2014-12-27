@@ -15,7 +15,7 @@
     $now = getdate(time() + 3600*($timezone+date("0")));
     $currentTime = $now["hours"] . ":" . $now["minutes"] . ":" . $now["seconds"]; 
     $currentDate = $now["mday"] . "." . $now["mon"] . "." . $now["year"]; 
-    print_r($now);
+    //print_r($now);
     //khai báo biến để truyền giá trị của post
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $errors = array();// tạo array để khi có lỗi sẽ truyền lỗi vào array,nếu array lỗi có giá trị sẽ k cho submit
@@ -27,7 +27,7 @@
                 if(empty($_POST['SPID'])){
                     $errors[] = "SPID";
                 }else{
-                    $id_sanpham = mysqli_real_escape_string($dbc,strip_tags($_POST['SPID']));
+                    $id_sanpham = $_POST['SPID'];
                 }
                 if(isset($_POST['quantity']) && filter_var($_POST['quantity'], FILTER_VALIDATE_INT,array('min_range' => 1))){ // phải nhập số
                     $soluong = $_POST['quantity'];
@@ -38,7 +38,7 @@
                     $check = "SELECT ten_hoadon FROM tblhoadon"; //kiểm tra tên hóa đơn trong database
                     $rcheck = mysqli_query($dbc,$check) or die("Query {$check} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                         while($checkname = mysqli_fetch_array($rcheck, MYSQLI_ASSOC)){
-                            $name [] = $checkname['ten_hoadon'];//những tên hóa đơn có trong database sẽ truyền vào name
+                            $name [] = $checkname['ten_hoadon'];//những tên hóa đơn có trong database sẽ truyền vào mảng name
                         }
                         if(in_array($hoadon,$name)){//nếu tên hóa đơn vừa nhập đã có trong name thì chỉ thêm dữ liệu vào bảng nhập hàng
                             $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
@@ -46,7 +46,7 @@
                         }else{//nếu không thì thêm cả vào 2 bảng nhập và hóa đơn
                             $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
                             $r = mysqli_query($dbc,$q) or die("Query {$q} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
-                            $q1 = "INSERT INTO tblhoadon (ten_hoadon,loaigiaodich_id,ngay,gio,nhanvien_id) VALUES ('$hoadon',2,'$currentDate','$currentTime',1)";
+                            $q1 = "INSERT INTO tblhoadon (ten_hoadon,ngay,gio,nhanvien_id) VALUES ('$hoadon','$currentDate','$currentTime','BH001')";
                             $r1 = mysqli_query($dbc,$q1) or die("Query {$q1} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                         }
                     if(mysqli_affected_rows($dbc) == 1){//nếu nhập đc vào thì hiển thị
@@ -86,7 +86,21 @@
                 }
             ?>
             </label>
-            <input type="text" name="SPID" value=""/>
+            <?php 
+                $q4 = "SELECT tblsanpham.sanpham_id FROM tblsanpham";
+                $r4 = mysqli_query($dbc,$q4) or die("Query {$q4} \n<br/> MYSQL Error : " . mysqli_error($dbc));
+                while($IDSP = mysqli_fetch_array($r4,MYSQLI_ASSOC)){
+                    $masanpham [] = $IDSP['sanpham_id'];
+                }
+            ?>
+            <select name="SPID">
+                <option>Mã sản phẩm</option>
+                <?php 
+                    foreach($masanpham AS $v){
+                        echo "<option>".$v."</option>";
+                    }
+                ?>
+            </select>
         </div>
         <div>
             <label>Nhập Số Lượng
@@ -132,7 +146,7 @@
                  <?php 
                  //nối các bảng cần hiển thị trong database
                  if(isset($hoadon)){
-            $q2 = "SELECT tblnhaphang.soluong,tblhoadon.ten_hoadon,tblhoadon.ngay,tblhoadon.gio,tblsanpham.sanpham_id,tblsanpham.ten_sanpham,tblsanpham.gia_nhap * '".$soluong."' AS thanhtien";
+            $q2 = "SELECT tblnhaphang.soluong,tblhoadon.ten_hoadon,tblhoadon.ngay,tblhoadon.gio,tblsanpham.sanpham_id,tblsanpham.ten_sanpham,tblsanpham.gia_nhap * tblnhaphang.soluong AS thanhtien";
             $q2 .= " FROM tblhoadon";
             $q2 .= " JOIN tblnhaphang";
             $q2 .= " USING(ten_hoadon)";
@@ -162,13 +176,19 @@
         </pre>
             <hr />
                  <?php 
-                    //if(isset($hoadon)){
-                //$q3 = "SELECT SUM(Thanh_tien) AS total FROM tblnhaphang WHERE tblnhaphang.ten_hoadon = '".$hoadon."' ";
-               // $r3 = mysqli_query($dbc,$q3) or die("Query {$q3} \n<br/> MYSQL Error : " .mysqli_error($dbc));
-                //    while($SUM = mysqli_fetch_array($r3, MYSQLI_ASSOC)){
-                //        echo "<h3>Tổng là : {$SUM['total']}</h3>";
-                //    }       
-               //     }
+                    if(isset($hoadon)){
+                $q3 = "SELECT SUM(tblsanpham.gia_nhap * tblnhaphang.soluong) AS thanhtien";
+                $q3 .= " FROM tblhoadon";
+                $q3 .= " JOIN tblnhaphang";
+                $q3 .= " USING(ten_hoadon)";
+                $q3 .= " JOIN tblsanpham";
+                $q3 .= " USING(sanpham_id)";
+                $q3 .= " WHERE tblnhaphang.ten_hoadon = '".$hoadon."'";
+                $r3 = mysqli_query($dbc,$q3) or die("Query {$q3} \n<br/> MYSQL Error : " .mysqli_error($dbc));
+                    while($SUM = mysqli_fetch_array($r3, MYSQLI_ASSOC)){
+                        echo "<h3>Tổng là : {$SUM['thanhtien']}</h3>";
+                    }       
+                    }
                 ?>
                 <input type="submit" name="print" value="In hóa đơn"/>
 </form>
