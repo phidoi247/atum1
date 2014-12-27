@@ -1,10 +1,2 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
-
-<body>
-</body>
-</html>
+<a href="default.php?nav=ls&nh">Nhập Hàng</a>
+<a href="default.php?nav=ls&bh">Bán Hàng</a>

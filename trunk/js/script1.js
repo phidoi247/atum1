@@ -99,24 +99,35 @@ function edit_sp(cnt){
 			}
 		});
 }
+////////////////////NCC
+function delete_ncc(cnt){
+		var get_delete_ncc_id="#ma_ncc"+cnt;
+		var delete_ncc_id=$(get_delete_ncc_id).val();
+		$('#id_ncc_del').val(delete_ncc_id);
+		$('#id_ncc_row').val("ma_sp"+cnt);
+		$('.delete-ncc-box').show();
+	}
+
 //////////////////////////////////////Chi tiet don hang
 function chitiet(cnt){
 		$('.chitiet-box').show();
 		var get_chitiet_id="#ma_hd"+cnt;
+		var get_loai_hd="#loaihd"+cnt;
 		var chitiet_id=$(get_chitiet_id).val();
+		var loai_hd=$(get_loai_hd).val();;
 		$('#ma_hd').val(chitiet_id);
 	
 		$.ajax({
 			type:"POST",
 			url:"modules/ql/modules/lichsu/xuly.php",
-			data:"chitiet="+chitiet_id,
+			data:"chitiet="+chitiet_id+"&loai="+loai_hd,
 			dataType:"json",
 			success: function(obb){
 		      var cntt=(Object.keys(obb).length);
 				var i=0;
 				$('#tbody_chitiet').empty();
 				while(i<=cntt){
-					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_nhap+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
 					i++;
 				}
 			}
