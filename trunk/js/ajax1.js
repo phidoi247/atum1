@@ -143,9 +143,8 @@ $(document).ready(function(){
 			$.ajax({
 				url:"modules/ql/modules/qlkho/xuly.php",
 				type:"POST",
-				data:"id_ncc_dell="+id_del,
+				data:"id_ncc_del="+id_del,
 				success: function(){
-					
 					$(id_row).parent().parent().remove();
 					var so_o=$('table#bangsp >tbody >tr').length; //dem so dong
 					var i=1;
