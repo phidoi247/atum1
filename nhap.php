@@ -40,10 +40,14 @@
                         while($checkname = mysqli_fetch_array($rcheck, MYSQLI_ASSOC)){
                             $name [] = $checkname['ten_hoadon'];//những tên hóa đơn có trong database sẽ truyền vào mảng name
                         }
-                        if(in_array($hoadon,$name)){//nếu tên hóa đơn vừa nhập đã có trong name thì chỉ thêm dữ liệu vào bảng nhập hàng
+                        if(in_array($hoadon,$name)){//nếu tên hóa đơn vừa nhập đã có trong name thì chỉ thêm dữ liệu vào 2 bảng này
+                            $q0 = "INSERT INTO tblchitietdonhang (ten_hoadon,loaigiaodich_id,sanpham_id,soluong) VALUES('$hoadon',2,'$id_sanpham','$soluong')";
+                            $r0 = mysqli_query($dbc,$q0) or die ("Query {$q0} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                             $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
                             $r = mysqli_query($dbc,$q) or die("Query {$q} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
-                        }else{//nếu không thì thêm cả vào 2 bảng nhập và hóa đơn
+                        }else{//nếu không thì thêm cả vào 3 bảng
+                            $q0 = "INSERT INTO tblchitietdonhang (ten_hoadon,loaigiaodich_id,sanpham_id,soluong) VALUES('$hoadon',2,'$id_sanpham','$soluong')";
+                            $r0 = mysqli_query($dbc,$q0) or die ("Query {$q0} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                             $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
                             $r = mysqli_query($dbc,$q) or die("Query {$q} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                             $q1 = "INSERT INTO tblhoadon (ten_hoadon,ngay,gio,nhanvien_id) VALUES ('$hoadon','$currentDate','$currentTime','BH001')";
