@@ -27,7 +27,7 @@ $(function(){
 			}elseif($nav=='bc'){
 				include 'modules/baocao/fillter.php';
 			}elseif ($nav=='ls'){
-				
+				include 'modules/lichsu/fillter.php';
 			}elseif ($nav=='tl'){
 				
 			}else {

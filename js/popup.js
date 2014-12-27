@@ -107,12 +107,21 @@ $(document).ready(function(e) {
 				$('.thu_chi_box').hide();
 			});
 ////////////////NCC
+			$('#add-ncc-but').click(function(){
+				$('.add-ncc-box').show();
+			});
+			$('.add-ncc-close').click(function(){
+				$('.add-ncc-box').hide();
+			});
 			$('#ncc-but').click(function(){
 				$('.ncc-box').show();
 			});
 			$('.ncc-close').click(function(){
 				$('.ncc-box').hide();
 			});			
+			$('.delete-ncc-close').click(function(){
+				$('.delete-ncc-box').hide();
+			});
 			///////////////////////Chi tiet hoa don//////////////
 			
 			$('.chitiet-close').click(function(){

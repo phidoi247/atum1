@@ -119,7 +119,48 @@ $(document).ready(function(){
 				}
 			});
 		})
-	
+		/***********Xóa NCC**************/
+		// Thêm
+		$('#add-ncc-submit').click(function(){
+			var add_ncc=$('#ten_ncc').val();
+			$.ajax({
+				url:"modules/ql/modules/qlkho/xuly.php",
+				type:"POST",
+				data:"add_ncc="+add_ncc,
+				success: function(notify){
+					if(notify=='Ok'){
+						window.location.reload();
+					}else{
+						alert(notify);	
+					}
+				}
+			});
+		});
+		$('.delete-ncc-submit').click(function(){
+			var id_del=$('#id_ncc_del').val();
+			var get_id_row=$('#id_ncc_row').val();
+			var id_row="#"+get_id_row;
+			$.ajax({
+				url:"modules/ql/modules/qlkho/xuly.php",
+				type:"POST",
+				data:"id_ncc_dell="+id_del,
+				success: function(){
+					
+					$(id_row).parent().parent().remove();
+					var so_o=$('table#bangsp >tbody >tr').length; //dem so dong
+					var i=1;
+					while(i<=so_o){
+						var id_o="#ncc"+i;
+						var val_o=$(id_o).val();
+						if(val_o==id_del){
+							$(id_o).parent().parent().remove();
+						};
+						i++;
+					}
+					$('.delete-ncc-box').hide();
+				}
+			});
+		})
 		/***********Thiết lập*/
 		$('#change_pass_form').submit(function(event){
 			event.preventDefault();

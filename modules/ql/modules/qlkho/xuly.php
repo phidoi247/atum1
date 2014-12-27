@@ -95,7 +95,7 @@
 			}
 			
 		}
-		
+		//Xoa SP
 		if(isset($_POST['id_sp_del'])){
 			$id_sp_del=$_POST['id_sp_del'];
 			//Xóa file ảnh cũ
@@ -108,8 +108,20 @@
 			$r="DELETE FROM `tblsanpham` WHERE `sanpham_id`='$id_sp_del'";
 			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
 		}
-			
-			//Get thông tin
+			///////////////////////////NCC
+		//Xoa NCC
+		if(isset($_POST['id_ncc_del'])){
+			$id_ncc_del=$_POST['id_ncc_del'];
+			$r="DELETE FROM `tblnhacungcap` WHERE `nhacungcap_id`='$id_ncc_del'";
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
+		}
+		if(isset($_POST['add_ncc'])){
+			$ncc=$_POST['add_ncc'];
+			$r="INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES (NULL, '$ncc')";
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
+			echo "Ok";
+		}
+	//Get thông tin
 		if(isset($_POST['get_sp_info'])){
 			$edit_sp_id=$_POST['get_sp_info'];
 			$r="SELECT * FROM `tblsanpham` WHERE `sanpham_id`='$edit_sp_id'";
@@ -165,7 +177,9 @@
 			}else {
 				echo "Fill full all Fields,Please!";
 			}
+		
 			
+		
 								}
 
 	}

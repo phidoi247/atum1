@@ -1,17 +1,17 @@
 <?php 
 $cnt=1;
 if(isset($_GET['s'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
 }elseif(isset($_GET['vpp'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
 }elseif(isset($_GET['dc'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
 }else{
-$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";}
+$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";}
 $q=mysqli_query($dbc,$r);
 
 ?>
-<table>
+<table id="bangsp">
 	<thead>
     <tr><td>Mã SP</td><td>Avatar</td><td>Tên SP</td><td>Danh mục</td><td>Nhà CC</td><td>Số lượng</td><td>Đơn vị</td><td>Giá nhập</td><td>Giá bán</td><td>KM</td><td>Tùy chọn</td></tr>
     </thead>
@@ -19,10 +19,18 @@ $q=mysqli_query($dbc,$r);
 	<tbody>
     	<tr>
         	<td>
-            	<input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly></td><td><img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'>
+            	<input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly>									
+          	</td>
+            <td>
+                <img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'>
             </td>
             <td>
-				<?php echo $row['ten_sanpham']; ?></td><td><?php echo $row['ten_danhmuc']; ?></td><td><?php echo $row['ten_nhacungcap']; ?>
+				<?php echo $row['ten_sanpham']; ?></td>
+            <td>
+				<?php echo $row['ten_danhmuc']; ?>
+            </td>
+            <td>
+				<input type="hidden"  id="ncc<?php echo $cnt; ?>" value="<?php echo $row['nhacungcap_id']; ?>"/><?php echo $row['ten_nhacungcap']; ?>
             </td>
             <td>
 				<?php echo $row['soluong']; ?>
@@ -40,31 +48,39 @@ $q=mysqli_query($dbc,$r);
        </tbody>	
 <?php	$cnt++;
 }?>
-<?php
-	$r="select * from tblnhacungcap";
-	$q=mysqli_query($dbc,$r);
-	while ($row=mysqli_fetch_array($q)){
-?>
+
 </table>
 <div class="ncc-box" >
 	<img alt="" class="ncc-close" src="sourse/close.png">
 <table>
 	<thead>
-    	<tr><td>Mã NCC</td><td>Tên NCC</td></tr>
+    	<tr><td>Mã NCC</td><td>Tên NCC</td><td>Tùy chọn</td></tr>
     </thead>
     <tbody>
+<?php
+	$r="select * from tblnhacungcap";
+	$q=mysqli_query($dbc,$r);
+	$cnt=1;
+	while ($row=mysqli_fetch_array($q)){
+?>
     	<tr>
         	<td>
-            	<?php echo $row['nhacungcap_id']; ?>
+            	<input type='text' style="width:35px" class="ma_ncc" id='ma_ncc<?php echo $cnt; ?>' value='<?php echo $row['nhacungcap_id']; ?>' readonly="readonly" />
             </td>
             <td>
             	<?php echo $row['ten_nhacungcap']; ?>
             </td>
+            <td>
+            	<input class='delete-ncc-but' id='id_ncc_but<?php echo $cnt; ?>' onclick='delete_ncc(cnt=<?php echo $cnt; ?>);' value='Xóa' type='button' >
+            </td>
         </tr>
+        <?php $cnt++; }?>
     </tbody>
+    
 </table>
+
 </div>
-<?php }?>
+
 <!--Begin Addition sp Box--->
 <div class="add-sp-box" >
 	<img alt="" class="add-sp-close" src="sourse/close.png">
@@ -84,6 +100,18 @@ $q=mysqli_query($dbc,$r);
 	</table></form>
 </div>
 <!--End Addition sp Box--->
+<!--Begin Addition NCC Box--->
+<div class="add-ncc-box" >
+	<img alt="" class="add-ncc-close" src="sourse/close.png">
+	<form action="" id="add-ncc-form" method="post" name="add-sp-form" enctype="multipart/form-data"><table>
+		<thead><tr><th colspan="2">Thêm Nhà Cung Cấp</th></tr></thead>
+		<tbody>
+		<tr><td>Tên NCC:</td><td><input id="ten_ncc" name="name" type="text"></td></tr>
+		<tr><td></td><th><input type="reset"><input name="add" id='add-ncc-submit' type="button" value="Thêm"></th></tr>
+		</tbody>
+	</table></form>
+</div>
+<!--End Addition NCC Box--->
 <!--Begin Edit sp Box--->
 
 <div class="edit-sp-box" >
@@ -107,5 +135,7 @@ $q=mysqli_query($dbc,$r);
 <!--End Edit sp Box--->
 <!--Begin Delete Sp Box--->
 <div class="delete-sp-box"><form id='delete-sp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn xóa SP: <input id="id_sp_del" readonly><input type="hidden" id="id_sp_row" readonly>?</tr><tr><th></th><th><input class="delete-sp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-sp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
+</div>
+<div class="delete-ncc-box"><form id='delete-ncc-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn xóa NCC: <input id="id_ncc_del" readonly><input type="hidden" id="id_ncc_row" readonly>?</tr><tr><th></th><th><input class="delete-ncc-submit" value="Có" type="button" ></th><th></th><th><input class="delete-ncc-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
 </div>
 <!--End Delete Sp Box--->
