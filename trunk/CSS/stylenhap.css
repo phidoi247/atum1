@@ -5,11 +5,6 @@
 
 }
 
-#header{
-    float: left;
-    width: 1000px;
-    height: 150px;
-}
 
 #content{
     float: left;
@@ -94,14 +89,4 @@ table{
 #td{
     text-align: center;
     color: #0000A0;
-}
-
-#footer{
-    float: left;
-    width: 1000px;
-    line-height:inherit;
-    text-align: center;
-    height: 50px;
-    background-color: #80FFFF;
-    border: 1px solid;
 }
