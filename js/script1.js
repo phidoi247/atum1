@@ -104,7 +104,7 @@ function delete_ncc(cnt){
 		var get_delete_ncc_id="#ma_ncc"+cnt;
 		var delete_ncc_id=$(get_delete_ncc_id).val();
 		$('#id_ncc_del').val(delete_ncc_id);
-		$('#id_ncc_row').val("ma_sp"+cnt);
+		$('#id_ncc_row').val("ma_ncc"+cnt);
 		$('.delete-ncc-box').show();
 	}
 
