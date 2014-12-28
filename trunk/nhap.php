@@ -13,6 +13,7 @@
     // đặt biến ngày giờ 
     $timezone = +6;
     $now = getdate(time() + 3600*($timezone+date("0")));
+    //print_r($now);
     $currentTime = $now["hours"] . ":" . $now["minutes"] . ":" . $now["seconds"]; 
     $currentDate = $now["mday"] . "." . $now["mon"] . "." . $now["year"]; 
     //print_r($now);
@@ -43,13 +44,9 @@
                         if(in_array($hoadon,$name)){//nếu tên hóa đơn vừa nhập đã có trong name thì chỉ thêm dữ liệu vào 2 bảng này
                             $q0 = "INSERT INTO tblchitietdonhang (ten_hoadon,loaigiaodich_id,sanpham_id,soluong) VALUES('$hoadon',2,'$id_sanpham','$soluong')";
                             $r0 = mysqli_query($dbc,$q0) or die ("Query {$q0} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
-                            $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
-                            $r = mysqli_query($dbc,$q) or die("Query {$q} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                         }else{//nếu không thì thêm cả vào 3 bảng
                             $q0 = "INSERT INTO tblchitietdonhang (ten_hoadon,loaigiaodich_id,sanpham_id,soluong) VALUES('$hoadon',2,'$id_sanpham','$soluong')";
-                            $r0 = mysqli_query($dbc,$q0) or die ("Query {$q0} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
-                            $q = "INSERT INTO tblnhaphang(sanpham_id,ten_hoadon,soluong) VALUES ('$id_sanpham','$hoadon',$soluong)";
-                            $r = mysqli_query($dbc,$q) or die("Query {$q} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
+                            $r0 = mysqli_query($dbc,$q0) or die ("Query {$q0} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));  
                             $q1 = "INSERT INTO tblhoadon (ten_hoadon,ngay,gio,nhanvien_id) VALUES ('$hoadon','$currentDate','$currentTime','BH001')";
                             $r1 = mysqli_query($dbc,$q1) or die("Query {$q1} \n<br/> MYSQL đã bị lỗi!! : " . mysqli_error($dbc));
                         }
@@ -150,13 +147,13 @@
                  <?php 
                  //nối các bảng cần hiển thị trong database
                  if(isset($hoadon)){
-            $q2 = "SELECT tblnhaphang.soluong,tblhoadon.ten_hoadon,tblhoadon.ngay,tblhoadon.gio,tblsanpham.sanpham_id,tblsanpham.ten_sanpham,tblsanpham.gia_nhap * tblnhaphang.soluong AS thanhtien";
+            $q2 = "SELECT tblchitietdonhang.soluong,tblhoadon.ten_hoadon,tblhoadon.ngay,tblhoadon.gio,tblsanpham.sanpham_id,tblsanpham.ten_sanpham,tblsanpham.gia_nhap * tblchitietdonhang.soluong AS thanhtien";
             $q2 .= " FROM tblhoadon";
-            $q2 .= " JOIN tblnhaphang";
+            $q2 .= " JOIN tblchitietdonhang";
             $q2 .= " USING(ten_hoadon)";
             $q2 .= " JOIN tblsanpham";
             $q2 .= " USING(sanpham_id)";
-            $q2 .= " WHERE tblnhaphang.ten_hoadon = '".$hoadon."'";
+            $q2 .= " WHERE tblchitietdonhang.ten_hoadon = '".$hoadon."'";
             $r2 = mysqli_query($dbc,$q2) or die("Query {$q2} \n<br/> MYSQL Error : " . mysqli_error($dbc));
             while($xuathoadon = mysqli_fetch_array($r2, MYSQLI_ASSOC)){//tạo array xuathoadon để truyền giá trị trong database vào và hiển thị theo từng cột
                 echo "
@@ -181,13 +178,13 @@
             <hr />
                  <?php 
                     if(isset($hoadon)){
-                $q3 = "SELECT SUM(tblsanpham.gia_nhap * tblnhaphang.soluong) AS thanhtien";
+                $q3 = "SELECT SUM(tblsanpham.gia_nhap * tblchitietdonhang.soluong) AS thanhtien";
                 $q3 .= " FROM tblhoadon";
-                $q3 .= " JOIN tblnhaphang";
+                $q3 .= " JOIN tblchitietdonhang";
                 $q3 .= " USING(ten_hoadon)";
                 $q3 .= " JOIN tblsanpham";
                 $q3 .= " USING(sanpham_id)";
-                $q3 .= " WHERE tblnhaphang.ten_hoadon = '".$hoadon."'";
+                $q3 .= " WHERE tblchitietdonhang.ten_hoadon = '".$hoadon."'";
                 $r3 = mysqli_query($dbc,$q3) or die("Query {$q3} \n<br/> MYSQL Error : " .mysqli_error($dbc));
                     while($SUM = mysqli_fetch_array($r3, MYSQLI_ASSOC)){
                         echo "<h3>Tổng là : {$SUM['thanhtien']}</h3>";
