@@ -1,6 +1,34 @@
 <?php 
 $cnt=1;
-$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";
+if(isset($_GET['s'])){
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
+}elseif(isset($_GET['vpp'])){
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
+}elseif(isset($_GET['dc'])){
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
+}else{
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ) limit $from,10";
+	}else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ) limit 0,10";
+	}
+}
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
@@ -13,4 +41,86 @@ $q=mysqli_query($dbc,$r);?>
 <?php	$cnt++;
 }?>
 </table>
-<!--End Delete Sp Box--->
+<?php
+	if(isset($_GET['s'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=1 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&s&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&s&f=".$from."'>Trang".($i+1)."</a>";
+				$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&s&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}elseif(isset($_GET['vpp'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=2 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&vpp&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&vpp&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&vpp&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}elseif(isset($_GET['dc'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=3 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&dc&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&dc&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&dc&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}else{
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}
+?>

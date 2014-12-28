@@ -179,3 +179,48 @@ function nh_chitiet(cnt){
 			}
 		});
 }
+
+function bh_chitiet(cnt){
+		$('.chitiet-box').show();
+		var get_chitiet_id="#ma_hd"+cnt;
+		var chitiet_id=$(get_chitiet_id).val();
+		$('#ma_hd').val(chitiet_id);
+		$.ajax({
+			type:"POST",
+			url:"modules/nvbh/modules/lichsu/xuly.php",
+			data:"chitiet="+chitiet_id,
+			dataType:"json",
+			success: function(obb){
+		      var cntt=(Object.keys(obb).length);
+				var i=0;
+				$('#tbody_chitiet').empty();
+				while(i<=cntt){
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_nhap+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					i++;
+				}
+			}
+		});
+}
+
+////////////////////////////////
+function bh_chitiet(cnt){
+		$('.chitiet-box').show();
+		var get_chitiet_id="#ma_hd"+cnt;
+		var chitiet_id=$(get_chitiet_id).val();
+		$('#ma_hd').val(chitiet_id);
+		$.ajax({
+			type:"POST",
+			url:"modules/nvbh/modules/lichsu/xuly.php",
+			data:"chitiet="+chitiet_id,
+			dataType:"json",
+			success: function(obb){
+		      var cntt=(Object.keys(obb).length);
+				var i=0;
+				$('#tbody_chitiet').empty();
+				while(i<=cntt){
+					$('#tbody_chitiet').append("<tr><td>"+obb[i].sanpham_id+"</td><td>"+obb[i].ten_sanpham+"</td><td>"+obb[i].gia_ban+"</td><td>"+obb[i].soluong+"</td><td>"+obb[i].thanhtien+"</td></tr>");
+					i++;
+				}
+			}
+		});
+}

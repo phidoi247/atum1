@@ -4,7 +4,13 @@ $(function(){
 		if(tab.length != 1){
 			$('.tab').removeClass('active-tab');
 			$(tab).addClass('active-tab');
-		}});
+		}
+	<?php
+if(isset($_SESSION['lvu'])){
+	echo "$('.nav').remove();";	
+}
+?>
+});
 </script>
 <nav class="menu">
 <ul>

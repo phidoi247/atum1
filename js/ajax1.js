@@ -1,6 +1,14 @@
 // JavaScript Document
 $(document).ready(function(){
 	/*******notyfy***/
+	$(function(){
+		var info=$('#log_info').val();
+		if(info!=''){
+			$('#logbox').show();
+		}else{
+			$('#logbox').hide();
+		}
+	});
 		//Thêm nhân viên mới
 		/*Post bang ajax ma khong can refesh*/
 		$('#add-emp-form').submit(function(event){

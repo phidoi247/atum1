@@ -1,4 +1,4 @@
-<?php include('includes/mysqli_connect.php');?>
+<?php include('Connections/connect.php');?>
 <!DOCTYPE HTML>
 <html>
 <head>
