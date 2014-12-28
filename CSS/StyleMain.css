@@ -557,6 +557,11 @@
 		position:absolute;
 		float:left;	
 	}
+	.nav-page a{
+		color:#333;
+		margin:0 5px;
+		line-height:20px;
+	}
 /************************************/
 	footer{
 		width:100%;

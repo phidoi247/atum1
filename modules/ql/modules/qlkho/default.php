@@ -1,13 +1,34 @@
 <?php 
 $cnt=1;
 if(isset($_GET['s'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=1 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
 }elseif(isset($_GET['vpp'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=2 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
 }elseif(isset($_GET['dc'])){
-	$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";	
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,10";	}
+	else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=3 and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
+	}
 }else{
-$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id)";}
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ) limit $from,10";
+	}else{
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d where(a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ) limit 0,10";
+	}
+}
 $q=mysqli_query($dbc,$r);
 
 ?>
@@ -134,8 +155,121 @@ $q=mysqli_query($dbc,$r);
 </div>
 <!--End Edit sp Box--->
 <!--Begin Delete Sp Box--->
-<div class="delete-sp-box"><form id='delete-sp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn xóa SP: <input id="id_sp_del" readonly><input type="hidden" id="id_sp_row" readonly>?</tr><tr><th></th><th><input class="delete-sp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-sp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
-</div>
-<div class="delete-ncc-box"><form id='delete-ncc-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn xóa NCC: <input id="id_ncc_del" readonly><input type="hidden" id="id_ncc_row" readonly>?</tr><tr><th></th><th><input class="delete-ncc-submit" value="Có" type="button" ></th><th></th><th><input class="delete-ncc-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
+<div class="delete-sp-box">
+	<form id='delete-sp-form' action="" method="post" >
+    	<table>
+        	<tr>
+            	<th colspan="6">
+                	Bạn thật sự muốn xóa SP: <input id="id_sp_del" readonly><input type="hidden" id="id_sp_row" readonly>?
+             	 </th>
+             </tr>
+       
+          <tr>
+          		<th></th>
+          	<th>
+            	<input class="delete-sp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-sp-close" value="Không" type="button" >
+            </th>
+            <th></th><th></th>
+         </tr>
+       </table>
+  	</form>
 </div>
 <!--End Delete Sp Box--->
+
+<!--BEGIN Delete ncc Box--->
+<div class="delete-ncc-box">
+	<form id='delete-ncc-form' action="" method="post" >
+    	<table>
+        	<tr>
+            	<th colspan="6">	
+                	Bạn thật sự muốn xóa NCC: <input id="id_ncc_del" readonly><input type="hidden" id="id_ncc_row" readonly>?</tr><tr><th></th><th><input class="delete-ncc-submit" value="Có" type="button" >
+                 </th>
+                 <th></th>
+                 <th>
+                 	<input class="delete-ncc-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
+</div>
+<div class="nav-page">
+<?php
+	if(isset($_GET['s'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=1 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&s&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&s&f=".$from."'>Trang".($i+1)."</a>";
+				$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&s&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}elseif(isset($_GET['vpp'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=2 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&vpp&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&vpp&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&vpp&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}elseif(isset($_GET['dc'])){
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=3 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&dc&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&dc&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&dc&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}else{
+		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=k&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=k&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=k&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}
+?>
+</div>
