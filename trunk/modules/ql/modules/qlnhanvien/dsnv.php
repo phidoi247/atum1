@@ -1,11 +1,24 @@
 <?php 
 $cnt=1;
 if(isset($_GET['nvbh'])){
-	$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'BH%' order by ngay_vao_lam ";
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,10";
+	}else{
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,10";}
 }elseif(isset($_GET['nvk'])){
-	$r="SELECT * FROM `tblnhanvien` WHERE nhanvien_id LIKE 'TK%' order by ngay_vao_lam ";
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit $from,10";
+	}else{
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,10";}
 }else{
-$r="SELECT * FROM `tblnhanvien`";}
+	if(isset($_GET['f'])){
+		$from=$_GET['f'];
+		$r="SELECT * FROM `tblnhanvien` order by ngay_vao_lam limit $from,10";
+	}else{
+		$r="SELECT * FROM `tblnhanvien` order by ngay_vao_lam limit 0,10";}
+}
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
@@ -59,3 +72,68 @@ $q=mysqli_query($dbc,$r);?>
 <div class="delete-emp-box"><form id='delete-emp-form' action="" method="post" ><table><tr><th colspan="6">Bạn thật sự muốn Sa thải NV <input id="id_emp_del" readonly><input type="hidden" id="id_emp_row" readonly>?</tr><tr><th></th><th><input class="delete-emp-submit" value="Có" type="button" ></th><th></th><th><input class="delete-emp-close" value="Không" type="button" ></th><th></th><th></th></tr></table></form>
 </div>
 <!--End Delete Employees Box--->
+<div class="nav-page">
+<?php
+	if(isset($_GET['nvbh'])){
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=2 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nvbh&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1){
+			while($i<$page){
+				echo "<a href='default.php?nvbh&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nvbh&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}	
+	}elseif(isset($_GET['nvk'])){
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=3 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nvk&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nvk&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nvk&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}
+	}else{
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nv&f=0'>Trang1</a>";
+		$from=10;$i=1;$modpage=$so_page[0]%10;$page=$so_page[0]/10;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nv&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nv&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=10;
+			$i++;
+			}	
+		}
+	}
+?>
+</div>
