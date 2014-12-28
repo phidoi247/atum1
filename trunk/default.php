@@ -34,8 +34,9 @@
 <!--End Header-->
 <section>
 <div class="popup"></div>
-<div id="logbox"  style="display:none">
+<div id="logbox" >
 <span class="notify">
+<input id="log_info" type="text" value="
 <?php 
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		$error=array();
@@ -64,7 +65,7 @@
 			echo "Fill all Fields, Please!";
 		}
 	}
-?>
+?>"/>
 </span>
   <input type="button" value="X" class="cancellog"/>
   <form name="login"  id="form_login" method="POST" action="">

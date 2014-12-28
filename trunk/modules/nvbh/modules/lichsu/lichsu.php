@@ -1,17 +1,42 @@
 ﻿<?php 
 $cnt=1;
-$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and a.nhanvien_id='{$_SESSION['idu']}' group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon   ";
+if(isset($_GET['f'])){
+	$from=$_GET['f'];
+	$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and a.nhanvien_id='{$_SESSION['idu']}' group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
+}else{
+	$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and a.nhanvien_id='{$_SESSION['idu']}' group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
+}
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
-    <tr><td>Tên Hóa Đơn</td><td>Số lượng</td><td>Giá trị</td><td>Thời gian</td><td>Nhân viên GD</td><td>Tùy chọn</td></tr>
+    	<tr><td>Tên Hóa Đơn</td><td>Số lượng</td><td>Giá trị</td><td>Thời gian</td><td>Nhân viên GD</td><td>Tùy chọn</td></tr>
     </thead>
-<?php while ($row=mysqli_fetch_array($q)){?>
+
 	<tbody>
-    	<tr><td><input type='text' class="ma_ls" id='ma_hd<?php echo $cnt; ?>' value='<?php echo $row['ten_hoadon']; ?>' readonly></td><td><?php echo $row['soluong']; ?></td><td><?php echo $row['thanhtien']; ?></td><td><?php echo $row['ngay']; ?></td><td><?php echo $row['nhanvien_id']; ?></td><td><input id='chitiet-but<?php echo $cnt; ?>' onclick='bh_chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' ></td></tr>
+<?php while ($row=mysqli_fetch_array($q)){?>
+    	<tr>
+        	<td>
+            	<input type='text' class="ma_ls" id='ma_hd<?php echo $cnt; ?>' value='<?php echo $row['ten_hoadon']; ?>' readonly>			
+           </td>
+        <td>
+			<?php echo $row['soluong']; ?>
+        </td>
+        <td>
+			<?php echo $row['thanhtien']; ?>
+        </td>
+        <td>
+			<?php echo $row['ngay']; ?>
+        </td>
+        <td>
+			<?php echo $row['nhanvien_id']; ?>
+        </td>
+        <td>
+        	<input id='chitiet-but<?php echo $cnt; ?>' onclick='bh_chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
+        </td>
+      </tr>
+<?php	$cnt++;}?>
        </tbody>	
-<?php	$cnt++;
-}?>
+
 </table>
 <!--Begin Chi tiet Box--->
 <div class="chitiet-box">
@@ -27,3 +52,27 @@ $q=mysqli_query($dbc,$r);?>
 	</table>
 </div>
 <!--End Chi tiet Box--->
+
+<div class="nav-page">
+<?php
+	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 ";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		echo "<a href='default.php?nav=ls&nh&f=0'>Trang1</a>";
+		$from=14;$i=1;$modpage=$so_page[0]%14;$page=$so_page[0]/14;
+		if($modpage==0 and $page>=1 ){
+			while($i<$page){
+				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=14;
+			$i++;
+			}
+		}
+		elseif($page>=1){
+			while($i<=($page)){
+				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
+			$from+=14;
+			$i++;
+			}	
+		}	
+?>
+</div>
