@@ -13,10 +13,8 @@
     // đặt biến ngày giờ 
     $timezone = +6;
     $now = getdate(time() + 3600*($timezone+date("0")));
-    //print_r($now);
     $currentTime = $now["hours"] . ":" . $now["minutes"] . ":" . $now["seconds"]; 
-    $currentDate = $now["mday"] . "." . $now["mon"] . "." . $now["year"]; 
-    //print_r($now);
+    $currentDate = $now["year"] . "." . $now["mon"] . "." . $now["mday"]; 
     //khai báo biến để truyền giá trị của post
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $errors = array();// tạo array để khi có lỗi sẽ truyền lỗi vào array,nếu array lỗi có giá trị sẽ k cho submit
