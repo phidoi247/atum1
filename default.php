@@ -99,7 +99,7 @@
 ?>
 </section>
 <footer>
-Copyright &copy; by Atumt Team.
+Copyright &copy; by ATUM Team.
 </footer>
 </div>
 </body>
