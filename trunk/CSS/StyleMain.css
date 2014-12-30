@@ -540,7 +540,7 @@
 		background-color: #B6D8A0;
 		
 	}
-	div.Bar table tbody tr td.td_tensp{
+	div.Bar table tbody tr td.td_tensp,td.td_tennv{
 		text-align:left;
 	}
 	div.Bar table tbody tr td.td_giatri{

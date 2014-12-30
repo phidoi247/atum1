@@ -1,6 +1,4 @@
-<?php 	
-	include 'Connections/connect.php';
-?>
+
 <div class="doanh_so_box">
 	<img alt="" class="doanh_so_close" src="sourse/close.png">
 	<form action="modules/ql/modules/baocao/doanh_so.php" method="post" target="_blank">
