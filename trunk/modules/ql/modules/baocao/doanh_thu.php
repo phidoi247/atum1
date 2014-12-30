@@ -28,7 +28,7 @@
 				$qban[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_ban) AS ban FROM tblchitietdonhang JOIN tblhoadon ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon 
 					JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay = '".$dates[$i]."' ";
 				$qnhap[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblchitietdonhang JOIN tblhoadon 
-						ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND tblhoadon.ngay = '".$dates[$i]."' "; 
+						ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND left(tblhoadon.thoigian,10) = '".$dates[$i]."' "; 
 				$rban = mysqli_query($dbc, $qban[$i]) or die ("Query $qban[$i] <br /> mysql error: ".mysqli_errno($dbc));
 				$rnhap = mysqli_query($dbc, $qnhap[$i]) or die ("Query $qnhap[$i] <br /> mysql error: ".mysqli_errno($dbc));
 				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
