@@ -19,11 +19,11 @@
         			<td><input type="text" name="subtitle" required></td>
         		</tr>        		
         		<tr>
-        			<td><label>yAxis title: </label></td>
+        			<td><label>Tiêu đề chiều dọc: </label></td>
         			<td><input type="text" name="yaxis"></td>
         		</tr>
         		<tr>
-        			<td><label>xAxis title: </label></td>
+        			<td><label>Tiêu đề chiều ngang: </label></td>
         			<td><input type="text" name="xaxis"></td>
         		</tr>
         		<tr>
@@ -63,7 +63,7 @@
         			<td><input type="text" name="subtitle" required></td>
         		</tr>        		
         		<tr>
-        			<td><label>xAxis title: </label></td>
+        			<td><label>Tiêu đề chiều ngang: </label></td>
         			<td><input type="text" name="xaxis"></td>
         		</tr>        		   		
         		<tr>
@@ -99,7 +99,7 @@
         			<td><input type="text" name="subtitle" required></td>
         		</tr>        		
         		<tr>
-        			<td><label>yAxis title: </label></td>
+        			<td><label>Tiêu đề chiều dọc: </label></td>
         			<td><input type="text" name="yaxis"></td>
         		</tr>        		   		
         		<tr>
