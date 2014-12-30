@@ -344,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `tblnhanvien` (
   `dia_chi` varchar(256) NOT NULL,
   `ngay_vao_lam` date NOT NULL,
   `avatar` varchar(128) NOT NULL,
-  `password` varchar(26) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `SDT` varchar(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nhanvien_id` (`nhanvien_id`),
