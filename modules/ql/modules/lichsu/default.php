@@ -3,25 +3,25 @@ $cnt=1;
 	if(isset($_GET['nh'])){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=2 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=2 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
 
 		}else{
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=2 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=2 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
 		}
 	}elseif(isset($_GET['bh'])){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
 
 		}else{
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where tblchitietdonhang.loaigiaodich_id=1 group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
 		}
 	}else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang  group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang  group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit $from,14";
 		}else{
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.ngay,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang  group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.ngay,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.ngay,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id FROM (select tblchitietdonhang.ten_hoadon,tblchitietdonhang.loaigiaodich_id,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang  group by tblchitietdonhang.ten_hoadon) as j, (select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k where j.ten_hoadon=k.ten_hoadon limit 0,14";
 		}
 	}
 $q=mysqli_query($dbc,$r);?>
@@ -40,7 +40,7 @@ $q=mysqli_query($dbc,$r);?>
 				<?php echo $row['soluong']; ?></td><td><?php echo $row['thanhtien']; ?>
             </td>
             <td>
-				<?php echo $row['ngay']; ?>
+				<?php echo $row['thoigian']; ?>
             </td>
             <td>
 				<?php echo $row['nhanvien_id']; ?>
