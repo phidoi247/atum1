@@ -1,5 +1,4 @@
 <?php 
-		include("Connections/connect.php"); 
 		$r="select * from tblnhanvien where nhanvien_id='{$_SESSION['idu']}'";
 		$q=mysqli_query($dbc,$r);
 		$f=mysqli_fetch_row($q);

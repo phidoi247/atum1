@@ -140,21 +140,32 @@
 						copy($_FILES['eavatar']['tmp_name'],$link);
 						$src_avatar=substr($link,12);
 						if($password!=''){
-							$r="update tblnhanvien 		set ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',password=SHA1('$password'),avatar='$src_avatar',SDT='$phone' where nhanvien_id='$eid'";
+							$r="update tblnhanvien set ";
+							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="dia_chi='$address',password=SHA1('$password'),avatar='$src_avatar',SDT='$phone' ";
+							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";
 						}else{
-							$r="update tblnhanvien set ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',avatar='$src_avatar',SDT='$phone' where nhanvien_id='$eid'"; 	
+							$r="update tblnhanvien set ";
+							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="dia_chi='$address',avatar='$src_avatar',SDT='$phone' ";
+							$r.="where nhanvien_id='$eid'"; 	
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 							echo "Ok";
 						}
 					}else{
 						if($password!=''){
-							$r="update tblnhanvien 		set ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',password=SHA1('$password'),SDT='$phone' where nhanvien_id='$eid'";
+							$r="update tblnhanvien set "; 
+							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="dia_chi='$address',password=SHA1('$password'),SDT='$phone' ";
+							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";
 						}else{
-							$r="update tblnhanvien set ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone' where nhanvien_id='$eid'";
+							$r="update tblnhanvien set ";
+							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone'";
+							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 						
 							echo "Ok";
@@ -163,7 +174,8 @@
 				}
 				else{
 				//Nếu != thì Up 1 nhân viên mới
-								$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ORDER BY `nhanvien_id` DESC LIMIT 1";
+					$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ";
+					$r.="ORDER BY `nhanvien_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
@@ -194,12 +206,18 @@
 						$link='../../../../upload/'.$fmten;
 						copy($_FILES['avatar']['tmp_name'],$link);
 						$src_avatar=substr($link,6);
-						$r="update tblnhanvien set nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',avatar='$src_avatar',SDT='$phone' where nhanvien_id='$eid'";
+						$r="update tblnhanvien set ";
+						$r.="nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',";
+						$r.="ngay_sinh='$dateofbirth',dia_chi='$address',avatar='$src_avatar',SDT='$phone' ";
+						$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 					
 						echo "Ok";
 					}else{
-						$r="update tblnhanvien set nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone' where nhanvien_id='$eid'";
+						$r="update tblnhanvien set ";
+						$r.="nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',";
+						$r.="ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone' ";
+						$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 					
 						echo "Ok";
