@@ -36,11 +36,71 @@ $q=mysqli_query($dbc,$r);?>
     </thead>
 <?php while ($row=mysqli_fetch_array($q)){?>
 	<tbody>
-    	<tr><td><input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly></td><td><img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'></td><td><?php echo $row['ten_sanpham']; ?></td><td><?php echo $row['ten_danhmuc']; ?></td><td><?php echo $row['ten_nhacungcap']; ?></td><td><?php echo $row['soluong']; ?></td><td><?php echo $row['ten_donvi']; ?></td><td><?php echo $row['gia_nhap']; ?><td><?php echo $row['gia_ban']; ?></td><td><?php echo $row['giam_gia']; ?></td></td></tr>
-       </tbody>	
+    	<tr>
+        	<td>
+            	<input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly>
+            </td>
+            <td>
+            	<img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'>
+            </td>
+            <td class="td_tensp">
+		   		<?php echo $row['ten_sanpham']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['ten_danhmuc']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['ten_nhacungcap']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['soluong']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['ten_donvi']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['gia_nhap']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['gia_ban']; ?>
+           </td>
+           <td>
+		   		<?php echo $row['giam_gia']; ?>
+           </td>
+        </tr>
+       </tbody>
 <?php	$cnt++;
 }?>
 </table>
+
+</table>
+<div class="ncc-box" >
+	<img alt="" class="ncc-close" src="sourse/close.png">
+<table>
+	<thead>
+    	<tr><td>Mã NCC</td><td>Tên NCC</td></tr>
+    </thead>
+    <tbody>
+<?php
+	$r="select * from tblnhacungcap";
+	$q=mysqli_query($dbc,$r);
+	$cnt=1;
+	while ($row=mysqli_fetch_array($q)){
+?>
+    	<tr>
+        	<td>
+            	<input type='text' style="width:35px" class="ma_ncc" id='ma_ncc<?php echo $cnt; ?>' value='<?php echo $row['nhacungcap_id']; ?>' readonly="readonly" />
+            </td>
+            <td>
+            	<?php echo $row['ten_nhacungcap']; ?>
+            </td>
+        </tr>
+        <?php $cnt++; }?>
+    </tbody>
+    
+</table>
+</div>
+<div class="nav-page">
 <?php
 	if(isset($_GET['s'])){
 		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=1 ";
@@ -124,3 +184,4 @@ $q=mysqli_query($dbc,$r);?>
 		}	
 	}
 ?>
+</div>

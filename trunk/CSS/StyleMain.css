@@ -473,7 +473,10 @@
 	}
 	.thu_chi_box table thead{background: #B6D8A0;height: 30px}
 	
-	
+	/*_______Hover___TR---*/
+	table > tbody >tr:hover{
+		background:#09F;	
+	}
 	
 	/*------------------------------------------*/
 	
@@ -537,6 +540,12 @@
 		background-color: #B6D8A0;
 		
 	}
+	div.Bar table tbody tr td.td_tensp{
+		text-align:left;
+	}
+	div.Bar table tbody tr td.td_giatri{
+		text-align:right;	
+	}
 	
 	div.Bar table tbody input.ma_nv[type='text']{
 		width: 45px;
@@ -575,6 +584,79 @@
 		background:#B6D8A0;
 		float:left;
 	}
+/************************NHAP XUAT*******************/
 
 
-	
+#form{
+    float: left;
+    width: 350px;
+    height: auto;
+}
+fieldset{
+    height: auto;
+    border:1px solid; 
+    margin: 5px 0px 10px 10px;
+    padding: 10px; 
+    border-radius: 5px;
+}
+legend{
+    color: #804000;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px 0px 10px 100px;
+}
+#legHD{
+    color: #804000;
+    font-weight: bold;
+    margin:0px 0px 0px 200px;
+}
+
+form#form_nhap_xuat div{
+    margin: 5px 0px 40px 0px;
+}
+form#form_nhap_xuat table{
+	color:#333;	
+}
+.success {
+    font-weight: bold;
+    color: green;
+    text-align: center;
+    }
+.warning {
+    font-size: 13px; 
+    color: #c00; 
+    text-align: center;
+    }
+#nhap{
+    width: 100px;
+    margin-left: 40px;
+}
+
+#hoadon{
+    float: right;
+    width: 620px;
+    height: auto;
+    margin: 0px 10px 0px 0px;
+}
+#formHD{
+}
+h3{
+    margin-top: 10px;
+    text-align: center;
+    color: #804000;
+}
+table.nhap_xuat{
+    width: 620px;
+    border: 2px solid;
+    margin: 0px auto;
+}
+table.nhap_xuat.th{
+    font-size: 12px;
+    text-align: center;
+    color: #804000;
+}
+table.nhap_xuat#td{
+    text-align: left;
+    color: #0000A0;
+}
+

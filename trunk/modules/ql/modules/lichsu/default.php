@@ -36,14 +36,18 @@ $q=mysqli_query($dbc,$r);?>
         	<td>
             	<input type='text' class="ma_ls" id='ma_hd<?php echo $cnt; ?>' value='<?php echo $row['ten_hoadon']; ?>' readonly>
             </td>
-            <td>
+            <td class="td_giatri">
 				<?php echo $row['soluong']; ?></td><td><?php echo $row['thanhtien']; ?>
             </td>
             <td>
 				<?php echo $row['ngay']; ?>
             </td>
             <td>
-				<?php echo $row['nhanvien_id']; ?></td><td><input type="hidden" value="<?php echo $row['loaigiaodich_id']; ?>" id="loaihd<?php echo $cnt; ?>"/><input id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
+				<?php echo $row['nhanvien_id']; ?>
+            </td>
+            <td>
+            	<input type="hidden" value="<?php echo $row['loaigiaodich_id']; ?>" id="loaihd<?php echo $cnt; ?>"/>
+                <input id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
             </td>
        </tr>
        </tbody>	

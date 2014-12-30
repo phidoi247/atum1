@@ -23,11 +23,26 @@ if(isset($_SESSION['lvu'])){
     <li class='tab' id='out'><form action="default.php" method="post"><input name="logout" type="submit" value="Thoát"></form></li>
 </ul>
 </nav>
-<article class="fillter">
+<?php
 
-</article>
+	if(isset($_GET['nav'])){
+		$nav=$_GET['nav'];
+		$size=452;
+			if($nav=='k'){
+				echo "<article class='fillter'>";
+				include 'modules/nvk/modules/kho/fillter.php';
+				echo "</article>";
+				$size=400;
+			}
+?>
+
 <div class="pop-up"></div>
-<div class="Bar">
+<div class="Bar" style="height:<?php echo $size; ?>px">
+<?php
+
+	}
+
+?>
 <div id="notify"></div>
 <?php	
 if($_SERVER['REQUEST_METHOD']='GET'){

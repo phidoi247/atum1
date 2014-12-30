@@ -9,6 +9,144 @@ $(document).ready(function(){
 			$('#logbox').hide();
 		}
 	});
+	//Nhập SP
+		$('#nhap_msp').focusout(function(e) {
+            var msp=$(this).val();
+			$.ajax({
+				type:"POST",
+				url:"modules/nvk/modules/nhap/xuly.php",
+				data:"msp="+msp,
+				dataType:"json",
+				success: function(data){
+					
+					$('#gia_sp').val(data[0].gia);
+					$('#ten_sp').val(data[0].ten_sanpham);
+					$('#chk_msp').html("Sản phẩm: "+data[0].ten_sanpham);
+				}
+			});
+			$(this).focus(function(){
+				$('#gia_sp').val(0);
+			});
+			var giasp=$('#gia_sp').val();
+			if(giasp==0){
+			$('#chk_msp').html("Sản phẩm không có trong kho!");
+			}
+        });
+		//Xuất SP
+		$('#nhap_msp').focusout(function(e) {
+            var msp=$(this).val();
+			$.ajax({
+				type:"POST",
+				url:"modules/nvbh/modules/xuat/xuly.php",
+				data:"msp="+msp,
+				dataType:"json",
+				success: function(data){
+					
+					$('#gia_sp').val(data[0].gia);
+					$('#ten_sp').val(data[0].ten_sanpham);
+					$('#chk_msp').html("Sản phẩm: "+data[0].ten_sanpham);
+				}
+			});
+			$(this).focus(function(){
+				$('#gia_sp').val(0);
+			});
+			var giasp=$('#gia_sp').val();
+			if(giasp==0){
+			$('#chk_msp').html("Sản phẩm không có trong kho!");
+			}
+        });
+		//Gui vao bang hoa don
+		$('#nhap_hd').click(function(){
+			var slclick=$('#solanclick').val();
+			slclick=parseInt(slclick)+1;
+			$('#solanclick').val(slclick);
+			var masp=$('#nhap_msp').val();
+			var tensp=$('#ten_sp').val();
+			var giasp=$('#gia_sp').val();
+			var slsp=$('#sl_sp').val();
+			var lgt=(masp.length)-0;
+			if(slsp!=0){
+				if(lgt!=0){
+					if(giasp!=0){
+						$(function(){
+							var str;
+							str="<tr>";
+							str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
+							str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
+							str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
+							str+="<td id=ttsp"+slclick+"></td></tr>";
+							var id_del=".del_detail"+slclick;
+							$('tbody#detail_hd').append(str);	
+							$('#chk').html("**********")
+						});
+					}else{
+						$('#chk').html("Không có Sản phẩm! trong kho");	
+					}
+				}else{
+					$('#chk').html("Chưa nhập Mã Sản phẩm!");
+				}
+			}else{
+				$('#chk').html("Chưa nhập số lượng!");	
+			}
+			//tính tiền
+			$(function(){
+				var id_tt="#ttsp"+slclick;
+				var id_sl="#slsp"+slclick;
+				var sl=$(id_sl).val();
+				var tt=sl*giasp;
+				$(id_tt).html(tt);
+				//dếm số dơn
+				$('#slhd').val(slclick);
+			});
+				
+		});
+		//Ghi hđ nhập vào db
+		$('form#formHDnhap').submit(function(event){
+			event.preventDefault();
+			var form=new FormData($(this)[0]);
+			
+			$.ajax({
+				type:"POST",
+				url:"modules/nvk/modules/nhap/xuly.php",
+				data:form,
+				async:false,
+				cache:false,
+				processData:false,
+				contentType:false,
+				success: function(nn){
+					if(nn=='Ok'){
+						alert("Giao dich thành công!");
+						document.location.reload();
+					}
+				}
+			});
+		});
+		//Ghi hđ xuất vào db
+		$('form#formHDxuat').submit(function(event){
+			event.preventDefault();
+			var form=new FormData($(this)[0]);
+			
+			$.ajax({
+				type:"POST",
+				url:"modules/nvbh/modules/xuat/xuly.php",
+				data:form,
+				async:false,
+				cache:false,
+				processData:false,
+				contentType:false,
+				success: function(nn){
+					if(nn=='Ok'){
+						alert("Giao dich thành công!");
+						document.location.reload();
+					}
+				}
+			});
+		});
+		//Hủy gd
+		$('#hgd_but').click(function(){
+			$('#solanclick').val(0);
+			$('tbody#detail_hd').empty();
+		});
 		//Thêm nhân viên mới
 		/*Post bang ajax ma khong can refesh*/
 		$('#add-emp-form').submit(function(event){
