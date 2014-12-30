@@ -33,7 +33,7 @@
 			$qname .= " ON tblhoadon.ten_hoadon = tblchitietdonhang.ten_hoadon	JOIN tblsanpham ";
 			$qname .= " ON tblsanpham.sanpham_id = tblchitietdonhang.sanpham_id JOIN tbldonvi ";
 			$qname .= " ON tbldonvi.donvi_id = tblsanpham.donvi_id ";
-			$qname .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN ( ";
+			$qname .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND left(tblhoadon.thoigian,10) BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN ( ";
 			for($i=0;$i<count($masp);$i++){//bo dau phay o cuoi cung
 				if($i<count($masp)-1){
 					$qname .= "'"."$masp[$i]"."'".",";
@@ -73,7 +73,7 @@
 			$qdata[$i] .= " FROM tblhoadon JOIN tblchitietdonhang ";
 			$qdata[$i] .= " ON tblhoadon.ten_hoadon = tblchitietdonhang.ten_hoadon ";
 			$qdata[$i] .= " JOIN tblsanpham ON tblsanpham.sanpham_id = tblchitietdonhang.sanpham_id ";
-			$qdata[$i] .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND tblhoadon.ngay BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN (" ."'".$masp[$i]."'".")";
+			$qdata[$i] .= "	WHERE tblchitietdonhang.loaigiaodich_id = 1 AND left(tblhoadon.thoigian,10) BETWEEN "."'" .$tungay ."'"." AND "."'".$denngay ."'"." AND tblsanpham.sanpham_id IN (" ."'".$masp[$i]."'".")";
 			$qdata[$i] .= " GROUP BY tblhoadon.ngay ";
 			$qdata[$i] .= " ORDER BY tblsanpham.sanpham_id ASC; ";
 			$r = mysqli_query($dbc, $qdata[$i]);
