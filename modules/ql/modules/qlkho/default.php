@@ -45,7 +45,7 @@ $q=mysqli_query($dbc,$r);
             <td>
                 <img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'>
             </td>
-            <td>
+            <td class="td_tensp">
 				<?php echo $row['ten_sanpham']; ?></td>
             <td>
 				<?php echo $row['ten_danhmuc']; ?>
