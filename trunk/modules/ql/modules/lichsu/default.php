@@ -1,55 +1,58 @@
 <?php 
 $cnt=1;
-	if(isset($_GET['nh'])){
-		if(isset($_GET['f'])){
-			$from=$_GET['f'];
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
-			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
-			$r.="from tblchitietdonhang as y ";
-			$r.="where y.loaigiaodich_id=2 group by y.ten_hoadon) as j, ";
-			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
-			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
-			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
-			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit $from,14";
+	if(isset($_GET['sub'])){
+		$sub=$_GET['sub'];
+		if(strcmp($sub,'nh')==0){
+			if(isset($_GET['f'])){
+				$from=$_GET['f'];
+				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+				$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+				$r.="from tblchitietdonhang as y ";
+				$r.="where y.loaigiaodich_id=2 group by y.ten_hoadon) as j, ";
+				$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+				$r.="where j.ten_hoadon=k.ten_hoadon limit $from,14";
 
-		}else{
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
-			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
-			$r.="from tblchitietdonhang as y ";
-			$r.="where y.loaigiaodich_id=2 group by y.ten_hoadon) as j, ";
-			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
-			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
-			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
-			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit 0,14";
-		}
-	}elseif(isset($_GET['bh'])){
-		if(isset($_GET['f'])){
-			$from=$_GET['f'];
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
-			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
-			$r.="from tblchitietdonhang as y ";
-			$r.="where y.loaigiaodich_id=1 group by y.ten_hoadon) as j, ";
-			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
-			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
-			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
-			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit $from,14";
-		}else{
-			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
-			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
-			$r.="from tblchitietdonhang as y ";
-			$r.="where y.loaigiaodich_id=1 group by y.ten_hoadon) as j, ";
-			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
-			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
-			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
-			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit 0,14";
+			}else{
+				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+				$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+				$r.="from tblchitietdonhang as y ";
+				$r.="where y.loaigiaodich_id=2 group by y.ten_hoadon) as j, ";
+				$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+				$r.="where j.ten_hoadon=k.ten_hoadon limit 0,14";
+			}
+		}elseif(strcmp($sub,'bh')==0){
+			if(isset($_GET['f'])){
+				$from=$_GET['f'];
+				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+				$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+				$r.="from tblchitietdonhang as y ";
+				$r.="where y.loaigiaodich_id=1 group by y.ten_hoadon) as j, ";
+				$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+				$r.="where j.ten_hoadon=k.ten_hoadon limit $from,14";
+			}else{
+				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+				$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+				$r.="from tblchitietdonhang as y ";
+				$r.="where y.loaigiaodich_id=1 group by y.ten_hoadon) as j, ";
+				$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+				$r.="where j.ten_hoadon=k.ten_hoadon limit 0,14";
 
+			}
 		}
 	}else{
-		if(isset($_GET['f'])){
+			if(isset($_GET['f'])){
 			$from=$_GET['f'];
 			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
 			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
@@ -136,68 +139,74 @@ $q=mysqli_query($dbc,$r);?>
 	</table>
 </div>
 <!--End Chi tiet Box--->
-<div class="nav-page">
-<?php
-	if(isset($_GET['bh'])){
+<!--NAv PAGE--->
+ <div class="nav-page">
+	<a href="" class="prev-page">Trang trước</a>
+    <a href=""  class="next-page">Trang sau</a>
+	<input type="text" readonly="readonly" class="present-page" 
+    	value="<?php 
+			if(isset($from)){
+				$pst_page=$from/14;
+				echo (int)$pst_page+1;
+			}else{echo 1;} 
+		?>"/>
+
+ Của
+ 
+<input type="text" readonly="readonly" class="total-page" 
+    	value="<?php
+if(isset($_GET['sub'])){
+	$sub=$_GET['sub'];
+	if(strcmp($sub,'bh')==0){
 		$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		echo "<a href='default.php?nav=ls&bh&f=0'>Trang1</a>";
-		$from=14;$i=1;$modpage=$so_page[0]%14;$page=$so_page[0]/14;
+		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
 		if($modpage==0 and $page>=1){
-			while($i<$page){
-				echo "<a href='default.php?nav=ls&bh&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}
+			$tt_page=$page;
+			echo $tt_page;
 		}
-		elseif($page>=1){
-			while($i<=($page)){
-				echo "<a href='default.php?nav=ls&bh&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}	
-		}	
-	}elseif(isset($_GET['nh'])){
+		elseif($modpage<>0 and $page>=1){
+			$tt_page=$page+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
+		}
+	}elseif(strcmp($sub,'nh')==0){
 		$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=2 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		echo "<a href='default.php?nav=ls&nh&f=0'>Trang1</a>";
-		$from=14;$i=1;$modpage=$so_page[0]%14;$page=$so_page[0]/14;
-		if($modpage==0 and $page>=1 ){
-			while($i<$page){
-				echo "<a href='default.php?nav=ls&nh&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}
+		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		if($modpage==0 and $page>=1){
+			$tt_page=$page;
+			echo $tt_page;
 		}
-		elseif($page>=1){
-			while($i<=($page)){
-				echo "<a href='default.php?nav=ls&nh&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}	
-		}			
-	}else{
+		elseif($modpage<>0 and $page>=1){
+			$tt_page=$page+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
+		}
+	}
+}else{
 		$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		echo "<a href='default.php?nav=ls&f=0'>Trang1</a>";
-		$from=14;$i=1;$modpage=$so_page[0]%14;$page=$so_page[0]/14;
-		if($modpage==0 and $page>=1 ){
-			while($i<$page){
-				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}
+		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		if($modpage==0 and $page>=1){
+			$tt_page=$page;
+			echo $tt_page;
 		}
-		elseif($page>=1){
-			while($i<=($page)){
-				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}	
-		}	
+		elseif($modpage<>0 and $page>=1){
+			$tt_page=$page+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
+		}
 	}
-?>
+?>"/>
+
 </div>

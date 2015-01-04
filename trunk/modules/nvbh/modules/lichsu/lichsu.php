@@ -85,27 +85,36 @@ $q=mysqli_query($dbc,$r);?>
 	</table>
 </div>
 <!--End Chi tiet Box--->
+<!--NAv PAGE--->
+ <div class="nav-page">
+	<a href="" class="prev-page">Trang trước</a>
+    <a href=""  class="next-page">Trang sau</a>
+	<input type="text" readonly="readonly" class="present-page" 
+    	value="<?php 
+			if(isset($from)){
+				$pst_page=$from/14;
+				echo (int)$pst_page+1;
+			}else{echo 1;} 
+		?>"/>
 
-<div class="nav-page">
-<?php
+ Của
+ 
+<input type="text" readonly="readonly" class="total-page" 
+    	value="<?php
 	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		echo "<a href='default.php?nav=ls&nh&f=0'>Trang1</a>";
-		$from=14;$i=1;$modpage=$so_page[0]%14;$page=$so_page[0]/14;
-		if($modpage==0 and $page>=1 ){
-			while($i<$page){
-				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}
+		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		if($modpage==0 and $page>=1){
+			$tt_page=$page;
+			echo $tt_page;
 		}
-		elseif($page>=1){
-			while($i<=($page)){
-				echo "<a href='default.php?nav=ls&f=".$from."'>Trang".($i+1)."</a>";
-			$from+=14;
-			$i++;
-			}	
+		elseif($modpage<>0 and $page>=1){
+			$tt_page=$page+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
 		}	
-?>
+?>"/>
 </div>

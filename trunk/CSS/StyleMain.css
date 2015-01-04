@@ -569,6 +569,18 @@
 		background-color: #B6D8A0;
 		
 	}
+	div.Bar table tbody tr{
+		position:relative;
+	}
+	div.Bar table tbody tr span{
+		position:absolute;
+		visibility:hidden;
+		left:-55px;
+	}
+	div.Bar table tbody tr:hover span{
+		visibility:visible;
+	}
+	
 	div.Bar table tbody tr td.td_tensp,td.td_tennv{
 		text-align:left;
 	}
@@ -592,7 +604,6 @@
 	.nav-page{
 		width:100%;
 		height:20px;
-		text-align:center;
 		text-decoration:none;
 		font-family:Arial, Helvetica, sans-serif;
 		font-size:14px;
@@ -605,6 +616,17 @@
 		color:#333;
 		margin:0 5px;
 		line-height:20px;
+	}
+	.nav-page a.prev-page ,a.next-page{
+		background-color:transparent;
+		border:none;
+		text-decoration:underline;
+		text-align:center;	
+	}
+	.nav-page input.present-page,input.total-page{
+		width:20px;
+		background:white;
+		text-align:center;	
 	}
 /************************************/
 	footer{

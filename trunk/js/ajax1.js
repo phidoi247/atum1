@@ -9,6 +9,12 @@ $(document).ready(function(){
 			$('#logbox').hide();
 		}
 	});
+	//hien thi anh
+	
+	$('.Bar table > tbody >tr >td').hover(function(){
+		$(this).children('span').attr("visibility","visible");
+	});
+	
 	//Nhập SP
 		$('#nhap_msp').focusout(function(e) {
             var msp=$(this).val();
@@ -419,6 +425,7 @@ $(document).ready(function(){
 				}
 			});
 		});
+		
 });
 	
 	
