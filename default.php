@@ -19,6 +19,61 @@
 <script type="text/javascript" src="js/script1.js"></script>
 <script src="js/highcharts-3d.js"></script>		
 <script src="js/ajax1.js"></script>
+<script type="text/javascript">
+$(function(){
+	//////////////////////////////////////////////////Next pre page////////////////////////
+	$('.next-page').click(function(){
+		var pp=$('.present-page').val();
+		var tp=$('.total-page').val();
+			<?php
+				if(isset($_GET['nav'])){
+					$nav=$_GET['nav'];
+				}
+			?>
+			if(tp==pp){
+				n=(pp-1)*14;
+			}else{
+				n=((parseInt(pp))*14);
+			}
+			var np="default.php?";
+			np+="<?php	
+				if(isset($_GET['sub'])){
+					$sub=$_GET['sub'];
+					echo "nav=".$nav."&sub=".$sub;
+				}else{
+					echo "nav=".$nav;
+				}
+			?>";
+			np+="&f="+n+"";
+			$(this).attr('href',np);
+	});
+	$('.prev-page').click(function(){
+		var pp=$('.present-page').val();
+		pp-=2;
+			<?php
+				if(isset($_GET['nav'])){
+					$nav=$_GET['nav'];
+				}
+			?>
+			var n=((parseInt(pp))*14);
+			if(n<0){
+				n=0;
+			}
+			var np="default.php?";
+			np+="<?php	
+				if(isset($_GET['sub'])){
+					$sub=$_GET['sub'];
+					echo "nav=".$nav."&sub=".$sub;
+				}else{
+					echo "nav=".$nav;
+				}
+			?>";
+			np+="&f="+n+"";
+			$(this).attr('href',np);
+	});
+});
+</script>
+
 </head>
 
 <body>
