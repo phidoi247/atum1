@@ -61,10 +61,32 @@ if(isset($_GET['s'])){
 		$r.="a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,10";
 	}
 }
+if(isset($_GET['sp_search'])){
+		$search=$_GET['sp_search'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
+		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
+		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
+		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";
+		$r.="AND(a.ten_sanpham ='$search' ";
+		$r.="OR a.sanpham_id='$search' ";
+		$r.="OR c.ten_nhacungcap='$search') ";
+		$r.="limit 0,10";
+}
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
-    <tr><td>Mã SP</td><td>Avatar</td><td>Tên SP</td><td>Danh mục</td><td>Nhà CC</td><td>Số lượng</td><td>Đơn vị</td><td>Giá nhập</td><td>Giá bán</td><td>KM</td></tr>
+    <tr>
+    	<td>Mã SP</td>
+        <td>Avatar</td>
+        <td>Tên SP</td>
+        <td>Danh mục</td>
+        <td>Nhà CC</td>
+        <td>Số lượng</td>
+        <td>Đơn vị</td>
+        <td>Giá nhập</td>
+        <td>Giá bán</td>
+        <td>KM</td>
+    </tr>
     </thead>
 <?php while ($row=mysqli_fetch_array($q)){?>
 	<tbody>

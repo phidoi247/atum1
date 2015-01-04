@@ -33,6 +33,11 @@ if(isset($_SESSION['lvu'])){
 				include 'modules/nvk/modules/kho/fillter.php';
 				echo "</article>";
 				$size=400;
+			}elseif($nav=='ls'){
+				echo "<article class='fillter'>";
+				include 'modules/nvk/modules/lichsu/fillter.php';
+				echo "</article>";
+				$size=400;
 			}
 ?>
 

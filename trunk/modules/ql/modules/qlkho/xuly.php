@@ -1,7 +1,7 @@
 <?php
 	include '../../../../Connections/connect.php';
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		
+		/*
 		///////GET thông tin////
 		if(isset($_POST['get_danhmuc'])){
 			$r="select * from tbldanhmuc";
@@ -25,6 +25,7 @@
 			echo json_encode($fet_dm);
 		}
 		
+		*/
 		/////////////////ADD SP/////////////////////////
 		if (isset($_POST['name'])){
 			$error=array();

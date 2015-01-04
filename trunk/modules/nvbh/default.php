@@ -32,6 +32,11 @@ if(isset($_SESSION['lvu'])){
 				include 'modules/nvbh/modules/kho/fillter.php';
 				echo "</article>";
 				$size=400;
+			}elseif($nav=='k'){
+				echo "<article class='fillter'>";
+				include 'modules/nvbh/modules/lichsu/fillter.php';
+				echo "</article>";
+				$size=400;
 			}
 ?>
 <div class="pop-up"></div>

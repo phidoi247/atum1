@@ -23,6 +23,7 @@ $(document).ready(function(e) {
 			
 			$('#add-sp-but').click(function(){
 				$('.add-sp-box').show();
+				/*
 				$.ajax({
 					type:"POST",
 					url:"modules/ql/modules/qlkho/xuly.php",
@@ -37,6 +38,7 @@ $(document).ready(function(e) {
 							}
 					}
 				});
+				
 				$.ajax({
 					type:"POST",
 					url:"modules/ql/modules/qlkho/xuly.php",
@@ -64,7 +66,7 @@ $(document).ready(function(e) {
 								i++;
 							}
 					}
-				});
+				});*/
 			});
 			
 			
