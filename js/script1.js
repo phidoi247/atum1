@@ -41,6 +41,7 @@ function edit_sp(cnt){
 		var get_edit_sp_id="#ma_sp"+cnt;
 		var edit_sp_id=$(get_edit_sp_id).val();
 		$('#eid').val(edit_sp_id);
+		/*
 		$.ajax({
 					type:"POST",
 					url:"modules/ql/modules/qlkho/xuly.php",
@@ -83,7 +84,8 @@ function edit_sp(cnt){
 								i++;
 							}
 					}
-				});
+				}); 
+				*/
 		$.ajax({
 			type:"POST",
 			url:"modules/ql/modules/qlkho/xuly.php",

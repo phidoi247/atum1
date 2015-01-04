@@ -187,7 +187,15 @@ $q=mysqli_query($dbc,$r);
         		Danh mục:
         	</td>
         	<td>
-    		    <select  name="danhmuc" id="danhmuc" ></select>
+    		    <select  name="danhmuc" id="danhmuc" >
+                	<?php 
+						$r="select * from tbldanhmuc";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['danhmuc_id'].">".$row['ten_danhmuc']."</option>";
+						};
+					?>
+                </select>
 	        </td>
         </tr>
 		<tr>
@@ -195,7 +203,15 @@ $q=mysqli_query($dbc,$r);
         		Đơn vị:
         	</td>
         	<td>
-        		<select name="donvi" id="donvi"></select>
+        		<select name="donvi" id="donvi">
+                <?php 
+						$r="select * from tbldonvi";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['donvi_id'].">".$row['ten_donvi']."</option>";
+						};
+				?>
+                </select>
         	</td>
         </tr>
 		<tr>
@@ -203,7 +219,15 @@ $q=mysqli_query($dbc,$r);
         		Nhà cung cấp:
         	</td>
         	<td>
-        		<select name="ncc" id="ncc"></select>
+        		<select name="ncc" id="ncc">
+                <?php 
+						$r="select * from tblnhacungcap";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['nhacungcap_id'].">".$row['ten_nhacungcap']."</option>";
+						};
+				?>
+                </select>
         	</td>
         </tr>
 		<tr>
@@ -257,19 +281,101 @@ $q=mysqli_query($dbc,$r);
 
 <div class="edit-sp-box" >
 	<img alt="" class="edit-sp-close" src="sourse/close.png">
-	<form action="" id="edit-sp-form" method="post" name="edit-sp-form" enctype="multipart/form-data"><table>
-		<thead><tr><th colspan="2">Sửa thông tin Sản phẩm<input style="width:65px" id="eid" name="eid" type="text"></th></tr></thead>
+	<form action="" id="edit-sp-form" method="post" name="edit-sp-form">
+    	<table>
+			<thead>
+            	<tr>
+                	<th colspan="2">
+                    	Sửa thông tin Sản phẩm<input style="width:65px" id="eid" name="eid" type="text">
+                   </th>
+                </tr>
+        </thead>
 		<tbody>
-        <tr><th><img width="100px" height="50px" id="old_avt" ></th></tr>
-		<tr><td>Tên Sản phẩm:</td><td><input name="ename" id="ename" type="text"></td></tr>
-		<tr><td>Ảnh:</td><td><input name="eavatar" id="eavatar" type="file"></td></tr>
-        <tr><td>Danh mục:</td><td><select name="edanhmuc" id="edanhmuc" disabled="disabled"></select></td></tr>
-		<tr><td>Đơn vị:</td><td><select name="edonvi" id="edonvi" disabled="disabled"></select></td></tr>
-		<tr><td>Nhà cung cấp:</td><td><select name="encc" id="encc"></select></td></tr>
-		<tr><td>Giá nhập:</td><td><input name="egianhap" id="egianhap" type="text"></td></tr>
-		<tr><td>Giá bán:</td><td><input name="egiaban" id="egiaban" type="text"></td></tr>
-        <tr><td>Khuyến mại:</td><td><input name="ekm" id="ekm" type="text"></td></tr>
-		<tr><td></td><th><input type="reset"><input name="edit" id='edit-sp-submit' type="submit" value="Sửa"></th></tr>
+        	<tr>
+            	<th>
+                	<img width="100px" height="50px" id="old_avt" >
+                </th>
+            </tr>
+			<tr>
+            	<td>
+                	Tên Sản phẩm:
+                </td>
+                <td>
+                	<input name="ename" id="ename" type="text">
+                </td>
+            </tr>
+			<tr>
+            	<td>Ảnh:</td>
+                <td>
+                	<input name="eavatar" id="eavatar" type="file">
+                </td>
+            </tr>
+        	<tr>
+            	<td>Danh mục:</td>
+                <td>
+                	<select name="edanhmuc" id="edanhmuc" disabled="disabled">
+                    <?php 
+						$r="select * from tbldanhmuc";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['danhmuc_id'].">".$row['ten_danhmuc']."</option>";
+						};
+					?>
+                    </select>
+                </td>
+            </tr>
+			<tr>
+            	<td>Đơn vị:</td>
+                <td>
+                	<select name="edonvi" id="edonvi" disabled="disabled">
+                    <?php 
+						$r="select * from tbldonvi";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['donvi_id'].">".$row['ten_donvi']."</option>";
+						};
+					?>
+                    </select>
+                </td>
+            </tr>
+			<tr>
+            	<td>Nhà cung cấp:</td>
+                <td>
+                	<select name="encc" id="encc">
+                    <?php 
+						$r="select * from tblnhacungcap";
+						$q=mysqli_query($dbc,$r);
+						while($row=mysqli_fetch_array($q)){
+							echo "<option value=".$row['nhacungcap_id'].">".$row['ten_nhacungcap']."</option>";
+						};
+					?>
+                    </select>
+                </td>
+            </tr>
+			<tr>
+            	<td>Giá nhập:</td>
+                <td>
+                	<input name="egianhap" id="egianhap" type="text">
+                </td>
+            </tr>
+			<tr>
+            	<td>Giá bán:</td>
+                <td>
+                	<input name="egiaban" id="egiaban" type="text">
+                </td>
+            </tr>
+        	<tr>
+            	<td>Khuyến mại:</td>
+                <td>
+                	<input name="ekm" id="ekm" type="text">
+                </td>
+            </tr>
+			<tr>
+            	<td></td>
+                <th>
+                	<input type="reset"><input name="edit" id='edit-sp-submit' type="submit" value="Sửa">
+               </th>
+             </tr>
 		</tbody>
 	</table></form>
 </div>
