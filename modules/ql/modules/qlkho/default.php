@@ -64,6 +64,18 @@ if(isset($_GET['s'])){
 		$r.="limit 0,10";
 	}
 }
+if(isset($_GET['sp_search'])){
+		$search=$_GET['sp_search'];
+		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
+		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
+		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
+		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";
+		$r.="AND(a.ten_sanpham ='$search' ";
+		$r.="OR a.sanpham_id='$search' ";
+		$r.="OR c.ten_nhacungcap='$search') ";
+		$r.="limit 0,10";
+}
+
 $q=mysqli_query($dbc,$r);
 
 ?>
@@ -141,17 +153,90 @@ $q=mysqli_query($dbc,$r);
 <div class="add-sp-box" >
 	<img alt="" class="add-sp-close" src="sourse/close.png">
 	<form action="" id="add-sp-form" method="post" name="add-sp-form" enctype="multipart/form-data"><table>
-		<thead><tr><th colspan="2">Thêm Sản Phẩm</th></tr></thead>
-		<tbody>
-		<tr><td>Tên Sản phẩm:</td><td><input name="name" type="text"></td></tr>
-		<tr><td>Ảnh:</td><td><input name="avatar" type="file"></td></tr>
-        <tr><td>Danh mục:</td><td><select name="danhmuc" id="danhmuc" ></select></td></tr>
-		<tr><td>Đơn vị:</td><td><select name="donvi" id="donvi"></select></td></tr>
-		<tr><td>Nhà cung cấp:</td><td><select name="ncc" id="ncc"></select></td></tr>
-		<tr><td>Giá nhập:</td><td><input name="gianhap" type="text"></td></tr>
-		<tr><td>Giá bán:</td><td><input name="giaban" type="text"></td></tr>
-        <tr><td>Khuyến mại:</td><td><input name="km" type="text"></td></tr>
-		<tr><td></td><th><input type="reset"><input name="add" id='add-sp-submit' type="submit" value="Thêm"></th></tr>
+	<thead>
+            <th colspan="2">
+            		Thêm Sản Phẩm
+            </th>
+         </tr>
+    </thead>
+	<tbody>
+    	  <tr>
+          	<th colspan="2" id="add_sp_notify">
+            	*************
+            </th>
+          </tr>
+          <tr>
+		<tr>
+        	<td>
+        			Tên Sản phẩm:
+        	</td>
+        	<td>
+        			<input id="add_ten_sp" name="name" type="text">
+        	</td>
+        </tr>
+		<tr>
+        	<td>
+        			Ảnh:
+        	</td>
+        	<td>
+        		<input id="add_anh_sp" name="avatar" type="file">
+        	</td>
+        </tr>
+        <tr>
+        	<td>
+        		Danh mục:
+        	</td>
+        	<td>
+    		    <select  name="danhmuc" id="danhmuc" ></select>
+	        </td>
+        </tr>
+		<tr>
+        	<td>
+        		Đơn vị:
+        	</td>
+        	<td>
+        		<select name="donvi" id="donvi"></select>
+        	</td>
+        </tr>
+		<tr>
+        	<td>
+        		Nhà cung cấp:
+        	</td>
+        	<td>
+        		<select name="ncc" id="ncc"></select>
+        	</td>
+        </tr>
+		<tr>
+            <td>
+    	        Giá nhập:
+            </td>
+            <td>
+	            <input id="add_gn_sp" name="gianhap" type="text">
+            </td>
+        </tr>
+		<tr>
+        	<td>
+        		Giá bán:
+        	</td>
+        	<td>
+        		<input id="add_gb_sp" name="giaban" type="text">
+        	</td>
+        </tr>
+        <tr>
+        	<td>
+        		Khuyến mại:
+        	</td>
+        	<td>
+        		<input name="km" value="0" type="text">
+        	</td>
+        </tr>
+		<tr>
+        	<td>
+        	</td>
+       		 <th>
+        		<input type="reset"><input name="add" id='add-sp-submit' type="submit" value="Thêm">
+        	</th>
+        </tr>
 		</tbody>
 	</table></form>
 </div>
@@ -178,8 +263,8 @@ $q=mysqli_query($dbc,$r);
         <tr><th><img width="100px" height="50px" id="old_avt" ></th></tr>
 		<tr><td>Tên Sản phẩm:</td><td><input name="ename" id="ename" type="text"></td></tr>
 		<tr><td>Ảnh:</td><td><input name="eavatar" id="eavatar" type="file"></td></tr>
-        <tr><td>Danh mục:</td><td><select name="edanhmuc" id="edanhmuc" ></select></td></tr>
-		<tr><td>Đơn vị:</td><td><select name="edonvi" id="edonvi"></select></td></tr>
+        <tr><td>Danh mục:</td><td><select name="edanhmuc" id="edanhmuc" disabled="disabled"></select></td></tr>
+		<tr><td>Đơn vị:</td><td><select name="edonvi" id="edonvi" disabled="disabled"></select></td></tr>
 		<tr><td>Nhà cung cấp:</td><td><select name="encc" id="encc"></select></td></tr>
 		<tr><td>Giá nhập:</td><td><input name="egianhap" id="egianhap" type="text"></td></tr>
 		<tr><td>Giá bán:</td><td><input name="egiaban" id="egiaban" type="text"></td></tr>

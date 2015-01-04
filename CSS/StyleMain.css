@@ -118,6 +118,27 @@
 		background-position: left;
 		background-repeat: no-repeat;
 	}
+	article.fillter input#search_box{
+		height: 28px;
+		width:150px;
+		float:left;
+		margin-left:10px;
+		background:#FFF;
+		border:solid thin gray;
+		border-right:none;
+		background-position: left;
+		background-repeat: no-repeat;
+	}
+	article.fillter input#search_but{
+		height: 30px;
+		width:25px;
+		float:left;
+		margin-left:0px;
+		background:#09C;
+		border:solid thin gray;
+		background-position: left;
+		background-repeat: no-repeat;
+	}
 	article.fillter input#add-emp-but{
 		
 		background-image: url("../sourse/users_add.png");
@@ -181,6 +202,10 @@
 	}
 	.add-emp-box table thead{background: #B6D8A0;height: 30px}
 	
+	#add_emp_notify{
+		color:red;
+		font-size:12px;	
+	}
 	/*---------------------Edit Employee---------------------*/
 	.edit-emp-box{
 		display: none;
@@ -252,6 +277,10 @@
 	}
 	.add-sp-box table thead{background: #B6D8A0;height: 30px}
 	
+	#add_sp_notify{
+		color:red;
+		font-size:12px;	
+	}
 	/*---------------------Edit sp---------------------*/
 	.edit-sp-box{
 		display: none;

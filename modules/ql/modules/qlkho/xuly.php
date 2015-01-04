@@ -57,7 +57,16 @@
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
 			$sanpham_id_trc=$layid[0];
-			$danhmuc=substr($sanpham_id_trc,0,2);
+			//kiemtra có sp chưa
+			if(strcmp($sanpham_id_trc,"")!=0){
+				$danhmuc=substr($sanpham_id_trc,0,2);
+			}elseif($danhmuc==1){
+				$danhmuc="SA00001";
+			}elseif($danhmuc==2){
+				$danhmuc="VP00001";
+			}else{
+				$danhmuc="DC00001";
+			}
 				$tmp1=$danhmuc."00009";$tmp2=$danhmuc."00099";
 				$tmp3=$danhmuc."00999";$tmp4=$danhmuc."09999";$tmp5=$danhmuc."99999";
 			if(strcmp($sanpham_id_trc,$tmp1)==0){
