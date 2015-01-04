@@ -109,10 +109,11 @@ $(document).ready(function(){
 				type:"POST",
 				url:"modules/nvk/modules/nhap/xuly.php",
 				data:form,
-				async:false,
-				cache:false,
-				processData:false,
-				contentType:false,
+				async:false,// 1 boolean val xđ việc ngăn cản đồng bộ xử lý, df = true
+				cache:false,// 1 boolean val xđ việc lưu bộ nhớ trang request, df = true
+				processData:false, //1 giá trị boolean xác định dữ liệu request có đc tao trong 1 string k, default là true
+				contentType:false, //kiểu data chuyền đi defaeult là enctype="application/x-www-form-urlencoded",
+									//Muốn post file thì phải dùng kiểu enctype="multipart/form-data" 
 				success: function(nn){
 					if(nn=='Ok'){
 						alert("Giao dich thành công!");
@@ -150,25 +151,56 @@ $(document).ready(function(){
 		//Thêm nhân viên mới
 		/*Post bang ajax ma khong can refesh*/
 		$('#add-emp-form').submit(function(event){
-			event.preventDefault()
-			var form_add_emp=new FormData($(this)[0]);
-			$.ajax({
-				url:"modules/ql/modules/qlnhanvien/xuly.php",
-				type:"POST",
-				data:form_add_emp,
-				async:false,
-				cache:false,
-				processData:false,
-				contentType:false,
-				success: function(notify){
-					if(notify=='Ok'){
-						window.location.reload();
+			event.preventDefault();
+			var add_ten=$('#add_ten').val();
+			var add_avt=$('#add_avt').val();
+			var add_pass=$('#add_pass').val();
+			var add_add=$('#add_add').val();
+			var add_date=$('#add_date').val();
+			var add_phone=$('#add_phone').val();
+			if(add_ten!=""){
+				if(add_avt!=""){
+					if(add_pass!=""){
+						if(add_add!=""){
+								if(add_phone!=""){
+										if(add_date!=""){
+											var form_add_emp=new FormData($(this)[0]);
+											$.ajax({
+											url:"modules/ql/modules/qlnhanvien/xuly.php",
+											type:"POST",
+											data:form_add_emp,
+											async:false,
+											cache:false,
+											processData:false,
+											contentType:false,
+											success: function(notify){
+												if(notify=='Ok'){
+													window.location.reload();
+												}else{
+													alert(notify);	
+												}
+											}
+										});
+										}else{
+											$('#add_emp_notify').html("Hãy nhập Ngày sinh Nhân viên!");
+										}
+
+								}else{
+									$('#add_emp_notify').html("Hãy nhập Số Phone!");		
+								}
+						}else{
+							$('#add_emp_notify').html("Hãy nhập Địa chỉ!");		
+						}
 					}else{
-						alert(notify);	
+						$('#add_emp_notify').html("Hãy nhập Password!");	
 					}
+				}else{
+					$('#add_emp_notify').html("Hãy thêm Ảnh!");	
 				}
-			});
-		})
+			}else{
+				$('#add_emp_notify').html("Hãy nhập Tên Nhân viên!");	
+			}	
+	});
 		//Sửa thông tin nhân viên
 		$('#edit-emp-form').submit(function(event){
 			event.preventDefault()
@@ -207,26 +239,53 @@ $(document).ready(function(){
 			});
 		})
 		/*******************Sản phẩm**************************/
+	//Search
+		/*$('#sp_search').submit(function(event){
+			event.preventDefault();
+			var key=$('#search_box').val();
+			$.get("default.php",function(){alert ("vl");},{nav:"k",sp_search:"key"});
+		});*/
 	// Thêm
 		$('#add-sp-form').submit(function(event){
 			event.preventDefault();
-			var form_add_sp=new FormData($(this)[0]);
-			$.ajax({
-				url:"modules/ql/modules/qlkho/xuly.php",
-				type:"POST",
-				data:form_add_sp,
-				async:false,
-				cache:false,
-				processData:false,
-				contentType:false,
-				success: function(notify){
-					if(notify=='Ok'){
-						window.location.reload();
+			var add_ten_sp=$('#add_ten_sp').val();
+			var add_anh_sp=$('#add_anh_sp').val();
+			var add_gn_sp=$('#add_gn_sp').val();
+			var add_gb_sp=$('#add_gb_sp').val();
+			if(add_ten_sp!=""){
+				if(add_anh_sp!=""){
+					if(add_gn_sp!=""){
+						if(add_gb_sp!=""){
+							var form_add_sp=new FormData($(this)[0]);
+							$.ajax({
+												url:"modules/ql/modules/qlkho/xuly.php",
+												type:"POST",
+												data:form_add_sp,
+												async:false,
+												cache:false,
+												processData:false,
+												contentType:false,
+												success: function(notify){
+													if(notify=='Ok'){
+														window.location.reload();
+													}else{
+														alert(notify);	
+													}
+												}
+											});
+										
+						}else{
+							$('#add_sp_notify').html("Hãy nhập Giá bán!");		
+						}
 					}else{
-						alert(notify);	
+						$('#add_sp_notify').html("Hãy nhập Giá nhập!");	
 					}
+				}else{
+					$('#add_sp_notify').html("Hãy thêm Ảnh!");	
 				}
-			});
+			}else{
+				$('#add_sp_notify').html("Hãy nhập Tên Sản phẩm!");	
+			}		
 		});
 		//Sửa thông tin SP
 		$('#edit-sp-form').submit(function(event){

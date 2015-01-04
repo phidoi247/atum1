@@ -5,19 +5,32 @@ if(isset($_GET['nvbh'])){
 		$from=$_GET['f'];
 		$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,10";
 	}else{
-		$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,10";}
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,10";
+	}
 }elseif(isset($_GET['nvk'])){
 	if(isset($_GET['f'])){
 		$from=$_GET['f'];
 		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit $from,10";
 	}else{
-		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,10";}
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,10";
+	}		
 }else{
 	if(isset($_GET['f'])){
 		$from=$_GET['f'];
-		$r="SELECT * FROM `tblnhanvien` order by ngay_vao_lam limit $from,10";
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,10";
 	}else{
-		$r="SELECT * FROM `tblnhanvien` order by ngay_vao_lam limit 0,10";}
+		$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,10";
+	}	
+}
+if(isset($_GET['nv_search'])){
+		$search=$_GET['nv_search'];
+		$r="SELECT * FROM `tblnhanvien` ";
+		$r.="WHERE nhanvien_id ='$search' ";
+		$r.="OR ngay_vao_lam='$search' ";
+		$r.="OR ten_nhanvien='$search' ";
+		$r.="OR dia_chi LIKE '$search' ";
+		$r.="OR SDT LIKE '$search' ";
+		$r.="limit 0,10";
 }
 $q=mysqli_query($dbc,$r);?>
 <table>
@@ -68,6 +81,11 @@ $q=mysqli_query($dbc,$r);?>
            </tr>
        </thead>
 		<tbody>
+        	<tr>
+            	<th id="add_emp_notify" colspan="2">
+                	****************
+                </th>
+            </tr>
 			<tr>
             	<td>
                 	Tên Nhân viên:
@@ -186,7 +204,7 @@ $q=mysqli_query($dbc,$r);?>
 <!--End Edit Employees Box--->
 <!--Begin Delete Employees Box--->
 <div class="delete-emp-box">
-	<form id='delete-emp-form' action="" method="post" >
+	<form id='delete-emp-form'  action="" method="post" >
     	<table>
         	<tr>
             	<th colspan="6">

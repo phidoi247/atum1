@@ -74,6 +74,22 @@ $cnt=1;
 
 		}
 	}
+	if(isset($_GET['ls_search'])){
+			$search=$_GET['ls_search'];
+			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+			$r.="from tblchitietdonhang as y ";
+			$r.="group by y.ten_hoadon) as j, ";
+			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+			$r.="where j.ten_hoadon=k.ten_hoadon and(";
+			$r.="k.ten_hoadon='$search' ";
+			$r.="or nhanvien_id='$search' ";
+			$r.="or k.nhanvien_id LIKE '$search') ";
+			$r.="limit 0,14";
+	}
 $q=mysqli_query($dbc,$r);?>
 
 <table>
