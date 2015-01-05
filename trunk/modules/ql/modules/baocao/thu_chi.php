@@ -1,5 +1,6 @@
 <?php 	
 	include '../../../../Connections/connect.php';
+	include '../../../../functions/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +16,12 @@
 	<body>
 		<?php 
 			//khai báo biến
-			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
-			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));			
-			$yaxis = $_POST['yaxis'];
-			$tenbieudo = $_POST['tenBieuDo'];
-			$tenbaocao = $_POST['tenBaoCao'];
-			$subtitle = $_POST['subtitle'];
+			$tungay = strip_tags(date('Y-m-d',strtotime($_POST['tuNgay'])));
+			$denngay = strip_tags(date('Y-m-d',strtotime($_POST['denNgay'])));			
+			$yaxis = strip_tags($_POST['yaxis']);
+			$tenbieudo = strip_tags($_POST['tenBieuDo']);
+			$tenbaocao = strip_tags($_POST['tenBaoCao']);
+			$subtitle = strip_tags($_POST['subtitle']);
 			$dates = dateRange($tungay, $denngay);	
 
 			for($i=0;$i<count($dates);$i++){
@@ -41,33 +42,9 @@
 				}else if($datachi[$i]==NULL){
 					$datachi[$i] = 0;
 				};				
-			};			
+			};		
 			
-			//hàm date range
-			function dateRange( $first, $last, $step = '+1 day', $format = 'Y-m-d' ) {//ham tạo range ngày có định dạng đầu ra là năm tháng ngày
-				$dates = array();
-				$current = strtotime( $first );
-				$last = strtotime( $last );
-				while( $current <= $last ) {
-					$dates[] = date( $format, $current );
-					$current = strtotime( $step, $current );
-				}
-				return $dates;
-			}//kết thúc
 			
-			//hàm date range2
-			function dateRange2( $first, $last, $step = '+1 day', $format = 'd-m-Y' ) {//ham tạo range ngày có định dạng đầu ra là ngày tháng năm
-				$dates = array();
-				$current = strtotime( $first );
-				$last = strtotime( $last );
-				while( $current <= $last ) {
-					$dates[] = date( $format, $current );
-					$current = strtotime( $step, $current );
-				}
-				return $dates;
-			}//kết thúc
-					
-		
 		?>
 		<script type="text/javascript">//biểu đồ
 		$(function () {

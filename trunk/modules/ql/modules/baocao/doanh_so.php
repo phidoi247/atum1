@@ -1,5 +1,6 @@
 ﻿<?php 	
 	include '../../../../Connections/connect.php';
+	include '../../../../functions/functions.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,18 +15,20 @@
 	</head>
 	<body>
 		<?php 
-
-			//vlvlvl
+			
 			//khai báo biến
-			$tungay = date('Y-m-d',strtotime($_POST['tuNgay']));
-			$denngay = date('Y-m-d',strtotime($_POST['denNgay']));
-			$yaxis = $_POST['yaxis'];
-			$xaxis = $_POST['xaxis'];
-			$tenbieudo = $_POST['tenBieuDo'];
-			$tenbaocao = $_POST['tenBaoCao'];
-			$subtitle = $_POST['subtitle'];			
+			$tungay = strip_tags(date('Y-m-d',strtotime($_POST['tuNgay'])));
+			$denngay = strip_tags(date('Y-m-d',strtotime($_POST['denNgay'])));
+			$yaxis = strip_tags($_POST['yaxis']);
+			$xaxis = strip_tags($_POST['xaxis']);
+			$tenbieudo = strip_tags($_POST['tenBieuDo']);
+			$tenbaocao = strip_tags($_POST['tenBaoCao']);
+			$subtitle = strip_tags($_POST['subtitle']);			
 			$masp = explode(',',$_POST['maSanPham']);
-			$dates = dateRange($tungay, $denngay);
+			$dates = dateRange2($tungay, $denngay);
+			$db_masp = db_masp();
+			
+			print_r($db_masp);
 											
 			//lấy phần name trong series
 			$qname = " SELECT tblsanpham.ten_sanpham,tblchitietdonhang.soluong,tbldonvi.ten_donvi ";
@@ -49,23 +52,7 @@
 			while($tensp = mysqli_fetch_array($r, MYSQLI_ASSOC)){
 				$name[] = $tensp['ten_sanpham'];
 				$donvi[] = $tensp['ten_donvi'];
-			};//kết thúc
-			
-			/*echo "<pre>";
-			print_r($name);
-			echo "</pre>";*/
-			
-			//hàm date range				
-			function dateRange( $first, $last, $step = '+1 day', $format = 'd-m-Y' ) {//ham tạo range ngày có định dạng đầu ra		
-				$dates = array();
-				$current = strtotime( $first );
-				$last = strtotime( $last );		
-				while( $current <= $last ) {		
-					$dates[] = date( $format, $current );
-					$current = strtotime( $step, $current );
-				}		
-			return $dates;			
-		}//kết thúc		
+			};//kết thúc				
 		
 		//lấy data
 		for($i=0;$i<count($masp);$i++){
@@ -99,20 +86,8 @@
 					array_splice($data[$i],$j,0,0);
 				};
 			};
-		}; 
+		}; 		
 		
-		/*echo "<pre>";
-		print_r($dates);
-		echo "</pre>";
-		
-		echo "<pre>";
-		print_r($thoigian);
-		echo "</pre>";
-		
-		
-		echo "<pre>";
-		print_r($data);
-		echo "</pre>";*/
 		
 		?>
 		<script type="text/javascript">//biểu đồ
