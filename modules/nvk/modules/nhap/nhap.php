@@ -17,22 +17,22 @@
 				$tmp1="TTBH0000009";$tmp2="TTBH0000099";$tmp3="TTBH0000999";$tmp4="TTBH0009999";$tmp5="TTBH0099999";
 				$tmp6="TTBH0999999";$tmp7="TTBH9999999";
 				if(strcmp($id_hd_tr,$tmp1)==0){
-					$id_hd="TTBH0000010";
-				}elseif(strcmp($id_hd_tr,$tmp2)==0){
-					$id_hd="TTBH0000100";
-				}elseif(strcmp($id_hd_tr,$tmp3)==0){
-					$id_hd="TTBH0001000";
-				}elseif(strcmp($id_hd_tr,$tmp4)==0){
-					$id_hd="TTBH0010000";
-				}elseif(strcmp($id_hd_tr,$tmp5)==0){
-					$id_hd="TTBH0100000";
-				}elseif(strcmp($id_hd_tr,$tmp6)==0){
-					$id_hd="TTBH1000000";
-				}elseif(strcmp($id_hd_tr,$tmp7)==0){
-					$id_hd="NULL";
-				}else{
-					$ma_id_tr=substr($id_hd_tr,4,11);
-					if(intval($ma_id_tr)>1000000){
+						$id_hd="TTBH0000010";
+					}elseif(strcmp($id_hd_tr,$tmp2)==0){
+						$id_hd="TTBH0000100";
+					}elseif(strcmp($id_hd_tr,$tmp3)==0){
+						$id_hd="TTBH0001000";
+					}elseif(strcmp($id_hd_tr,$tmp4)==0){
+						$id_hd="TTBH0010000";
+					}elseif(strcmp($id_hd_tr,$tmp5)==0){
+						$id_hd="TTBH0100000";
+					}elseif(strcmp($id_hd_tr,$tmp6)==0){
+						$id_hd="TTBH1000000";
+					}elseif(strcmp($id_hd_tr,$tmp7)==0){
+						$id_hd="NULL";
+				}else{// HDBH0000043 đây là cái tên hóa đơn mình lấy làm mốc
+					$ma_id_tr=substr($id_hd_tr,4,11);// cắt chuỗi từ vị trí thứ 4 đến vị trí thứ 11 là : 0000043
+					if(intval($ma_id_tr)>1000000){// biến cái chuỗi mình vừa cắt thành số -> 43 rồi so sánh với 1tr,100k....
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH".$ma_id_moi;
 					}elseif(intval($ma_id_tr)>100000){
@@ -47,7 +47,7 @@
 					}elseif(intval($ma_id_tr)>100){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."0000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>10){
+					}elseif(intval($ma_id_tr)>10){// đến đây đúng thì + thêm 1 rồi nối chuỗi -> 0000044
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."00000".$ma_id_moi;
 					}else{

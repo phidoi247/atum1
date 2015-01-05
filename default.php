@@ -31,9 +31,9 @@ $(function(){
 				}
 			?>
 			if(tp==pp){
-				n=(pp-1)*14;
+				n=(pp-1)*18;
 			}else{
-				n=((parseInt(pp))*14);
+				n=((parseInt(pp))*18);
 			}
 			var np="default.php?";
 			np+="<?php	
@@ -55,7 +55,7 @@ $(function(){
 					$nav=$_GET['nav'];
 				}
 			?>
-			var n=((parseInt(pp))*14);
+			var n=((parseInt(pp))*18);
 			if(n<0){
 				n=0;
 			}

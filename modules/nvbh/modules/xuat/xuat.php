@@ -60,16 +60,19 @@
             <tr><td>
             <input type="text" name="HD" value="<?php echo $id_hd; ?>" readonly/>
             </td></tr>
-            <tr><td id="chk_msp">Nhập Mã Sản Phẩm</td></tr>
+            <tr><td id="chk_msp">Xuất Mã Sản Phẩm</td></tr>
             <tr><td><input id="nhap_msp" type="text" required/></td></tr>
         
             <tr><td>Giá</td></tr>
             <tr><td><input id="gia_sp" type="text" value="0" readonly/></td></tr>  
             <tr><td><input id="ten_sp" type="hidden" readonly/></td></tr>        
-       
+       		
+            <tr><td>Số Lượng Còn</td></tr>
+            <tr><td><input type="number" min="0" id="slc_sp" readonly="readonly" value="" required/></td></tr>
+
             <tr><td>Nhập Số Lượng</td></tr>
             <tr><td><input type="number" min="0" id="sl_sp" name="quantity" value="" required/></td></tr>
-     
+			     
     		<tr><td><input type="number" style="display:none" value="0" id="solanclick"/><input id="nhap_hd" type="button" name="submit" value="Xuất"/></td></tr></table>
 
     </fieldset>

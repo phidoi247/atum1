@@ -1,9 +1,9 @@
 <?php
 	include("../../../../Connections/connect.php");
-	
+	//CHECK  sản phẩm có trong db hay ko
    	if(isset($_POST['msp'])){
 		$msp=$_POST['msp'];
-		$r="select ten_sanpham,gia_ban as gia from tblsanpham where sanpham_id='$msp'";
+		$r="select ten_sanpham,soluong,gia_ban from tblsanpham where sanpham_id='$msp'";
 		$q=mysqli_query($dbc,$r);
 		$data=array();
 		while($f=mysqli_fetch_assoc($q)){$data[]=$f;};

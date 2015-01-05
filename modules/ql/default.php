@@ -6,7 +6,7 @@ $(function(){
 				$(tab).addClass('active-tab');
 			}
 		<?php
-			if(isset($_SESSION['lvu'])){
+			if(isset( $_SESSION['lvu'])){
 				echo "$('.nav').remove();";	
 			}
 		?>
