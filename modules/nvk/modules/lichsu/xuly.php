@@ -2,7 +2,7 @@
 	include '../../../../Connections/connect.php';
 	if(isset($_POST['chitiet'])){
 		$id_hd=$_POST['chitiet'];
-		$r="select a.ten_hoadon,c.sanpham_id,c.ten_sanpham,c.gia_ban,b.soluong,(c.gia_ban*b.soluong) as thanhtien ";
+		$r="select a.ten_hoadon,c.sanpham_id,c.ten_sanpham,c.gia_nhap,b.soluong,(c.gia_ban*b.soluong) as thanhtien ";
 		$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 		$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and b.loaigiaodich_id=2 and a.ten_hoadon ='$id_hd'"; 
 		$r.="order by a.ten_hoadon";

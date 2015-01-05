@@ -22,7 +22,7 @@
 		}
 		$str_r=substr($str_r,0,-1);
 		//Ghi vao tblhoadon
-		$r="INSERT INTO tblhoadon (ten_hoadon,thoigian,nhanvien_id) VALUES ('$ma_hd',NOW,'$ma_nv');";
+		$r="INSERT INTO tblhoadon (ten_hoadon,thoigian,nhanvien_id) VALUES ('$ma_hd',NOW(),'$ma_nv');";
 		$q= mysqli_query($dbc,$r) ;
 		if(mysqli_affected_rows($dbc)){
 			//Ghi vao tblchitietdonhang
