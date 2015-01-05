@@ -22,29 +22,37 @@
 			$tenbieudo = strip_tags($_POST['tenBieuDo']);
 			$tenbaocao = strip_tags($_POST['tenBaoCao']);
 			$subtitle = strip_tags($_POST['subtitle']);
-			$dates = dateRange($tungay, $denngay);	
+			$dates = dateRange($tungay, $denngay);
+			$db_ngay = db_ngay($dbc);			
+			$checkngay = 0;
+			
+			if(in_array($tungay,$db_ngay) && in_array($denngay,$db_ngay)){
+				$checkngay++;
+			};
 
-			for($i=0;$i<count($dates);$i++){
-				$qthu[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_ban) AS ban FROM tblchitietdonhang JOIN tblhoadon ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon
-					JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 1 AND left(tblhoadon.thoigian,10) = '".$dates[$i]."' ";
-				$qchi[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblchitietdonhang JOIN tblhoadon
-						ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND left(tblhoadon.thoigian,10) = '".$dates[$i]."' ";
-				$rban = mysqli_query($dbc, $qthu[$i]) or die ("Query $qthu[$i] <br /> mysql error: ".mysqli_errno($dbc));
-				$rnhap = mysqli_query($dbc, $qchi[$i]) or die ("Query $qchi[$i] <br /> mysql error: ".mysqli_errno($dbc));
-				while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
-					$datathu[$i] = $dulieu['ban'];
-				};
-				while($dulieu = mysqli_fetch_array($rnhap, MYSQLI_ASSOC)){
-					$datachi[$i] = $dulieu['nhap'];
-				};
-				if($datathu[$i]==NULL){
-					$datathu[$i] = 0;
-				}else if($datachi[$i]==NULL){
-					$datachi[$i] = 0;
-				};				
-			};		
-			
-			
+			if($checkngay>0){
+				for($i=0;$i<count($dates);$i++){
+					$qthu[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_ban) AS ban FROM tblchitietdonhang JOIN tblhoadon ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon
+						JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 1 AND left(tblhoadon.thoigian,10) = '".$dates[$i]."' ";
+					$qchi[$i] = " SELECT SUM(tblchitietdonhang.soluong * tblsanpham.gia_nhap) AS nhap FROM tblchitietdonhang JOIN tblhoadon
+							ON tblchitietdonhang.ten_hoadon = tblhoadon.ten_hoadon JOIN tblsanpham ON tblchitietdonhang.sanpham_id = tblsanpham.sanpham_id WHERE tblchitietdonhang.loaigiaodich_id = 2 AND left(tblhoadon.thoigian,10) = '".$dates[$i]."' ";
+					$rban = mysqli_query($dbc, $qthu[$i]) or die ("Query $qthu[$i] <br /> mysql error: ".mysqli_errno($dbc));
+					$rnhap = mysqli_query($dbc, $qchi[$i]) or die ("Query $qchi[$i] <br /> mysql error: ".mysqli_errno($dbc));
+					while($dulieu = mysqli_fetch_array($rban, MYSQLI_ASSOC)){
+						$datathu[$i] = $dulieu['ban'];
+					};
+					while($dulieu = mysqli_fetch_array($rnhap, MYSQLI_ASSOC)){
+						$datachi[$i] = $dulieu['nhap'];
+					};
+					if($datathu[$i]==NULL){
+						$datathu[$i] = 0;
+					}else if($datachi[$i]==NULL){
+						$datachi[$i] = 0;
+					};				
+				};		
+			}else{
+				echo "Ngày sai!";
+		};
 		?>
 		<script type="text/javascript">//biểu đồ
 		$(function () {
