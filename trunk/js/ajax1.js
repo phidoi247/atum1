@@ -48,8 +48,9 @@ $(document).ready(function(){
 				dataType:"json",
 				success: function(data){
 					
-					$('#gia_sp').val(data[0].gia);
+					$('#gia_sp').val(data[0].gia_ban);
 					$('#ten_sp').val(data[0].ten_sanpham);
+					$('#slc_sp').val(data[0].soluong);
 					$('#chk_msp').html("Sản phẩm: "+data[0].ten_sanpham);
 				}
 			});
@@ -70,29 +71,38 @@ $(document).ready(function(){
 			var tensp=$('#ten_sp').val();
 			var giasp=$('#gia_sp').val();
 			var slsp=$('#sl_sp').val();
-			var lgt=(masp.length)-0;
-			if(slsp!=0){
-				if(lgt!=0){
-					if(giasp!=0){
-						$(function(){
-							var str;
-							str="<tr>";
-							str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
-							str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
-							str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
-							str+="<td id=ttsp"+slclick+"></td></tr>";
-							var id_del=".del_detail"+slclick;
-							$('tbody#detail_hd').append(str);	
-							$('#chk').html("**********")
-						});
+			var slcsp=$('#slc_sp').val();
+			var lgt=(masp.length);
+			if(lgt!=0){
+				if(giasp!=0){
+					if(slsp!=0){
+						if(slsp>0){
+							if((slcsp-slsp)>=0){
+								$(function(){
+									var str;
+									str="<tr>";
+									str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
+									str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
+									str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
+									str+="<td id=ttsp"+slclick+"></td></tr>";
+									var id_del=".del_detail"+slclick;
+									$('tbody#detail_hd').append(str);	
+									$('#chk').html("**********")
+								});
+							}else{
+								$('#chk').html("Không đủ Sản phẩm! để giao dịch");	
+							}
+						}else{
+							$('#chk').html("Số lượng không thể nhỏ hơn 0");
+							}
 					}else{
-						$('#chk').html("Không có Sản phẩm! trong kho");	
-					}
+						$('#chk').html("Chưa nhập số lượng!");	
+							}
 				}else{
-					$('#chk').html("Chưa nhập Mã Sản phẩm!");
+					$('#chk').html("Không có Sản phẩm! trong kho");
 				}
 			}else{
-				$('#chk').html("Chưa nhập số lượng!");	
+				$('#chk').html("Chưa nhập Mã Sản phẩm!");	
 			}
 			//tính tiền
 			$(function(){

@@ -9,13 +9,13 @@ if(isset($_GET['sub'])){
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=1 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,14";	
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,18";	
 		}else{
 			$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=1 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,14";
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,18";
 		}
 	}elseif(strcmp($sub,"vpp")==0){
 		if(isset($_GET['f'])){
@@ -24,13 +24,13 @@ if(isset($_GET['sub'])){
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=2 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,14";
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,18";
 		}else{
 			$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=2 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,14";
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,18";
 		}
 	}elseif(strcmp($sub,"dc")==0){
 		if(isset($_GET['f'])){
@@ -39,13 +39,13 @@ if(isset($_GET['sub'])){
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=3 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,14";
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,18";
 		}else{
 			$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
 			$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 			$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 			$r.="where(a.danhmuc_id=3 ";
-			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,14";
+			$r.="and a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,18";
 		}
 	}
 }else{
@@ -55,13 +55,13 @@ if(isset($_GET['sub'])){
 		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="where(";
-		$r.="a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,14";
+		$r.="a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit $from,18";
 	}else{
 		$r="select a.sanpham_id,a.ten_sanpham,b.ten_danhmuc,c.ten_nhacungcap,c.nhacungcap_id,";
 		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="where(";
-		$r.="a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,14";
+		$r.="a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id) limit 0,18";
 	}
 }
 if(isset($_GET['sp_search'])){
@@ -73,14 +73,13 @@ if(isset($_GET['sp_search'])){
 		$r.="AND(a.ten_sanpham ='$search' ";
 		$r.="OR a.sanpham_id='$search' ";
 		$r.="OR c.ten_nhacungcap='$search') ";
-		$r.="limit 0,14";
+		$r.="limit 0,18";
 }
 $q=mysqli_query($dbc,$r);?>
 <table>
 	<thead>
     <tr>
     	<td>Mã SP</td>
-        <td>Avatar</td>
         <td>Tên SP</td>
         <td>Danh mục</td>
         <td>Nhà CC</td>
@@ -96,9 +95,10 @@ $q=mysqli_query($dbc,$r);?>
     	<tr>
         	<td>
             	<input type='text' class="ma_sp" id='ma_sp<?php echo $cnt; ?>' value='<?php echo $row['sanpham_id']; ?>' readonly>
-            </td>
-            <td>
-            	<img width='30px' height='30px' src='<?php echo $row['image_link']; ?>'>
+                
+                <span>
+                    <img width='60px' height='60px' src='<?php echo $row['image_link']; ?>'>
+                </span>
             </td>
             <td class="td_tensp">
 		   		<?php echo $row['ten_sanpham']; ?>
@@ -163,7 +163,7 @@ $q=mysqli_query($dbc,$r);?>
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/14;
+				$pst_page=$from/18;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
@@ -178,7 +178,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=1 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
 		if($modpage==0 and $page>=1){
 			$tt_page=$page;
 			echo $tt_page;
@@ -194,7 +194,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=2 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
 		if($modpage==0 and $page>=1){
 			$tt_page=$page;
 			echo $tt_page;
@@ -210,7 +210,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a WHERE a.danhmuc_id=3 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
 		if($modpage==0 and $page>=1){
 			$tt_page=$page;
 			echo $tt_page;
@@ -227,7 +227,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(distinct a.id) as sl FROM `tblsanpham` as a";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
 		if($modpage==0 and $page>=1){
 			$tt_page=$page;
 			echo $tt_page;
