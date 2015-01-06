@@ -48,10 +48,10 @@
 			}else{
 				$ma_id_tr=substr($nhanvien_id_trc,2,5);
 				$id_trc=intval($ma_id_tr);
-				if($id_trc>100){
+				if($id_trc>=100){
 					$id_sau=$id_trc+1;
 					$nhanvien_id=$position.$id_sau;
-				}elseif($id_trc>10){
+				}elseif($id_trc>=10){
 					$id_sau=$id_trc+1;
 					$nhanvien_id=$position."0".$id_sau;
 				}else{
@@ -187,10 +187,10 @@
 			}else{
 				$ma_id_tr=substr($nhanvien_id_trc,2,5);
 				$id_trc=intval($ma_id_tr);
-				if($id_trc>100){
+				if($id_trc>=100){
 					$id_sau=$id_trc+1;
 					$nhanvien_id=$position.$id_sau;
-				}elseif($id_trc>10){
+				}elseif($id_trc>=10){
 					$id_sau=$id_trc+1;
 					$nhanvien_id=$position."0".$id_sau;
 				}else{

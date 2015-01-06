@@ -17,7 +17,6 @@
 	.logo{
 		height:100%;
 		width:30%;
-		background:radial-gradient(#FFF,#FCF);
 		float:left;	
 	}
 	.banner{
@@ -33,13 +32,25 @@
 	
 	.nav{
 		position:absolute;
-		background:#F4D89D;
+		background:#B6D8A0;
 		float:right;
 		width:200px;
-		height:35px;
-		border-top-left-radius:60px;
+		line-height:30px;
+		height:30px;
 		right:0;
 		bottom:0;
+		
+	}
+	.user{
+		position:absolute;
+		background:#B6D8A0;
+		float:right;
+		width:200px;
+		display:none;
+		line-height:29px;
+		height:29px;
+		right:175px;
+		top:78px;
 		
 	}
 	input.login-but[type="button"]{
@@ -205,7 +216,7 @@
 		height:15px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#CF9,#CF8,#CF7,#CF6,#CF5);
+		background:linear-gradient(to right,#EEE,#F99,#F99,#F99);
 		color:#222;
 		border:thin solid #555;	
 	}
@@ -215,7 +226,7 @@
 		height:15px;
 		border-radius:3px;
 		font-size:10px;
-		background:#C96;
+		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
 		color:#222;
 		border:thin solid #555;	
 	}
@@ -264,6 +275,36 @@
 	.delete-emp-box table input{width:45px;height: 20px}
 	
 	/*---------------------Add sp---------------------*/
+	/* Nut edit */
+	input.edit-sp-but{
+		width:40px;
+		height:15px;
+		border-radius:3px;
+		font-size:10px;
+		background:linear-gradient(to right,#EEE,#F99,#F99,#F99);
+		color:#222;
+		border:thin solid #555;	
+	}
+	/* Nut xoa */
+	input.delete-sp-but{
+		width:40px;
+		height:15px;
+		border-radius:3px;
+		font-size:10px;
+		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
+		color:#222;
+		border:thin solid #555;	
+	}
+	/* Nut chi tiet */
+	input.chitiet-but{
+		width:40px;
+		height:15px;
+		border-radius:3px;
+		font-size:10px;
+		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
+		color:#222;
+		border:thin solid #555;	
+	}
 	.add-sp-box{
 		display: none;
 		background:white;
@@ -538,7 +579,11 @@
 		height:15px;
 		color: red;
 	}
-	
+	span.notify #log_info{
+		color:red;
+		border:none;
+		width:250px;	
+	}
 	input.cancellog[type="button"]{
 		float:right;
 		width:20px;

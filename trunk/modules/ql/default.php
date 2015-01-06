@@ -1,16 +1,12 @@
 <script>
 $(function(){
-		var tab="#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>";
-			if(tab.length != 1){
-				$('.tab').removeClass('active-tab');
-				$(tab).addClass('active-tab');
-			}
 		<?php
 			if(isset( $_SESSION['lvu'])){
-				echo "$('.nav').remove();";	
+				echo "$('.nav').remove();";
+				echo "$('.user').show();";	
 			}
 		?>
-	});
+});
 </script>
 <nav class="menu">
 <ul>

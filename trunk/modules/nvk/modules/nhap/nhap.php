@@ -32,22 +32,22 @@
 						$id_hd="NULL";
 				}else{// HDBH0000043 đây là cái tên hóa đơn mình lấy làm mốc
 					$ma_id_tr=substr($id_hd_tr,4,11);// cắt chuỗi từ vị trí thứ 4 đến vị trí thứ 11 là : 0000043
-					if(intval($ma_id_tr)>1000000){// biến cái chuỗi mình vừa cắt thành số -> 43 rồi so sánh với 1tr,100k....
+					if(intval($ma_id_tr)>=1000000){// biến cái chuỗi mình vừa cắt thành số -> 43 rồi so sánh với 1tr,100k....
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>100000){
+					}elseif(intval($ma_id_tr)>=100000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."0".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>10000){
+					}elseif(intval($ma_id_tr)>=10000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."00".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>1000){
+					}elseif(intval($ma_id_tr)>=1000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>100){
+					}elseif(intval($ma_id_tr)>=100){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."0000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>10){// đến đây đúng thì + thêm 1 rồi nối chuỗi -> 0000044
+					}elseif(intval($ma_id_tr)>=10){// đến đây đúng thì + thêm 1 rồi nối chuỗi -> 0000044
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."00000".$ma_id_moi;
 					}else{
