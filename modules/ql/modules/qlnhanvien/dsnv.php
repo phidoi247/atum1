@@ -226,7 +226,7 @@ $q=mysqli_query($dbc,$r);?>
 <div class="delete-emp-box">
 	<form id='delete-emp-form'  action="" method="post" >
     	<table>
-        	<tr bgcolor="#FF0033">
+        	<tr bgcolor="#88D280">
             	<th colspan="6">
                 	Bạn thật sự muốn Sa thải NV 
                     <input id="id_emp_del" readonly><input type="hidden" id="id_emp_row" readonly>?
