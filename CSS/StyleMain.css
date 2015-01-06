@@ -3,7 +3,7 @@
 	.swapper{
 		width:1000px;
 		height:auto;
-		background:#EFF1EF;
+		background:#0aa9af;
 		margin:auto;	
 	}
 /************************************/
@@ -55,7 +55,7 @@
 	section{
 		width:100%;
 		min-height:490px;
-		background:#F4D89D;
+		background:#B6D8A0;
 		float:left;
 	}
 	nav.menu{
@@ -97,7 +97,7 @@
 	}
 	
 	.active-tab{
-		background:#F4D89D ;
+		background:#B6D8A0;
 		border-top: solid thin gray; 
 	}
 	/*--------------------Fillter------------------------*/
