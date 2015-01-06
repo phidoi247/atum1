@@ -238,8 +238,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}	
 	}
-}
-if(isset($_GET['sp_search'])){
+}elseif(isset($_GET['sp_search'])){
 		$r="select count(a.sanpham_id) ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";

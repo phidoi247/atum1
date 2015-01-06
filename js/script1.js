@@ -19,8 +19,7 @@ function edit_emp(cnt){
 			dataType:"json",
 			success: function(arr){
 				$('#ename').val(arr[2]);
-				$('#elevel').val(arr[3]);
-				$('#eposition').val(edit_emp_id.substr(0,2));
+				$('#eposition').val(arr[3]);
 				$('#eaddress').val(arr[5]);
 				$('#edateofbirth').val(arr[4]);
 				$('#ephone').val(arr[9]);

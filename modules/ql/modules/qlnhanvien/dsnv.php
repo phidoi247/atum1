@@ -5,31 +5,31 @@ if(isset($_GET['sub'])){
 	if(strcmp($sub,"nvbh")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 order by ngay_vao_lam limit 0,18";
 		}
 	}elseif(strcmp($sub,"nvk")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit $from,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,18";
 		}		
 	}else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit 0,18";
 		}
 	}
 }else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,18";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit 0,18";
 		}	
 }
 if(isset($_GET['nv_search'])){
@@ -137,7 +137,7 @@ $q=mysqli_query($dbc,$r);?>
             <tr>
             	<td>Loại:</td>
                 <td>
-                	<select name="position"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option></select>
+                	<select name="position"><option value="1">NV Bán Hàng</option><option value="2">Thủ Kho</option></select>
                 </td>
             </tr>
             <tr>
@@ -201,7 +201,7 @@ $q=mysqli_query($dbc,$r);?>
                 <td>
                     Loại:
                 </td>
-                <td><select name="eposition" id="eposition"><option value="BH">NV Bán Hàng</option><option value="TK">Thủ Kho</option></select>
+                <td><select name="eposition" id="eposition"><option value="1">NV Bán Hàng</option><option value="2">Thủ Kho</option></select>
                 </td>
             </tr>
 			<tr>
@@ -324,7 +324,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}
-}if(isset($_GET['nv_search'])){
+}elseif(isset($_GET['nv_search'])){
 		$r="SELECT count(nhanvien_id) FROM `tblnhanvien` ";
 		$r.="WHERE nhanvien_id ='$search' ";
 		$r.="OR ngay_vao_lam='$search' ";
