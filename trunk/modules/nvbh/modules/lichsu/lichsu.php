@@ -101,20 +101,20 @@ $q=mysqli_query($dbc,$r);?>
  
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
-	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 ";
+	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 and b.nhanvien_id='{$_SESSION['idu']}'";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
-		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+		$modpage=$so_page[0]%18;$page=($so_page[0]/18);
+		if($modpage==0 and $page>1){
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
-		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+		elseif($modpage<>0 and $page>1){
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
 			echo 1;	
-		}	
+		}
 ?>"/>
 </div>
