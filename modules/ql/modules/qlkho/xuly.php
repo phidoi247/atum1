@@ -82,16 +82,16 @@
 				$sanpham_id="NULL";
 			}else{
 				$ma_id_tr=substr($sanpham_id_trc,2,7);
-				if(intval($ma_id_tr)>10000){
+				if(intval($ma_id_tr)>=10000){
 					$ma_id_moi=intval($ma_id_tr)+1;
 					$sanpham_id=$danhmuc.$ma_id_moi;
-				}elseif(intval($ma_id_tr)>1000){
+				}elseif(intval($ma_id_tr)>=1000){
 					$ma_id_moi=intval($ma_id_tr)+1;
 					$sanpham_id=$danhmuc."0".$ma_id_moi;
-				}elseif(intval($ma_id_tr)>100){
+				}elseif(intval($ma_id_tr)>=100){
 					$ma_id_moi=intval($ma_id_tr)+1;
 					$sanpham_id=$danhmuc."00".$ma_id_moi;
-				}elseif(intval($ma_id_tr)>10){
+				}elseif(intval($ma_id_tr)>=10){
 					$ma_id_moi=intval($ma_id_tr)+1;
 					$sanpham_id=$danhmuc."000".$ma_id_moi;
 				}else{

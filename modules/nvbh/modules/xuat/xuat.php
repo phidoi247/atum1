@@ -32,22 +32,22 @@
 					$id_hd="NULL";
 				}else{
 					$ma_id_tr=substr($id_hd_tr,4,11);
-					if(intval($ma_id_tr)>1000000){
+					if(intval($ma_id_tr)>=1000000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>100000){
+					}elseif(intval($ma_id_tr)>=100000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."0".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>10000){
+					}elseif(intval($ma_id_tr)>=10000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."00".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>1000){
+					}elseif(intval($ma_id_tr)>=1000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>100){
+					}elseif(intval($ma_id_tr)>=100){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."0000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>10){
+					}elseif(intval($ma_id_tr)>=10){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="TTBH"."00000".$ma_id_moi;
 					}else{

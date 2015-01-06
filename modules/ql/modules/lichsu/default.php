@@ -13,7 +13,7 @@ $cnt=1;
 				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-				$r.="where j.ten_hoadon=k.ten_hoadon limit $from,18";
+				$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit $from,18";
 
 			}else{
 				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
@@ -24,7 +24,7 @@ $cnt=1;
 				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-				$r.="where j.ten_hoadon=k.ten_hoadon limit 0,18";
+				$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit 0,18";
 			}
 		}elseif(strcmp($sub,'bh')==0){
 			if(isset($_GET['f'])){
@@ -37,7 +37,7 @@ $cnt=1;
 				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-				$r.="where j.ten_hoadon=k.ten_hoadon limit $from,18";
+				$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit $from,18";
 			}else{
 				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
 				$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
@@ -47,7 +47,7 @@ $cnt=1;
 				$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 				$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 				$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-				$r.="where j.ten_hoadon=k.ten_hoadon limit 0,18";
+				$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit 0,18";
 
 			}
 		}
@@ -62,7 +62,7 @@ $cnt=1;
 			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit $from,18";
+			$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit $from,18";
 
 		}else{
 			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
@@ -73,12 +73,14 @@ $cnt=1;
 			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
 			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-			$r.="where j.ten_hoadon=k.ten_hoadon limit 0,18";
+			$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit 0,18";
 
 		}
 	}
 	if(isset($_GET['ls_search'])){
-			$search=$_GET['ls_search'];
+			$search=mysqli_escape_string($dbc,$_GET['ls_search']);
+			if(isset($_GET['f'])){
+			$from=$_GET['f'];
 			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
 			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
 			$r.="from tblchitietdonhang as y ";
@@ -89,9 +91,24 @@ $cnt=1;
 			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
 			$r.="where j.ten_hoadon=k.ten_hoadon and(";
 			$r.="k.ten_hoadon='$search' ";
-			$r.="or nhanvien_id='$search' ";
-			$r.="or k.nhanvien_id LIKE '$search') ";
-			$r.="limit 0,18";
+			$r.="or k.nhanvien_id LIKE '$search' ";
+			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
+			$r.="order by k.thoigian desc limit $from,18";
+			}else{
+				$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
+			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+			$r.="from tblchitietdonhang as y ";
+			$r.="group by y.ten_hoadon) as j, ";
+			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+			$r.="where j.ten_hoadon=k.ten_hoadon and(";
+			$r.="k.ten_hoadon='$search' ";
+			$r.="or k.nhanvien_id LIKE '$search' ";
+			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
+			$r.="order by k.thoigian desc limit 0,18";
+			}
 	}
 $q=mysqli_query($dbc,$r);?>
 
@@ -102,7 +119,7 @@ $q=mysqli_query($dbc,$r);?>
 <?php while ($row=mysqli_fetch_assoc($q)){?>
 	<tbody>
     	<tr>
-        	<td class="td_ten">
+        	<td class="">
             	<input type='text' class="ma_ls" id='ma_hd<?php echo $cnt; ?>' value='<?php echo $row['ten_hoadon']; ?>' readonly>
             </td>
             <td class="td_sl">
@@ -118,7 +135,7 @@ $q=mysqli_query($dbc,$r);?>
             </td>
             <td>
             	<input type="hidden" value="<?php echo $row['loaigiaodich_id']; ?>" id="loaihd<?php echo $cnt; ?>"/>
-                <input id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
+                <input class="chitiet-but" id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
             </td>
        </tr>
        </tbody>	
@@ -190,6 +207,34 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}
+}if(isset($_GET['ls_search'])){
+			$r="SELECT count(k.ten_hoadon) ";
+			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
+			$r.="from tblchitietdonhang as y ";
+			$r.="group by y.ten_hoadon) as j, ";
+			$r.="(select a.ten_hoadon,a.thoigian,a.nhanvien_id,sum(c.gia_nhap*b.soluong) as thanhtien ";
+			$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
+			$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id ";
+			$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
+			$r.="where j.ten_hoadon=k.ten_hoadon and(";
+			$r.="k.ten_hoadon='$search' ";
+			$r.="or k.nhanvien_id LIKE '$search' ";
+			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
+
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		$modpage=$so_page[0]%18;$page=($so_page[0]/18);		
+		if($modpage==0 and $page>1){
+			$tt_page=intval($page);
+			echo $tt_page;
+		}
+		elseif($modpage<>0 and $page>1){
+			$tt_page=intval($page)+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
+		}
 }else{
 		$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon";
 		$q=mysqli_query($dbc,$r);

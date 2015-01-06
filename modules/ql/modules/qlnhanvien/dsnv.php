@@ -5,42 +5,54 @@ if(isset($_GET['sub'])){
 	if(strcmp($sub,"nvbh")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,18";
 		}
 	}elseif(strcmp($sub,"nvk")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit $from,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 order by ngay_vao_lam limit 0,18";
 		}		
 	}else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,18";
 		}
 	}
 }else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit $from,18";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,14";
+			$r="SELECT * FROM `tblnhanvien` WHERE level_id =3 OR level_id =2 order by ngay_vao_lam limit 0,18";
 		}	
 }
 if(isset($_GET['nv_search'])){
-		$search=$_GET['nv_search'];
+		
+		$search=mysqli_real_escape_string($dbc,($_GET['nv_search']));
+		if(isset($_GET['f'])){
+			$from=$_GET['f'];
 		$r="SELECT * FROM `tblnhanvien` ";
 		$r.="WHERE nhanvien_id ='$search' ";
 		$r.="OR ngay_vao_lam='$search' ";
 		$r.="OR ten_nhanvien='$search' ";
 		$r.="OR dia_chi LIKE '$search' ";
 		$r.="OR SDT LIKE '$search' ";
-		$r.="limit 0,14";
+		$r.="limit $from,18";
+		}else{
+		$r="SELECT * FROM `tblnhanvien` ";
+		$r.="WHERE nhanvien_id ='$search' ";
+		$r.="OR ngay_vao_lam='$search' ";
+		$r.="OR ten_nhanvien='$search' ";
+		$r.="OR dia_chi LIKE '$search' ";
+		$r.="OR SDT LIKE '$search' ";
+		$r.="limit 0,18";	
+		}
 }
 $q=mysqli_query($dbc,$r);?>
 <table>
@@ -169,7 +181,7 @@ $q=mysqli_query($dbc,$r);?>
 		<tbody>
             <tr>
                 <th>
-                    <img width="140px" height="50px" id="old_avt" >
+                    <img width="180px" height="50px" id="old_avt" >
                 </th>
             </tr>
             <tr>
@@ -253,7 +265,7 @@ $q=mysqli_query($dbc,$r);?>
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/14;
+				$pst_page=$from/18;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
@@ -267,13 +279,13 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=2 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
 		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
 		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
@@ -283,13 +295,13 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=3 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
 		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
 		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
@@ -299,30 +311,52 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
 		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
 		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
 			echo 1;	
 		}
 	}
-}else{
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
+}if(isset($_GET['nv_search'])){
+		$r="SELECT count(nhanvien_id) FROM `tblnhanvien` ";
+		$r.="WHERE nhanvien_id ='$search' ";
+		$r.="OR ngay_vao_lam='$search' ";
+		$r.="OR ten_nhanvien='$search' ";
+		$r.="OR dia_chi LIKE '$search' ";
+		$r.="OR SDT LIKE '$search' ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%14;$page=$so_page[0]/14;		
+		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
 		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
 		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+			$tt_page=intval($page)+1;
+			echo $tt_page;	
+			
+		}else{
+			echo 1;	
+		}
+}
+else{
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
+		$q=mysqli_query($dbc,$r);
+		$so_page=mysqli_fetch_row($q);
+		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		if($modpage==0 and $page>=1){
+			$tt_page=intval($page);
+			echo $tt_page;
+		}
+		elseif($modpage<>0 and $page>=1){
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{

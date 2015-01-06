@@ -40,6 +40,15 @@ $(function(){
 				if(isset($_GET['sub'])){
 					$sub=$_GET['sub'];
 					echo "nav=".$nav."&sub=".$sub;
+				}elseif(isset($_GET['ls_search'])){
+					$ls_search=$_GET['ls_search'];
+					echo "nav=".$nav."&ls_search=".$ls_search;
+				}elseif(isset($_GET['sp_search'])){
+					$sp_search=$_GET['sp_search'];
+					echo "nav=".$nav."&sp_search=".$sp_search;
+				}elseif(isset($_GET['nv_search'])){
+					$nv_search=$_GET['nv_search'];
+					echo "nav=".$nav."&nv_search=".$nv_search;
 				}else{
 					echo "nav=".$nav;
 				}
@@ -64,6 +73,15 @@ $(function(){
 				if(isset($_GET['sub'])){
 					$sub=$_GET['sub'];
 					echo "nav=".$nav."&sub=".$sub;
+				}elseif(isset($_GET['ls_search'])){
+					$ls_search=$_GET['ls_search'];
+					echo "nav=".$nav."&ls_search=".$ls_search;
+				}elseif(isset($_GET['sp_search'])){
+					$sp_search=$_GET['sp_search'];
+					echo "nav=".$nav."&sp_search=".$sp_search;
+				}elseif(isset($_GET['nv_search'])){
+					$nv_search=$_GET['nv_search'];
+					echo "nav=".$nav."&nv_search=".$nv_search;
 				}else{
 					echo "nav=".$nav;
 				}
@@ -73,15 +91,24 @@ $(function(){
 	});
 });
 </script>
-
+<script>
+$(function(){
+		var tab="#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>";
+			if(tab.length != 1){
+				$('.tab').removeClass('active-tab');
+				$(tab).addClass('active-tab');
+			}
+});
+</script>
 </head>
 
 <body>
 <div class="swapper">
 <!--Begin Header-->
 <header>
-<div class="logo">Logo</div>
+<div class="logo"><img width="300px" src="sourse/Logo1.jpg"/></div>
 <div class="banner"><img alt="Banner" src="sourse/banner.jpg"></div>
+
 <div class="nav">
 <input type="button" class="login-but" value="Đăng nhập"/>
 </div>
@@ -138,14 +165,21 @@ $(function(){
       </table>
   </form>
 </div>
+<div class="user">
+<?php
+	if(isset($_SESSION['nameu'])){
+		echo $_SESSION['nameu'];
+	}
+?>
+</div>
 <?php
 	
  	if(isset($_SESSION['lvu'])){
-		if($_SESSION['lvu']==1){
+		if($_SESSION['lvu']==3){
 			include("modules/ql/default.php");
-		}else if($_SESSION['lvu']==2){
+		}else if($_SESSION['lvu']==1){
 			include("modules/nvbh/default.php");
-		}else if($_SESSION['lvu']==3){
+		}else if($_SESSION['lvu']==2){
 			include("modules/nvk/default.php");
 		}else{
 			include("intro.php");
