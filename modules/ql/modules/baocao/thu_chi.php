@@ -51,7 +51,7 @@
 					};				
 				};		
 			}else{
-				echo "Ngày sai!";
+			header('Location: ../../../../error/error.php');
 		};
 		?>
 		<script type="text/javascript">//biểu đồ

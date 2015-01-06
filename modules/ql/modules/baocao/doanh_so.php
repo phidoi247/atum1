@@ -43,7 +43,7 @@
 			};			
 			//kết thúc kiểm tra
 			
-			if($checksp>0 && $checkngay>0){
+			if($checksp=count($masp) && $checkngay>0){
 				//lấy phần name trong series
 				$qname = " SELECT tblsanpham.ten_sanpham,tblchitietdonhang.soluong,tbldonvi.ten_donvi ";
 				$qname .= " FROM tblhoadon JOIN tblchitietdonhang ";
@@ -102,7 +102,7 @@
 				};
 			}; 		
 		}else{
-			echo "Mã sản phẩm hoặc ngày sai!";
+			header('Location: ../../../../error/error.php');
 		};
 		
 		?>
