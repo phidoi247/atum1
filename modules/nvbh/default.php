@@ -38,12 +38,12 @@ if(isset($_SESSION['lvu'])){
 				echo "</article>";
 				$size=400;
 			}
+	}else{
+		$size=452;	
+	}
 ?>
 <div class="pop-up"></div>
 <div class="Bar" style="height:<?php echo $size; ?>px">
-<?php
-	}
-?>
 <div id="notify"></div>
 <?php	
 if($_SERVER['REQUEST_METHOD']='GET'){
