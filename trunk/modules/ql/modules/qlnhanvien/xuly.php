@@ -21,11 +21,6 @@
 			if(empty($error)){
 				$name=mysql_escape_string($_POST['name']);
 				$position=$_POST['position'];
-				if(strcmp($position,"BH")==0){
-					$level=2;
-				}else{
-					$level=3;
-				}
 				$address=mysql_escape_string($_POST['address']);
 				$phone=mysql_escape_string($_POST['phone']);
 				$password=mysql_escape_string($_POST['password']);
@@ -36,7 +31,7 @@
 				$link='../../../../upload/'.$fmten;
 				copy($_FILES['avatar']['tmp_name'],$link);
 				$src_avatar=substr($link,12);
-			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ORDER BY `nhanvien_id` DESC LIMIT 1";
+			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `level_id` = ".$position." ORDER BY `level_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
@@ -60,7 +55,7 @@
 				}
 			}
 			echo "Ok";
-			$r="INSERT INTO `tblnhanvien` VALUES(null,'$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
+			$r="INSERT INTO `tblnhanvien` VALUES(null,'$nhanvien_id','$name','$position','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
 			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 			}else {
 				echo "Fill full all Fields,Please!";
@@ -112,24 +107,19 @@
 				$eid=$_POST['eid'];
 				$name=mysql_escape_string($_POST['ename']);
 				$position=$_POST['eposition'];
-				if(strcmp($position,"BH")==0){
-					$level=2;
-				}else{
-					$level=3;
-				}$address=mysql_escape_string($_POST['eaddress']);
+				$address=mysql_escape_string($_POST['eaddress']);
 				$phone=mysql_escape_string($_POST['ephone']);
 				$password=mysql_escape_string($_POST['epassword']);
 				$dateofbirth=mysql_escape_string($_POST['edateofbirth']);
 				$avatar=$_FILES['eavatar']['name'];	
 				
 			//Lấy sourse ảnh
-				$r="select avatar from tblnhanvien where nhanvien_id='$eid'";
+				$r="select avatar,level_id from tblnhanvien where nhanvien_id='$eid'";
 				$q=mysqli_query($dbc,$r);
 				$sourse=mysqli_fetch_row($q);
 				$pre_avatar=$sourse[0];
 			//Kiểm tra xem có thay đổi vị trí k
-				$re_id=substr($eid,0,2);
-				if(strcmp($eid,$position)==0){
+				if(strcmp($sourse[1],$position)==0){
 				//Nếu == thì thực hiện update
 					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
 						$linkdel="../../".$avatar;
@@ -141,14 +131,14 @@
 						$src_avatar=substr($link,12);
 						if($password!=''){
 							$r="update tblnhanvien set ";
-							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="ten_nhanvien='$name',level_id='$position',ngay_sinh='$dateofbirth',";
 							$r.="dia_chi='$address',password=SHA1('$password'),avatar='$src_avatar',SDT='$phone' ";
 							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";
 						}else{
 							$r="update tblnhanvien set ";
-							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="ten_nhanvien='$name',level_id='$position',ngay_sinh='$dateofbirth',";
 							$r.="dia_chi='$address',avatar='$src_avatar',SDT='$phone' ";
 							$r.="where nhanvien_id='$eid'"; 	
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
@@ -157,14 +147,14 @@
 					}else{
 						if($password!=''){
 							$r="update tblnhanvien set "; 
-							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',";
+							$r.="ten_nhanvien='$name',level_id='$position',ngay_sinh='$dateofbirth',";
 							$r.="dia_chi='$address',password=SHA1('$password'),SDT='$phone' ";
 							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";
 						}else{
 							$r="update tblnhanvien set ";
-							$r.="ten_nhanvien='$name',level_id='$level',ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone'";
+							$r.="ten_nhanvien='$name',level_id='$position',ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone'";
 							$r.="where nhanvien_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 						
@@ -174,7 +164,7 @@
 				}
 				else{
 				//Nếu != thì Up 1 nhân viên mới
-					$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `nhanvien_id` LIKE '$position%' ";
+					$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `level_id` = ".$position." ";
 					$r.="ORDER BY `nhanvien_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);

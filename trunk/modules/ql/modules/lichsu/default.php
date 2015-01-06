@@ -207,7 +207,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}
-}if(isset($_GET['ls_search'])){
+}elseif(isset($_GET['ls_search'])){
 			$r="SELECT count(k.ten_hoadon) ";
 			$r.="FROM (select y.ten_hoadon,y.loaigiaodich_id,sum(y.soluong) as soluong ";
 			$r.="from tblchitietdonhang as y ";
