@@ -52,7 +52,9 @@
 						};
 					$loinhuan[$i] = $databan[$i]-$datanhap[$i];
 					};		
-			};
+			}else{
+			header('Location: ../../../../error/error.php');
+		};;
 		?>
 		<script type="text/javascript">//biểu đồ
 		$(function () {
