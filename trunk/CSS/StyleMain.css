@@ -201,15 +201,21 @@
 	/*---------------------Edit Employee---------------------*/
 	/* Nut edit */
 	input.edit-emp-but{
-		width:50px;
-		background:#CF6;
+		width:40px;
+		height:15px;
+		border-radius:3px;
+		font-size:10px;
+		background:linear-gradient(to right,#EEE,#CF9,#CF8,#CF7,#CF6,#CF5);
 		color:#222;
 		border:thin solid #555;	
 	}
 	/* Nut xoa */
 	input.delete-emp-but{
-		width:50px;
-		background:#F9F;
+		width:40px;
+		height:15px;
+		border-radius:3px;
+		font-size:10px;
+		background:#C96;
 		color:#222;
 		border:thin solid #555;	
 	}
