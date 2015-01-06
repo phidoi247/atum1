@@ -149,6 +149,8 @@ $(document).ready(function(){
 					if(nn=='Ok'){
 						alert("Giao dich thành công!");
 						document.location.reload();
+					}else{
+							alert(nn);
 					}
 				}
 			});
