@@ -88,6 +88,7 @@ $(function(){
 </header>
 <!--End Header-->
 <section>
+
 <div class="popup"></div>
 <div id="logbox" >
 <span class="notify">
@@ -147,9 +148,10 @@ $(function(){
 		}else if($_SESSION['lvu']==3){
 			include("modules/nvk/default.php");
 		}else{
+			include("intro.php");
 					}
 	}else{
-		
+		include("intro.php");
 		}
 ?>
 </section>

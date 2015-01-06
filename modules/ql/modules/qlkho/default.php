@@ -105,19 +105,24 @@ $q=mysqli_query($dbc,$r);
                         <img width='60px' height='60px' src='<?php echo $row['image_link']; ?>'>
                 </span>					
           	</td>
-            <td class="td_tensp">
+            <td class="td_ten">
 				<?php echo $row['ten_sanpham']; ?></td>
-            <td>
+            <td class="td_ten">
 				<?php echo $row['ten_danhmuc']; ?>
             </td>
-            <td>
+            <td class="td_ten">
 				<input type="hidden"  id="ncc<?php echo $cnt; ?>" value="<?php echo $row['nhacungcap_id']; ?>"/><?php echo $row['ten_nhacungcap']; ?>
             </td>
-            <td>
+            <td class="td_sl">
 				<?php echo $row['soluong']; ?>
             </td>
-            <td>
-				<?php echo $row['ten_donvi']; ?></td><td><?php echo $row['gia_nhap']; ?><td><?php echo $row['gia_ban']; ?>
+            <td >
+				<?php echo $row['ten_donvi']; ?></td>
+            <td class="td_giatri">
+				<?php echo $row['gia_nhap']; ?>
+            </td>
+            <td class="td_giatri">
+				<?php echo $row['gia_ban']; ?>
             </td>
             <td>
 				<?php echo $row['giam_gia']; ?>
@@ -429,8 +434,9 @@ $q=mysqli_query($dbc,$r);
 </div>
 <!---Nav page--->
  <div class="nav-page">
-	<a href="" class="prev-page">Trang trước</a>
-    <a href=""  class="next-page">Trang sau</a>
+ <div class="swap-nav">
+	<a href="" class="prev-page"></a>
+    
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
@@ -438,9 +444,8 @@ $q=mysqli_query($dbc,$r);
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
-
- Của
- 
+<a href=""  class="next-page"> </a>
+<label> Của </label>
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
 if(isset($_GET['sub'])){
@@ -513,4 +518,5 @@ if(isset($_GET['sub'])){
 		
 	}
 ?>"/>
+</div>
 </div>

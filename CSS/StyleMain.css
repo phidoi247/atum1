@@ -62,7 +62,8 @@
 		width: 100%;
 		height: 37px;
 		float: left;
-		background:#7cedc7;
+		border-top:thin solid gray;
+		background:#9BD2A5;
 		
 	}
 	nav.menu ul{
@@ -73,16 +74,16 @@
 	nav.menu ul li{
 		width: 120px;
 		height:37px;
-		border:thin #444 solid;
+		border-right:thin solid gray;
 		line-height: 35px;
 		list-style: none;
 		float: left;
 	}
 	nav.menu ul li:FIRST-CHILD{
-		border-left: thin solid black;
+		border-left: thin solid gray;
 	}
 	nav.menu ul li:HOVER{
-		background-color: white;
+		background-color: #B6D8A0;
 	}
 	nav.menu ul li a{
 		width: 100%;
@@ -166,19 +167,6 @@
 		background-repeat: no-repeat;
 	}
 	
-	/*-------------------Aside-------------------------*/
-	aside.aside{
-		width: 20%;
-		height:90px;
-		float: right;
-		border-bottom:solid thin gray;
-	}
-	/* Log */
-	#log_info{
-		width:220px;
-		border:none;
-		color:red;	
-	}
 	/*---------------------Add Employee---------------------*/
 	.add-emp-box{
 		display: none;
@@ -211,6 +199,21 @@
 		font-size:12px;	
 	}
 	/*---------------------Edit Employee---------------------*/
+	/* Nut edit */
+	input.edit-emp-but{
+		width:50px;
+		background:#CF6;
+		color:#222;
+		border:thin solid #555;	
+	}
+	/* Nut xoa */
+	input.delete-emp-but{
+		width:50px;
+		background:#F9F;
+		color:#222;
+		border:thin solid #555;	
+	}
+	
 	.edit-emp-box{
 		display: none;
 		background:white;
@@ -567,8 +570,11 @@
 		width: 100%;
 		float:left;
 		border-spacing: 1px;
+		text-align:left;
 	}
-	
+	div.Bar table.bang-ls{
+		text-align:center;	
+	}
 	div.Bar table thead{
 		background-color: #B6D8A0;
 		
@@ -580,15 +586,16 @@
 		position:absolute;
 		visibility:hidden;
 		left:-55px;
+		margin-top:-20px;
 	}
 	div.Bar table tbody tr:hover span{
 		visibility:visible;
 	}
 	
-	div.Bar table tbody tr td.td_tensp,td.td_tennv{
+	div.Bar table tbody tr td.td_ten,td.td_diachi{
 		text-align:left;
 	}
-	div.Bar table tbody tr td.td_giatri{
+	div.Bar table tbody tr td.td_giatri,td.td_sl{
 		text-align:right;	
 	}
 	
@@ -616,6 +623,13 @@
 		position:absolute;
 		float:left;	
 	}
+	.nav-page .swap-nav{
+		float:left;
+		margin-left:450px;	
+	}
+	.swap-nav input,label{
+		float:left;	
+	}
 	.nav-page a{
 		color:#333;
 		margin:0 5px;
@@ -623,9 +637,19 @@
 	}
 	.nav-page a.prev-page ,a.next-page{
 		background-color:transparent;
+		float:left;
+		height:16px;
+		width:16px;
+		display:block;
 		border:none;
-		text-decoration:underline;
+		text-decoration:none;
 		text-align:center;	
+	}
+	.nav-page a.prev-page{
+		background-image: url(../sourse/prev.png);
+	}
+	.nav-page a.next-page{
+		background-image: url(../sourse/next.png);
 	}
 	.nav-page input.present-page,input.total-page{
 		width:20px;
