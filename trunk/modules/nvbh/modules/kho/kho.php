@@ -158,18 +158,18 @@ $q=mysqli_query($dbc,$r);?>
 </table>
 </div><!---Nav page--->
  <div class="nav-page">
-	<a href="" class="prev-page">Trang trước</a>
-    <a href=""  class="next-page">Trang sau</a>
+ <div class="swap-nav">
+	<a href="" class="prev-page"></a>
+    
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/18;
+				$pst_page=$from/14;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
-
- Của
- 
+<a href=""  class="next-page"> </a>
+<label> Của </label>
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
 if(isset($_GET['sub'])){
@@ -242,4 +242,5 @@ if(isset($_GET['sub'])){
 		
 	}
 ?>"/>
+</div>
 </div>

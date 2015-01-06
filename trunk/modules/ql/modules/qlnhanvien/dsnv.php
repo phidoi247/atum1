@@ -48,38 +48,41 @@ $q=mysqli_query($dbc,$r);?>
     <tr><td>Mã NV</td>
     <td>Tên NV</td>
     <td>Level</td>
-    <td>Ngày sinh</td>
     <td>Địa chỉ</td>
     <td>Phone</td>
+    <td>Ngày sinh</td>
     <td>Join Day</td>
     <td>Tùy chọn</td></tr>
     </thead>
+    <tbody>
 <?php while ($row=mysqli_fetch_array($q)){?>
-	<tbody>
+	
     	<tr>
-        	<td>
+        	<td width="60px">
             	<input class="ma_nv" type='text' id='ma_nv<?php echo $cnt; ?>' value='<?php echo $row['nhanvien_id']; ?>' readonly>
                 <span>
             		<img width='60px' height='60px' src='<?php echo $row['avatar']; ?>'>
             	</span>
            </td>
-           <td class="td_tennv">
-		   		<?php echo $row['ten_nhanvien']; ?></td><td><?php echo $row['level_id']; ?>
+           <td class="td_ten">
+		   		<?php echo $row['ten_nhanvien']; ?></td>
+           <td width="40px">
+		  		<?php echo $row['level_id']; ?>
            </td>
-           <td>
-		   		<?php echo $row['ngay_sinh']; ?>
-          </td>
-          <td>
+          <td class="td_diachi">
 		  		<?php echo $row['dia_chi']; ?>
           </td>
-          <td>
+          <td width="100px">
 		  		<?php echo $row['SDT']; ?>
           </td>
-          <td>
+           <td width="100px">
+		   		<?php echo $row['ngay_sinh']; ?>
+          </td>
+          <td width="100px">
 		  		<?php echo $row['ngay_vao_lam']; ?>
           </td>
-          <td>
-          		<input id='edit-emp-but<?php echo $cnt; ?>' onclick='edit_emp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' >
+          <td width="105px">
+          		<input class="edit-emp-but" id='edit-emp-but<?php echo $cnt; ?>' onclick='edit_emp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' >
                 <input class='delete-emp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_emp(cnt=<?php echo $cnt; ?>);' value='Sa thải' type='button' >
         </td>
      </tr>
@@ -223,7 +226,7 @@ $q=mysqli_query($dbc,$r);?>
 <div class="delete-emp-box">
 	<form id='delete-emp-form'  action="" method="post" >
     	<table>
-        	<tr>
+        	<tr bgcolor="#FF0033">
             	<th colspan="6">
                 	Bạn thật sự muốn Sa thải NV 
                     <input id="id_emp_del" readonly><input type="hidden" id="id_emp_row" readonly>?
@@ -239,13 +242,14 @@ $q=mysqli_query($dbc,$r);?>
               </th>
               <th></th><th></th>
           </tr>
-      S</table>
+      </table>
 	</form>
 </div>
 <!--End Delete Employees Box--->
  <div class="nav-page">
-	<a href="" class="prev-page">Trang trước</a>
-    <a href=""  class="next-page">Trang sau</a>
+ <div class="swap-nav">
+	<a href="" class="prev-page"></a>
+    
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
@@ -253,9 +257,8 @@ $q=mysqli_query($dbc,$r);?>
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
-
- Của
- 
+<a href=""  class="next-page"> </a>
+<label> Của </label>
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
 if(isset($_GET['sub'])){
@@ -327,4 +330,5 @@ if(isset($_GET['sub'])){
 		}
 	}
 ?>"/>
+</div>
 </div>

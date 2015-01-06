@@ -95,17 +95,17 @@ $cnt=1;
 	}
 $q=mysqli_query($dbc,$r);?>
 
-<table>
+<table class="bang-ls">
 	<thead>
     <tr><td>Tên Hóa Đơn</td><td>Số lượng</td><td>Giá trị</td><td>Thời gian</td><td>Nhân viên GD</td><td>Tùy chọn</td></tr>
     </thead>
 <?php while ($row=mysqli_fetch_assoc($q)){?>
 	<tbody>
     	<tr>
-        	<td>
+        	<td class="td_ten">
             	<input type='text' class="ma_ls" id='ma_hd<?php echo $cnt; ?>' value='<?php echo $row['ten_hoadon']; ?>' readonly>
             </td>
-            <td>
+            <td class="td_sl">
 				<?php echo $row['soluong']; ?></td>
             <td class="td_giatri">
 				<?php echo $row['thanhtien']; ?>
@@ -140,19 +140,19 @@ $q=mysqli_query($dbc,$r);?>
 </div>
 <!--End Chi tiet Box--->
 <!--NAv PAGE--->
- <div class="nav-page">
-	<a href="" class="prev-page">Trang trước</a>
-    <a href=""  class="next-page">Trang sau</a>
+<div class="nav-page">
+ <div class="swap-nav">
+	<a href="" class="prev-page"></a>
+    
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/18;
+				$pst_page=$from/14;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
-
- Của
- 
+<a href=""  class="next-page"> </a>
+<label> Của </label>
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
 if(isset($_GET['sub'])){
@@ -162,12 +162,12 @@ if(isset($_GET['sub'])){
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
-		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+		if($modpage==0 and $page>1){
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
-		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+		elseif($modpage<>0 and $page>1){
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
@@ -178,12 +178,12 @@ if(isset($_GET['sub'])){
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
-		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+		if($modpage==0 and $page>1){
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
-		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+		elseif($modpage<>0 and $page>1){
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
@@ -194,13 +194,13 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=intval($so_page[0]/18);		
-		if($modpage==0 and $page>=1){
-			$tt_page=$page;
+		$modpage=$so_page[0]%18;$page=($so_page[0]/18);		
+		if($modpage==0 and $page>1){
+			$tt_page=intval($page);
 			echo $tt_page;
 		}
-		elseif($modpage<>0 and $page>=1){
-			$tt_page=$page+1;
+		elseif($modpage<>0 and $page>1){
+			$tt_page=intval($page)+1;
 			echo $tt_page;	
 			
 		}else{
@@ -208,5 +208,5 @@ if(isset($_GET['sub'])){
 		}
 	}
 ?>"/>
-
+</div>
 </div>

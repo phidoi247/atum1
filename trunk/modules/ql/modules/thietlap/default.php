@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     	<tr>
-        	<td rowspan="2" colspan="2"><img width="30" height="40" src="<?php echo $f[7] ?>"></td>
+        	<td rowspan="2" colspan="2"><img width="60" height="60" src="<?php echo $f[7] ?>"></td>
         	<td>Họ và tên:</td>
         	<td><?php echo $_SESSION['nameu'] ?></td>
         </tr>

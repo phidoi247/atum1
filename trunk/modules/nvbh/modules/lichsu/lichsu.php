@@ -86,19 +86,19 @@ $q=mysqli_query($dbc,$r);?>
 </div>
 <!--End Chi tiet Box--->
 <!--NAv PAGE--->
- <div class="nav-page">
-	<a href="" class="prev-page">Trang trước</a>
-    <a href=""  class="next-page">Trang sau</a>
+<div class="nav-page">
+ <div class="swap-nav">
+	<a href="" class="prev-page"></a>
+    
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/18;
+				$pst_page=$from/14;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
-
- Của
- 
+<a href=""  class="next-page"> </a>
+<label> Của </label>
 <input type="text" readonly="readonly" class="total-page" 
     	value="<?php
 	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 and b.nhanvien_id='{$_SESSION['idu']}'";
@@ -117,4 +117,5 @@ $q=mysqli_query($dbc,$r);?>
 			echo 1;	
 		}
 ?>"/>
+</div>
 </div>
