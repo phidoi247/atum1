@@ -81,8 +81,8 @@ $(document).ready(function(e) {
 			$('.delete-sp-close').click(function(){
 				$('.delete-sp-box').hide();
 			});
-
-			$('#doanh_so_but').click(function(){
+/////////////////BÁo Cáo
+			$('.doanh_so_but').click(function(){
 				$('.doanh_so_box').show();
 				$('.thu_chi_box').hide();
 				$('.doanh_thu_box').hide();
@@ -91,7 +91,7 @@ $(document).ready(function(e) {
 				$('.doanh_so_box').hide();
 			});
 			
-			$('#doanh_thu_but').click(function(){
+			$('.doanh_thu_but').click(function(){
 				$('.doanh_thu_box').show();
 				$('.doanh_so_box').hide();
 				$('.thu_chi_box').hide();
@@ -100,7 +100,7 @@ $(document).ready(function(e) {
 				$('.doanh_thu_box').hide();
 			});
 			
-			$('#thu_chi_but').click(function(){
+			$('.thu_chi_but').click(function(){
 				$('.thu_chi_box').show();
 				$('.doanh_so_box').hide();
 				$('.doanh_thu_box').hide();

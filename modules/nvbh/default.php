@@ -22,20 +22,20 @@ if(isset($_SESSION['lvu'])){
 
 	if(isset($_GET['nav'])){
 		$nav=$_GET['nav'];
-		$size=452;
+		$size=432;
 			if($nav=='k'){
 				echo "<article class='fillter'>";
 				include 'modules/nvbh/modules/kho/fillter.php';
 				echo "</article>";
-				$size=400;
+				$size=380;
 			}elseif($nav=='ls'){
 				echo "<article class='fillter'>";
 				include 'modules/nvbh/modules/lichsu/fillter.php';
 				echo "</article>";
-				$size=400;
+				$size=380;
 			}
 	}else{
-		$size=452;	
+		$size=432;	
 	}
 ?>
 <div class="pop-up"></div>

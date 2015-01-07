@@ -160,7 +160,6 @@
 				$name=mysql_escape_string($_POST['ename']);
 				$donvi=$_POST['edonvi'];
 				$ncc=$_POST['encc'];
-				$danhmuc=$_POST['edanhmuc'];
 				$km=mysql_escape_string($_POST['ekm']);
 				$gianhap=mysql_escape_string($_POST['egianhap']);
 				$giaban=mysql_escape_string($_POST['egiaban']);
@@ -168,10 +167,11 @@
 	
 				
 			//Lấy sourse ảnh
-				$r="select image_link from tblsanpham where sanpham_id='$eid'";
+				$r="select image_link,danhmuc_id from tblsanpham where sanpham_id='$eid'";
 				$q=mysqli_query($dbc,$r);
 				$sourse=mysqli_fetch_row($q);
 				$pre_avatar=$sourse[0];
+				$danhmuc_id=$sourse[1];
 					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
 						$linkdel="../../../../".$avatar;
 						unlink($linkdel);
@@ -181,14 +181,14 @@
 						copy($_FILES['eavatar']['tmp_name'],$link);
 						$src_avatar=substr($link,12);
 							$r="update tblsanpham ";
-							$r.="set ten_sanpham='$name',danhmuc_id='$danhmuc',";
-							$r.="nhacungcap_id='$ncc',donvi_id='$donvi',gia_nhap='$gianhap',";
+							$r.="set ten_sanpham='$name',danhmuc_id=$danhmuc_id,";
+							$r.="nhacungcap_id='$ncc',donvi_id=$donvi,gia_nhap='$gianhap',";
 							$r.="image_link='$src_avatar',gia_ban='$giaban',giam_gia='$km' where sanpham_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";
 						}else{
 							$r="update tblsanpham ";
-							$r.="set ten_sanpham='$name',danhmuc_id='$danhmuc',nhacungcap_id='$ncc',donvi_id='$donvi',";
+							$r.="set ten_sanpham='$name',danhmuc_id='$danhmuc_id',nhacungcap_id='$ncc',donvi_id='$donvi',";
 							$r.="gia_nhap='$gianhap',gia_ban='$giaban',giam_gia='$km' where sanpham_id='$eid'";
 						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));	
 							echo "Ok";

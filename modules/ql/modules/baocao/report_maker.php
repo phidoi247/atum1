@@ -1,4 +1,16 @@
-
+<div class="baocao">
+    <figure class="doanh_thu_but">
+    	<img width="325px" src="sourse/doanh_thu.png"/>
+    <figcaption>Báo cáo doanh thu</figcaption>
+    </figure>
+    <figure class="doanh_so_but">
+    	<img width="325px" src="sourse/doanh_so.png"/>
+    <figcaption>Báo cáo doanh số</figcaption></figure>
+    <figure class="thu_chi_but">
+    	<img width="325px" src="sourse/thu_chi.png"/>
+        <figcaption>Báo cáo thu chi</figcaption>
+    </figure>
+</div>
 <div class="doanh_so_box">
 	<img alt="" class="doanh_so_close" src="sourse/close.png">
 	<form action="modules/ql/modules/baocao/doanh_so.php" method="post" target="_blank">

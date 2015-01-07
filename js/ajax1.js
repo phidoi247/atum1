@@ -1,6 +1,6 @@
 // JavaScript Document
 $(document).ready(function(){
-	/*******notyfy***/
+	/*******Thông báo trạng thái đăng nhập nếu có lỗi thì show k thì ẩn***/
 	$(function(){
 		var info=$('#log_info').val();
 		if(info!=''){
@@ -9,13 +9,10 @@ $(document).ready(function(){
 			$('#logbox').hide();
 		}
 	});
-	//hien thi anh
 	
-	$('.Bar table > tbody >tr >td').hover(function(){
-		$(this).children('span').attr("visibility","visible");
-	});
 	
 	//Nhập SP
+		//Out focus sau khi nhập mã sp
 		$('#nhap_msp').focusout(function(e) {
             var msp=$(this).val();
 			$.ajax({
@@ -38,7 +35,8 @@ $(document).ready(function(){
 			$('#chk_msp').html("Sản phẩm không có trong kho!");
 			}
         });
-		//Xuất SP
+////////////////////////////Xuất SP
+		//Out focus sau khi nhập mã sp
 		$('#nhap_msp').focusout(function(e) {
             var msp=$(this).val();
 			$.ajax({
@@ -62,7 +60,8 @@ $(document).ready(function(){
 			$('#chk_msp').html("Sản phẩm không có trong kho!");
 			}
         });
-		//Gui vao bang hoa don
+/////////////////////////Gui vao bang hoa don
+		///Khi ấn nút nhập thì 1 bảng ghi đc thêm vào bảng
 		$('#nhap_hd').click(function(){
 			var slclick=$('#solanclick').val();
 			slclick=parseInt(slclick)+1;
@@ -131,7 +130,7 @@ $(document).ready(function(){
 			});
 				
 		});
-		//Ghi hđ nhập vào db
+///////////////Gửi hđ nhập vào db bằng ajax
 		$('form#formHDnhap').submit(function(event){
 			event.preventDefault();
 			var form=new FormData($(this)[0]);
@@ -146,16 +145,12 @@ $(document).ready(function(){
 				contentType:false, //kiểu data chuyền đi defaeult là enctype="application/x-www-form-urlencoded",
 									//Muốn post file thì phải dùng kiểu enctype="multipart/form-data" 
 				success: function(nn){
-					if(nn=='Ok'){
 						alert("Giao dich thành công!");
 						document.location.reload();
-					}else{
-							alert(nn);
-					}
 				}
 			});
 		});
-		//Ghi hđ xuất vào db
+/////////////Gửi hđ xuất vào db
 		$('form#formHDxuat').submit(function(event){
 			event.preventDefault();
 			var form=new FormData($(this)[0]);
@@ -169,19 +164,22 @@ $(document).ready(function(){
 				processData:false,
 				contentType:false,
 				success: function(nn){
-					if(nn=='Ok'){
 						alert("Giao dich thành công!");
 						document.location.reload();
-					}
 				}
 			});
 		});
-		//Hủy gd
+/////////////////////////////////////////////Hủy gd
+		
+		
+		
 		$('#hgd_but').click(function(){
 			$('#solanclick').val(0);
 			$('tbody#detail_hd').empty();
 		});
-		//Thêm nhân viên mới
+		
+		
+//////////////////////////////Thêm nhân viên mới
 		/*Post bang ajax ma khong can refesh*/
 		$('#add-emp-form').submit(function(event){
 			event.preventDefault();
@@ -234,7 +232,9 @@ $(document).ready(function(){
 				$('#add_emp_notify').html("Hãy nhập Tên Nhân viên!");	
 			}	
 	});
-		//Sửa thông tin nhân viên
+	
+//////////////////////////////////Sửa thông tin nhân viên
+	
 		$('#edit-emp-form').submit(function(event){
 			event.preventDefault()
 			var form_edit_emp=new FormData($(this)[0]);
@@ -256,7 +256,7 @@ $(document).ready(function(){
 			});
 		})
 		
-		/***********Xóa nhân viên**************/
+////////////////////////////////////***********Xóa nhân viên**************/
 		$('.delete-emp-submit').click(function(){
 			var id_del=$('#id_emp_del').val();
 			var get_id_row=$('#id_emp_row').val();
@@ -271,14 +271,9 @@ $(document).ready(function(){
 				}
 			});
 		})
-		/*******************Sản phẩm**************************/
-	//Search
-		/*$('#sp_search').submit(function(event){
-			event.preventDefault();
-			var key=$('#search_box').val();
-			$.get("default.php",function(){alert ("vl");},{nav:"k",sp_search:"key"});
-		});*/
-	// Thêm
+////////////////////////*******************Sản phẩm**************************/
+
+///////////////// Thêm
 		$('#add-sp-form').submit(function(event){
 			event.preventDefault();
 			var add_ten_sp=$('#add_ten_sp').val();
@@ -320,7 +315,7 @@ $(document).ready(function(){
 				$('#add_sp_notify').html("Hãy nhập Tên Sản phẩm!");	
 			}		
 		});
-		//Sửa thông tin SP
+//////////////////////////Sửa thông tin SP
 		$('#edit-sp-form').submit(function(event){
 			event.preventDefault();
 			var form_edit_sp=new FormData($(this)[0]);
@@ -342,7 +337,7 @@ $(document).ready(function(){
 			});
 		});
 		
-		/***********Xóa SP**************/
+///////////////////////////////////////***********Xóa SP**************/
 		$('.delete-sp-submit').click(function(){
 			var id_del=$('#id_sp_del').val();
 			var get_id_row=$('#id_sp_row').val();
@@ -357,8 +352,8 @@ $(document).ready(function(){
 				}
 			});
 		})
-		/***********Xóa NCC**************/
-		// Thêm
+
+////////////////////////////////////////////////////// Thêm
 		$('#add-ncc-submit').click(function(){
 			var add_ncc=$('#ten_ncc').val();
 			$.ajax({
@@ -374,6 +369,7 @@ $(document).ready(function(){
 				}
 			});
 		});
+////////////////////////////////***********Xóa NCC**************/
 		$('.delete-ncc-submit').click(function(){
 			var id_del=$('#id_ncc_del').val();
 			var get_id_row=$('#id_ncc_row').val();
@@ -398,7 +394,8 @@ $(document).ready(function(){
 				}
 			});
 		})
-		/***********Thiết lập*/
+/**************************************************Thiết lập*/
+		//Thay đổi mk
 		$('#change_pass_form').submit(function(event){
 			event.preventDefault();
 			var new_p=$('#re_pass').val();
@@ -413,7 +410,7 @@ $(document).ready(function(){
 				}
 			});
 		});
-		
+		//Check mk cũ
 		$('input#old_pass').focusout(function(e) {
             var old_pass=$(this).val();
 			var idu=$('#idu').val();
@@ -426,6 +423,7 @@ $(document).ready(function(){
 				}
 			});
         });
+		//Check nhập lại mk
 		$('input#re_pass').focusout(function(e) {
         	var new_p=$('input#new_pass').val();
 			var re_p=$(this).val();
