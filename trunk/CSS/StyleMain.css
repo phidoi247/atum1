@@ -32,7 +32,7 @@ body{
 		width: 700px;
 		height: 108px;
 	}
-	
+	/*swapper Nút đăng nhập*/
 	.nav{
 		position:absolute;
 		background:#B6D8A0;
@@ -55,10 +55,11 @@ body{
 		display:none;
 		line-height:35px;
 		height:37px;
-		right:184px;
-		top:108px;
+		right:176px;
+		top:110px;
 		
 	}
+	/*Nút đăng nhập*/
 	input.login-but[type="button"]{
 		width:200px;
 		float:left;
@@ -92,20 +93,27 @@ body{
 	}
 	nav.menu ul li{
 		width: 120px;
-		height:35px;
+		height:36px;
 		border-right:thin solid #f1f1f1;
-		line-height: 35px;
+		line-height: 36px;
 		list-style: none;
 		float: left;
 	}
 	nav.menu ul li:FIRST-CHILD{
 		border-left: thin solid #f1f1f1;
 	}
+	/***Hover các nút **/
 	nav.menu ul li:HOVER{
+		transition:all ease-in 1s;
 		background-color: #BCD4DA;
 	}
 	nav.menu ul li a:HOVER{
-		color:white;	
+		color:white;
+		transition:all ease-in 0.5s;	
+	}
+	nav.menu ul li input:HOVER{
+		color:white;
+		transition:all ease-in 0.5s;	
 	}
 	nav.menu ul li a{
 		width: 100%;
@@ -114,14 +122,17 @@ body{
 		text-decoration: none;
 		color: black;	
 	}
+	/* Nut thoát*/
 	nav.menu ul li input{
+		font:"Trebuchet MS", Arial, Helvetica, sans-serif;
+		font-size:16px;
 		border:none;
 		background-color:transparent;	
 	}
-	
+	/* tab nào đc click thì thêm class này*/
 	.active-tab{
-		background:#BCD4DA;
-		border-top: solid thin #f1f1f1; 
+		transition:all linear 1s;
+		background:#BCD4DA; 
 	}
 	nav form input{
 		width:100%;
@@ -143,6 +154,7 @@ body{
 		text-align:center;
 		float:left;
 		margin-left:10px;
+		padding:0 5px;
 		background:#156AEC;
 		color:#fff;
 		border:solid thin gray;
@@ -170,13 +182,22 @@ body{
 		background:#156AEC;
 		border:solid thin gray;
 		background-position: left;
+		
 		background-repeat: no-repeat;
 	}
+	/*Thống kê*/
+	article.fillter label{
+		line-height:30px;
+		margin-left:5px;	
+	}
+	
+	/**Nút thêm nhân viên*/
 	article.fillter input#add-emp-but{
 		
 		background-image: url("../sourse/users_add.png");
 		
 	}
+	/**CÁc nút điều hướng*/
 	article.fillter a{
 		background:#156AEC;
 		font-size:13px;
@@ -194,7 +215,15 @@ body{
 		background-position: left;
 		background-repeat: no-repeat;
 	}
-	
+	article.fillter a.sach{
+		width:50px;	
+	}
+	article.fillter a.vpp{
+		width:50px;	
+	}
+	article.fillter a.dc{
+		width:50px;	
+	}
 	/*---------------------Add Employee---------------------*/
 	.add-emp-box{
 		display: none;
@@ -470,10 +499,10 @@ body{
 	.chitiet-box{
 		display: none;
 		background:white;
-		width: 500px;
+		width: 600px;
 		position: absolute;
 		top:-10px;
-		left: 300px;
+		left: 200px;
 		border: solid thin gray;
 		border-radius:15px;
 	}
@@ -586,10 +615,11 @@ body{
 		margin-top:5px;
 		border:thin solid #f1f1f1;
 		border-top:none;
-		min-height:400px;
+		min-height:380px;
 		background:white;
 		float: left;
 	}
+	/*Thông báo lỗi đăng nhập*/
 	span.notify{
 		float:left;
 		font-size: 12px;
@@ -597,11 +627,13 @@ body{
 		height:15px;
 		color: red;
 	}
+	/* swap thông báo*/
 	span.notify #log_info{
 		color:red;
 		border:none;
 		width:250px;	
 	}
+	/*Nut ẩn hộp đăng nhập*/
 	input.cancellog[type="button"]{
 		float:right;
 		width:20px;
@@ -612,7 +644,7 @@ body{
 		top:-5px;
 		right:-5px;
 	}
-	
+	/*Box đăng nhập*/
 	div#logbox{
 	position:absolute;
 	padding-bottom:5px;
@@ -624,7 +656,7 @@ body{
 	border-radius:10px;
 	background:#FFF;	
 	}
-	
+	/*Bảng trong log box*/
 	div#logbox table{
 	float:left;
 	width:100%;
@@ -634,7 +666,20 @@ body{
 	div#logbox table thead{
 	background:#F4F2CC;	
 	}
+	/* BẢng trong div Bar*/
+/*////////Bảng báo cáo ////////////*/	
+	div.Bar .baocao{
+		width:100%;
+		margin-top:100px	
+	}
 	
+	div.Bar figure{
+		float:left;
+		margin-left:5px;
+		border:#0CC solid thin;
+	}
+	
+	/**End Bảng báo cáo*/
 	div.Bar table{
 		width: 100%;
 		float:left;
@@ -653,18 +698,22 @@ body{
 		height:30px;
 	}
 	div.Bar table tbody tr{
+		height:26px;
+		line-height:26px;
 		position:relative;
 	}
+	/*Ava ẩn*/
 	div.Bar table tbody tr span{
 		position:absolute;
 		visibility:hidden;
 		left:-55px;
 		margin-top:-20px;
 	}
+	/*Avatar hiện*/
 	div.Bar table tbody tr:hover span{
 		visibility:visible;
 	}
-	
+	/**CĂn lề các  ô*/
 	div.Bar table tbody tr td.td_ten,td.td_diachi{
 		text-align:left;
 	}

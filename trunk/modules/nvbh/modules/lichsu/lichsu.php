@@ -10,7 +10,7 @@ if(isset($_GET['f'])){
 	$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 	$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and a.nhanvien_id='{$_SESSION['idu']}' ";
 	$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-	$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit $from,18";
+	$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit $from,12";
 }else{
 	$r="SELECT k.ten_hoadon,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
 	$r.="FROM (select tblchitietdonhang.ten_hoadon,sum(tblchitietdonhang.soluong) as soluong from tblchitietdonhang where ";
@@ -20,7 +20,7 @@ if(isset($_GET['f'])){
 	$r.="from tblhoadon as a,tblchitietdonhang as b,tblsanpham as c ";
 	$r.="where a.ten_hoadon=b.ten_hoadon and b.sanpham_id=c.sanpham_id and a.nhanvien_id='{$_SESSION['idu']}' ";
 	$r.="group by a.ten_hoadon,a.thoigian,a.nhanvien_id ) as k ";
-	$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit 0,18";
+	$r.="where j.ten_hoadon=k.ten_hoadon order by k.thoigian desc limit 0,12";
 }
 if(isset($_GET['ls_search']) and isset($_GET['f'])){
 			$search=mysqli_escape_string($dbc,$_GET['ls_search']);
@@ -36,7 +36,7 @@ if(isset($_GET['ls_search']) and isset($_GET['f'])){
 			$r.="where j.ten_hoadon=k.ten_hoadon and(";
 			$r.="k.ten_hoadon='$search' ";
 			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
-			$r.="order by k.thoigian desc limit $from,18";
+			$r.="order by k.thoigian desc limit $from,12";
 }elseif(isset($_GET['ls_search'])){
 			$search=mysqli_escape_string($dbc,$_GET['ls_search']);
 			$r="SELECT k.ten_hoadon,j.loaigiaodich_id,j.soluong,k.thanhtien,k.thoigian,k.nhanvien_id ";
@@ -50,7 +50,7 @@ if(isset($_GET['ls_search']) and isset($_GET['f'])){
 			$r.="where j.ten_hoadon=k.ten_hoadon and(";
 			$r.="k.ten_hoadon='$search' ";
 			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
-			$r.="order by k.thoigian desc limit 0,18";
+			$r.="order by k.thoigian desc limit 0,12";
 }
 $q=mysqli_query($dbc,$r);?>
 <table>
@@ -106,7 +106,7 @@ $q=mysqli_query($dbc,$r);?>
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/14;
+				$pst_page=$from/12;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
@@ -128,7 +128,7 @@ $q=mysqli_query($dbc,$r);?>
 			$r.="or DATE(k.thoigian) IN ('".$search."')) ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=($so_page[0]/18);
+		$modpage=$so_page[0]%12;$page=($so_page[0]/12);
 		if($modpage==0 and $page>1){
 			$tt_page=intval($page);
 			echo $tt_page;
@@ -145,7 +145,7 @@ else{
 	$r="SELECT count(distinct b.id) as sl FROM `tblchitietdonhang` as a,`tblhoadon` as b WHERE a.ten_hoadon=b.ten_hoadon and a.loaigiaodich_id=1 and b.nhanvien_id='{$_SESSION['idu']}'";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=($so_page[0]/18);
+		$modpage=$so_page[0]%12;$page=($so_page[0]/12);
 		if($modpage==0 and $page>1){
 			$tt_page=intval($page);
 			echo $tt_page;

@@ -5,31 +5,143 @@ if(isset($_GET['sub'])){
 	if(strcmp($sub,"nvbh")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 order by ngay_vao_lam limit $from,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =1 order by m.ngay_vao_lam limit $from,12";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 order by ngay_vao_lam limit 0,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =1 order by m.ngay_vao_lam limit 0,12";
 		}
 	}elseif(strcmp($sub,"nvk")==0){
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =2 order by m.ngay_vao_lam limit $from,12";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =2 order by ngay_vao_lam limit 0,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =2 order by m.ngay_vao_lam limit 0,12";
 		}		
 	}else{
-		if(isset($_GET['f'])){
+			if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =1 OR m.level_id =2 order by m.ngay_vao_lam limit $from,12";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit 0,18";
-		}
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE  (m.level_id =1 OR m.level_id =2) order by m.ngay_vao_lam limit 0,12";
+		}		
 	}
 }else{
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit $from,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE m.level_id =1 OR m.level_id =2 order by m.ngay_vao_lam limit $from,12";
 		}else{
-			$r="SELECT * FROM `tblnhanvien` WHERE level_id =1 OR level_id =2 order by ngay_vao_lam limit 0,18";
+			$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+			$r.="WHERE  (m.level_id =1 OR m.level_id =2) order by m.ngay_vao_lam limit 0,12";
 		}	
 }
 if(isset($_GET['nv_search'])){
@@ -37,21 +149,49 @@ if(isset($_GET['nv_search'])){
 		$search=mysqli_real_escape_string($dbc,($_GET['nv_search']));
 		if(isset($_GET['f'])){
 			$from=$_GET['f'];
-		$r="SELECT * FROM `tblnhanvien` ";
-		$r.="WHERE nhanvien_id ='$search' ";
-		$r.="OR ngay_vao_lam='$search' ";
-		$r.="OR ten_nhanvien='$search' ";
-		$r.="OR dia_chi LIKE '$search' ";
-		$r.="OR SDT LIKE '$search' ";
-		$r.="limit $from,18";
+		$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+		$r.="WHERE m.nhanvien_id ='$search' ";
+		$r.="OR m.ten_nhanvien='$search' ";
+		$r.="OR m.dia_chi LIKE '$search' ";
+		$r.="OR m.SDT LIKE '$search' ";
+		$r.="OR DATE(m.ngay_vao_lam) IN ('".$search."') ";
+		$r.="OR DATE(m.ngay_sinh) IN ('".$search."') ";
+		$r.="limit $from,12";
 		}else{
-		$r="SELECT * FROM `tblnhanvien` ";
-		$r.="WHERE nhanvien_id ='$search' ";
-		$r.="OR ngay_vao_lam='$search' ";
-		$r.="OR ten_nhanvien='$search' ";
-		$r.="OR dia_chi LIKE '$search' ";
-		$r.="OR SDT LIKE '$search' ";
-		$r.="limit 0,18";	
+		$r="select m.avatar,m.nhanvien_id,m.ten_nhanvien,";
+			$r.="n.tpd,n.tpw,n.tpm,m.level_id,m.ngay_sinh,m.dia_chi,m.ngay_vao_lam,m.SDT ";
+			$r.="from tblnhanvien as m left join ";
+			$r.="(select a.nhanvien_id,b.tpd,c.tpw,d.tpm ";
+			$r.="from tblnhanvien as a,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
+			$r.="from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
+			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
+			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
+			$r.="on n.nhanvien_id=m.nhanvien_id ";
+		$r.="WHERE m.nhanvien_id ='$search' ";
+		$r.="OR m.ten_nhanvien='$search' ";
+		$r.="OR m.dia_chi LIKE '$search' ";
+		$r.="OR m.SDT LIKE '$search' ";
+		$r.="OR DATE(m.ngay_vao_lam) IN ('".$search."') ";
+		$r.="OR DATE(m.ngay_sinh) IN ('".$search."') ";
+		$r.="limit 0,12";	
 		}
 }
 $q=mysqli_query($dbc,$r);?>
@@ -59,6 +199,9 @@ $q=mysqli_query($dbc,$r);?>
 	<thead>
     <tr><td>Mã NV</td>
     <td>Tên NV</td>
+    <td>T/D</td>
+    <td>T/W</td>
+    <td>T/M</td>
     <td>Level</td>
     <td>Địa chỉ</td>
     <td>Phone</td>
@@ -76,8 +219,18 @@ $q=mysqli_query($dbc,$r);?>
             		<img width='60px' height='60px' src='<?php echo $row['avatar']; ?>'>
             	</span>
            </td>
-           <td class="td_ten">
-		   		<?php echo $row['ten_nhanvien']; ?></td>
+           <td class="td_ten" width="150px">
+		   		<?php echo $row['ten_nhanvien']; ?>
+           </td>
+           <td width="40px">
+		  		<?php echo $row['tpd']; ?>
+           </td>
+           <td width="40px">
+		  		<?php echo $row['tpw']; ?>
+           </td>
+           <td width="40px">
+		  		<?php echo $row['tpm']; ?>
+           </td>
            <td width="40px">
 		  		<?php echo $row['level_id']; ?>
            </td>
@@ -181,7 +334,7 @@ $q=mysqli_query($dbc,$r);?>
 		<tbody>
             <tr>
                 <th>
-                    <img width="180px" height="50px" id="old_avt" >
+                    <img width="120px" height="50px" id="old_avt" >
                 </th>
             </tr>
             <tr>
@@ -201,7 +354,7 @@ $q=mysqli_query($dbc,$r);?>
                 <td>
                     Loại:
                 </td>
-                <td><select name="eposition" id="eposition"><option value="1">NV Bán Hàng</option><option value="2">Thủ Kho</option></select>
+                <td><select disabled="disabled" name="eposition" id="eposition"><option value="1">NV Bán Hàng</option><option value="2">Thủ Kho</option></select>
                 </td>
             </tr>
 			<tr>
@@ -265,7 +418,7 @@ $q=mysqli_query($dbc,$r);?>
 	<input type="text" readonly="readonly" class="present-page" 
     	value="<?php 
 			if(isset($from)){
-				$pst_page=$from/18;
+				$pst_page=$from/12;
 				echo (int)$pst_page+1;
 			}else{echo 1;} 
 		?>"/>
@@ -279,7 +432,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=2 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
 		if($modpage==0 and $page>=1){
 			$tt_page=intval($page);
 			echo $tt_page;
@@ -295,7 +448,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=3 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
 		if($modpage==0 and $page>=1){
 			$tt_page=intval($page);
 			echo $tt_page;
@@ -311,7 +464,7 @@ if(isset($_GET['sub'])){
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
 		if($modpage==0 and $page>=1){
 			$tt_page=intval($page);
 			echo $tt_page;
@@ -333,7 +486,7 @@ if(isset($_GET['sub'])){
 		$r.="OR SDT LIKE '$search' ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
 		if($modpage==0 and $page>=1){
 			$tt_page=intval($page);
 			echo $tt_page;
@@ -350,7 +503,7 @@ else{
 		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
-		$modpage=$so_page[0]%18;$page=$so_page[0]/18;		
+		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
 		if($modpage==0 and $page>=1){
 			$tt_page=intval($page);
 			echo $tt_page;

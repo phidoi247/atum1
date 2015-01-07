@@ -31,10 +31,16 @@
 				$link='../../../../upload/'.$fmten;
 				copy($_FILES['avatar']['tmp_name'],$link);
 				$src_avatar=substr($link,12);
-			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `level_id` = ".$position." ORDER BY `level_id` DESC LIMIT 1";
+			$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `level_id` = ".$position." ORDER BY `nhanvien_id` DESC LIMIT 1";
 			$q=mysqli_query($dbc,$r);
 			$layid=mysqli_fetch_row($q);
 			$nhanvien_id_trc=$layid[0];
+			$level=$position;
+			if(strcmp($position,1)==0){
+				$position='BH';
+			}else{
+				$position='TK';
+			}
 			$tmp1=$position."009";$tmp2=$position."099";$tmp3=$position."999";
 			if(strcmp($nhanvien_id_trc,$tmp1)==0){
 				$nhanvien_id=$position."010";	
@@ -55,7 +61,7 @@
 				}
 			}
 			echo "Ok";
-			$r="INSERT INTO `tblnhanvien` VALUES(null,'$nhanvien_id','$name','$position','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
+			$r="INSERT INTO `tblnhanvien` VALUES(null,'$nhanvien_id','$name','$level','$dateofbirth','$address',NOW(),'$src_avatar',SHA1('$password'),'$phone')";
 			$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
 			}else {
 				echo "Fill full all Fields,Please!";
@@ -92,8 +98,6 @@
 			$error=array();
 			if(empty($_POST['ename'])){
 				$error[]=" Tên Nhân Viên";
-			}if(empty($_POST['eposition'])){
-				$error[]=" Vị trí ";
 			}if(empty($_POST['eaddress'])){
 				$error[]=" Địa chỉ";
 			}
@@ -106,7 +110,6 @@
 			if(empty($error)){
 				$eid=$_POST['eid'];
 				$name=mysql_escape_string($_POST['ename']);
-				$position=$_POST['eposition'];
 				$address=mysql_escape_string($_POST['eaddress']);
 				$phone=mysql_escape_string($_POST['ephone']);
 				$password=mysql_escape_string($_POST['epassword']);
@@ -118,9 +121,7 @@
 				$q=mysqli_query($dbc,$r);
 				$sourse=mysqli_fetch_row($q);
 				$pre_avatar=$sourse[0];
-			//Kiểm tra xem có thay đổi vị trí k
-				if(strcmp($sourse[1],$position)==0){
-				//Nếu == thì thực hiện update
+				$position=$sourse[1];
 					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
 						$linkdel="../../".$avatar;
 						unlink($linkdel);
@@ -160,59 +161,7 @@
 						
 							echo "Ok";
 							}					
-						}
-				}
-				else{
-				//Nếu != thì Up 1 nhân viên mới
-					$r="SELECT `nhanvien_id` FROM `tblnhanvien` WHERE `level_id` = ".$position." ";
-					$r.="ORDER BY `nhanvien_id` DESC LIMIT 1";
-			$q=mysqli_query($dbc,$r);
-			$layid=mysqli_fetch_row($q);
-			$nhanvien_id_trc=$layid[0];
-			$tmp1=$position."009";$tmp2=$position."099";$tmp3=$position."999";
-			if(strcmp($nhanvien_id_trc,$tmp1)==0){
-				$nhanvien_id=$position."010";	
-			}elseif(strcmp($nhanvien_id_trc,$tmp2)==0){
-				$nhanvien_id=$position."100";
-			}else{
-				$ma_id_tr=substr($nhanvien_id_trc,2,5);
-				$id_trc=intval($ma_id_tr);
-				if($id_trc>=100){
-					$id_sau=$id_trc+1;
-					$nhanvien_id=$position.$id_sau;
-				}elseif($id_trc>=10){
-					$id_sau=$id_trc+1;
-					$nhanvien_id=$position."0".$id_sau;
-				}else{
-					$id_sau=$id_trc+1;
-					$nhanvien_id=$position."00".$id_sau;
-				}
-	}
-					if($avatar!=''){//KT ng dùng có thêm ảnh mới k, nếu có thì xóa ảnh cũ đi
-						$linkdel="../../".$avatar;
-						unlink($linkdel);
-						//Update
-						$fmten=date('Ymdhis');
-						$link='../../../../upload/'.$fmten;
-						copy($_FILES['avatar']['tmp_name'],$link);
-						$src_avatar=substr($link,6);
-						$r="update tblnhanvien set ";
-						$r.="nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',";
-						$r.="ngay_sinh='$dateofbirth',dia_chi='$address',avatar='$src_avatar',SDT='$phone' ";
-						$r.="where nhanvien_id='$eid'";
-						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
-					
-						echo "Ok";
-					}else{
-						$r="update tblnhanvien set ";
-						$r.="nhanvien_id='$nhanvien_id',ten_nhanvien='$name',level_id='$level',";
-						$r.="ngay_sinh='$dateofbirth',dia_chi='$address',SDT='$phone' ";
-						$r.="where nhanvien_id='$eid'";
-						$q=mysqli_query($dbc,$r) or die("Oopt! ".mysqli_error($dbc));
-					
-						echo "Ok";
 					}
-				}
 			}else {
 				echo "Fill full all Fields,Please!";
 			}
