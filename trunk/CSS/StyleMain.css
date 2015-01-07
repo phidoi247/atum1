@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
-*{padding:0;margin:0;text-align:center}
+*{padding:0;margin:0;text-align:center;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif}
+body{
+	background:#f1f1f1;	
+}
 	.swapper{
 		width:1000px;
 		height:auto;
@@ -41,16 +44,19 @@
 		bottom:0;
 		
 	}
+	
+	/* Tên đăng nhập**/
 	.user{
 		position:absolute;
-		background:#B6D8A0;
+		background:#AF1A1E;
+		color:#fff;
 		float:right;
-		width:200px;
+		width:172px;
 		display:none;
-		line-height:29px;
-		height:29px;
+		line-height:35px;
+		height:37px;
 		right:184px;
-		top:78px;
+		top:108px;
 		
 	}
 	input.login-but[type="button"]{
@@ -66,15 +72,17 @@
 	section{
 		width:100%;
 		min-height:490px;
-		background:#B6D8A0;
 		float:left;
 	}
+	/*Thanh menu*/
 	nav.menu{
-		width: 100%;
-		height: 37px;
+		width: 99.8%;
+		height: 36px;
 		float: left;
-		border-top:thin solid gray;
-		background:#9BD2A5;
+		margin-top:2px;
+		border:thin solid #f1f1f1;
+		background:#FFF;
+		
 		
 	}
 	nav.menu ul{
@@ -84,17 +92,20 @@
 	}
 	nav.menu ul li{
 		width: 120px;
-		height:37px;
-		border-right:thin solid gray;
+		height:35px;
+		border-right:thin solid #f1f1f1;
 		line-height: 35px;
 		list-style: none;
 		float: left;
 	}
 	nav.menu ul li:FIRST-CHILD{
-		border-left: thin solid gray;
+		border-left: thin solid #f1f1f1;
 	}
 	nav.menu ul li:HOVER{
-		background-color: #B6D8A0;
+		background-color: #BCD4DA;
+	}
+	nav.menu ul li a:HOVER{
+		color:white;	
 	}
 	nav.menu ul li a{
 		width: 100%;
@@ -109,8 +120,8 @@
 	}
 	
 	.active-tab{
-		background:#B6D8A0;
-		border-top: solid thin gray; 
+		background:#BCD4DA;
+		border-top: solid thin #f1f1f1; 
 	}
 	nav form input{
 		width:100%;
@@ -118,18 +129,22 @@
 	}
 	/*--------------------Fillter------------------------*/
 	article.fillter{
+		background:#fff;
 		width: 97.8%;
+		margin-top:3px;
 		padding:10px 10px 0 10px;
 		height: 43px;
 		float: left;
-		border: thin solid gray; 
-		border-top: none;
+		border: thin solid #f1f1f1; 
+
 	}
 	article.fillter input{
 		height: 30px;
+		text-align:center;
 		float:left;
 		margin-left:10px;
-		background:#CCF;
+		background:#156AEC;
+		color:#fff;
 		border:solid thin gray;
 		background-position: left;
 		background-repeat: no-repeat;
@@ -147,10 +162,12 @@
 	}
 	article.fillter input#search_but{
 		height: 30px;
-		width:25px;
+		width:32px;
+		border-top-right-radius:5px;
+		border-bottom-right-radius:5px;
 		float:left;
 		margin-left:0px;
-		background:#09C;
+		background:#156AEC;
 		border:solid thin gray;
 		background-position: left;
 		background-repeat: no-repeat;
@@ -161,12 +178,12 @@
 		
 	}
 	article.fillter a{
-		font-family:Arial, Helvetica, sans-serif;
+		background:#156AEC;
 		font-size:13px;
 		margin-left:10px;
 		text-decoration:none;
-		color:#000;
-		background:#CCF;
+		color:#fff;
+		
 		line-height:28px;
 		height: 28px;
 		padding:0 5px;
@@ -216,8 +233,8 @@
 		height:15px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#F99,#F99,#F99);
-		color:#222;
+		background:#BCD4DA;
+		color:#444;
 		border:thin solid #555;	
 	}
 	/* Nut xoa */
@@ -226,8 +243,8 @@
 		height:15px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
-		color:#222;
+		background:red;
+		color:white;
 		border:thin solid #555;	
 	}
 	
@@ -558,15 +575,16 @@
 	
 	/*_______Hover___TR---*/
 	table > tbody >tr:hover{
-		background:#09F;	
+		background:#BCD4DA;	
 	}
 	
-	/*------------------------------------------*/
+	/*-----------------BAR-------------------------*/
 	
 	.Bar{
 		width: 99.8%;
 		position:relative;
-		border:thin solid gray;
+		margin-top:5px;
+		border:thin solid #f1f1f1;
 		border-top:none;
 		min-height:400px;
 		background:white;
@@ -627,8 +645,12 @@
 		text-align:center;	
 	}
 	div.Bar table thead{
-		background-color: #B6D8A0;
 		
+		background-color: #BCD4DA;
+		
+	}
+	div.Bar table thead tr{
+		height:30px;
 	}
 	div.Bar table tbody tr{
 		position:relative;
@@ -710,8 +732,9 @@
 /************************************/
 	footer{
 		width:100%;
-		height:40px;
-		background:#B6D8A0;
+		height:100px;
+		line-height:100px;
+		background: url("../sourse/footer-bg.jpg") repeat scroll left top transparent;
 		float:left;
 	}
 /************************NHAP XUAT*******************/

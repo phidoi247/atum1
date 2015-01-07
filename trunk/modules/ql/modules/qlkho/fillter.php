@@ -1,5 +1,5 @@
-<input type="button" id='add-sp-but' value="      Thêm Sản Phẩm">
-<input type="button" id='add-ncc-but' value="      Thêm Nhà Cung Cấp">
+<input type="button" id='add-sp-but' value="Thêm Sản Phẩm">
+<input type="button" id='add-ncc-but' value="Thêm Nhà Cung Cấp">
 <a href="default.php?nav=k&sub=s">Sách</a>
 <a href="default.php?nav=k&sub=vpp">VPP</a>
 <a href="default.php?nav=k&sub=dc">Đồ chơi</a>
