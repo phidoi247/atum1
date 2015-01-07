@@ -54,7 +54,7 @@
 					};		
 			}else{
 			header('Location: ../../../../error/error.php');
-		};;
+		};
 		?>
 		<script type="text/javascript">//biểu đồ
 		$(function () {
