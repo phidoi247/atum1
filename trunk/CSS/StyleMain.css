@@ -258,22 +258,20 @@ body{
 	/*---------------------Edit Employee---------------------*/
 	/* Nut edit */
 	input.edit-emp-but{
-		width:40px;
-		height:15px;
+		width:22px;
+		height:22px;
 		border-radius:3px;
 		font-size:10px;
-		background:#BCD4DA;
-		color:#444;
+		background-image:url(../sourse/edit.png);
 		border:thin solid #555;	
 	}
 	/* Nut xoa */
 	input.delete-emp-but{
-		width:40px;
-		height:15px;
+		width:22px;
+		background-image:url(../sourse/delete.png);
+		height:22px;
 		border-radius:3px;
 		font-size:10px;
-		background:red;
-		color:white;
 		border:thin solid #555;	
 	}
 	
@@ -323,32 +321,31 @@ body{
 	/*---------------------Add sp---------------------*/
 	/* Nut edit */
 	input.edit-sp-but{
-		width:40px;
-		height:15px;
+		width:22px;
+		background-image:url(../sourse/edit.png);
+		height:22px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#F99,#F99,#F99);
-		color:#222;
 		border:thin solid #555;	
 	}
+	
 	/* Nut xoa */
 	input.delete-sp-but{
-		width:40px;
-		height:15px;
+		width:22px;
+		background-image:url(../sourse/delete.png);
+		height:22px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
-		color:#222;
 		border:thin solid #555;	
 	}
+	
 	/* Nut chi tiet */
 	input.chitiet-but{
-		width:40px;
-		height:15px;
+		width:25px;
+		background-image:url(../sourse/detail.png);
+		height:20px;
 		border-radius:3px;
 		font-size:10px;
-		background:linear-gradient(to right,#EEE,#CCB4CD,#CCB4CD,#CCB4CD);
-		color:#222;
 		border:thin solid #555;	
 	}
 	.add-sp-box{
@@ -426,6 +423,15 @@ body{
 	}
 	.delete-sp-box table input{width:55px;height: 20px}
 	/*---------------------NCC---------------------*/
+	/* Nut xoa */
+	input.delete-ncc-but{
+		width:22px;
+		background-image:url(../sourse/delete.png);
+		height:22px;
+		border-radius:3px;
+		font-size:10px;
+		border:thin solid #555;	
+	}
 	/*---------------------Add NCC---------------------*/
 	.add-ncc-box{
 		display: none;

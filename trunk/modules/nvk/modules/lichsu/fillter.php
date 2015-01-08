@@ -7,10 +7,14 @@
 <?php
 	$idu=$_SESSION['idu'];
 $r="select d.day,w.week,m.month,y.year from ";
-	$r.="(select count(ten_hoadon) as day from tblhoadon where day(thoigian)=day(now()) and nhanvien_id='$idu') as d,";
-	$r.="(select count(ten_hoadon) as week from tblhoadon where week(thoigian)=week(now()) and nhanvien_id='$idu') as w,";
-	$r.="(select count(ten_hoadon) as month from tblhoadon where month(thoigian)=month(now()) and nhanvien_id='$idu') as m,";
-	$r.="(select count(ten_hoadon) as year from tblhoadon where year(thoigian)=year(now()) and nhanvien_id='$idu') as y";
+	$r.="(select count(ten_hoadon) as day from tblhoadon where ";
+	$r.="date(thoigian)=date(now()) and nhanvien_id='$idu') as d,";
+	$r.="(select count(ten_hoadon) as week from tblhoadon where ";
+	$r.="week(thoigian)=week(now()) and month(thoigian)=month(now()) and year(thoigian)=year(now()) and nhanvien_id='$idu') as w,";
+	$r.="(select count(ten_hoadon) as month from tblhoadon where ";
+	$r.="month(thoigian)=month(now()) and year(thoigian)=year(now()) and nhanvien_id='$idu') as m,";
+	$r.="(select count(ten_hoadon) as year from tblhoadon where ";
+	$r.="year(thoigian)=year(now()) and nhanvien_id='$idu') as y";
 
 	$q=mysqli_query($dbc,$r);
 	$f=mysqli_fetch_row($q);
