@@ -11,23 +11,34 @@
 		$sub=$_GET['sub'];
 		if(strcmp($sub,"bh")==0){
 	$r="select d.day,w.week,m.month,y.year from ";
-	$r.="(select count(ten_hoadon) as day from tblhoadon where day(thoigian)=day(now()) and ten_hoadon like '%BH%') as d,";
-	$r.="(select count(ten_hoadon) as week from tblhoadon where week(thoigian)=week(now()) and ten_hoadon like '%BH%') as w,";
-	$r.="(select count(ten_hoadon) as month from tblhoadon where month(thoigian)=month(now()) and ten_hoadon like '%BH%') as m,";
-	$r.="(select count(ten_hoadon) as year from tblhoadon where year(thoigian)=year(now()) and ten_hoadon like '%BH%') as y";		
+	$r.="(select count(ten_hoadon) as day from tblhoadon where ";
+	$r.="date(thoigian)=date(now()) and ten_hoadon like '%BH%') as d,";
+	$r.="(select count(ten_hoadon) as week from tblhoadon where ";
+	$r.="week(thoigian)=week(now()) and month(thoigian)=month(now()) and year(thoigian)=year(now()) and ten_hoadon like '%BH%') as w,";
+	$r.="(select count(ten_hoadon) as month from tblhoadon where ";
+	$r.="month(thoigian)=month(now()) and year(thoigian)=year(now()) and ten_hoadon like '%BH%') as m,";
+	$r.="(select count(ten_hoadon) as year from tblhoadon where ";
+	$r.="year(thoigian)=year(now()) and ten_hoadon like '%BH%') as y";		
 		}elseif(strcmp($sub,"nh")==0){
 	$r="select d.day,w.week,m.month,y.year from ";
-	$r.="(select count(ten_hoadon) as day from tblhoadon where day(thoigian)=day(now()) and ten_hoadon like '%NH%') as d,";
-	$r.="(select count(ten_hoadon) as week from tblhoadon where week(thoigian)=week(now()) and ten_hoadon like '%NH%') as w,";
-	$r.="(select count(ten_hoadon) as month from tblhoadon where month(thoigian)=month(now()) and ten_hoadon like '%NH%') as m,";
+	$r.="(select count(ten_hoadon) as day from tblhoadon ";
+	$r.="where date(thoigian)=day(now()) and ten_hoadon like '%NH%') as d,";
+	$r.="(select count(ten_hoadon) as week from tblhoadon where ";
+	$r.="week(thoigian)=week(now()) and month(thoigian)=month(now()) and year(thoigian)=year(now())  and ten_hoadon like '%NH%') as w,";
+	$r.="(select count(ten_hoadon) as month from tblhoadon where ";
+	$r.="month(thoigian)=month(now()) and year(thoigian)=year(now()) and ten_hoadon like '%NH%') as m,";
 	$r.="(select count(ten_hoadon) as year from tblhoadon where year(thoigian)=year(now()) and ten_hoadon like '%NH%') as y";		
 		}
 	}else{
 	$r="select d.day,w.week,m.month,y.year from ";
-	$r.="(select count(ten_hoadon) as day from tblhoadon where day(thoigian)=day(now())) as d,";
-	$r.="(select count(ten_hoadon) as week from tblhoadon where week(thoigian)=week(now())) as w,";
-	$r.="(select count(ten_hoadon) as month from tblhoadon where month(thoigian)=month(now())) as m,";
-	$r.="(select count(ten_hoadon) as year from tblhoadon where year(thoigian)=year(now())) as y";
+	$r.="(select count(ten_hoadon) as day from tblhoadon where ";
+	$r.="date(thoigian)=date(now())) as d,";
+	$r.="(select count(ten_hoadon) as week from tblhoadon where ";
+	$r.="week(thoigian)=week(now()) and month(thoigian)=month(now()) and year(thoigian)=year(now())) as w,";
+	$r.="(select count(ten_hoadon) as month from tblhoadon where ";
+	$r.="month(thoigian)=month(now()) and year(thoigian)=year(now())) as m,";
+	$r.="(select count(ten_hoadon) as year from tblhoadon ";
+	$r.="where year(thoigian)=year(now())) as y";
 	}
 	$q=mysqli_query($dbc,$r);
 	$f=mysqli_fetch_row($q);

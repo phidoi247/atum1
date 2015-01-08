@@ -140,8 +140,8 @@ $q=mysqli_query($dbc,$r);
 				<?php echo $row['giam_gia']; ?>
             </td>
             <td>
-            	<input class="edit-sp-but" id='edit-sp-but<?php echo $cnt; ?>' onclick='edit_sp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' >
-                <input class='delete-sp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_sp(cnt=<?php echo $cnt; ?>);' value='Xóa' type='button' >
+            	<input class="edit-sp-but" id='edit-sp-but<?php echo $cnt; ?>' onclick='edit_sp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
+                <input class='delete-sp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_sp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
             </td>
        	</tr>
        </tbody>	
@@ -170,7 +170,7 @@ $q=mysqli_query($dbc,$r);
             	<?php echo $row['ten_nhacungcap']; ?>
             </td>
             <td>
-            	<input class='delete-ncc-but' id='id_ncc_but<?php echo $cnt; ?>' onclick='delete_ncc(cnt=<?php echo $cnt; ?>);' value='Xóa' type='button' >
+            	<input class='delete-ncc-but' id='id_ncc_but<?php echo $cnt; ?>' onclick='delete_ncc(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
             </td>
         </tr>
         <?php $cnt++; }?>

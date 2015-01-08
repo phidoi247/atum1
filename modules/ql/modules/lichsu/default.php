@@ -135,7 +135,7 @@ $q=mysqli_query($dbc,$r);?>
             </td>
             <td>
             	<input type="hidden" value="<?php echo $row['loaigiaodich_id']; ?>" id="loaihd<?php echo $cnt; ?>"/>
-                <input class="chitiet-but" id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
+                <input class="chitiet-but" id='chitiet-but<?php echo $cnt; ?>' onclick='chitiet(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
             </td>
        </tr>
        </tbody>	

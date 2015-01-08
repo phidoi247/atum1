@@ -12,7 +12,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -28,7 +28,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -47,7 +47,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -63,7 +63,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -82,7 +82,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -98,7 +98,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -118,7 +118,7 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -134,9 +134,9 @@ if(isset($_GET['sub'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) and month(thoigian)=month(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
 			$r.="here hd.nhanvien_id=nv.nhanvien_id and month(thoigian)=month(now()) group by hd.nhanvien_id) as d ";
 			$r.="where a.nhanvien_id=b.nhanvien_id and a.nhanvien_id=c.nhanvien_id and a.nhanvien_id=d.nhanvien_id ) as n ";
@@ -156,7 +156,7 @@ if(isset($_GET['nv_search'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -178,7 +178,7 @@ if(isset($_GET['nv_search'])){
 			$r.="from tblnhanvien as a,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpd ";
 			$r.="from tblhoadon as hd,tblnhanvien as nv ";
-			$r.="where hd.nhanvien_id=nv.nhanvien_id and day(thoigian)=day(now()) group by hd.nhanvien_id) as b,";
+			$r.="where hd.nhanvien_id=nv.nhanvien_id and date(thoigian)=date(now()) group by hd.nhanvien_id) as b,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpw from tblhoadon as hd,tblnhanvien as nv ";
 			$r.="where hd.nhanvien_id=nv.nhanvien_id and week(thoigian)=week(now()) group by hd.nhanvien_id) as c,";
 			$r.="(select hd.nhanvien_id,count(hd.nhanvien_id) as tpm from tblhoadon as hd,tblnhanvien as nv w";;
@@ -247,8 +247,8 @@ $q=mysqli_query($dbc,$r);?>
 		  		<?php echo $row['ngay_vao_lam']; ?>
           </td>
           <td width="105px">
-          		<input class="edit-emp-but" id='edit-emp-but<?php echo $cnt; ?>' onclick='edit_emp(cnt=<?php echo $cnt; ?>);' value='Sửa' type='button' >
-                <input class='delete-emp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_emp(cnt=<?php echo $cnt; ?>);' value='Sa thải' type='button' >
+          		<input class="edit-emp-but" id='edit-emp-but<?php echo $cnt; ?>' onclick='edit_emp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
+                <input class='delete-emp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_emp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
         </td>
      </tr>
 <?php	$cnt++;} ?>

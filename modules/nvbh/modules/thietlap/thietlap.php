@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     	<tr>
-        	<td rowspan="2" colspan="2"><img width="60" height="60" src="<?php echo $f[7] ?>"></td>
+        	<td rowspan="7" colspan="2"><img width="80" height="80" src="<?php echo $f[7] ?>"></td>
         	<td>Họ và tên:</td>
         	<td><?php echo $_SESSION['nameu'] ?></td>
         </tr>
@@ -19,17 +19,21 @@
         	<td>Ngày sinh:</td>
         	<td><?php echo $f[4] ?></td>
         </tr>
-        <tr>
-        	<td rowspan="">Level:</td><td><?php echo $_SESSION['lvu'] ?></td>
-        	<td>Phòng ban:</td><td>Quản lý</td>
+        <tr> 	
+        	<td>Phòng ban:</td><td>Bán hàng</td>
         </tr>
         <tr>
-        	<td rowspan="">Địa chỉ:</td><td><?php echo $f[5] ?></td>
+        	<td rowspan="">Level:</td><td><?php echo $_SESSION['lvu'] ?></td>
+        </tr>
+        <tr>
         	<td>SDT:</td><td><?php echo $f[9] ?></td>
         </tr>
         <tr>
-        	<td rowspan=""></td><td>Ngày làm việc:</td>
-        	<td><?php echo $f[6] ?></td><td></td>
+        	<td rowspan="">Địa chỉ:</td><td><?php echo $f[5] ?></td>
+        </tr>
+        <tr>
+        	<td>Ngày làm việc:</td>
+        	<td><?php echo $f[6] ?></td>
         </tr>
     </tbody>
 </table>
