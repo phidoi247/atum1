@@ -10,96 +10,100 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Demo.Project.One</title>
-<link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
-<link rel="icon" href="sourse/icon.ico">
-<script type="text/javascript" src="js/jquery-2-1-1.js"></script>
-<script type="text/javascript" src="js/popup.js"></script>
-<script type="text/javascript" src="js/script1.js"></script>
-<script src="js/highcharts-3d.js"></script>		
-<script src="js/ajax1.js"></script>
-<script type="text/javascript">
-$(function(){
-	//////////////////////////////////////////////////Next pre page////////////////////////
-	$('.next-page').click(function(){
-		var pp=$('.present-page').val();
-		var tp=$('.total-page').val();
-			<?php
-				if(isset($_GET['nav'])){
-					$nav=$_GET['nav'];
-				}
-			?>
-			if(tp==pp){
-				n=(pp-1)*12;
-			}else{
-				n=((parseInt(pp))*12);
-			}
-			var np="default.php?";
-			np+="<?php	
-				if(isset($_GET['sub'])){
-					$sub=$_GET['sub'];
-					echo "nav=".$nav."&sub=".$sub;
-				}elseif(isset($_GET['ls_search'])){
-					$ls_search=$_GET['ls_search'];
-					echo "nav=".$nav."&ls_search=".$ls_search;
-				}elseif(isset($_GET['sp_search'])){
-					$sp_search=$_GET['sp_search'];
-					echo "nav=".$nav."&sp_search=".$sp_search;
-				}elseif(isset($_GET['nv_search'])){
-					$nv_search=$_GET['nv_search'];
-					echo "nav=".$nav."&nv_search=".$nv_search;
-				}else{
-					echo "nav=".$nav;
-				}
-			?>";
-			np+="&f="+n+"";
-			$(this).attr('href',np);
-	});
-	$('.prev-page').click(function(){
-		var pp=$('.present-page').val();
-		pp-=2;
-			<?php
-				if(isset($_GET['nav'])){
-					$nav=$_GET['nav'];
-				}
-			?>
-			var n=((parseInt(pp))*12);
-			if(n<0){
-				n=0;
-			}
-			var np="default.php?";
-			np+="<?php	
-				if(isset($_GET['sub'])){
-					$sub=$_GET['sub'];
-					echo "nav=".$nav."&sub=".$sub;
-				}elseif(isset($_GET['ls_search'])){
-					$ls_search=$_GET['ls_search'];
-					echo "nav=".$nav."&ls_search=".$ls_search;
-				}elseif(isset($_GET['sp_search'])){
-					$sp_search=$_GET['sp_search'];
-					echo "nav=".$nav."&sp_search=".$sp_search;
-				}elseif(isset($_GET['nv_search'])){
-					$nv_search=$_GET['nv_search'];
-					echo "nav=".$nav."&nv_search=".$nv_search;
-				}else{
-					echo "nav=".$nav;
-				}
-			?>";
-			np+="&f="+n+"";
-			$(this).attr('href',np);
-	});
-});
-</script>
-<script>
-$(function(){
-		var tab="#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>";
-			if(tab.length != 1){
-				$('.tab').removeClass('active-tab');
-				$(tab).addClass('active-tab');
-			}
-});
-</script>
+    <meta charset="utf-8">
+    <title>Demo.Project.One</title>
+    <link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
+    <link rel="icon" href="sourse/icon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <meta name="author" content="Codrops" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
+    <script type="text/javascript" src="js/jquery-2-1-1.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="js/script1.js"></script>
+    <script src="js/highcharts-3d.js"></script>		
+    <script src="js/ajax1.js"></script>
+    <script type="text/javascript">
+    (function(){
+        //////////////////////////////////////////////////Next pre page////////////////////////
+        $('.next-page').click(function(){
+            var pp=$('.present-page').val();
+            var tp=$('.total-page').val();
+                <?php
+                    if(isset($_GET['nav'])){
+                        $nav=$_GET['nav'];
+                    }
+                ?>
+                if(tp==pp){
+                    n=(pp-1)*12;
+                }else{
+                    n=((parseInt(pp))*12);
+                }
+                var np="default.php?";
+                np+="<?php	
+                    if(isset($_GET['sub'])){
+                        $sub=$_GET['sub'];
+                        echo "nav=".$nav."&sub=".$sub;
+                    }elseif(isset($_GET['ls_search'])){
+                        $ls_search=$_GET['ls_search'];
+                        echo "nav=".$nav."&ls_search=".$ls_search;
+                    }elseif(isset($_GET['sp_search'])){
+                        $sp_search=$_GET['sp_search'];
+                        echo "nav=".$nav."&sp_search=".$sp_search;
+                    }elseif(isset($_GET['nv_search'])){
+                        $nv_search=$_GET['nv_search'];
+                        echo "nav=".$nav."&nv_search=".$nv_search;
+                    }else{
+                        echo "nav=".$nav;
+                    }
+                ?>";
+                np+="&f="+n+"";
+                $(this).attr('href',np);
+        });
+        $('.prev-page').click(function(){
+            var pp=$('.present-page').val();
+            pp-=2;
+                <?php
+                    if(isset($_GET['nav'])){
+                        $nav=$_GET['nav'];
+                    }
+                ?>
+                var n=((parseInt(pp))*12);
+                if(n<0){
+                    n=0;
+                }
+                var np="default.php?";
+                np+="<?php	
+                    if(isset($_GET['sub'])){
+                        $sub=$_GET['sub'];
+                        echo "nav=".$nav."&sub=".$sub;
+                    }elseif(isset($_GET['ls_search'])){
+                        $ls_search=$_GET['ls_search'];
+                        echo "nav=".$nav."&ls_search=".$ls_search;
+                    }elseif(isset($_GET['sp_search'])){
+                        $sp_search=$_GET['sp_search'];
+                        echo "nav=".$nav."&sp_search=".$sp_search;
+                    }elseif(isset($_GET['nv_search'])){
+                        $nv_search=$_GET['nv_search'];
+                        echo "nav=".$nav."&nv_search=".$nv_search;
+                    }else{
+                        echo "nav=".$nav;
+                    }
+                ?>";
+                np+="&f="+n+"";
+                $(this).attr('href',np);
+        });
+    });
+    </script>
+    <script>
+    $(function(){
+            var tab="#<?php if(isset($_GET['nav'])){echo (strip_tags($_GET['nav'])); } ?>";
+                if(tab.length != 1){
+                    $('.tab').removeClass('active-tab');
+                    $(tab).addClass('active-tab');
+                }
+    });
+    </script>
 </head>
 
 <body>
@@ -117,7 +121,7 @@ $(function(){
 <section>
 
 <div class="popup"></div>
-<div id="logbox" >
+<div id="logbox">
 <span class="notify">
 <input id="log_info" type="text" value="
 <?php 
@@ -157,7 +161,7 @@ $(function(){
         <tr><th colspan="2">Login</th></tr>
       </thead>
       <tbody>
-        <tr><td>UserName:</td><td><input size="14px" type="text" name="username" id="user" required/></td></tr>
+        <tr><td>Mã nhân viên:</td><td><input size="14px" type="text" name="username" id="user" required/></td></tr>
         <tr><td>Password:</td><td><input size="14px" type="password" name="password" required id="pass" /></td></tr>
         <tr><td></td><th></th></tr>
         <tr style="font-size:10px"><td><a href="#">Forget PassWord</a></td><td><input id='login_sub' type="submit" value="Login"/></td></tr>

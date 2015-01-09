@@ -40,15 +40,15 @@
         		</tr>
         		<tr>
         			<td><label>Mã sản phẩm: </label></td>
-        			<td><input type="text" name="maSanPham" required placeholder="Mã sản phẩm ngăn cách bằng dấu ",""></td>
+        			<td><input type="text" name="maSanPham" required placeholder="VD: SA00001,SA00002"></td>
         		</tr>
         		<tr>
         			<td><label>Từ ngày: </label></td>
-        			<td><input type="text" name="tuNgay" required></td>
+        			<td><input type="text" name="tuNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr>
         			<td><label>Đến ngày: </label></td>
-        			<td><input type="text" name="denNgay" required></td>
+        			<td><input type="text" name="denNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr><td></td><th><input type="submit" name="submit" value="Tạo"></th></tr>
         	</tbody></table>
@@ -80,11 +80,11 @@
         		</tr>        		   		
         		<tr>
         			<td><label>Từ ngày: </label></td>
-        			<td><input type="text" name="tuNgay" required></td>
+        			<td><input type="text" name="tuNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr>
         			<td><label>Đến ngày: </label></td>
-        			<td><input type="text" name="denNgay" required></td>
+        			<td><input type="text" name="denNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr><td></td><th><input type="submit" name="submit" value="Tạo"></th></tr>
                 </tbody>
@@ -116,11 +116,11 @@
         		</tr>        		   		
         		<tr>
         			<td><label>Từ ngày: </label></td>
-        			<td><input type="text" name="tuNgay" required></td>
+        			<td><input type="text" name="tuNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr>
         			<td><label>Đến ngày: </label></td>
-        			<td><input type="text" name="denNgay" required></td>
+        			<td><input type="text" name="denNgay" placeholder="dd-mm-yyyy" required></td>
         		</tr>
         		<tr><td></td><th><input type="submit" name="submit" value="Tạo"></th></tr>
                 </tbody>
