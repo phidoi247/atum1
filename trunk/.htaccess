@@ -1,5 +1,5 @@
-RewriteEngine On
-RewriteBase /
+RewriteEngine on
 
+#RewriteCond %{HTTP_HOST} ^([a-z0-9\-]+)\.(com|net|vn|com\.vn|org|info)$ [NC]
+#RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
 DirectoryIndex defaut.php
-
