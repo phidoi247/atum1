@@ -1028,7 +1028,7 @@ section, header{
 	}
 .dg-wrapper{
 	width: 320px;
-	height: 500px;
+	height: 470px;
 	margin: 0 auto;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
@@ -1043,8 +1043,8 @@ section, header{
 	perspective: 1000px;
 }
 .dg-wrapper a{
-	width: 350px;
-	height: 500px;
+	width: 321px;
+	height: 470px;
 	display: block;
 	position: absolute;
 	left: 0;
@@ -1062,7 +1062,7 @@ section, header{
 .dg-wrapper a img{
 	display: block;
 	margin: 0 auto;
-	padding: 20px 0px 0px 1px;
+	padding: 0px 0px 0px 1px;
 }
 .dg-wrapper a div{
 	font-style: italic;

@@ -1,4 +1,4 @@
-<div style="width:100%;height:105px;">					
+<div style="width:100%;height:120px;">					
 </div>
 <div class="container">
 			<section id="dg-container" class="dg-container">
