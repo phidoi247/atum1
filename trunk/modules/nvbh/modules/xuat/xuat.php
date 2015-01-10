@@ -105,7 +105,7 @@
             <input type="submit" id="gd_but"  value="Giao dich"/>
 </form>
 </div>
-
+<div class="thongbao"></div>
 </div>
 
 

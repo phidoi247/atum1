@@ -1,9 +1,12 @@
 $(document).ready(function(e) {
+	
         $('.login-but').click(function(){
-			$('#logbox').show();
+			$('#logbox').css("visibility","visible");
+			$('#logbox').hide();
+			$('#logbox').show("slow");
 		});
 		$('.cancellog').click(function(){
-			$('#logbox').hide();
+			$('#logbox').css("visibility","hidden");
 		});
 	///////////////////////////Employees
 			$('#add-emp-but').click(function(){

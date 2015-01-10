@@ -1,13 +1,4 @@
-<script>
-$(function(){
-		<?php
-			if(isset( $_SESSION['lvu'])){
-				echo "$('.nav').remove();";
-				echo "$('.user').show();";	
-			}
-		?>
-});
-</script>
+
 <nav class="menu">
 <ul>
 	<li class='tab active-tab' id='nv'><a href="?nav=nv" >Nhân Viên</a></li>

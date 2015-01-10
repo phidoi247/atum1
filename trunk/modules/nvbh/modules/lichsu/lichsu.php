@@ -77,7 +77,7 @@ $q=mysqli_query($dbc,$r);?>
 			<?php echo $row['nhanvien_id']; ?>
         </td>
         <td>
-        	<input class="chitiet-but" id='chitiet-but<?php echo $cnt; ?>' onclick='bh_chitiet(cnt=<?php echo $cnt; ?>);' value='Chi tiết' type='button' >
+        	<input class="chitiet-but" id='chitiet-but<?php echo $cnt; ?>' onclick='bh_chitiet(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
         </td>
       </tr>
 <?php	$cnt++;}?>

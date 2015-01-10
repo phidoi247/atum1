@@ -1,14 +1,19 @@
 // JavaScript Document
 $(document).ready(function(){
+	
+	
+	
 	/*******Thông báo trạng thái đăng nhập nếu có lỗi thì show k thì ẩn***/
 	$(function(){
 		var info=$('#log_info').val();
 		if(info!=''){
-			$('#logbox').show();
+			$('#logbox').css("visibility","visible");
 		}else{
-			$('#logbox').hide();
+			$('#logbox').css("visibility","hidden");
 		}
 	});
+	
+	
 	
 	
 	//Nhập SP
@@ -135,20 +140,28 @@ $(document).ready(function(){
 			event.preventDefault();
 			var form=new FormData($(this)[0]);
 			
-			$.ajax({
-				type:"POST",
-				url:"modules/nvk/modules/nhap/xuly.php",
-				data:form,
-				async:false,// 1 boolean val xđ việc ngăn cản đồng bộ xử lý, df = true
-				cache:false,// 1 boolean val xđ việc lưu bộ nhớ trang request, df = true
-				processData:false, //1 giá trị boolean xác định dữ liệu request có đc tao trong 1 string k, default là true
-				contentType:false, //kiểu data chuyền đi defaeult là enctype="application/x-www-form-urlencoded",
-									//Muốn post file thì phải dùng kiểu enctype="multipart/form-data" 
-				success: function(nn){
-						alert("Giao dich thành công!");
-						document.location.reload();
-				}
-			});
+			/***Check số lg hóa đơn nếu k có thì k thưc hiện gd**/
+			
+			var amt_record=$('form#formHDnhap >tbody >tr').length;
+			if(amt_record>=1){
+				
+				$.ajax({
+					type:"POST",
+					url:"modules/nvk/modules/nhap/xuly.php",
+					data:form,
+					async:false,// 1 boolean val xđ việc ngăn cản đồng bộ xử lý, df = true
+					cache:false,// 1 boolean val xđ việc lưu bộ nhớ trang request, df = true
+					processData:false, //1 giá trị boolean xác định dữ liệu request có đc tao trong 1 string k, default là true
+					contentType:false, //kiểu data chuyền đi defaeult là enctype="application/x-www-form-urlencoded",
+										//Muốn post file thì phải dùng kiểu enctype="multipart/form-data" 
+					success: function(nn){
+							alert("Giao dich thành công!");
+							document.location.reload();
+					}
+				});
+			}else{
+					$('.thongbao').html("Không có sản phẩm nào được giao dich!")	
+			}
 		});
 /////////////Gửi hđ xuất vào db
 		$('form#formHDxuat').submit(function(event){
@@ -419,7 +432,7 @@ $(document).ready(function(){
 				url:"modules/ql/modules/thietlap/xuly.php",
 				data:"old_pass="+old_pass+"&idu="+idu,
 				success: function(nof){
-					$('span.chk_o_p').html(nof);
+					$('div.chk_o_p').html(nof);
 				}
 			});
         });
@@ -428,9 +441,9 @@ $(document).ready(function(){
         	var new_p=$('input#new_pass').val();
 			var re_p=$(this).val();
 			if(re_p==new_p){
-				$('span.chk_n_p').html("OK!");
+				$('div.chk_n_p').html("OK!");
 			}else{
-				$('span.chk_n_p').html("Re_password wrong!");
+				$('div.chk_n_p').html("Re_Pass Wrong!");
 			}
 		});
 		/****Change AVatar**/

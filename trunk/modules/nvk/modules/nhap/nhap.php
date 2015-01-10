@@ -10,7 +10,7 @@
         	<tr><td id="chk" style="color:red">***********</td></tr>
             <tr><td>Nhập Mã Hóa Đơn
             <?php 
-                $r="select ten_hoadon from tblhoadon where ten_hoadon like 'HĐNH%' order by ten_hoadon desc limit 1";
+                $r="select ten_hoadon from tblhoadon where ten_hoadon like 'HĐNH%' order by id 	 desc limit 1";
 				$q=mysqli_query($dbc,$r) or die(mysqli_error($dbc));
 				$fet=mysqli_fetch_row($q);
 				$id_hd_tr=$fet[0];
@@ -99,11 +99,12 @@
         	<input type="hidden" value="<?php echo $_SESSION['idu'] ?>" name="idu"/>
         	<input type="hidden" name="tsp" id="slhd"/>
         	<input type="button" id="hgd_but"  value="Hủy giao dịch"/>
-            <input type="submit" id="gd_but"  value="Giao dich"/>
+            <input type="submit" id="gd_but"  value="Giao dich" />
 </form>
 </div>
-
+<div class="thongbao"></div>
 </div>
+
 
 
 
