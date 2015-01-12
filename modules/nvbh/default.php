@@ -1,13 +1,6 @@
 
 <script type="text/javascript">
-$(function(){
-	<?php
-if(isset($_SESSION['lvu'])){
-	echo "$('.nav').remove();";	
-	echo "$('.user').show();";
-}
-?>
-});
+	document.getElementById('dangnhap').remove();
 </script>
 <nav class="menu">
 <ul>
@@ -63,5 +56,12 @@ if($_SERVER['REQUEST_METHOD']='GET'){
 else{
 	include 'modules/xuat/xuat.php';
 }
+?>
+</div>
+<div class="user">
+<?php
+	if(isset($_SESSION['nameu'])){
+		echo $_SESSION['nameu'];
+	}
 ?>
 </div>

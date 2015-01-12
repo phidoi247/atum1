@@ -113,7 +113,7 @@
 <div class="logo"><img width="300px" src="sourse/Logo1.jpg"/></div>
 <div class="banner"><img alt="Banner" src="sourse/banner.jpg"></div>
 
-<div class="nav">
+<div id="dangnhap">
 <input type="button" class="login-but" value="Đăng nhập"/>
 </div>
 </header>
@@ -169,15 +169,8 @@
       </table>
   </form>
 </div>
-<div class="user">
 <?php
-	if(isset($_SESSION['nameu'])){
-		echo $_SESSION['nameu'];
-	}
-?>
-</div>
-<?php
-	
+	//phan trrang
  	if(isset($_SESSION['lvu'])){
 		if($_SESSION['lvu']==3){
 			include("modules/ql/default.php");
