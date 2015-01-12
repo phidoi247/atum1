@@ -142,8 +142,9 @@ $(document).ready(function(){
 			
 			/***Check số lg hóa đơn nếu k có thì k thưc hiện gd**/
 			
-			var amt_record=$('form#formHDnhap >tbody >tr').length;
-			if(amt_record>=1){
+			var amt_record=$('table.nhap_xuat >tbody >tr').length;
+            
+			if(amt_record>0){
 				
 				$.ajax({
 					type:"POST",
@@ -167,7 +168,8 @@ $(document).ready(function(){
 		$('form#formHDxuat').submit(function(event){
 			event.preventDefault();
 			var form=new FormData($(this)[0]);
-			
+			var amt_record=$('table.nhap_xuat >tbody >tr').length;
+			if(amt_record>0){
 			$.ajax({
 				type:"POST",
 				url:"modules/nvbh/modules/xuat/xuly.php",
@@ -181,6 +183,9 @@ $(document).ready(function(){
 						document.location.reload();
 				}
 			});
+            	}else{
+					$('.thongbao').html("Không có sản phẩm nào được giao dich!")	
+			}
 		});
 /////////////////////////////////////////////Hủy gd
 		
