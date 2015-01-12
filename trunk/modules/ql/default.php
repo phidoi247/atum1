@@ -1,4 +1,6 @@
-
+<script type="text/javascript">
+	document.getElementById('dangnhap').remove();
+</script>
 <nav class="menu">
 <ul>
 	<li class='tab active-tab' id='nv'><a href="?nav=nv" >Nhân Viên</a></li>
@@ -61,5 +63,12 @@ if($_SERVER['REQUEST_METHOD']='GET'){
 else{
 	include 'modules/qlnhanvien/dsnv.php';
 }
+?>
+</div>
+<div class="user">
+<?php
+	if(isset($_SESSION['nameu'])){
+		echo $_SESSION['nameu'];
+	}
 ?>
 </div>

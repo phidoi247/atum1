@@ -1,4 +1,6 @@
-
+<script type="text/javascript">
+	document.getElementById('dangnhap').remove();
+</script>
 <nav class="menu">
 <ul>
 	<li class='tab active-tab' id='nh'><a href="?nav=nh" >Nhập hàng</a></li>
@@ -54,5 +56,12 @@ if($_SERVER['REQUEST_METHOD']='GET'){
 else{
 	include 'modules/nhap/nhap.php';
 }
+?>
+</div>
+<div class="user">
+<?php
+	if(isset($_SESSION['nameu'])){
+		echo $_SESSION['nameu'];
+	}
 ?>
 </div>
