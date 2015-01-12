@@ -114,7 +114,7 @@
 <div class="banner"><img alt="Banner" src="sourse/banner.jpg"></div>
 
 <div id="dangnhap">
-<input type="button" class="login-but" value="Đăng nhập"/>
+<input type="button" class="login-but" value="Mời Bạn Đăng Nhập!"/>
 </div>
 </header>
 <!--End Header-->
