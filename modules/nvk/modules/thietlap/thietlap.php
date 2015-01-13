@@ -45,10 +45,10 @@
             </thead>
             <tbody>
             	<tr>
-                	<td>Nhập mật khẩu cũ:</td><td><input id="old_pass" type="password" pattern=".{4-12}" title="4-12 ký tự" required></td><td width="50"><div class="chk_o_p"></div></td>
+                	<td>Nhập mật khẩu cũ:</td><td><input id="old_pass" type="password" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td><td width="50"><div class="chk_o_p"></span></td>
                 </tr>
                 <tr>
-                	<td>Nhập mật khẩu Mới:</td><td><input id="new_pass" pattern=".{4-12}" title="4-12 ký tự" type="password" required></td>
+                	<td>Nhập mật khẩu Mới:</td><td><input id="new_pass" type="password" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td>
                 </tr>
                 <tr>
                 	<td>Nhập lại mật khẩu Mới:</td><td><input id="re_pass" name="pass" type="password" required></td><td><div class="chk_n_p"></div></td>
