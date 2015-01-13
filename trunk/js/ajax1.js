@@ -418,29 +418,31 @@ $(document).ready(function(){
 			event.preventDefault();
 			var new_p=$('#re_pass').val();
 			var idu=$('#idu').val()
-			$.ajax({
-				type:"POST",
-				url:"modules/ql/modules/thietlap/xuly.php",
-				data:"new_pass="+new_p+"&idu="+idu,
-				success: function(ok){
-					if(ok=='Ok'){
-					window.location.reload();}
-				}
-			});
-		});
-		//Check mk cũ
-		$('input#old_pass').focusout(function(e) {
-            var old_pass=$(this).val();
-			var idu=$('#idu').val();
+			var old_pass=$('input#old_pass').val();
 			$.ajax({
 				type:"POST",
 				url:"modules/ql/modules/thietlap/xuly.php",
 				data:"old_pass="+old_pass+"&idu="+idu,
 				success: function(nof){
-					$('div.chk_o_p').html(nof);
+					if(nof=="Ok"){
+						$.ajax({
+						type:"POST",
+						url:"modules/ql/modules/thietlap/xuly.php",
+						data:"new_pass="+new_p+"&idu="+idu,
+						success: function(ok){
+							if(ok=='Ok'){
+							window.location.reload();}
+						}
+						});
+					}else{
+						alert("Mật khẩu cũ sai!");
+					}
+					
 				}
 			});
-        });
+			
+		});
+		
 		//Check nhập lại mk
 		$('input#re_pass').focusout(function(e) {
         	var new_p=$('input#new_pass').val();
@@ -448,7 +450,7 @@ $(document).ready(function(){
 			if(re_p==new_p){
 				$('div.chk_n_p').html("OK!");
 			}else{
-				$('div.chk_n_p').html("Re_Pass Wrong!");
+				$('div.chk_n_p').html("Re_Wrong!");
 			}
 		});
 		/****Change AVatar**/

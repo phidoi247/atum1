@@ -1,14 +1,19 @@
 //Nhap xuat
 //Xóa chi tiet
 function delete_emp(cnt){
+		
 		var get_delete_emp_id="#ma_nv"+cnt;
 		var delete_emp_id=$(get_delete_emp_id).val();
 		document.getElementById('id_emp_del').value=delete_emp_id;
 		$('#id_emp_row').val("ma_nv"+cnt);
 		$('.delete-emp-box').show();
+		$('.edit-emp-box').hide();
+		$('.add-emp-box').hide();
 	}
 function edit_emp(cnt){
 		$('.edit-emp-box').show();
+		$('.delete-emp-box').hide();
+		$('.add-emp-box').hide();
 		var get_edit_emp_id="#ma_nv"+cnt;
 		var edit_emp_id=$(get_edit_emp_id).val();
 		$('#eid').val(edit_emp_id);
@@ -34,8 +39,15 @@ function delete_sp(cnt){
 		document.getElementById('id_sp_del').value=delete_sp_id;
 		$('#id_sp_row').val("ma_sp"+cnt);
 		$('.delete-sp-box').show();
+		$('.add-sp-box').hide();
+		$('.add-ncc-box').hide();
+		$('.ncc-box').hide();
 	}
 function edit_sp(cnt){
+		$('.add-sp-box').hide();
+		$('.delete-sp-box').hide();
+		$('.add-ncc-box').hide();
+		$('.ncc-box').hide();
 		$('.edit-sp-box').show();
 		var get_edit_sp_id="#ma_sp"+cnt;
 		var edit_sp_id=$(get_edit_sp_id).val();
