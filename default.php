@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Demo.Project.One</title>
+    <title>Nhà sách Trí Tuệ</title>
     <link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
     <link rel="icon" href="sourse/icon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">        
@@ -187,7 +187,7 @@
 ?>
 </section>
 <footer>
-Copyright &copy; by ATUM Team.
+Copyright &copy; by ATUM Coporation.
 </footer>
 </div>
 </body>
