@@ -187,7 +187,7 @@
 ?>
 </section>
 <footer>
-Copyright &copy; by ATUM Coporation.
+Copyright &copy; by ATUM Corporation.
 </footer>
 </div>
 </body>
