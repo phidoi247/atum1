@@ -24,7 +24,7 @@
     <script src="js/highcharts-3d.js"></script>		
     <script src="js/ajax1.js"></script>
     <script type="text/javascript">
-    (function(){
+    $(function(){
         //////////////////////////////////////////////////Next pre page////////////////////////
         $('.next-page').click(function(){
             var pp=$('.present-page').val();
@@ -146,10 +146,10 @@
 				$_SESSION['avu']=$f[3];
 				
 			}else{
-				echo "User Name or PassWords Wrong!";	
+				echo "Mã Nhân viên hoặc Mật khẩu sai!";	
 			}
 		}else{
-			echo "Fill all Fields, Please!";
+			echo "Hãy điền đầy đủ thông tin!";
 		}
 	}
 ?>"/>
@@ -164,7 +164,7 @@
         <tr><td>Mã nhân viên:</td><td><input size="14px" type="text" name="username" id="user" required/></td></tr>
         <tr><td>Password:</td><td><input size="14px" type="password" name="password" required id="pass" /></td></tr>
         <tr><td></td><th></th></tr>
-        <tr style="font-size:10px"><td><a href="#">Forget PassWord</a></td><td><input id='login_sub' type="submit" value="Login"/></td></tr>
+        <tr style="font-size:10px"><td></td><td><input id='login_sub' type="submit" value="Đăng nhập"/></td></tr>
       </tbody>
       </table>
   </form>
@@ -185,6 +185,7 @@
 		include("intro.php");
 		}
 ?>
+
 </section>
 <footer>
 Copyright &copy; by ATUM Corporation.

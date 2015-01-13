@@ -296,7 +296,7 @@ $q=mysqli_query($dbc,$r);?>
             <tr>
             	<td>Mật khẩu:</td>
                 <td>
-                	<input id="add_pass" name="password" required="required" pattern=".{4-12}" title="4-12 ký tự" type="text">
+                	<input id="add_pass" name="password" required="required" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" type="text">
                 </td>
             </tr>
             <tr>
@@ -358,7 +358,7 @@ $q=mysqli_query($dbc,$r);?>
                 </td>
             </tr>
 			<tr>
-            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern=".{4-12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="text"></td></tr>
+            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern="{4,12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="text"></td></tr>
 			<tr>
             	<td>Địa chỉ:</td><td><input name="eaddress" id="eaddress" type="text"></td></tr>
 			<tr>
