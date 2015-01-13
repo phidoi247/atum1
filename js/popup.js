@@ -11,6 +11,8 @@ $(document).ready(function(e) {
 	///////////////////////////Employees
 			$('#add-emp-but').click(function(){
 				$('.add-emp-box').show();
+				$('.delete-emp-box').hide();
+				$('.edit-emp-box').hide();
 			});
 			$('.add-emp-close').click(function(){
 				$('.add-emp-box').hide();
@@ -18,6 +20,7 @@ $(document).ready(function(e) {
 			
 			$('.edit-emp-close').click(function(){
 				$('.edit-emp-box').hide();
+				
 			});
 			$('.delete-emp-close').click(function(){
 				$('.delete-emp-box').hide();
@@ -26,6 +29,9 @@ $(document).ready(function(e) {
 			
 			$('#add-sp-but').click(function(){
 				$('.add-sp-box').show();
+				$('.edit-sp-box').hide();
+				$('.delete-sp-box').hide();
+				$('.add-ncc-box').hide();
 				/*
 				$.ajax({
 					type:"POST",
@@ -114,11 +120,20 @@ $(document).ready(function(e) {
 ////////////////NCC
 			$('#add-ncc-but').click(function(){
 				$('.add-ncc-box').show();
+				$('.add-sp-box').hide();
+				$('.delete-sp-box').hide();
+				$('.edit-sp-box').hide();
+				$('.ncc-box').hide();
 			});
 			$('.add-ncc-close').click(function(){
 				$('.add-ncc-box').hide();
 			});
 			$('#ncc-but').click(function(){
+				$('.add-ncc-box').show();
+				$('.add-sp-box').hide();
+				$('.delete-sp-box').hide();
+				$('.edit-sp-box').hide();
+				$('.add-ncc-box').hide();
 				$('.ncc-box').show();
 			});
 			$('.ncc-close').click(function(){
