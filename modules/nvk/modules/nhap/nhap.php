@@ -8,7 +8,7 @@
         <legend>Nhập Sản Phẩm</legend>
         <table>
         	<tr><td id="chk" style="color:red">***********</td></tr>
-            <tr><td>Nhập Mã Hóa Đơn
+            <tr><td>Mã Hóa Đơn
             <?php 
                 $r="select ten_hoadon from tblhoadon where ten_hoadon like 'HĐNH%' order by id 	 desc limit 1";
 				$q=mysqli_query($dbc,$r) or die(mysqli_error($dbc));
@@ -58,7 +58,7 @@
             ?>
             </td></tr>
             <tr><td>
-            <input type="text" name="HD" value="<?php echo $id_hd; ?>" readonly/>
+            <input type="text" style="border:none;font-size:16px" name="HD" value="<?php echo $id_hd; ?>" readonly/>
             </td></tr>
             <tr><td id="chk_msp">Nhập Mã Sản Phẩm</td></tr>
             <tr><td><input id="nhap_msp" type="text" required/></td></tr>

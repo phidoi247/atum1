@@ -1,10 +1,8 @@
 @CHARSET "UTF-8";
 *{padding:0;margin:0;text-align:center;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif}
+
 body{
-        background:#f1f1f1;     
-}
-body{
-	background:#f1f1f1;	
+	background:url(../sourse/bg.jpg) repeat;	
 }
 	.swapper{
 		width:1000px;
@@ -21,18 +19,23 @@ body{
 		position:relative;
 	}
 	.logo{
+		background-image:url(../sourse/Logo.jpg);
+		background-position:center;
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-color:white;
 		height:100%;
-		width:30%;
+		width:20%;
 		float:left;	
 	}
 	.banner{
 		height:100%;
-		width:70%;
-		background:linear-gradient(to left,#FFF,#0F5);
+		width:80%;
+		background:white;
 		float:left;	
 	}
 	.banner img{
-		width: 700px;
+		width: 800px;
 		height: 108px;
 	}
 	/*swapper Nút đăng nhập*/
@@ -54,10 +57,10 @@ body{
 		color:#fff;
 		float:right;
 		width:172px;
-		line-height:35px;
-		height:37px;
+		line-height:30px;
+		height:30px;
 		right:176px;
-		top:110px;
+		top:0px;
 		
 	}
 	/*Nút đăng nhập*/
@@ -124,10 +127,7 @@ body{
 		color:white;
 		transition:all ease-in 0.5s;	
 	}
-	nav.menu ul li input:HOVER{
-		color:white;
-		transition:all ease-in 0.5s;	
-	}
+	
 	nav.menu ul li a{
 		width: 100%;
 		height: 100%;
@@ -136,20 +136,30 @@ body{
 		color: black;	
 	}
 	/* Nut thoát*/
-	nav.menu ul li input{
-		font:"Trebuchet MS", Arial, Helvetica, sans-serif;
-		font-size:16px;
+	#out{
+		float:right;
+		font-size:12px;
 		border:none;
-		background-color:transparent;	
+		height:30px;
+		line-height:30px;
+		background-color:transparent;
+		border-left:thin solid #DDD;	
+	}
+	div#out:HOVER{
+		color:white;
+		background:#F60;
+		transition:all ease-in 0.5s;	
+	}
+	#out input{
+		background-color:transparent;
+		height:30px;
+		width:50px;
+		display:block;	
 	}
 	/* tab nào đc click thì thêm class này*/
 	.active-tab{
 		transition:all linear 1s;
 		background:#BCD4DA; 
-	}
-	nav form input{
-		width:100%;
-		height:35px;	
 	}
 	/*--------------------Fillter------------------------*/
 	article.fillter{
@@ -176,7 +186,7 @@ body{
 	}
 	article.fillter input#search_box{
 		height: 28px;
-		width:150px;
+		width:100px;
 		float:left;
 		margin-left:10px;
 		background:#FFF;
@@ -201,6 +211,7 @@ body{
 	}
 	/*Thống kê*/
 	article.fillter label{
+		float:right;
 		line-height:30px;
 		margin-left:5px;	
 	}
@@ -221,8 +232,7 @@ body{
 		
 		line-height:28px;
 		height: 28px;
-		padding:0 5px;
-		width:100px;
+		padding:0 2px;
 		display:block;
 		float:left;
 		border:solid thin gray;
@@ -247,7 +257,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.add-emp-box img{
@@ -297,7 +307,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.edit-emp-box img.edit-emp-close{
@@ -314,7 +324,10 @@ body{
 		
 	}
 	.edit-emp-box table thead{background: #B6D8A0;height: 30px}
-	
+	#edit_emp_notify{
+		color:red;
+		font-size:12px;	
+	}
 	/*----------------Delete Emp----------------*/
 	.delete-emp-box{
 		display: none;
@@ -324,12 +337,16 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	.delete-emp-box table{
 		margin: 5px auto;
 		
 	}
+	.delete-emp-box table thead input#id_emp_del{
+		background-color:transparent;
+		border:none;
+	 }
 	.delete-emp-box table input{width:45px;height: 20px}
 	
 	/*---------------------Add sp---------------------*/
@@ -370,7 +387,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.add-sp-box img{
@@ -401,7 +418,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.edit-sp-box img.edit-sp-close{
@@ -419,7 +436,11 @@ body{
 	}
 	.edit-sp-box table thead{background: #B6D8A0;height: 30px}
 	 
-	
+	 
+	#edit_sp_notify{
+		color:red;
+		font-size:12px;	
+	}
 	/*----------------Delete sp----------------*/
 	.delete-sp-box{
 		display: none;
@@ -429,13 +450,18 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	.delete-sp-box table{
 		margin: 5px auto;
 		
 	}
-	.delete-sp-box table input{width:55px;height: 20px}
+	
+	 
+	.delete-sp-box table  input{ border:none;width:55px;height: 20px}
+	.delete-sp-box table thead input#id_sp_del{
+		background-color:transparent;
+	 }
 	/*---------------------NCC---------------------*/
 	/* Nut xoa */
 	input.delete-ncc-but{
@@ -455,7 +481,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.add-ncc-box img{
@@ -473,31 +499,6 @@ body{
 	}
 	.add-ncc-box table thead{background: #B6D8A0;height: 30px}
 	
-	.ncc-box{
-		display: none;
-		background:white;
-		width: 250px;
-		position: absolute;
-		top:-10px;
-		left: 490px;
-		border: solid thin gray;
-		border-radius:15px;
-	}
-	
-	.ncc-box img{
-		float: right;
-		border: solid thin gray; 
-		position: absolute;
-		top: -5px;
-		right: -5px;
-		background: white;
-		border-radius:15px;
-	}
-	.ncc-box table{
-		margin: 5px auto;
-		
-	}
-	.ncc-box table thead{background: #B6D8A0;height: 30px}
 	
 	/*----------------Delete NCC----------------*/
 	.delete-ncc-box{
@@ -508,13 +509,66 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	.delete-ncc-box table{
 		margin: 5px auto;
 		
 	}
 	.delete-ncc-box table input{width:55px;height: 20px}
+/*---------------------Add DV---------------------*/
+	.add-dv-box{
+		display: none;
+		background:white;
+		width: 350px;
+		position: absolute;
+		top:-10px;
+		left: 300px;
+		border: solid thin gray;
+		
+	}
+	
+	.add-dv-box img{
+		float: right;
+		border: solid thin gray; 
+		position: absolute;
+		top: -5px;
+		right: -5px;
+		background: white;
+		border-radius:15px;
+	}
+	.add-dv-box table{
+		margin: 5px auto;
+		
+	}
+	.add-dv-box table thead{background: #B6D8A0;height: 30px}
+	
+	
+	/*----------------Delete dv----------------*/
+	.delete-dv-box{
+		display: none;
+		background:white;
+		width: 300px;
+		position: absolute;
+		top:-10px;
+		left: 300px;
+		border: solid thin gray;
+		
+	}
+	.delete-dv-box table{
+		margin: 5px auto;
+		
+	}
+	.delete-dv-box table input{width:55px;height: 20px}
+	/* Nut xoa */
+	input.delete-dv-but{
+		width:22px;
+		background-image:url(../sourse/delete.png);
+		height:22px;
+		border-radius:3px;
+		font-size:10px;
+		border:thin solid #555;	
+	}
 	/*---------------------Chi tiet hoa don---------------------*/
 	.chitiet-box{
 		display: none;
@@ -524,7 +578,7 @@ body{
 		top:-10px;
 		left: 200px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.chitiet-box img.chitiet-close{
@@ -552,7 +606,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.doanh_so_box img.doanh_so_close{
@@ -578,7 +632,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.doanh_thu_box img.doanh_thu_close{
@@ -604,7 +658,7 @@ body{
 		top:-10px;
 		left: 300px;
 		border: solid thin gray;
-		border-radius:15px;
+		
 	}
 	
 	.thu_chi_box img.thu_chi_close{
@@ -674,7 +728,6 @@ body{
 	top:100px;
 	right:500px;
 	border:#808080 thin solid;
-	border-radius:10px;
 	background:#FFF;	
 	}
 	/*Bảng trong log box*/
@@ -685,7 +738,12 @@ body{
 	}
 	
 	div#logbox table thead{
-	background:#F4F2CC;	
+	background:#f1f1f1;	
+	}
+	div#logbox table input#login_sub{
+		background-color:#156AEC;
+		border:none;
+		color:white;	
 	}
 	/* BẢng trong div Bar*/
 /*////////Bảng báo cáo ////////////*/	
@@ -718,16 +776,31 @@ body{
 	div.Bar table thead tr{
 		height:30px;
 	}
+	
+	div.Bar table thead input[type='text']{
+		border:none;
+		background-color:transparent;
+	}
+	
 	div.Bar table tbody tr{
 		height:26px;
 		line-height:26px;
 		position:relative;
 	}
+	/*Nut trong BAng*/
+	div.Bar table input[type='button'],input[type='submit'],input[type='reset']{
+		background-color:#156AEC;
+		border:none;
+		color:white;	
+	}
+	div.Bar table input[type='reset']{
+		margin-right:5px;	
+	}
 	/*Ava ẩn*/
 	div.Bar table tbody tr span{
 		position:absolute;
 		visibility:hidden;
-		left:-55px;
+		right:1000px;
 		margin-top:-20px;
 	}
 	/*Avatar hiện*/
@@ -735,7 +808,11 @@ body{
 		visibility:visible;
 	}
 	/**CĂn lề các  ô*/
-	div.Bar table tbody tr td.td_ten,td.td_diachi{
+	div.Bar table tbody tr td input[type='text'].ma_nv,input[type='text'].ma_sp,input[type='text'].ma_ls{
+		border:none;
+		background-color:transparent;	
+	}
+	div.Bar table tbody tr td.td_ten,td.td_diachi,td.td_level{
 		text-align:left;
 	}
 	div.Bar table tbody tr td.td_giatri,td.td_sl{

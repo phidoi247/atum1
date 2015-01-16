@@ -2,7 +2,6 @@
 <a class="sach" href="default.php?nav=k&sub=s">Sách</a>
 <a  class="vpp" href="default.php?nav=k&sub=vpp">VPP</a>
 <a class="dc" href="default.php?nav=k&sub=dc">Đồ chơi</a>
-<input type="button" id='ncc-but' value="Nhà SX">
 <form  id="sp_search" action="" method="get">
 <input type="hidden" name="nav" value="k"/>
 <input type="text" name="sp_search" id='search_box'/>

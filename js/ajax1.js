@@ -78,42 +78,48 @@ $(document).ready(function(){
 			var slcsp=$('#slc_sp').val();
 			var lenght_slcsp=$('#slc_sp').length;
 			var lgt=(masp.length);
+			var sodu=slsp%1;
 			if(lgt!=0){
 				if(giasp!=0){
 					if(slsp!=0){
 						if(slsp>0){
-							if(lenght_slcsp!=0){	
-								if((slcsp-slsp)>=0){
-									$(function(){
-										var str;
-										str="<tr>";
-										str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
-										str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
-										str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
-										str+="<td id=ttsp"+slclick+"></td></tr>";
-										var id_del=".del_detail"+slclick;
-										$('tbody#detail_hd').append(str);	
-										$('#chk').html("**********")
-									});
+							if(sodu>=1 || sodu==0){
+								if(lenght_slcsp!=0){	
+									alert("lll");
+									if((slcsp-slsp)>=0){
+										$(function(){
+											var str;
+											str="<tr>";
+											str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
+											str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
+											str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
+											str+="<td id=ttsp"+slclick+"></td></tr>";
+											var id_del=".del_detail"+slclick;
+											$('tbody#detail_hd').append(str);	
+											$('#chk').html("**********")
+										});
+									}else{
+										$('#chk').html("Không đủ Sản phẩm! để giao dịch");	
+									}
 								}else{
-									$('#chk').html("Không đủ Sản phẩm! để giao dịch");	
+									$(function(){
+											var str;
+											str="<tr>";
+											str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
+											str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
+											str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
+											str+="<td id=ttsp"+slclick+"></td></tr>";
+											var id_del=".del_detail"+slclick;
+											$('tbody#detail_hd').append(str);	
+											$('#chk').html("**********")
+										});
 								}
 							}else{
-								$(function(){
-										var str;
-										str="<tr>";
-										str+="<td><input type='text' id=msp"+slclick+" value='"+masp+"' name=msp"+slclick+" readonly/></td>";
-										str+="<td><input type='text' id=tensp"+slclick+" value='"+tensp+"' name=tensp"+slclick+" readonly/></td>";
-										str+="<td><input type='text' id=slsp"+slclick+" value='"+slsp+"' name=slsp"+slclick+" readonly/></td>";
-										str+="<td id=ttsp"+slclick+"></td></tr>";
-										var id_del=".del_detail"+slclick;
-										$('tbody#detail_hd').append(str);	
-										$('#chk').html("**********")
-									});
-							}
+								$('#chk').html("Số lượng phải là số nguyên!");
+								}
 						}else{
-							$('#chk').html("Số lượng không thể nhỏ hơn 0");
-							}
+							$('#chk').html("Số lượng không thể nhỏ hơn 0!");
+						}	
 					}else{
 						$('#chk').html("Chưa nhập số lượng!");	
 							}
@@ -207,12 +213,18 @@ $(document).ready(function(){
 			var add_add=$('#add_add').val();
 			var add_date=$('#add_date').val();
 			var add_phone=$('#add_phone').val();
+			var date=new Date();
+			var now=date.getFullYear();
+			var year=add_date.substr(0,4);
 			if(add_ten!=""){
 				if(add_avt!=""){
 					if(add_pass!=""){
 						if(add_add!=""){
 								if(add_phone!=""){
 										if(add_date!=""){
+											if((now-year)>=16){
+											
+											
 											var form_add_emp=new FormData($(this)[0]);
 											$.ajax({
 											url:"modules/ql/modules/qlnhanvien/xuly.php",
@@ -226,10 +238,13 @@ $(document).ready(function(){
 												if(notify=='Ok'){
 													window.location.reload();
 												}else{
-													alert(notify);	
+														
 												}
 											}
 										});
+											}else{
+												$('#add_emp_notify').html("Năm sinh không hợp lệ!");
+											}
 										}else{
 											$('#add_emp_notify').html("Hãy nhập Ngày sinh Nhân viên!");
 										}
@@ -256,6 +271,18 @@ $(document).ready(function(){
 		$('#edit-emp-form').submit(function(event){
 			event.preventDefault()
 			var form_edit_emp=new FormData($(this)[0]);
+			var add_ten=$('#ename').val();
+			var add_add=$('#eaddress').val();
+			var add_date=$('#edateofbirth').val();
+			var add_phone=$('#ephone').val();
+			var date=new Date();
+			var now=date.getFullYear();
+			var year=add_date.substr(0,4);
+			if(add_ten!=""){
+						if(add_add!=""){
+								if(add_phone!=""){
+										if(add_date!=""){
+											if((now-year)>=16){
 			$.ajax({
 				url:"modules/ql/modules/qlnhanvien/xuly.php",
 				type:"POST",
@@ -268,11 +295,28 @@ $(document).ready(function(){
 					if(notify=='Ok'){
 						window.location.reload();
 					}else{
-						alert(notify);	
+							
 					}
 				}
 			});
-		})
+											}else{
+												$('#edit_emp_notify').html("Năm sinh không hợp lệ!");
+											}
+										}else{
+											$('#edit_emp_notify').html("Hãy nhập Ngày sinh Nhân viên!");
+										}
+
+								}else{
+									$('#edit_emp_notify').html("Hãy nhập Số Phone!");		
+								}
+						}else{
+							$('#edit_emp_notify').html("Hãy nhập Địa chỉ!");		
+						}
+			}else{
+				$('#edit_emp_notify').html("Hãy nhập Tên Nhân viên!");	
+			}	
+	});
+
 		
 ////////////////////////////////////***********Xóa nhân viên**************/
 		$('.delete-emp-submit').click(function(){
@@ -298,33 +342,50 @@ $(document).ready(function(){
 			var add_anh_sp=$('#add_anh_sp').val();
 			var add_gn_sp=$('#add_gn_sp').val();
 			var add_gb_sp=$('#add_gb_sp').val();
+			var add_km_sp=$('#add_km_sp').val();
 			if(add_ten_sp!=""){
 				if(add_anh_sp!=""){
 					if(add_gn_sp!=""){
-						if(add_gb_sp!=""){
-							var form_add_sp=new FormData($(this)[0]);
-							$.ajax({
-												url:"modules/ql/modules/qlkho/xuly.php",
-												type:"POST",
-												data:form_add_sp,
-												async:false,
-												cache:false,
-												processData:false,
-												contentType:false,
-												success: function(notify){
-													if(notify=='Ok'){
-														window.location.reload();
-													}else{
-														alert(notify);	
+						if(add_gn_sp>=1){
+								if(add_gb_sp!=""){
+									if(add_gb_sp>=1){
+											if(add_km_sp>=0){
+									var form_add_sp=new FormData($(this)[0]);
+								$.ajax({
+													url:"modules/ql/modules/qlkho/xuly.php",
+													type:"POST",
+													data:form_add_sp,
+													async:false,
+													cache:false,
+													processData:false,
+													contentType:false,
+													success: function(notify){
+														if(notify=='Ok'){
+															window.location.reload();
+														}else{
+															alert(notify);	
+														}
 													}
-												}
-											});
+												});
+											
+											}else{
+												$('#add_sp_notify').html("Giá nhập phải lớn hơn hoặc bằng 0!");	
+											}	
+											
+									}else{
+										$('#add_sp_notify').html("Giá Bán phải lớn hơn 0!");	
+									}	
+									
+								}else{
+									$('#add_sp_notify').html("Hãy nhập Giá bán!");	
 										
-						}else{
-							$('#add_sp_notify').html("Hãy nhập Giá bán!");		
-						}
+								}
+							}else{
+								$('#add_sp_notify').html("Giá nhập phải lớn hơn 0!");	
+							}	
 					}else{
 						$('#add_sp_notify').html("Hãy nhập Giá nhập!");	
+						
 					}
 				}else{
 					$('#add_sp_notify').html("Hãy thêm Ảnh!");	
@@ -337,6 +398,16 @@ $(document).ready(function(){
 		$('#edit-sp-form').submit(function(event){
 			event.preventDefault();
 			var form_edit_sp=new FormData($(this)[0]);
+			var add_ten_sp=$('#ename').val();
+			var add_gn_sp=$('#egianhap').val();
+			var add_gb_sp=$('#egiaban').val();
+			var add_km_sp=$('#ekm').val();
+				if(add_ten_sp!=""){	
+					if(add_gn_sp!=""){
+						if(add_gn_sp>=1){
+								if(add_gb_sp!=""){
+									if(add_gb_sp>=1){
+											if(add_km_sp>=0){
 			$.ajax({
 				url:"modules/ql/modules/qlkho/xuly.php",
 				type:"POST",
@@ -353,6 +424,29 @@ $(document).ready(function(){
 					}
 				}
 			});
+														}else{
+												$('#edit_sp_notify').html("Giá nhập phải lớn hơn hoặc bằng 0!");	
+											}	
+											
+									}else{
+										$('#edit_sp_notify').html("Giá Bán phải lớn hơn 0!");	
+									}	
+									
+								}else{
+									$('#edit_sp_notify').html("Hãy nhập Giá bán!");	
+										
+								}
+							}else{
+								$('#edit_sp_notify').html("Giá nhập phải lớn hơn 0!");	
+							}	
+					}else{
+						$('#edit_sp_notify').html("Hãy nhập Giá nhập!");	
+						
+					}
+				}else{
+				$('#add_sp_notify').html("Hãy nhập Tên Sản phẩm!");	
+			}	
+						
 		});
 		
 ///////////////////////////////////////***********Xóa SP**************/
@@ -371,7 +465,7 @@ $(document).ready(function(){
 			});
 		})
 
-////////////////////////////////////////////////////// Thêm
+////////////////////////////////////////////////////// Thêm NCC
 		$('#add-ncc-submit').click(function(){
 			var add_ncc=$('#ten_ncc').val();
 			$.ajax({
@@ -398,17 +492,39 @@ $(document).ready(function(){
 				data:"id_ncc_del="+id_del,
 				success: function(){
 					$(id_row).parent().parent().remove();
-					var so_o=$('table#bangsp >tbody >tr').length; //dem so dong
-					var i=1;
-					while(i<=so_o){
-						var id_o="#ncc"+i;
-						var val_o=$(id_o).val();
-						if(val_o==id_del){
-							$(id_o).parent().parent().remove();
-						};
-						i++;
-					}
 					$('.delete-ncc-box').hide();
+				}
+			});
+		})
+
+////////////////////////////////////////////////////// Thêm DV
+		$('#add-dv-submit').click(function(){
+			var add_dv=$('#ten_dv').val();
+			$.ajax({
+				url:"modules/ql/modules/qlkho/xuly.php",
+				type:"POST",
+				data:"add_dv="+add_dv,
+				success: function(notify){
+					if(notify=='Ok'){
+						window.location.reload();
+					}else{
+						alert(notify);	
+					}
+				}
+			});
+		});
+////////////////////////////////***********Xóa NCC**************/
+		$('.delete-dv-submit').click(function(){
+			var id_del=$('#id_dv_del').val();
+			var get_id_row=$('#id_dv_row').val();
+			var id_row="#"+get_id_row;
+			$.ajax({
+				url:"modules/ql/modules/qlkho/xuly.php",
+				type:"POST",
+				data:"id_dv_del="+id_del,
+				success: function(){
+					$(id_row).parent().parent().remove();
+					$('.delete-dv-box').hide();
 				}
 			});
 		})
