@@ -130,13 +130,28 @@
 			$r="DELETE FROM `tblnhacungcap` WHERE `nhacungcap_id`='$id_ncc_del'";
 			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
 		}
+		//Them ncc
 		if(isset($_POST['add_ncc'])){
 			$ncc=$_POST['add_ncc'];
 			$r="INSERT INTO `tblnhacungcap` (`nhacungcap_id`, `ten_nhacungcap`) VALUES (NULL, '$ncc')";
 			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
 			echo "Ok";
 		}
-	//Get thông tin
+			///////////////////////////DV
+		//Xoa DV
+		if(isset($_POST['id_dv_del'])){
+			$id_dv_del=$_POST['id_dv_del'];
+			$r="DELETE FROM `tbldonvi` WHERE `donvi_id`='$id_dv_del'";
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
+		}
+		//Them dv
+		if(isset($_POST['add_dv'])){
+			$dv=$_POST['add_dv'];
+			$r="INSERT INTO `tbldonvi` (`donvi_id`, `ten_donvi`) VALUES (NULL, '$dv')";
+			$q=mysqli_query($dbc,$r) or die ("Oopt! ".mysqli_error($dbc));
+			echo "Ok";
+		}
+	//Get thông tin sp
 		if(isset($_POST['get_sp_info'])){
 			$edit_sp_id=$_POST['get_sp_info'];
 			$r="SELECT * FROM `tblsanpham` WHERE `sanpham_id`='$edit_sp_id'";

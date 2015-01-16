@@ -8,7 +8,9 @@
 <input type="submit" id="search_but" value="Tìm"/>
 </form>
 <label>
-<strong>Tổng: </strong>
+<strong
+
+>Tổng: </strong>
 <?php
 	$r="select t.tc,bh.nvbh,tk.nvtk from ";
 	$r.="(select count(id) as tc from tblnhanvien) as t,";

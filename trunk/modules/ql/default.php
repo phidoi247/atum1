@@ -8,7 +8,7 @@
 	<li class='tab' id='bc'><a href="?nav=bc">Báo Cáo</a></li>
 	<li class='tab' id='ls'><a href="?nav=ls">Lịch sử GD</a></li>
 	<li class='tab' id='tl'><a href="?nav=tl">Thiết lập</a></li>
-    <li class='tab' id='out'><form action="default.php" method="post"><input name="logout" type="submit" value="Thoát"></form></li>
+    
 </ul>
 </nav>
 	
@@ -71,4 +71,5 @@ else{
 		echo $_SESSION['nameu'];
 	}
 ?>
+<div id='out'><form action="default.php" method="post"><input name="logout" type="submit" value="Thoát"></form></div>
 </div>

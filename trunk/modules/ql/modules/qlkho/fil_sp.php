@@ -1,12 +1,15 @@
-
+<input type="button" id='add-sp-but' value="Thêm Sản Phẩm">
 <a class="sach" href="default.php?nav=k&sub=s">Sách</a>
-<a  class="vpp" href="default.php?nav=k&sub=vpp">VPP</a>
+<a class="vpp" href="default.php?nav=k&sub=vpp">VPP</a>
 <a class="dc" href="default.php?nav=k&sub=dc">Đồ chơi</a>
+<a href="default.php?nav=k&sub=ncc">Nhà Cung Cấp</a>
+<a href="default.php?nav=k&sub=dv">Đơn vị</a>
 <form  id="sp_search" action="" method="get">
 <input type="hidden" name="nav" value="k"/>
 <input type="text" name="sp_search" id='search_box'/>
 <input type="submit" id="search_but" value="Tìm"/>
 </form>
+
 <label>
 <strong>Tổng: </strong>
 <?php

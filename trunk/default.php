@@ -13,10 +13,9 @@
     <meta charset="utf-8">
     <title>Nhà sách Trí Tuệ</title>
     <link rel="stylesheet" type="text/css" href="CSS/StyleMain.css">
-    <link rel="icon" href="sourse/icon.ico">
+    <link rel="shortcut icon" href="sourse/Logo.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">        
     <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico">
     <script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
     <script type="text/javascript" src="js/jquery-2-1-1.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
@@ -110,7 +109,7 @@
 <div class="swapper">
 <!--Begin Header-->
 <header>
-<div class="logo"><img width="300px" src="sourse/Logo1.jpg"/></div>
+<div class="logo"></div>
 <div class="banner"><img alt="Banner" src="sourse/banner.jpg"></div>
 
 <div id="dangnhap">

@@ -31,7 +31,6 @@ $(document).ready(function(e) {
 				$('.add-sp-box').show();
 				$('.edit-sp-box').hide();
 				$('.delete-sp-box').hide();
-				$('.add-ncc-box').hide();
 				/*
 				$.ajax({
 					type:"POST",
@@ -120,27 +119,22 @@ $(document).ready(function(e) {
 ////////////////NCC
 			$('#add-ncc-but').click(function(){
 				$('.add-ncc-box').show();
-				$('.add-sp-box').hide();
-				$('.delete-sp-box').hide();
-				$('.edit-sp-box').hide();
-				$('.ncc-box').hide();
 			});
 			$('.add-ncc-close').click(function(){
 				$('.add-ncc-box').hide();
-			});
-			$('#ncc-but').click(function(){
-				$('.add-ncc-box').show();
-				$('.add-sp-box').hide();
-				$('.delete-sp-box').hide();
-				$('.edit-sp-box').hide();
-				$('.add-ncc-box').hide();
-				$('.ncc-box').show();
-			});
-			$('.ncc-close').click(function(){
-				$('.ncc-box').hide();
-			});			
+			});	
 			$('.delete-ncc-close').click(function(){
 				$('.delete-ncc-box').hide();
+			});
+/////////////////////////////////DV
+			$('#add-dv-but').click(function(){
+				$('.add-dv-box').show();
+			});
+			$('.add-dv-close').click(function(){
+				$('.add-dv-box').hide();
+			});
+			$('.delete-dv-close').click(function(){
+				$('.delete-dv-box').hide();
 			});
 			///////////////////////Chi tiet hoa don//////////////
 			

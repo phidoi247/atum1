@@ -40,14 +40,10 @@ function delete_sp(cnt){
 		$('#id_sp_row').val("ma_sp"+cnt);
 		$('.delete-sp-box').show();
 		$('.add-sp-box').hide();
-		$('.add-ncc-box').hide();
-		$('.ncc-box').hide();
 	}
 function edit_sp(cnt){
 		$('.add-sp-box').hide();
 		$('.delete-sp-box').hide();
-		$('.add-ncc-box').hide();
-		$('.ncc-box').hide();
 		$('.edit-sp-box').show();
 		var get_edit_sp_id="#ma_sp"+cnt;
 		var edit_sp_id=$(get_edit_sp_id).val();
@@ -121,6 +117,15 @@ function delete_ncc(cnt){
 		$('#id_ncc_del').val(delete_ncc_id);
 		$('#id_ncc_row').val("ma_ncc"+cnt);
 		$('.delete-ncc-box').show();
+	}
+
+////////////////////DV
+function delete_dv(cnt){
+		var get_delete_dv_id="#ma_dv"+cnt;
+		var delete_dv_id=$(get_delete_dv_id).val();
+		$('#id_dv_del').val(delete_dv_id);
+		$('#id_dv_row').val("ma_dv"+cnt);
+		$('.delete-dv-box').show();
 	}
 
 //////////////////////////////////////Chi tiet don hang

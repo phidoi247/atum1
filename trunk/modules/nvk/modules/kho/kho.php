@@ -75,7 +75,7 @@ if(isset($_GET['sp_search'])){
 		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";
-		$r.="AND(a.ten_sanpham ='$search' ";
+		$r.="AND(a.ten_sanpham like '%$search%' ";
 		$r.="OR a.sanpham_id='$search' ";
 		$r.="OR c.ten_nhacungcap='$search') ";
 		$r.="limit $from,12";
@@ -84,7 +84,7 @@ if(isset($_GET['sp_search'])){
 		$r.="d.ten_donvi,a.gia_nhap,a.gia_ban,a.soluong,a.giam_gia,a.image_link ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";
-		$r.="AND(a.ten_sanpham ='$search' ";
+		$r.="AND(a.ten_sanpham like '%$search%' ";
 		$r.="OR a.sanpham_id='$search' ";
 		$r.="OR c.ten_nhacungcap='$search') ";
 		$r.="limit 0,12";
@@ -145,33 +145,7 @@ $q=mysqli_query($dbc,$r);?>
 }?>
 </table>
 
-</table>
-<div class="ncc-box" >
-	<img alt="" class="ncc-close" src="sourse/close.png">
-<table>
-	<thead>
-    	<tr><td>Mã NCC</td><td>Tên NCC</td></tr>
-    </thead>
-    <tbody>
-<?php
-	$r="select * from tblnhacungcap";
-	$q=mysqli_query($dbc,$r);
-	$cnt=1;
-	while ($row=mysqli_fetch_array($q)){
-?>
-    	<tr>
-        	<td>
-            	<input type='text' style="width:35px" class="ma_ncc" id='ma_ncc<?php echo $cnt; ?>' value='<?php echo $row['nhacungcap_id']; ?>' readonly="readonly" />
-            </td>
-            <td>
-            	<?php echo $row['ten_nhacungcap']; ?>
-            </td>
-        </tr>
-        <?php $cnt++; }?>
-    </tbody>
-    
-</table>
-</div><!---Nav page--->
+<!---Nav page--->
  <div class="nav-page">
  <div class="swap-nav">
 	<a href="" class="prev-page"></a>
@@ -242,7 +216,7 @@ if(isset($_GET['sub'])){
 		$r="select count(a.sanpham_id) ";
 		$r.="from tblsanpham as a,tbldanhmuc as b,tblnhacungcap as c,tbldonvi as d ";
 		$r.="WHERE a.danhmuc_id=b.danhmuc_id and a.nhacungcap_id=c.nhacungcap_id and a.donvi_id= d.donvi_id ";
-		$r.="AND(a.ten_sanpham ='$search' ";
+		$r.="AND(a.ten_sanpham like '%$search%' ";
 		$r.="OR a.sanpham_id='$search' ";
 		$r.="OR c.ten_nhacungcap='$search') ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);

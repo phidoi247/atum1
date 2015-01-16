@@ -216,7 +216,7 @@ $q=mysqli_query($dbc,$r);?>
         	<td width="60px">
             	<input class="ma_nv" type='text' id='ma_nv<?php echo $cnt; ?>' value='<?php echo $row['nhanvien_id']; ?>' readonly>
                 <span>
-            		<img width='60px' height='60px' src='<?php echo $row['avatar']; ?>'>
+            		<img height='60px' src='<?php echo $row['avatar']; ?>'>
             	</span>
            </td>
            <td class="td_ten" width="150px">
@@ -231,8 +231,16 @@ $q=mysqli_query($dbc,$r);?>
            <td width="40px">
 		  		<?php echo $row['tpm']; ?>
            </td>
-           <td width="40px">
-		  		<?php echo $row['level_id']; ?>
+           <td class="td_level" width="80px">
+		  		<?php
+				 	if($row['level_id']==3){
+						echo "Quản lý";
+					}elseif($row['level_id']==1){
+						echo "Bán hàng";
+					}else{
+						echo "Thủ kho";	
+					}
+				; ?>
            </td>
           <td class="td_diachi">
 		  		<?php echo $row['dia_chi']; ?>
@@ -241,12 +249,12 @@ $q=mysqli_query($dbc,$r);?>
 		  		<?php echo $row['SDT']; ?>
           </td>
            <td width="100px">
-		   		<?php echo $row['ngay_sinh']; ?>
+		   		<?php $ngay=date('d-m-Y',strtotime($row['ngay_sinh'])); echo $ngay;  ?>
           </td>
           <td width="100px">
-		  		<?php echo $row['ngay_vao_lam']; ?>
+		  		<?php $ngay=date('d-m-Y',strtotime($row['ngay_vao_lam'])); echo $ngay; ?>
           </td>
-          <td width="105px">
+          <td width="70px">
           		<input class="edit-emp-but" id='edit-emp-but<?php echo $cnt; ?>' onclick='edit_emp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
                 <input class='delete-emp-but' id='id_del_but<?php echo $cnt; ?>' onclick='delete_emp(cnt=<?php echo $cnt; ?>);' value=' ' type='button' >
         </td>
@@ -296,7 +304,7 @@ $q=mysqli_query($dbc,$r);?>
             <tr>
             	<td>Mật khẩu:</td>
                 <td>
-                	<input id="add_pass" name="password" required="required" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" type="text">
+                	<input id="add_pass" name="password" required="required" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" type="password">
                 </td>
             </tr>
             <tr>
@@ -332,9 +340,14 @@ $q=mysqli_query($dbc,$r);?>
 	<form action="" id="edit-emp-form" method="post" name="edit-emp-form" enctype="multipart/form-data"><table>
 		<thead><tr><th colspan="2">Sửa thông tin nhân viên<input style="width:45px" id="eid" name="eid" type="text"></th></tr></thead>
 		<tbody>
+        	<tr>
+            	<th id="edit_emp_notify" colspan="2">
+                	****************
+                </th>
+            </tr>
             <tr>
                 <th>
-                    <img width="120px" height="50px" id="old_avt" >
+                    <img  height="60px" id="old_avt" >
                 </th>
             </tr>
             <tr>
@@ -358,7 +371,7 @@ $q=mysqli_query($dbc,$r);?>
                 </td>
             </tr>
 			<tr>
-            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern="{4,12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="text"></td></tr>
+            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern="{4,12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="password"></td></tr>
 			<tr>
             	<td>Địa chỉ:</td><td><input name="eaddress" id="eaddress" type="text"></td></tr>
 			<tr>
@@ -374,7 +387,7 @@ $q=mysqli_query($dbc,$r);?>
                 	Ngày sinh:
                 </td>
                 <td>
-                	<input name="edateofbirth" id="edateofbirth" type="date" placeholder="yyyy-mm-dd">
+                	<input name="edateofbirth" id="edateofbirth" type="date" placeholder="dd-MM-YYYY">
                 </td>
             </tr>
 			<tr>
@@ -391,13 +404,13 @@ $q=mysqli_query($dbc,$r);?>
 <div class="delete-emp-box">
 	<form id='delete-emp-form'  action="" method="post" >
     	<table>
-        	<tr bgcolor="#88D280">
+        	<thead><tr>
             	<th colspan="6">
                 	Bạn thật sự muốn Sa thải NV 
                     <input id="id_emp_del" readonly><input type="hidden" id="id_emp_row" readonly>?
                 </th>
-           </tr>
-           		<th></th>
+           </tr></thead>
+           		<tbody><th></th>
                 <th>
                 	<input class="delete-emp-submit" value="Có" type="button" >
                </th>
@@ -407,6 +420,7 @@ $q=mysqli_query($dbc,$r);?>
               </th>
               <th></th><th></th>
           </tr>
+          </tbody>
       </table>
 	</form>
 </div>
@@ -429,7 +443,7 @@ $q=mysqli_query($dbc,$r);?>
 if(isset($_GET['sub'])){
 	$sub=$_GET['sub'];
 	if(strcmp($sub,"nvbh")==0){
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=2 ";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=1 ";
 		$q=mysqli_query($dbc,$r);$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
@@ -445,7 +459,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}elseif(strcmp($sub,"nvk")==0){
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=3 ";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE a.level_id=2 ";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
@@ -461,7 +475,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}else{
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE nhanvien_id=2 or nhanvien_id=1";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
@@ -500,7 +514,7 @@ if(isset($_GET['sub'])){
 		}
 }
 else{
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE nhanvien_id=2 or nhanvien_id=1";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		

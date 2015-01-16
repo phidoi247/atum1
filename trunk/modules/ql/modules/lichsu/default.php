@@ -128,7 +128,7 @@ $q=mysqli_query($dbc,$r);?>
 				<?php echo $row['thanhtien']; ?>
             </td>
             <td>
-				<?php echo $row['thoigian']; ?>
+				<?php  $ngay=date('d-m-Y H:i:s',strtotime($row['thoigian'])); echo $ngay; ?>
             </td>
             <td>
 				<?php echo $row['nhanvien_id']; ?>
