@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="js/highcharts.js"></script>
 		<script type="text/javascript" src="js/themes/dark-unica.js"></script>
 		<script type="text/javascript" src="js/modules/exporting.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../../CSS/report.css">
 	</head>
 	<body>
 		<?php 	
@@ -19,11 +20,8 @@
 			//khai báo biến
 			$tungay = strip_tags(date('Y-m-d',strtotime($_POST['tuNgay'])));
 			$denngay = strip_tags(date('Y-m-d',strtotime($_POST['denNgay'])));
-			$yaxis = strip_tags($_POST['yaxis']);
-			$xaxis = strip_tags($_POST['xaxis']);
-			$tenbieudo = strip_tags($_POST['tenBieuDo']);
-			$tenbaocao = strip_tags($_POST['tenBaoCao']);
-			$subtitle = strip_tags($_POST['subtitle']);			
+			$tungayht = date('d-m-Y',strtotime($_POST['tuNgay']));
+			$denngayht = date('d-m-Y',strtotime($_POST['denNgay']));
 			$masp = explode(',',$_POST['maSanPham']);
 			$dates = dateRange2($tungay, $denngay);
 			$db_masp = db_masp($dbc);
@@ -110,25 +108,25 @@
 		$(function () {
 		    $('#container').highcharts({
 		        title: {
-		            text: <?php echo "'"."$tenbieudo"."'"; ?>,
+		            text: "Biểu đồ doanh số",
 		            x: -20 //center
 		        },
 		        subtitle: {
-		            text: <?php echo "'"."$subtitle"."'"; ?>,
+		            text: "Từ ngày <?php echo " $tungayht đến ngày $denngayht";?>",
 		            x: -20
 		        },
 		        xAxis: {
 			        title: {
-						text: <?php echo "'"."$xaxis"."'"; ?>,
+						text: "Khoảng thời gian",
 						x: -20
 				        },
-		            categories: [<?php $dates = dateRange($tungay, $denngay);
+		            categories: [<?php $dates = dateRange2($tungay, $denngay);
 		        			foreach ($dates as $date){
 		        				echo "'"."$date"."'".","; }; ?>]
 		        },
 		        yAxis: {
 		            title: {
-		                text: <?php echo "'"."$yaxis"."'"; ?>,
+		                text: "Đơn vị",
 		            },
 		            plotLines: [{
 		                value: 0,
@@ -154,52 +152,19 @@
 		    });
 		});
 		</script>
-				
-		<table style="width: 1000px; height: auto; margin: 0 auto">
-			<tr>
-				<td style="width: 300px">
-					<div id="headerleft"><p><strong>Nhà sách Trí Tuệ</strong><br>
-       	  				Địa chỉ: 76 Ngọc Lâm - Long Biên - Hà Nội<br>
-       	  				Tel: 043 877 8357</p>
-       	  			</div>	
-				</td>
-				<td style="width: 300px">
-				</td>
-				<td>
-					<div id="headerright"><img src="../../../../sourse/Logo.jpg" width="350px" height="200px"></div>
-				</td>				
-			</tr>
-			<tr>
-				<td colspan= "3">
-					<div id="title"><center><h2><p><?php echo "$tenbaocao";?></p></h2><p><?php echo "Từ ngày: "."$tungay"." đến ngày: "."$denngay";?></p></center></div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan = "3">
-					<p>
-					<?php 
-						for($i=0;$i<count($masp);$i++){
-							echo "<strong>Sản phẩm ".$name[$i]."</strong>".", <br />";
-							for($j=0;$j<count($dates);$j++){
-								if($j<(count($dates)-1)){								
-									echo " trong ngày <strong>".$dates[$j]."</strong> bán được <strong>".$data[$i][$j]." $donvi[$i]"."</strong>, ";
-								}else{
-									echo " trong ngày <strong>".$dates[$j]."</strong> bán được <strong>".$data[$i][$j]." $donvi[$i]"."</strong><br /> ";									
-								};
-							};
-						};
-					?>
-					</p>
-					<p>
-						<strong>Biểu đồ:</strong>
-					</p>
-				</td>
-			</tr>
-			<tr>
-				<td colspan= "3">					
-					<div id="container" style="width: 1000px; height: 400px; margin: 0 auto"></div>
-				</td>
-			</tr>			
-		</table>
+		<body>
+            <div class="swapper">
+            <!--Begin Header-->
+            <header>
+            <div class="logo"></div>
+            <div class="banner"><img alt="Banner" src="../../../../sourse/banner.jpg"></div>
+            </header>
+            </div>
+            <!--End Header-->           
+			<div id="title"><center><h2><p>Báo cáo doanh số bán hàng</p></h2><p><?php echo "Từ ngày: "."$tungayht"." đến ngày: "."$denngayht";?></p></center></div>						
+			<div id="container" style="width: 1000px; height: 400px; margin: 0 auto; padding-bottom:15px;"></div>
+			<footer>
+				Copyright &copy; by ATUM Corporation.
+			</footer>	
 	</body>
 </html>

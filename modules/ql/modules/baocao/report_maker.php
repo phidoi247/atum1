@@ -8,7 +8,7 @@
     <figcaption>Báo cáo doanh số</figcaption></figure>
     <figure class="thu_chi_but">
     	<img width="325px" src="sourse/thu_chi.png"/>
-        <figcaption>Báo cáo thu chi</figcaption>
+        <figcaption>Báo cáo nhập xuất</figcaption>
     </figure>
 </div>
 <div class="doanh_so_box">
@@ -18,26 +18,7 @@
             	<thead><tr>
             		<th colspan="2">Tạo báo cáo doanh số sản phẩm</th>
             	</tr></thead>
-        		<tbody><tr>
-        			<td><label>Tên báo cáo: </label></td>
-        			<td><input type="text" name="tenBaoCao" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Tên biểu đồ: </label></td>
-        			<td><input type="text" name="tenBieuDo" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Subtitle: </label></td>
-        			<td><input type="text" name="subtitle" required></td>
-        		</tr>        		
-        		<tr>
-        			<td><label>Tiêu đề chiều dọc: </label></td>
-        			<td><input type="text" name="yaxis"></td>
-        		</tr>
-        		<tr>
-        			<td><label>Tiêu đề chiều ngang: </label></td>
-        			<td><input type="text" name="xaxis"></td>
-        		</tr>
+        		<tbody>
         		<tr>
         			<td><label>Mã sản phẩm: </label></td>
         			<td><input type="text" name="maSanPham" required placeholder="VD: SA00001,SA00002"></td>
@@ -61,23 +42,7 @@
             	<thead><tr>
                 	<th colspan="2">Tạo báo cáo doanh thu sản phẩm</th>
                 </tr></thead>
-        		<tbody>
-                <tr>
-        			<td><label>Tên báo cáo: </label></td>
-        			<td><input type="text" name="tenBaoCao" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Tên biểu đồ: </label></td>
-        			<td><input type="text" name="tenBieuDo" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Subtitle: </label></td>
-        			<td><input type="text" name="subtitle" required></td>
-        		</tr>        		
-        		<tr>
-        			<td><label>Tiêu đề chiều ngang: </label></td>
-        			<td><input type="text" name="xaxis"></td>
-        		</tr>        		   		
+        		<tbody>               
         		<tr>
         			<td><label>Từ ngày: </label></td>
         			<td><input type="text" name="tuNgay" placeholder="dd-mm-yyyy" required></td>
@@ -96,24 +61,9 @@
     <form action="modules/ql/modules/baocao/thu_chi.php" method="post" target="_blank">
         	<table>
             	<thead><tr>
-                	<th colspan="2">Tạo báo cáo thu chi cửa hàng</th>
+                	<th colspan="2">Tạo báo cáo nhập xuất hàng</th>
                 </tr></thead>
-        		<tbody><tr>
-        			<td><label>Tên báo cáo: </label></td>
-        			<td><input type="text" name="tenBaoCao" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Tên biểu đồ: </label></td>
-        			<td><input type="text" name="tenBieuDo" required></td>
-        		</tr>
-        		<tr>
-        			<td><label>Subtitle: </label></td>
-        			<td><input type="text" name="subtitle" required></td>
-        		</tr>        		
-        		<tr>
-        			<td><label>Tiêu đề chiều dọc: </label></td>
-        			<td><input type="text" name="yaxis"></td>
-        		</tr>        		   		
+        		<tbody>
         		<tr>
         			<td><label>Từ ngày: </label></td>
         			<td><input type="text" name="tuNgay" placeholder="dd-mm-yyyy" required></td>
