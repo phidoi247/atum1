@@ -77,11 +77,11 @@
 </div>
 <!--form hóa đơn-->
 <div id="hoadon">
-<h3>Thông tin hóa đơn</h3>
+<h3>Thông tin nhập hàng</h3>
 <form id="formHDnhap">   
          <h3><?php echo $id_hd ?><input type="hidden" name="ma_hd" value="<?php echo $id_hd ?>"/></h3>  
          <hr />
-         Công ty chuyên buôn lậu<br />
+         Nhà Sách Trí Tuệ<br />
         <table class="nhap_xuat">
                 <thead>
                     <tr>
