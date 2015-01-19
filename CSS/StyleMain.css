@@ -808,11 +808,11 @@ body{
 		visibility:visible;
 	}
 	/**CĂn lề các  ô*/
-	div.Bar table tbody tr td input[type='text'].ma_nv,input[type='text'].ma_sp,input[type='text'].ma_ls{
+	div.Bar table tbody tr td input[type='text'].ma_nv,input[type='text'].ma_sp,input[type='text'].ma_ls,.ma_ncc,.ma_dv{
 		border:none;
 		background-color:transparent;	
 	}
-	div.Bar table tbody tr td.td_ten,td.td_diachi,td.td_level{
+	div.Bar table tbody tr td.td_ten,td.td_diachi,td.td_level,td.td_tenncc,td.td_tendv{
 		text-align:left;
 	}
 	div.Bar table tbody tr td.td_giatri,td.td_sl{

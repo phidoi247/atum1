@@ -20,9 +20,9 @@
 ?>
     	<tr>
         	<td>
-            	<input type='text' style="width:35px" class="ma_dv" id='ma_dv<?php echo $cnt; ?>' value='<?php echo $row['donvi_id']; ?>' readonly="readonly" />
+            	<input type='text' style="width:35px;" class="ma_dv" id='ma_dv<?php echo $cnt; ?>' value='<?php echo $row['donvi_id']; ?>' readonly="readonly" />
             </td>
-            <td>
+            <td class="td_tendv">
             	<?php echo $row['ten_donvi']; ?>
             </td>
             <td>

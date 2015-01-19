@@ -85,7 +85,7 @@ $(document).ready(function(){
 						if(slsp>0){
 							if(sodu>=1 || sodu==0){
 								if(lenght_slcsp!=0){	
-									alert("lll");
+									
 									if((slcsp-slsp)>=0){
 										$(function(){
 											var str;
