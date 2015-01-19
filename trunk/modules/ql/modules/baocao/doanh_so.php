@@ -2,7 +2,6 @@
 	include '../../../../Connections/connect.php';
 	include '../../../../functions/functions.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,7 +13,7 @@
 		<script type="text/javascript" src="js/modules/exporting.js"></script>
         <link rel="stylesheet" type="text/css" href="../../../../CSS/report.css">
 	</head>
-	<body>
+	<body>		
 		<?php 	
 			
 			//khai báo biến
@@ -152,7 +151,6 @@
 		    });
 		});
 		</script>
-		<body>
             <div class="swapper">
             <!--Begin Header-->
             <header>
