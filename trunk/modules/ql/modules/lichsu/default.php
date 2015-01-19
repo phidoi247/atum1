@@ -106,8 +106,9 @@ $cnt=1;
 			$r.="on j.ten_hoadon=k.ten_hoadon where ";
 			$r.="k.nhanvien_id LIKE '$search' ";
 			$r.="or k.ten_hoadon like '%".$search."%' ";
-			$r.="or DATE(k.thoigian) IN ('".$search."') ";
+			$r.="or DATE(k.thoigian) LIKE ('".$search."') ";
 			$r.="order by k.thoigian desc limit 0,12";
+			echo $r;
 			}
 	}
 $q=mysqli_query($dbc,$r);?>

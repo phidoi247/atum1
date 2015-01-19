@@ -2,7 +2,7 @@
 *{padding:0;margin:0;text-align:center;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif}
 
 body{
-	background:url(../sourse/bg.jpg) repeat;	
+	background:url(../sourse/bg.png) repeat;	
 }
 	.swapper{
 		width:1000px;
@@ -10,6 +10,7 @@ body{
 		background:#fff;
 		margin:auto;	
 	}
+
 /************************************/
 	header{
 		width:100%;
@@ -121,14 +122,16 @@ body{
 	/***Hover các nút **/
 	nav.menu ul li:HOVER{
 		transition:all ease-in 1s;
-		background-color: #BCD4DA;
+		background-image:url(../sourse/bg.png);
+		background-repeat:repeat;
 	}
 	nav.menu ul li a:HOVER{
 		color:white;
-		transition:all ease-in 0.5s;	
+		transition:all ease-in 0.3s;	
 	}
 	
 	nav.menu ul li a{
+		font-weight:bolder;
 		width: 100%;
 		height: 100%;
 		display: block;
@@ -159,7 +162,8 @@ body{
 	/* tab nào đc click thì thêm class này*/
 	.active-tab{
 		transition:all linear 1s;
-		background:#BCD4DA; 
+		background-image:url(../sourse/bg.png);
+		background-repeat:repeat;
 	}
 	/*--------------------Fillter------------------------*/
 	article.fillter{
@@ -224,6 +228,8 @@ body{
 	}
 	/**CÁc nút điều hướng*/
 	article.fillter a{
+		min-width:50px;
+		font-weight:bolder;
 		background:#156AEC;
 		font-size:13px;
 		margin-left:10px;
@@ -769,8 +775,8 @@ body{
 		text-align:left;	
 	}
 	div.Bar table thead{
-		
-		background-color: #BCD4DA;
+		font-weight:bold;
+		background-color: #156AEC;
 		
 	}
 	div.Bar table thead tr{
@@ -807,8 +813,12 @@ body{
 	div.Bar table tbody tr:hover span{
 		visibility:visible;
 	}
+	div.Bar table tbody tr td input[type='text']{
+		text-align:left;	
+	}
 	/**CĂn lề các  ô*/
 	div.Bar table tbody tr td input[type='text'].ma_nv,input[type='text'].ma_sp,input[type='text'].ma_ls,.ma_ncc,.ma_dv{
+		
 		border:none;
 		background-color:transparent;	
 	}
@@ -838,7 +848,7 @@ body{
 		text-decoration:none;
 		font-family:Arial, Helvetica, sans-serif;
 		font-size:14px;
-		background:#6CF;
+		background:#156AEC;
 		bottom:0;
 		position:absolute;
 		float:left;	
