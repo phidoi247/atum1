@@ -2,7 +2,6 @@
 	include '../../../../Connections/connect.php';
 	include '../../../../functions/functions.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
