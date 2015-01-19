@@ -475,7 +475,7 @@ if(isset($_GET['sub'])){
 			echo 1;	
 		}
 	}else{
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE nhanvien_id=2 or nhanvien_id=1";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE level_id=2 or level_id=1";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
@@ -514,7 +514,7 @@ if(isset($_GET['sub'])){
 		}
 }
 else{
-		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE nhanvien_id=2 or nhanvien_id=1";
+		$r="SELECT count(a.nhanvien_id) as sl FROM `tblnhanvien` as a WHERE level_id=2 or level_id=1";
 		$q=mysqli_query($dbc,$r);
 		$so_page=mysqli_fetch_row($q);
 		$modpage=$so_page[0]%12;$page=$so_page[0]/12;		
