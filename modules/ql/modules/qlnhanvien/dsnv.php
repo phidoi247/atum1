@@ -304,7 +304,7 @@ $q=mysqli_query($dbc,$r);?>
             <tr>
             	<td>Mật khẩu:</td>
                 <td>
-                	<input id="add_pass" name="password" required="required" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" type="password">
+                	<input id="add_pass" name="password" required="required" pattern="[A-Za-z]{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" type="password">
                 </td>
             </tr>
             <tr>
@@ -327,7 +327,7 @@ $q=mysqli_query($dbc,$r);?>
             <tr>
             	<td></td>
                 <th>
-                	<input type="reset"><input name="add" id='add-emp-submit' type="submit" value="Thêm">
+                	<input type="reset" value="Nhập lại" class="nut"><input name="add" id='add-emp-submit' class="nut" type="submit" value="Thêm">
                 </th>
             </tr>
 		</tbody>
@@ -371,7 +371,7 @@ $q=mysqli_query($dbc,$r);?>
                 </td>
             </tr>
 			<tr>
-            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern="{4,12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="password"></td></tr>
+            	<td>Mật khẩu:</td><td><input name="epassword" id="epassword" pattern="[A-Za-z]{4,12}" placeholder="Nhập mật khẩu mới 4-12 ký tự" type="password"></td></tr>
 			<tr>
             	<td>Địa chỉ:</td><td><input name="eaddress" id="eaddress" type="text"></td></tr>
 			<tr>
@@ -393,7 +393,7 @@ $q=mysqli_query($dbc,$r);?>
 			<tr>
             	<td></td>
                 <th>
-                	<input type="reset"><input name="edit" id='edit-emp-submit' type="submit" value="Sửa">
+                	<input class="nut" type="reset" value="Nhập lại"><input class="nut" name="edit" id='edit-emp-submit' type="submit" value="Sửa">
                </th>
            </tr>
 		</tbody>
