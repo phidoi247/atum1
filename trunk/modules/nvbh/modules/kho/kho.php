@@ -115,28 +115,28 @@ $q=mysqli_query($dbc,$r);?>
                     <img width='60px' height='60px' src='<?php echo $row['image_link']; ?>'>
                 </span>
             </td>
-            <td class="td_tensp">
+            <td class="td_ten">
 		   		<?php echo $row['ten_sanpham']; ?>
            </td>
-           <td>
+           <td class="td_ten">
 		   		<?php echo $row['ten_danhmuc']; ?>
            </td>
-           <td>
+           <td class="td_ten">
 		   		<?php echo $row['ten_nhacungcap']; ?>
            </td>
-           <td>
+           <td class="td_giatri">
 		   		<?php echo $row['soluong']; ?>
            </td>
-           <td>
+           <td class="td_giatri">
 		   		<?php echo $row['ten_donvi']; ?>
            </td>
-           <td>
+           <td class="td_giatri">
 		   		<?php echo $row['gia_nhap']; ?>
            </td>
-           <td>
+           <td class="td_giatri">
 		   		<?php echo $row['gia_ban']; ?>
            </td>
-           <td>
+           <td class="td_giatri">
 		   		<?php echo $row['giam_gia']; ?>
            </td>
         </tr>
