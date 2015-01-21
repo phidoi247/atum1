@@ -60,7 +60,7 @@ body{
 		width:172px;
 		line-height:30px;
 		height:30px;
-		right:176px;
+		right:0px;
 		top:0px;
 		
 	}
@@ -722,7 +722,7 @@ body{
 	width:300px;
 	height:110px;
 	top:100px;
-	right:500px;
+	right:350px;
 	border:#808080 thin solid;
 	background:#FFF;	
 	}
