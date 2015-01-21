@@ -115,7 +115,7 @@ $(document).ready(function(){
 										});
 								}
 							}else{
-								$('#chk').html("Số lượng phải là số nguyên!");
+								$('#chk').html("Số lượng phải là số nguyên dương!");
 								}
 						}else{
 							$('#chk').html("Số lượng không thể nhỏ hơn 0!");
