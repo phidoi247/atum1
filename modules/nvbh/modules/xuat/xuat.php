@@ -58,7 +58,7 @@
             ?>
             </td></tr>
             <tr><td>
-            <input type="text" name="HD" value="<?php echo $id_hd; ?>" readonly/>
+            <input type="text" style="border:none;font-size:16px;text-align: center;color: red;" name="HD" value="<?php echo $id_hd; ?>" readonly/>
             </td></tr>
             <tr><td id="chk_msp">Xuất Mã Sản Phẩm</td></tr>
             <tr><td><input id="nhap_msp" type="text" required/></td></tr>
@@ -84,7 +84,7 @@
 <form id="formHDxuat">   
          <h3><?php echo $id_hd ?><input type="hidden" name="ma_hd" value="<?php echo $id_hd ?>"/></h3>  
          <hr />
-         Công ty chuyên buôn lậu<br />
+         Nhà Sách Trí Tuệ<br />
         <table class="nhap_xuat">
                 <thead>
                     <tr>
