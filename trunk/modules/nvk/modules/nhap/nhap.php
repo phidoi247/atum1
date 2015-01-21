@@ -30,8 +30,8 @@
 						$id_hd="HĐNH1000000";
 					}elseif(strcmp($id_hd_tr,$tmp7)==0){
 						$id_hd="NULL";
-				}else{// HDBH0000043 đây là cái tên hóa đơn mình lấy làm mốc
-					$ma_id_tr=substr($id_hd_tr,5,11);// cắt chuỗi từ vị trí thứ 4 đến vị trí thứ 11 là : 0000043
+				}else{
+					$ma_id_tr=substr($id_hd_tr,5,11);// cắt chuỗi từ vị trí thứ 5 đến vị trí thứ 11 là : 0000043
 					if(intval($ma_id_tr)>=1000000){// biến cái chuỗi mình vừa cắt thành số -> 43 rồi so sánh với 1tr,100k....
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="HĐNH".$ma_id_moi;
@@ -58,7 +58,7 @@
             ?>
             </td></tr>
             <tr><td>
-            <input type="text" style="border:none;font-size:16px" name="HD" value="<?php echo $id_hd; ?>" readonly/>
+            <input type="text" style="border:none;font-size:16px;text-align: center;color: red;" name="HD" value="<?php echo $id_hd;?>" readonly/>
             </td></tr>
             <tr><td id="chk_msp">Nhập Mã Sản Phẩm</td></tr>
             <tr><td><input id="nhap_msp" type="text" required/></td></tr>
