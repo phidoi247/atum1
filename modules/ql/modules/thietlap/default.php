@@ -45,13 +45,13 @@
             </thead>
             <tbody>
             	<tr>
-                	<td>Nhập mật khẩu cũ:</td><td><input id="old_pass" type="password" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td><td width="50"><div class="chk_o_p"></span></td>
+                	<td>Nhập mật khẩu cũ:</td><td><input id="old_pass" type="password" pattern="[A-Za-z0-9]{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td><td width="50"><div class="chk_o_p"></span></td>
                 </tr>
                 <tr>
-                	<td>Nhập mật khẩu Mới:</td><td><input id="new_pass" type="password" pattern="{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td>
+                	<td>Nhập mật khẩu Mới:</td><td><input id="new_pass" type="password" pattern="[A-Za-z0-9]{4,12}" title="4-12 ký tự" placeholder="4-12 ký tự" required></td>
                 </tr>
                 <tr>
-                	<td>Nhập lại mật khẩu Mới:</td><td><input id="re_pass" name="pass" type="password" required></td><td><div class="chk_n_p"></span></td>
+                	<td>Nhập lại mật khẩu Mới:</td><td><input id="re_pass" pattern="[A-Za-z0-9]{4,12}" name="pass" type="password" required></td><td><div class="chk_n_p"></span></td>
                 </tr>
                 <tr>
                 	<td></td><td><input value="Nhập lại" type="reset"></td><td><input value="Sửa" type="submit" name="doi_mk" id="doi_mk"></td>

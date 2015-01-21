@@ -292,11 +292,8 @@ $(document).ready(function(){
 				processData:false,
 				contentType:false,
 				success: function(notify){
-					if(notify=='Ok'){
 						window.location.reload();
-					}else{
-							
-					}
+					
 				}
 			});
 											}else{

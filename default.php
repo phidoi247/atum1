@@ -133,8 +133,8 @@
 			$error[]="Password";
 		}
 		if(empty($error)){
-			$user=strip_tags($_POST['username']);
-			$pass=strip_tags($_POST['password']);
+			$user=mysqli_real_escape_string($dbc,$_POST['username']);
+			$pass=mysqli_real_escape_string($dbc,$_POST['password']);
 			$q="SELECT nhanvien_id,ten_nhanvien,level_id,avatar FROM tblnhanvien WHERE `nhanvien_id`='$user' AND `password`=SHA1('$pass')";
 			$r=mysqli_query($dbc,$q) or die("Oopt! ".mysqli_error($dbc));
 			if($f=mysqli_fetch_row($r)){
@@ -160,8 +160,8 @@
         <tr><th colspan="2">Login</th></tr>
       </thead>
       <tbody>
-        <tr><td>Mã nhân viên:</td><td><input size="14px" type="text" name="username" id="user" required/></td></tr>
-        <tr><td>Password:</td><td><input size="14px" type="password" name="password" required id="pass" /></td></tr>
+        <tr><td>Mã nhân viên:</td><td><input style="text-align:left;" size="14px" type="text" name="username" id="user" required/></td></tr>
+        <tr><td>Password:</td><td><input style="text-align:left;" size="14px" type="password" name="password" required id="pass" /></td></tr>
         <tr><td></td><th></th></tr>
         <tr style="font-size:10px"><td></td><td><input id='login_sub' type="submit" value="Đăng nhập"/></td></tr>
       </tbody>
