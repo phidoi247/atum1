@@ -31,8 +31,8 @@
 					}elseif(strcmp($id_hd_tr,$tmp7)==0){
 						$id_hd="NULL";
 				}else{
-					$ma_id_tr=substr($id_hd_tr,5,11);// cắt chuỗi từ vị trí thứ 5 đến vị trí thứ 11 là : 0000043
-					if(intval($ma_id_tr)>=1000000){// biến cái chuỗi mình vừa cắt thành số -> 43 rồi so sánh với 1tr,100k....
+					$ma_id_tr=substr($id_hd_tr,5,11);
+					if(intval($ma_id_tr)>=1000000){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="HĐNH".$ma_id_moi;
 					}elseif(intval($ma_id_tr)>=100000){
@@ -47,7 +47,7 @@
 					}elseif(intval($ma_id_tr)>=100){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="HĐNH"."0000".$ma_id_moi;
-					}elseif(intval($ma_id_tr)>=10){// đến đây đúng thì + thêm 1 rồi nối chuỗi -> 0000044
+					}elseif(intval($ma_id_tr)>=10){
 						$ma_id_moi=intval($ma_id_tr)+1;
 						$id_hd="HĐNH"."00000".$ma_id_moi;
 					}else{
