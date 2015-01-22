@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2015 at 01:28 PM
+-- Generation Time: Jan 22, 2015 at 09:42 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -400,19 +400,19 @@ CREATE TABLE IF NOT EXISTS `tblsanpham` (
 --
 
 INSERT INTO `tblsanpham` (`id`, `sanpham_id`, `ten_sanpham`, `danhmuc_id`, `nhacungcap_id`, `donvi_id`, `gia_nhap`, `gia_ban`, `soluong`, `giam_gia`, `image_link`) VALUES
-(1, 'SA00001', 'Văn Hóa Nhật Bản', 1, 3, 1, 10000, 100000, 16, 0, 'upload/20150118010945'),
-(2, 'SA00002', 'Việt Nam Phong Tục', 1, 1, 1, 20000, 200000, 23, 0, 'upload/20150118011044'),
-(3, 'SA00003', 'Doremon', 1, 1, 1, 30000, 300000, 16, 0, 'upload/20150118011312'),
-(4, 'SA00004', 'Ô long viện', 1, 1, 1, 40000, 400000, 17, 0, 'upload/20150118011403'),
-(5, 'SA00005', 'Sunrise - Bình Minh', 1, 1, 1, 50000, 500000, 20, 0, 'upload/20150118011450'),
-(6, 'SA00006', 'Tiểu Sử Steve Jobs', 1, 4, 1, 25000, 30000, 0, 0, 'upload/20150118010207'),
-(7, 'SA00007', 'Học Từ Thất Bại', 1, 3, 1, 12000, 40000, 0, 0, 'upload/20150118010418'),
-(8, 'SA00008', 'Bài Học Cuộc Sống', 1, 2, 1, 74000, 80000, 0, 0, 'upload/20150118010551'),
-(9, 'SA00009', 'Cốt Cách Mỹ Nhân', 1, 1, 1, 36000, 40000, 0, 0, 'upload/20150118010639'),
-(10, 'SA00010', 'Đánh Cược Với Tình Yêu', 1, 1, 1, 22000, 25000, 0, 0, 'upload/20150118010729'),
-(11, 'VP00001', 'Bìa Lá Plus', 2, 1, 2, 12000, 24000, 0, 0, 'upload/20150118012048'),
-(12, 'DC00001', 'Thú Bông Pororo', 3, 2, 2, 100000, 120000, 0, 0, 'upload/20150118012330'),
-(13, 'DC00002', 'Thông Tuyết', 3, 2, 2, 12000, 25000, 0, 0, 'upload/20150118012542');
+(1, 'SA00001', 'Văn Hóa Nhật Bản', 1, 3, 1, 10000, 100000, 16, 0, 'upload/20150120040341'),
+(2, 'SA00002', 'Việt Nam Phong Tục', 1, 1, 1, 20000, 200000, 23, 0, 'upload/20150120040409'),
+(3, 'SA00003', 'Doremon', 1, 1, 1, 30000, 300000, 16, 0, 'upload/20150120040426'),
+(4, 'SA00004', 'Ô long viện', 1, 1, 1, 40000, 400000, 17, 0, 'upload/20150120040442'),
+(5, 'SA00005', 'Sunrise - Bình Minh', 1, 1, 1, 50000, 500000, 20, 0, 'upload/20150120040453'),
+(6, 'SA00006', 'Tiểu Sử Steve Jobs', 1, 4, 1, 25000, 30000, 0, 0, 'upload/20150120040504'),
+(7, 'SA00007', 'Học Từ Thất Bại', 1, 3, 1, 12000, 40000, 0, 0, 'upload/20150120040518'),
+(8, 'SA00008', 'Bài Học Cuộc Sống', 1, 2, 1, 74000, 80000, 0, 0, 'upload/20150120040530'),
+(9, 'SA00009', 'Cốt Cách Mỹ Nhân', 1, 1, 1, 36000, 40000, 0, 0, 'upload/20150120040637'),
+(10, 'SA00010', 'Đánh Cược Với Tình Yêu', 1, 1, 1, 22000, 25000, 0, 0, 'upload/20150120040647'),
+(11, 'VP00001', 'Bìa Lá Plus', 2, 1, 2, 12000, 24000, 0, 0, 'upload/20150120040702'),
+(12, 'DC00001', 'Thú Bông Pororo', 3, 2, 2, 100000, 120000, 0, 0, 'upload/20150120040715'),
+(13, 'DC00002', 'Thông Tuyết', 3, 2, 2, 12000, 25000, 0, 0, 'upload/20150120040726');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
